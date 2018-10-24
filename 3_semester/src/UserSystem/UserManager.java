@@ -9,13 +9,24 @@ package UserSystem;
  *
  * @author Sebas
  */
-public class UserManager { 
+public class UserManager {
+    /**
+     * Stores the active user of the system
+     */
     private User activeUser;
     
+    /**
+     * Logs in the user, with their password and username
+     * @param Username : String
+     * @param Password : Hashed String
+     */
     public void login(String Username, String Password){
         
     }
     
+    /**
+     * Logs out the user in the system
+     */
     public void logout(){
         this.activeUser = null;
     }

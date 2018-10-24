@@ -10,5 +10,8 @@ package ProjectInterfaces;
  * @author Sebas
  */
 public interface IUser {
+    /**
+     * When the user takes the personality test
+     */
     public void doTest();
 }
