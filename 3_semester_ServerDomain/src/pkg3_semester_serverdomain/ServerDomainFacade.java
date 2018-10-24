@@ -15,11 +15,10 @@ import ProjectInterfaces.IServerPersistence;
 public class ServerDomainFacade implements IServerDomain {
 
     IServerPersistence persistence;
-    
+
     @Override
     public void injectPersistence(IServerPersistence persistence) {
-      this.persistence=persistence;
+        this.persistence = persistence;
     }
-    
-    
+
 }

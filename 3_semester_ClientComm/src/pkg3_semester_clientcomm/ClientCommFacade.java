@@ -13,6 +13,4 @@ import ProjectInterfaces.IClientComm;
  */
 public class ClientCommFacade implements IClientComm {
 
-    
-    
 }

@@ -10,5 +10,5 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IServerPersistence {
-    
+
 }

@@ -14,16 +14,16 @@ import ProjectInterfaces.IServerDomain;
  */
 public class ServerCommFacade implements IServerComm {
 
-private IServerDomain domain;
-    
+    private IServerDomain domain;
+
     @Override
     public void injectDomain(IServerDomain domain) {
-       this.domain=domain;
+        this.domain = domain;
     }
 
     @Override
     public void startServer() {
-       
+
     }
-    
+
 }

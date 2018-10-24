@@ -10,6 +10,8 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IServerComm {
+
     public void injectDomain(IServerDomain domain);
+
     public void startServer();
 }

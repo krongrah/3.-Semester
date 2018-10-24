@@ -15,8 +15,9 @@ import ProjectInterfaces.IClientDomain;
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
-    
-    public void injectClientComm(IClientComm comm){
-    this.comm=comm;
+
+    @Override
+    public void injectClientComm(IClientComm comm) {
+        this.comm = comm;
     }
 }

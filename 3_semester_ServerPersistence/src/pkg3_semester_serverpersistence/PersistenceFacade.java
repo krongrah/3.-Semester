@@ -11,6 +11,6 @@ import ProjectInterfaces.IServerPersistence;
  *
  * @author Krongrah
  */
-public class PersistenceFacade implements IServerPersistence{
-    
+public class PersistenceFacade implements IServerPersistence {
+
 }

@@ -29,7 +29,7 @@ public class Main {
         gui.injectdomain(domain);
         domain.injectClientComm(comm);
         gui.start(args);
-        
+
     }
 
 }
