@@ -5,6 +5,13 @@
  */
 package pkg3_semester_clientstarter;
 
+import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IClientDomain;
+import ProjectInterfaces.IClientGui;
+import pkg3_semester_clientgui.GuiFacade;
+import pkg3_semester.ClientDomainFacade;
+import pkg3_semester_clientcomm.ClientCommFacade;
+
 /**
  *
  * @author Krongrah
@@ -16,6 +23,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        IClientGui gui = new GuiFacade();
+        IClientDomain domain = new ClientDomainFacade();
+        IClientComm comm = new ClientCommFacade();
+        gui.injectdomain(domain);
+        domain.injectClientComm(comm);
+        gui.start(args);
+
     }
-    
+
 }

@@ -10,5 +10,8 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IClientGui {
-    
+
+    public void injectdomain(IClientDomain domain);
+
+    public void start(String[] args);
 }
