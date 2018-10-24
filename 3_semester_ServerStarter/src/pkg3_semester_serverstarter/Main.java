@@ -23,13 +23,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        IServerComm comm=new ServerCommFacade();
-        IServerDomain domain=new ServerDomainFacade();
-        IServerPersistence persistence=new PersistenceFacade();
+
+        IServerComm comm = new ServerCommFacade();
+        IServerDomain domain = new ServerDomainFacade();
+        IServerPersistence persistence = new PersistenceFacade();
         comm.injectDomain(domain);
         domain.injectPersistence(persistence);
         comm.startServer();
     }
-    
+
 }
