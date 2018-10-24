@@ -9,8 +9,9 @@ import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientDomain;
 
 /**
- *
- * @author ahmadhamid
+ * Communcation between the other 2 layers, which are the GUI 
+ * and the ClientComm
+ * 
  */
 public class ClientDomainFacade implements IClientDomain {
 
