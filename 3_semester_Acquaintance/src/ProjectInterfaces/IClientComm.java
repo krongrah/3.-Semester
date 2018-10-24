@@ -6,7 +6,7 @@
 package ProjectInterfaces;
 
 /**
- *
+ * The interface for the Client communication
  * @author Krongrah
  */
 public interface IClientComm {

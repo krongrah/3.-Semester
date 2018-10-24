@@ -9,8 +9,10 @@ import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
 
 /**
+ * Communcation layer, and Communcates with the 
+ * domain layer
+ * 
  *
- * @author Krongrah
  */
 public class GuiFacade implements IClientGui {
 

@@ -12,8 +12,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Krongrah
+ * Designing the visuel aspects of the GUI
+ * 
  */
 public class GuiStarter extends Application {
 

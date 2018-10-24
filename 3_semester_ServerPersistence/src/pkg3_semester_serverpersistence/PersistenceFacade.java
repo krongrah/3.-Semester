@@ -8,7 +8,7 @@ package pkg3_semester_serverpersistence;
 import ProjectInterfaces.IServerPersistence;
 
 /**
- *
+ * The facade of the server persistence
  * @author Krongrah
  */
 public class PersistenceFacade implements IServerPersistence {

@@ -8,8 +8,8 @@ package pkg3_semester_clientcomm;
 import ProjectInterfaces.IClientComm;
 
 /**
- * The Facade of the client side of the client server communication.
- * @author Krongrah
+ * is responsible for the communication between 
+ * all client communication to the server
  */
 public class ClientCommFacade implements IClientComm {
 

@@ -6,12 +6,22 @@
 package ProjectInterfaces;
 
 /**
- *
+ * The interface for the Client GUI
  * @author Krongrah
  */
 public interface IClientGui {
 
+    
+    /**
+     * The method for injecting the domain
+     * @param domain 
+     */
     public void injectdomain(IClientDomain domain);
 
+    
+    /**
+     * The method for starting the entire system
+     * @param args 
+     */
     public void start(String[] args);
 }
