@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg3_semester_serverstarter;
+package pkg3_semester_clientcomm;
+
+import ProjectInterfaces.IClientComm;
 
 /**
  *
  * @author Krongrah
  */
-public class Main {
+public class ClientCommFacade implements IClientComm {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
-        
     }
     
 }
