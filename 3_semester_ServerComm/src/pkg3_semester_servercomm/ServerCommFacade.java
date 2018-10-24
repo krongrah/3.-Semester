@@ -39,7 +39,7 @@ public class ServerCommFacade implements IServerComm {
     }
 
     /**
-     * This method starts instantiates the server hub, and then starts it, thus
+     * This method instantiates the server hub, and then starts it, thus
      * allowing clients to connect.
      */
     @Override
