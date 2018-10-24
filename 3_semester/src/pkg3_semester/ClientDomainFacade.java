@@ -20,5 +20,6 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
+        comm.connectToServer();
     }
 }

@@ -27,6 +27,7 @@ public class GuiFacade implements IClientGui {
     @Override
     public void injectdomain(IClientDomain domain) {
         this.domain = domain;
+        
     }
 
 }
