@@ -16,3 +16,6 @@
 /3_semester_ServerStarter/build/
 /3_semester_ServerDomain/build/
 /3_semester_ServerPersistence/build/
+/3_semester_ServerDomain/dist/
+/3_semester_ServerComm/dist/
+/3_semester_ServerPersistence/dist/
