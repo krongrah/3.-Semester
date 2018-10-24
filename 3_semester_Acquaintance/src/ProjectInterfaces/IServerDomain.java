@@ -6,10 +6,15 @@
 package ProjectInterfaces;
 
 /**
- *
+ * The interface for the Server Domain
  * @author Krongrah
  */
 public interface IServerDomain {
 
+    
+    /**
+     * The method for injecting the Server Persistence interface
+     * @param persistence 
+     */
     public void injectPersistence(IServerPersistence persistence);
 }

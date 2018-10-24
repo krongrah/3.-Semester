@@ -9,13 +9,23 @@ import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
 
 /**
- *
+ *Facade for the ServerDomain
  * @author Krongrah
  */
 public class ServerDomainFacade implements IServerDomain {
 
+    
+    /**
+     * The interface for the serverpersistence
+     */
     IServerPersistence persistence;
 
+    
+    /**
+     * Inject method for persistence 
+     * Injects ServerPersistence into ServerDomainFacade
+     * @param persistence 
+     */
     @Override
     public void injectPersistence(IServerPersistence persistence) {
         this.persistence = persistence;
