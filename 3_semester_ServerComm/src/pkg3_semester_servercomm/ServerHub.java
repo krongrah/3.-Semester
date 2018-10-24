@@ -14,16 +14,33 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * This class connects approaching users and gives them a dedicated thread.
  *
  * @author Krongrah
  */
 public class ServerHub {
 
+    /**
+     * This is the maximum number of threads, and thus, maximum number of
+     * connected users at any given time.
+     */
     private int numberOfThreads = 10;
+    /**
+     * This is the port clients connect to.
+     */
     private int port = 9001;
+    /**
+     * This is the Thread pool that manages the service threads.
+     */
     private ExecutorService threadPool;
+    /**
+     * This server socket receives incoming connections.
+     */
     private ServerSocket ssocket;
 
+    /**
+     * This constructor instantiates the thread pool and server socket.
+     */
     ServerHub() {
         threadPool = Executors.newFixedThreadPool(numberOfThreads);
         try {
@@ -33,6 +50,10 @@ public class ServerHub {
         }
     }
 
+    /**
+     * This method starts the hub, and makes it start receiving connections,
+     * each of which will be assigned a dedicated thread.
+     */
     void start() {
 
         while (true) {
