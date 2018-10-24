@@ -5,6 +5,13 @@
  */
 package pkg3_semester_serverstarter;
 
+import ProjectInterfaces.IServerComm;
+import ProjectInterfaces.IServerDomain;
+import ProjectInterfaces.IServerPersistence;
+import pkg3_semester_servercomm.ServerCommFacade;
+import pkg3_semester_serverdomain.ServerDomainFacade;
+import pkg3_semester_serverpersistence.PersistenceFacade;
+
 /**
  *
  * @author Krongrah
@@ -16,9 +23,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
-        
+
+        IServerComm comm = new ServerCommFacade();
+        IServerDomain domain = new ServerDomainFacade();
+        IServerPersistence persistence = new PersistenceFacade();
+        comm.injectDomain(domain);
+        domain.injectPersistence(persistence);
+        comm.startServer();
     }
-    
+
 }

@@ -6,9 +6,9 @@
 package ProjectInterfaces;
 
 /**
- *
+ * The interface for Server Persistence
  * @author Krongrah
  */
 public interface IServerPersistence {
-    
+
 }

@@ -13,11 +13,4 @@ import ProjectInterfaces.IClientComm;
  */
 public class ClientCommFacade implements IClientComm {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
 }

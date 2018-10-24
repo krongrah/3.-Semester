@@ -6,9 +6,15 @@
 package ProjectInterfaces;
 
 /**
- *
+ * The interface for the Client domain
  * @author Krongrah
  */
 public interface IClientDomain {
+
     
+    /**
+     * Method for injecting Client communication
+     * @param comm 
+     */
+    public void injectClientComm(IClientComm comm);
 }

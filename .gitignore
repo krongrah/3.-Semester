@@ -7,6 +7,12 @@
 /3_semester_ClientStarter/nbproject/private/
 /3_semester_ServerComm/nbproject/private/
 /3_semester_ClientComm/nbproject/private/
-/3_semester_ServerDomain/build/
 /3_semester_Acquaintance/build/
-/3_semester_Acquaintance/dist/
+/3_semester_ClientComm/build/
+/3_semester_ClientStarter/build/
+/3_semester/build/
+/3_semester_ClientGui/build/
+/3_semester_ServerComm/build/
+/3_semester_ServerStarter/build/
+/3_semester_ServerDomain/build/
+/3_semester_ServerPersistence/build/

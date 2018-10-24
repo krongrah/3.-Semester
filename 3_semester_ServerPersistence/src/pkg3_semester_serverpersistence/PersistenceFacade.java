@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg3_semester_servercomm;
+package pkg3_semester_serverpersistence;
+
+import ProjectInterfaces.IServerPersistence;
 
 /**
- *
+ * The facade of the server persistence
  * @author Krongrah
  */
-public class Main {
+public class PersistenceFacade implements IServerPersistence {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Test");
-    }
-    
 }
