@@ -66,7 +66,7 @@ public class User implements IUser {
      * Changes a value related to test whether or not the user has taken the test
      */
     public void doTest(){
-        
+        //todo
     }
 
     /**
