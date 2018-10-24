@@ -5,19 +5,18 @@
  */
 package pkg3_semester;
 
+import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IClientDomain;
+
 /**
  *
  * @author ahmadhamid
  */
-public class Main {
+public class ClientDomainFacade implements IClientDomain {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Hej");
-        
-        
-    }
+    private IClientComm comm;
     
+    public void injectClientComm(IClientComm comm){
+    this.comm=comm;
+    }
 }

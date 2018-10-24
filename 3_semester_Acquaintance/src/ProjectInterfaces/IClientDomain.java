@@ -10,5 +10,5 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IClientDomain {
-    
+    public void injectClientComm(IClientComm comm);
 }

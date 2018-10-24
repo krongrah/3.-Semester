@@ -10,5 +10,5 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IServerDomain {
-    
+    public void injectPersistence(IServerPersistence persistence);
 }
