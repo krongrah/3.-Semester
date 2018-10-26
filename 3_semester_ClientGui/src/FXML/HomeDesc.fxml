@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="BOTTOM_CENTER" prefHeight="300.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeDescController">
+   <children>
+      <GridPane maxHeight="300.0" maxWidth="650.0" minHeight="300.0" minWidth="650.0" prefHeight="300.0" prefWidth="650.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="3" GridPane.valignment="BOTTOM">
+         <children>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="750.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus tellus quis sagittis pulvinar. Integer pharetra leo et sapien malesuada, at laoreet urna aliquam. Maecenas tincidunt dignissim porta. Aenean ac eleifend arcu, eu mattis leo. Proin in leo eu nisl pretium lobortis. Proin accumsan lacus turpis, ac finibus arcu dapibus a. Praesent ornare condimentum augue, et placerat eros sollicitudin aliquam. Nulla sit amet est nibh. Etiam ut orci a augue pulvinar molestie. Vivamus sed orci velit. Nullam ultrices justo ac tortor tempor, at vestibulum sem ultrices. Nullam dapibus tristique ex, vitae sodales dolor euismod in. Pellentesque pulvinar ante imperdiet odio fringilla ultrices." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowSpan="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="55.0" left="25.0" top="55.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="300.0" prefWidth="350.0" text="The best people for the best jobs" textAlignment="RIGHT" textFill="WHITE" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="25.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+</GridPane>

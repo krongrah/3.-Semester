@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1280.0" stylesheets="@../Stylesheets/BasicLook.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ScreenController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <children>
+                  <ImageView fx:id="HomeBackgroundImage" pickOnBounds="true" preserveRatio="true" smooth="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <image>
+                        <Image url="@../Images/business-man-and-woman-handshake-in-work-office-picjumbo-com-e1490198110678-1100x450.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane minHeight="380.0" AnchorPane.bottomAnchor="380.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Accepting" textFill="WHITE" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Applicants" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="35.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Now" textFill="WHITE" GridPane.halignment="RIGHT">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Label>
+                              <Label text="New" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="35.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane stylesheets="@../Stylesheets/BasicLook.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button id="HomeCenterButtons" alignment="CENTER" contentDisplay="RIGHT" maxHeight="75.0" minHeight="75.0" mnemonicParsing="false" onAction="#openSearchForJobs" prefHeight="75.0" stylesheets="@../Stylesheets/BasicLook.css" text="Search a job   " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                 <graphic>
+                                    <ImageView fitHeight="100.0" fitWidth="75.0" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Images/Arrow-right.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets left="40.0" right="-0.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button id="HomeCenterButtons" alignment="CENTER" contentDisplay="RIGHT" maxHeight="75.0" minHeight="75.0" mnemonicParsing="false" onAction="#openSignUpScreen" prefHeight="75.0" stylesheets="@../Stylesheets/BasicLook.css" text="Sign up   " textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                 <graphic>
+                                    <ImageView fitHeight="100.0" fitWidth="75.0" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Images/Arrow-right.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets left="40.0" right="-1.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Button>
+                              <Group GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <children>
+                                    <Line id="Image_Line1" fx:id="Image_Line1" endX="60.0" startX="-60.0" stroke="WHITE" strokeMiterLimit="6.0" strokeWidth="6.0" style="-fx-opacity: 0.85;" />
+                                    <Line id="Image_Line2" fx:id="Image_Line2" endX="60.0" layoutX="190.0" startX="-60.0" stroke="WHITE" strokeMiterLimit="6.0" strokeWidth="6.0" style="-fx-opacity: 0.35;" />
+                                    <Line id="Image_Line3" fx:id="Image_Line3" endX="60.0" layoutX="380.0" startX="-60.0" stroke="WHITE" strokeMiterLimit="6.0" strokeWidth="6.0" style="-fx-opacity: 0.35;" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+                  <GridPane alignment="TOP_CENTER" prefHeight="80.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="7">
+                           <children>
+                              <Button layoutX="40.0" layoutY="25.0" mnemonicParsing="false" onAction="#openSignIn" style="-fx-background-color: transparent;" styleClass="TopMenuButton" text="Sign in" textFill="#212121">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="6">
+                           <children>
+                              <Label alignment="CENTER" styleClass="TopMenuText" text="Contacts" textFill="#212121" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="5">
+                           <children>
+                              <Label alignment="CENTER" styleClass="TopMenuText" text="About" textFill="#212121" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="4">
+                           <children>
+                              <Label alignment="CENTER" styleClass="TopMenuText" text="Jobs" textFill="#212121" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="3">
+                           <children>
+                              <Label alignment="CENTER" onMouseClicked="#openHomeScreen" styleClass="TopMenuText" text="Home" textFill="#212121" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Images/logo-dark.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+                  <AnchorPane fx:id="screen" maxHeight="1.7976931348623157E308" minHeight="300.0" prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: #212121;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <AnchorPane fx:id="popupWindow" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
