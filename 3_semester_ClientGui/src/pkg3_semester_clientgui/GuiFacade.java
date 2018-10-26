@@ -10,8 +10,10 @@ import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
 
 /**
+ * Communcation layer, and Communcates with the 
+ * domain layer
+ * 
  *
- * @author Krongrah
  */
 public class GuiFacade implements IClientGui {
 
@@ -26,6 +28,7 @@ public class GuiFacade implements IClientGui {
     @Override
     public void injectdomain(IClientDomain domain) {
         this.domain = domain;
+        
     }
 
 }
