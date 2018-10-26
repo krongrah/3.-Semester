@@ -11,4 +11,11 @@ package ProjectInterfaces;
  */
 public interface IClientComm {
     public IUser login(String username, String hashedPwd);
+
+    /**
+     * Connects the client to the server.
+     *
+     * @return returns true if the connection was successful.
+     */
+    public boolean connectToServer();
 }

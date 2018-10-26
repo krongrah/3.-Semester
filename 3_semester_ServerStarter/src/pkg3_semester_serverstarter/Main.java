@@ -13,12 +13,16 @@ import pkg3_semester_serverdomain.ServerDomainFacade;
 import pkg3_semester_serverpersistence.PersistenceFacade;
 
 /**
- *
+ * Starter for the Server.
+ * Starts all processes in the Server.
+ * Injects the domain in the ServerCommFacade and the persistance in the ServerDomainFacade.
+ * 
  * @author Krongrah
  */
 public class Main {
 
     /**
+     * Main method is invoked when the Server is starting
      * @param args the command line arguments
      */
     public static void main(String[] args) {

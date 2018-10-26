@@ -13,13 +13,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 /**
- *
- * @author Krongrah
+ * communcation between the fxml and 
+ * the code conecting the actions
+ * 
+ * 
  */
 public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Label label;
+    
+    /**
+     * handles the action input, and executes the event
+     *
+     */
     
     @FXML
     private void handleButtonAction(ActionEvent event) {

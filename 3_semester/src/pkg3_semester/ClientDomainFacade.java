@@ -15,8 +15,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author ahmadhamid
+ * Communcation between the other 2 layers, which are the GUI 
+ * and the ClientComm
+ * 
  */
 public class ClientDomainFacade implements IClientDomain {
 
@@ -33,6 +34,7 @@ public class ClientDomainFacade implements IClientDomain {
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
         userManager = this.userManager.getInstance();
+        comm.connectToServer();
     }
 
     /**
