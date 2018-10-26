@@ -13,6 +13,14 @@ import ProjectInterfaces.IUser;
  */
 public class User implements IUser {
     /**
+     * Username
+     */
+    private String username;
+    /** 
+     * Whether the user is a company user
+     */
+    private boolean isCompany;
+    /**
      * Email
      */
     private String email;
@@ -51,7 +59,8 @@ public class User implements IUser {
      * @param country : String
      * @param region : String
      */
-    public User(String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+    public User(boolean isCompany, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        this.isCompany = isCompany;
         this.email = email;
         this.phonenr = phonenr;
         this.address = address;
@@ -68,7 +77,22 @@ public class User implements IUser {
     public void doTest(){
         //todo
     }
-
+    
+    /**
+     * gets the username of the given user
+     * @return Username : String
+     */
+    public String getUsername() {
+        return username;
+    }
+    
+    /**
+     * gets whether the user is a company
+     */
+    public boolean getIsCompany(){
+        return isCompany;
+    }
+    
     /**
      * Gets the email
      * @return email address : String
