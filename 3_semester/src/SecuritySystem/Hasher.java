@@ -24,6 +24,7 @@ public class Hasher implements IHasher {
      * @return Hashed value
      * @throws NoSuchAlgorithmException
      */
+    @Override
     public String hash(String value) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(

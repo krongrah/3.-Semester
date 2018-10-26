@@ -10,5 +10,5 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IClientComm {
-
+    public IUser login(String username, String hashedPwd);
 }

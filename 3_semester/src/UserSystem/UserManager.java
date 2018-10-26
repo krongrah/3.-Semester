@@ -21,10 +21,6 @@ public class UserManager implements IUserManager {
      */
     private IUser activeUser;
 
-    private UserManager() {
-        userManager = new UserManager();
-    }
-
     /**
      * Logs out the user in the system
      */

@@ -7,7 +7,12 @@ package pkg3_semester;
 
 import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientDomain;
+import ProjectInterfaces.IHasher;
 import ProjectInterfaces.IUserManager;
+import SecuritySystem.Hasher;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +22,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
     private IUserManager userManager;
+    private IHasher hasher = new Hasher();
     
 
     @Override
@@ -27,7 +33,12 @@ public class ClientDomainFacade implements IClientDomain {
 
     @Override
     public void login(String username, String password) {
-        //String hashedPwd = 
+        try {
+            String hashedPwd = hasher.hash(password);
+            userManager.setActiveUser(comm.login(username, hashedPwd));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ClientDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

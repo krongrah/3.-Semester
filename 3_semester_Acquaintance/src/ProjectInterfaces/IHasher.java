@@ -5,10 +5,13 @@
  */
 package ProjectInterfaces;
 
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author Sebas
  */
 public interface IHasher {
-    
+
+    public String hash(String value) throws NoSuchAlgorithmException;
 }

@@ -6,11 +6,17 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IUser;
 
 /**
  *
  * @author Krongrah
  */
 public class ClientCommFacade implements IClientComm {
+
+    @Override
+    public IUser login(String username, String hashedPwd) {
+        return null;
+    }
 
 }
