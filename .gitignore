@@ -16,6 +16,7 @@
 /3_semester_ServerStarter/build/
 /3_semester_ServerDomain/build/
 /3_semester_ServerPersistence/build/
+<<<<<<< HEAD
 /3_semester_ServerDomain/dist/
 /3_semester_ServerComm/dist/
 /3_semester_ServerPersistence/dist/
@@ -23,3 +24,5 @@
 /3_semester_ClientComm/dist/
 /3_semester_ClientGui/dist/
 /3_semester_Acquaintance/dist/
+=======
+>>>>>>> master
