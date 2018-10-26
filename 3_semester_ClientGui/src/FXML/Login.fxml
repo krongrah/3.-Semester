@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="LoginScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="380.0" maxWidth="450.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" style="-fx-background-color: #70a1e3;" text="     Sign in to TheJob" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="25.0" top="25.0" />
+                     </padding>
+                  </Label>
+                  <AnchorPane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: rgba(255,255,255,0.2);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitWidth="45.0" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="17.0">
+                           <image>
+                              <Image url="@../Images/login-white.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <TextField id="UsernameField" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" promptText="Username" styleClass="LoginField" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="135.0">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField id="PasswordField" focusTraversable="false" promptText="Password" styleClass="LoginField" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </PasswordField>
+                  <Button id="LoginButton" mnemonicParsing="false" onAction="#signIn" text="Sign In" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="12.0" left="26.0" right="26.0" top="12.0" />
+                     </padding>
+                  </Button>
+                  <Button id="CancelButton" mnemonicParsing="false" onAction="#cancelLogin" text="Cancel" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="12.0" left="18.0" right="18.0" top="12.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

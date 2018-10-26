@@ -5,6 +5,7 @@
  */
 package pkg3_semester_clientgui;
 
+import GUI.TheJobGUI;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
 
@@ -16,12 +17,12 @@ import ProjectInterfaces.IClientGui;
  */
 public class GuiFacade implements IClientGui {
 
-    private GuiStarter starter = new GuiStarter();
+    private TheJobGUI starter = new TheJobGUI();
     private IClientDomain domain;
 
     @Override
     public void start(String[] args) {
-        starter.begin(args);
+        starter.launchGui(args);
     }
 
     @Override

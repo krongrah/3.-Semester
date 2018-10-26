@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PersonalityTestController">
+   <children>
+      <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="585.0" maxWidth="650.0" prefHeight="585.0" prefWidth="650.0" style="-fx-background-color: #fff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <children>
+                  <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane maxHeight="77.0" prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: #70a1e3;" GridPane.columnSpan="2" GridPane.valignment="TOP">
+                           <children>
+                              <ImageView fitWidth="45.0" layoutX="-37.0" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="17.0">
+                                 <image>
+                                    <Image url="@../Images/b10dd.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" contentDisplay="BOTTOM" text="Basic personality assessment" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                                 <graphic>
+                                    <Label alignment="CENTER" contentDisplay="BOTTOM" text="To what extend do you agree with the following statements?" textFill="WHITE">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <ProgressBar id="progressBar" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="35.0" prefHeight="35.0" progress="0.44" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <Group GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                           <children>
+                              <RadioButton id="LargestTestRadioD" fx:id="disagree_large" alignment="CENTER_RIGHT" mnemonicParsing="false" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="AgreementValues" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton id="MediumTestRadioD" fx:id="disagree_small" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="5.0" mnemonicParsing="false" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="SmallTestRadioN" fx:id="neutral" alignment="CENTER_RIGHT" layoutX="190.0" layoutY="10.0" mnemonicParsing="false" styleClass="RadioNeutral" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="MediumTestRadioA" fx:id="agree_small" alignment="CENTER_RIGHT" layoutX="270.0" layoutY="5.0" mnemonicParsing="false" styleClass="RadioAgree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="LargestTestRadioA" fx:id="agree_large" alignment="CENTER_RIGHT" layoutX="360.0" mnemonicParsing="false" styleClass="RadioAgree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Group>
+                        <Label fx:id="question" alignment="CENTER" text="I find it easy to make new friends" textAlignment="CENTER" textFill="#212121" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button id="CancelButton" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #949494;" stylesheets="@../Stylesheets/BasicLook.css" text="Cancel" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="12.0" left="18.0" right="18.0" top="12.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="LoginButton" mnemonicParsing="false" onAction="#nextQuestion" style="-fx-background-color: #70a1e3;" stylesheets="@../Stylesheets/BasicLook.css" text="Next Question" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="12.0" left="18.0" right="18.0" top="12.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets right="50.0" />
+                           </GridPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>
