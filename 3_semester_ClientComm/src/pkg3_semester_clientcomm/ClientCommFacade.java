@@ -14,6 +14,12 @@ import ProjectInterfaces.IUser;
  */
 public class ClientCommFacade implements IClientComm {
 
+    /**
+     * Logs in the given user
+     * @param username
+     * @param hashedPwd
+     * @return An object of the type IUser
+     */
     @Override
     public IUser login(String username, String hashedPwd) {
         return null;

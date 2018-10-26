@@ -24,6 +24,9 @@ public class Applicant extends User {
      */
     private int experience;
     
+    /**
+     * Gender of the applicant
+     */
     private String gender;
 
     /**
@@ -57,6 +60,9 @@ public class Applicant extends User {
         this.experience = experience;
     }
 
+    /**
+     * 
+     */
     public void applyForJob() {
         //todo
     }

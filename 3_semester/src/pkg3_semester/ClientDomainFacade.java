@@ -23,22 +23,34 @@ public class ClientDomainFacade implements IClientDomain {
     private IClientComm comm;
     private IUserManager userManager;
     private IHasher hasher = new Hasher();
-    
 
+    /**
+     * Injects an instance of the Client Communication facade
+     *
+     * @param comm
+     */
     @Override
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
         userManager = this.userManager.getInstance();
     }
 
+    /**
+     * Logs in the user, with a username and a password, the password is first
+     * hashed using SHA-256.
+     *
+     * @param username
+     * @param password
+     * @return True if successful login, else returns false
+     */
     @Override
     public boolean login(String username, String password) {
         try {
             String hashedPwd = hasher.hash(password);
             userManager.setActiveUser(comm.login(username, hashedPwd));
-            if(userManager.getActiveUser() == null){
+            if (userManager.getActiveUser() == null) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
         } catch (NoSuchAlgorithmException ex) {
@@ -47,11 +59,12 @@ public class ClientDomainFacade implements IClientDomain {
         }
     }
 
+    /**
+     * Logs out the active user
+     */
     @Override
     public void logout() {
         userManager.logout();
     }
-    
-    
-    
+
 }

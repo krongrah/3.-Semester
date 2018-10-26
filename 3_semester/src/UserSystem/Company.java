@@ -21,15 +21,15 @@ public class Company extends User{
 
     /**
      * Company constructor
-     * @param companyName : String
-     * @param website : String
-     * @param email : String
-     * @param phonenr : Integer
-     * @param address : String
-     * @param zipcode : String
-     * @param city : String
-     * @param country : String
-     * @param region  : String
+     * @param companyName
+     * @param website
+     * @param email
+     * @param phonenr
+     * @param address
+     * @param zipcode
+     * @param city
+     * @param country
+     * @param region 
      */
     public Company(String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
         super(true, email, phonenr, address, zipcode, city, country, region);
