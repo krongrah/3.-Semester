@@ -10,6 +10,7 @@ import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IHasher;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.Hasher;
+import UserSystem.UserManager;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +23,7 @@ import java.util.logging.Logger;
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
-    private IUserManager userManager;
+    private IUserManager userManager = new UserManager();
     private IHasher hasher = new Hasher();
 
     /**
