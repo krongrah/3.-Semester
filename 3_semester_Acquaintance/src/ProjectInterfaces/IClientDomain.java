@@ -17,4 +17,17 @@ public interface IClientDomain {
      * @param comm 
      */
     public void injectClientComm(IClientComm comm);
+    
+    /**
+     * Methods to login a given user
+     * @param username
+     * @param password
+     * @return true if successful login, else false.
+     */
+    public boolean login(String username, String password);
+    
+    /**
+     * Logs out the active user
+     */
+    public void logout();
 }

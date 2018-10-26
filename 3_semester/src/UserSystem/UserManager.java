@@ -5,29 +5,50 @@
  */
 package UserSystem;
 
+import ProjectInterfaces.IUser;
+import ProjectInterfaces.IUserManager;
+
 /**
  *
  * @author Sebas
  */
-public class UserManager {
+public class UserManager implements IUserManager {
+
+    private static IUserManager userManager = null;
+
     /**
      * Stores the active user of the system
      */
-    private User activeUser;
-    
-    /**
-     * Logs in the user, with their password and username
-     * @param Username : String
-     * @param Password : Hashed String
-     */
-    public void login(String Username, String Password){
-        //todo
-    }
-    
+    private IUser activeUser;
+
     /**
      * Logs out the user in the system
      */
-    public void logout(){
+    public void logout() {
         this.activeUser = null;
     }
+
+    /**
+     * Sets the active user as an object of the Iuser interface
+     *
+     * @param user : IUser
+     */
+    @Override
+    public void setActiveUser(IUser user) {
+        this.activeUser = user;
+    }
+
+    @Override
+    public IUser getActiveUser() {
+        return this.activeUser;
+    }
+
+    @Override
+    public IUserManager getInstance() {
+        if (userManager == null) {
+            userManager = new UserManager();
+        }
+        return userManager;
+    }
+
 }

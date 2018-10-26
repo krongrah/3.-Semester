@@ -6,6 +6,7 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IUser;
 
 /**
  * is responsible for the communication between 
@@ -13,6 +14,17 @@ import ProjectInterfaces.IClientComm;
  */
 public class ClientCommFacade implements IClientComm {
 
+    /**
+     * Logs in the given user
+     * @param username
+     * @param hashedPwd
+     * @return An object of the type IUser
+     */
+    @Override
+    public IUser login(String username, String hashedPwd) {
+        return null;
+    }
+  
     /**
      * The reference to the connection.
      */

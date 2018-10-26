@@ -10,6 +10,7 @@ package ProjectInterfaces;
  * @author Krongrah
  */
 public interface IClientComm {
+    public IUser login(String username, String hashedPwd);
 
     /**
      * Connects the client to the server.

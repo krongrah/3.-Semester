@@ -5,6 +5,7 @@
  */
 package SecuritySystem;
 
+import ProjectInterfaces.IHasher;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
  *
  * @author Sebas
  */
-public class Hasher {
+public class Hasher implements IHasher {
 
     /**
      * Hashes the value from a string to a byte array, then calls bytesToHex()
@@ -23,6 +24,7 @@ public class Hasher {
      * @return Hashed value
      * @throws NoSuchAlgorithmException
      */
+    @Override
     public String hash(String value) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedhash = digest.digest(

@@ -23,6 +23,11 @@ public class Applicant extends User {
      * Years of experience in their given field
      */
     private int experience;
+    
+    /**
+     * Gender of the applicant
+     */
+    private String gender;
 
     /**
      * Applicant constructor method
@@ -38,10 +43,11 @@ public class Applicant extends User {
      * @param country : String
      * @param region : String
      */
-    public Applicant(String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(email, phonenr, address, zipcode, city, country, region);
+    public Applicant(String name, Boolean personalityTest, String gender, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        super(false, email, phonenr, address, zipcode, city, country, region);
         this.name = name;
         this.personalityTest = personalityTest;
+        this.gender = gender;
         this.experience = experience;
     }
 
@@ -54,6 +60,9 @@ public class Applicant extends User {
         this.experience = experience;
     }
 
+    /**
+     * 
+     */
     public void applyForJob() {
         //todo
     }
@@ -75,6 +84,14 @@ public class Applicant extends User {
         return personalityTest;
     }
 
+    /**
+     * Gets the gender of the user
+     * @return gender : String
+     */
+    public String getGender(){
+        return gender;
+    }
+    
     /**
      * Gets the years of experience the applicant has
      * @return experience : integer
