@@ -32,12 +32,18 @@ public class ClientDomainFacade implements IClientDomain {
     }
 
     @Override
-    public void login(String username, String password) {
+    public boolean login(String username, String password) {
         try {
             String hashedPwd = hasher.hash(password);
             userManager.setActiveUser(comm.login(username, hashedPwd));
+            if(userManager.getActiveUser() == null){
+                return false;
+            }else{
+                return true;
+            }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ClientDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 

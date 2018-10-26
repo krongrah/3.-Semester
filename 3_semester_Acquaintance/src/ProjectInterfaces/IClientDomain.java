@@ -18,7 +18,7 @@ public interface IClientDomain {
      */
     public void injectClientComm(IClientComm comm);
     
-    public void login(String username, String password);
+    public boolean login(String username, String password);
     
     public void logout();
 }
