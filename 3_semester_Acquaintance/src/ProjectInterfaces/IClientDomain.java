@@ -17,4 +17,8 @@ public interface IClientDomain {
      * @param comm 
      */
     public void injectClientComm(IClientComm comm);
+    
+    public void login(String username, String password);
+    
+    public void logout();
 }

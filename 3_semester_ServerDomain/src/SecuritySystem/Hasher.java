@@ -25,9 +25,7 @@ public class Hasher {
      */
     public String hash(String value) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] encodedhash = digest.digest(
-                value.getBytes(StandardCharsets.UTF_8));
-
+        byte[] encodedhash = digest.digest(value.getBytes(StandardCharsets.UTF_8));
         return bytesToHex(encodedhash);
     }
 
