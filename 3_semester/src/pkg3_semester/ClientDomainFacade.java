@@ -7,23 +7,22 @@ package pkg3_semester;
 
 import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientDomain;
-import ProjectInterfaces.IHasher;
+import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IUserManager;
-import SecuritySystem.Hasher;
+import SecuritySystem.SecuritySystemFacade;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Communcation between the other 2 layers, which are the GUI 
- * and the ClientComm
- * 
+ * Communcation between the other 2 layers, which are the GUI and the ClientComm
+ *
  */
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
     private IUserManager userManager;
-    private IHasher hasher = new Hasher();
+    private IClientSecurity security = new SecuritySystemFacade();
 
     /**
      * Injects an instance of the Client Communication facade
@@ -47,17 +46,12 @@ public class ClientDomainFacade implements IClientDomain {
      */
     @Override
     public boolean login(String username, String password) {
-        try {
-            String hashedPwd = hasher.hash(password);
-            userManager.setActiveUser(comm.login(username, hashedPwd));
-            if (userManager.getActiveUser() == null) {
-                return false;
-            } else {
-                return true;
-            }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ClientDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        String hashedPwd = security.Hash(password);
+        userManager.setActiveUser(comm.login(username, hashedPwd));
+        if (userManager.getActiveUser() == null) {
             return false;
+        } else {
+            return true;
         }
     }
 
