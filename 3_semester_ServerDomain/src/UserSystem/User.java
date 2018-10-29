@@ -41,6 +41,10 @@ public class User implements IUser {
      */
     private String region;
 
+    public User(){
+        
+    }
+    
     /**
      * User constructor
      * @param email : String
@@ -124,6 +128,42 @@ public class User implements IUser {
     public String getRegion() {
         return region;
     }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public void setPhonenr(Integer phonenr) {
+        this.phonenr = phonenr;
+    }
+
+    @Override
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public void setRegion(String region) {
+        this.region = region;
+    }
+    
     
     
 }

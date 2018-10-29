@@ -7,6 +7,8 @@ package pkg3_semester_serverdomain;
 
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
+import ProjectInterfaces.IUser;
+import UserSystem.User;
 
 /**
  *Facade for the ServerDomain
@@ -31,4 +33,10 @@ public class ServerDomainFacade implements IServerDomain {
         this.persistence = persistence;
     }
 
+    @Override
+    public IUser getUser(IUser user, String username, String password) {
+        return persistence.getUser(new User(), username, password);
+    }
+
+    
 }

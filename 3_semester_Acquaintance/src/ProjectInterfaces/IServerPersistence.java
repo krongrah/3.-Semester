@@ -5,10 +5,14 @@
  */
 package ProjectInterfaces;
 
+import java.sql.ResultSet;
+
 /**
  * The interface for Server Persistence
  * @author Krongrah
  */
 public interface IServerPersistence {
 
+    public ResultSet getUser(String username, String password);
+    
 }

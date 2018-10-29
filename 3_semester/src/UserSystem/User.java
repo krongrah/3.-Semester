@@ -12,11 +12,12 @@ import ProjectInterfaces.IUser;
  * @author Sebas
  */
 public class User implements IUser {
+
     /**
      * Username
      */
     private String username;
-    /** 
+    /**
      * Whether the user is a company user
      */
     private boolean isCompany;
@@ -51,6 +52,7 @@ public class User implements IUser {
 
     /**
      * User constructor
+     *
      * @param email : String
      * @param phonenr : String
      * @param address : String
@@ -71,30 +73,32 @@ public class User implements IUser {
     }
 
     /**
-     * When the user takes the personality test
-     * Changes a value related to test whether or not the user has taken the test
+     * When the user takes the personality test Changes a value related to test
+     * whether or not the user has taken the test
      */
-    public void doTest(){
+    public void doTest() {
         //todo
     }
-    
+
     /**
      * gets the username of the given user
+     *
      * @return Username : String
      */
     public String getUsername() {
         return username;
     }
-    
+
     /**
      * gets whether the user is a company
      */
-    public boolean getIsCompany(){
+    public boolean getIsCompany() {
         return isCompany;
     }
-    
+
     /**
      * Gets the email
+     *
      * @return email address : String
      */
     public String getEmail() {
@@ -103,6 +107,7 @@ public class User implements IUser {
 
     /**
      * Gets the phone number
+     *
      * @return phonenumber : Integer
      */
     public Integer getPhonenr() {
@@ -111,6 +116,7 @@ public class User implements IUser {
 
     /**
      * Gets the address of the user
+     *
      * @return Address : String
      */
     public String getAddress() {
@@ -119,6 +125,7 @@ public class User implements IUser {
 
     /**
      * Gets the zipcode of the user
+     *
      * @return zipcode : String
      */
     public String getZipcode() {
@@ -127,6 +134,7 @@ public class User implements IUser {
 
     /**
      * Gets the city of the user
+     *
      * @return City : String
      */
     public String getCity() {
@@ -135,6 +143,7 @@ public class User implements IUser {
 
     /**
      * Gets the country of the user
+     *
      * @return country : String
      */
     public String getCountry() {
@@ -143,11 +152,46 @@ public class User implements IUser {
 
     /**
      * Gets the region of the user
+     *
      * @return region : String
      */
     public String getRegion() {
         return region;
     }
-    
-    
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public void setPhonenr(Integer phonenr) {
+        this.phonenr = phonenr;
+    }
+
+    @Override
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
 }
