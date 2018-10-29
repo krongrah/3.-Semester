@@ -38,15 +38,17 @@ public class QueryHandler implements IQueryHandler {
 
         statement.setString(2, password);
 
-        ResultSet rs = statement.executeQuery();
-
-        return rs;
+        return statement.executeQuery();
 
     }
 
     @Override
     public ResultSet getQuestionSet() throws SQLException {
-        return null;
+        Connection con = connect();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM \"P");
+        
+        return statement.executeQuery();
+       
     }
 
     @Override

@@ -27,6 +27,13 @@ public class PersistenceFacade implements IServerPersistence {
         return handler.getUser(username, password);
     }
 
+    @Override
+    public ResultSet getQuestionSet() throws SQLException {
+        return handler.getQuestionSet();
+    }
+    
+    
+
     
 
 

@@ -6,6 +6,8 @@
 package UserSystem;
 
 import ProjectInterfaces.IUser;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -48,7 +50,7 @@ public class User implements IUser {
     /**
      * User constructor
      * @param email : String
-     * @param phonenr : String
+     * @param phonenr : Integer
      * @param address : String
      * @param zipcode : String
      * @param city : String
@@ -63,6 +65,18 @@ public class User implements IUser {
         this.city = city;
         this.country = country;
         this.region = region;
+    }
+
+    public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
+        email = user.getString("Email");
+        phonenr = user.getInt("phonenr");
+        address = user.getString("address");
+        zipcode = user.getString("zipcode");
+        city = user.getString("city");
+        country = user.getString("country");
+        region = user.getString("region");
+        
+        
     }
 
     /**
