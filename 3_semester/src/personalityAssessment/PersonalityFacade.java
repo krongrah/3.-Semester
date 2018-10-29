@@ -18,7 +18,7 @@ public class PersonalityFacade {
         this.sc = new ScoreCalculator(this);
     }
     
-    public QuestionSet getQuestionSet(/*IUser*/) {
+    public QuestionSet getQuestionSet(/*IUser - står i UML class diagram*/) {
         return qs;
     }
     
@@ -29,5 +29,9 @@ public class PersonalityFacade {
     public int[] calculateScore(QuestionSet qs) {
         return sc.calculateScore(qs);
     }
-    
+ 
+    /*Main-method to test the functionality*/
+    public static void main(String[] args) {
+        
+    }
 }
