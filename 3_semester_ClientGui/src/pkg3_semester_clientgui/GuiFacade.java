@@ -19,6 +19,7 @@ public class GuiFacade implements IClientGui {
 
     private TheJobGUI starter = new TheJobGUI();
     private IClientDomain domain;
+    private IClientGui clientGui = null;
 
     @Override
     public void start(String[] args) {
@@ -30,5 +31,24 @@ public class GuiFacade implements IClientGui {
         this.domain = domain;
         
     }
+
+    @Override
+    public IClientDomain getDomain() {
+        System.out.println("Domain called");
+        return this.domain;
+    }
+    
+    
+    @Override
+    public IClientGui getInstance() {
+        if (clientGui == null) {
+            clientGui = new GuiFacade();
+            System.out.println("Getinstance GUI");
+        }
+        return clientGui;
+        
+    }
+    
+    
 
 }

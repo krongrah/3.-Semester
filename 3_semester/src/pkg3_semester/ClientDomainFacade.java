@@ -10,9 +10,7 @@ import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import UserSystem.UserManager;
 
 /**
  * Communcation between the other 2 layers, which are the GUI and the ClientComm
@@ -21,7 +19,7 @@ import java.util.logging.Logger;
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
-    private IUserManager userManager;
+    private IUserManager userManager = new UserManager();
     private IClientSecurity security = new SecuritySystemFacade();
 
     /**
@@ -46,13 +44,15 @@ public class ClientDomainFacade implements IClientDomain {
      */
     @Override
     public boolean login(String username, String password) {
-        String hashedPwd = security.Hash(password);
-        userManager.setActiveUser(comm.login(username, hashedPwd));
-        if (userManager.getActiveUser() == null) {
-            return false;
-        } else {
+        System.out.println("Domain login started " + username + password);
+        //String hashedPwd = security.Hash(password);
+//        userManager.setActiveUser(comm.login(username, hashedPwd));
+//        if (userManager.getActiveUser() == null) {
+//            return false;
+//        } else {
+//            return true;
+//        }
             return true;
-        }
     }
 
     /**
