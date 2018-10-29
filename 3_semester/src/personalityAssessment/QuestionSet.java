@@ -15,17 +15,10 @@ import java.io.Serializable;
 public class QuestionSet implements IQuestionSet, Serializable {
 
     private PersonalityFacade pf;
-    private final String[] questions;
-    private final int[] questionsfactor;
-    private final boolean[] questionDirection;
-    private int[] questionsAnswer;
+    private Question q1;
 
     public QuestionSet(PersonalityFacade pf) {
         this.pf = pf;
-        this.questions = new String[100];
-        this.questionsfactor = new int[100];
-        this.questionDirection = new boolean[100];
-        this.questionsAnswer = new int[100];
 
         importQuestions();
     }
@@ -33,15 +26,11 @@ public class QuestionSet implements IQuestionSet, Serializable {
     @Override
     public void importQuestions() {
         //TODO import downloading questions from database.
-        String data = "SPG;3;0";
-
-        for (int i = 0; i < 50; i++) {
-            String[] split = data.split(":");
-
-            questions[i] = split[0];
-            questionsfactor[i] = Integer.parseInt(split[1]);
-            questionDirection[i] = Boolean.parseBoolean(split[2]);
-        }
+        String[] ses;
+    }
+    
+    public void importQuestions2() {
+        
     }
 
     @Override
