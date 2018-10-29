@@ -6,12 +6,13 @@
 package personalityAssessment;
 
 import ProjectInterfaces.IQuestionSet;
+import java.io.Serializable;
 
 /**
  *
  * @author ahmadhamid
  */
-public class QuestionSet implements IQuestionSet {
+public class QuestionSet implements IQuestionSet, Serializable {
 
     private PersonalityFacade pf;
     private final String[] questions;
