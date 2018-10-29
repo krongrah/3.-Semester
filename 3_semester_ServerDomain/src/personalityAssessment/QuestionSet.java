@@ -5,7 +5,12 @@
  */
 package personalityAssessment;
 
+import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,58 +19,34 @@ import ProjectInterfaces.IQuestionSet;
 public class QuestionSet implements IQuestionSet {
 
     private PersonalityFacade pf;
-    private final String[] questions;
-    private final int[] questionsfactor;
-    private final boolean[] questionDirection;
-    private int[] questionsAnswer;
+    private List<IQuestion> questions = new ArrayList();
 
     public QuestionSet(PersonalityFacade pf) {
         this.pf = pf;
-        this.questions = new String[100];
-        this.questionsfactor = new int[100];
-        this.questionDirection = new boolean[100];
-        this.questionsAnswer = new int[100];
-
-        importQuestions();
     }
-
-    @Override
-    public void importQuestions() {
-        //TODO import downloading questions from database.
-        String data = "SPG;3;0";
-
-        for (int i = 0; i < 50; i++) {
-            String[] split = data.split(":");
-
-            questions[i] = split[0];
-            questionsfactor[i] = Integer.parseInt(split[1]);
-            questionDirection[i] = Boolean.parseBoolean(split[2]);
+    
+    public QuestionSet(ResultSet rs) throws SQLException {
+        while(rs.next()) {
+            addToList(new Question(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getBoolean(4)));
         }
     }
-
+    
     @Override
-    public String[] getQuestions() {
-        return questions;
+    public List<IQuestion> getQuestionSet() {
+        return this.questions;
+    }
+    
+    @Override
+    public void addToList(IQuestion q) {
+        questions.add(q);
     }
 
     @Override
-    public int[] getQuestionFactors() {
-        return questionsfactor;
+    public List<Integer> getAnswers() {
+        List<Integer> answers = new ArrayList();
+        for (IQuestion question : questions) {
+            answers.add(question.getQuestionAnswer());
+        }
+        return answers;
     }
-
-    @Override
-    public boolean[] getQuestionDirections() {
-        return questionDirection;
-    }
-
-    @Override
-    public int[] getAnswers() {
-        return questionsAnswer;
-    }
-
-    @Override
-    public void setAnswers(int questionNumber, int answer) {
-        questionsAnswer[questionNumber] = answer;
-    }
-
 }

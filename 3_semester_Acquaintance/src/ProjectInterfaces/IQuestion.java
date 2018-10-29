@@ -5,17 +5,18 @@
  */
 package ProjectInterfaces;
 
-import java.util.List;
-
 /**
  *
  * @author mikkellarsen
  */
-public interface IQuestionSet {
+public interface IQuestion {
     
-    public List<IQuestion> getQuestionSet();
-    
-    public void addToList(IQuestion q);
+    public String getQuestion();
 
-    public List<Integer> getAnswers();
+    public int getQuestionsfactor();
+
+    public boolean getQuestionDirection();
+
+    public int getQuestionAnswer();
+    
 }
