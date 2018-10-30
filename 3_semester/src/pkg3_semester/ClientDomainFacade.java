@@ -11,6 +11,12 @@ import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
 import UserSystem.UserManager;
+import SecuritySystem.Hasher;
+import UserSystem.UserManager;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+>>>>>>> master
 
 /**
  * Communcation between the other 2 layers, which are the GUI and the ClientComm
@@ -21,6 +27,7 @@ public class ClientDomainFacade implements IClientDomain {
     private IClientComm comm;
     private static IUserManager userManager = new UserManager();
     private IClientSecurity security = new SecuritySystemFacade();
+
 
     /**
      * Injects an instance of the Client Communication facade
