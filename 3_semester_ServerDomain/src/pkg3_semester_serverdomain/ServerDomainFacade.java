@@ -13,6 +13,7 @@ import UserSystem.User;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import personalityAssessment.*;
 
 /**
  *Facade for the ServerDomain
@@ -50,9 +51,11 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
-        
+        try {
+            return new QuestionSet(persistence.getQuestionSet());
+        } catch (Exception e) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
+        }
         return null;
     }
-
-    
 }
