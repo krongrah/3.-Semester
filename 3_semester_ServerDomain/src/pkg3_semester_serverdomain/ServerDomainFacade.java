@@ -13,6 +13,7 @@ import UserSystem.User;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import personalityAssessment.QuestionSet;
 
 /**
  *Facade for the ServerDomain
@@ -43,15 +44,19 @@ public class ServerDomainFacade implements IServerDomain {
             return new User(persistence.getUser(username, password));
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
         //Missing return value: No User found (To be specified)
-        return null;
     }
 
     @Override
     public IQuestionSet getQuestionSet() {
-        
-        return null;
+        try {
+            return new QuestionSet(persistence.getQuestionSet());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     

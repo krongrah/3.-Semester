@@ -31,9 +31,11 @@ public class ClientDomainFacade implements IClientDomain {
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
         userManager = this.userManager.getInstance();
-        comm.connectToServer();
     }
 
+    public boolean connectToServer(){
+        return comm.connectToServer();
+    }
     /**
      * Logs in the user, with a username and a password, the password is first
      * hashed using SHA-256.
