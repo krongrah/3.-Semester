@@ -5,25 +5,27 @@
  */
 package personalityAssessment;
 
+import ProjectInterfaces.IQuestionSet;
+
 /**
  *
  * @author ahmadhamid
  */
 public class PersonalityFacade {
-    private QuestionSet qs;
+    private IQuestionSet iqs;
     private ScoreCalculator sc;
 
     public PersonalityFacade() {
-        this.qs = new QuestionSet(this);
+        this.iqs = new QuestionSet(this);
         this.sc = new ScoreCalculator(this);
     }
     
-    public QuestionSet getQuestionSet(/*IUser - står i UML class diagram*/) {
-        return qs;
+    public IQuestionSet getQuestionSet(/*IUser - står i UML class diagram*/) {
+        return iqs;
     }
     
     public void setAnswer(int questionNumber, int answer) {
-        qs.setAnswers(questionNumber, answer);
+        iqs.getQuestionSet().get(questionNumber).setQuestionAnswer(answer);
     }
     
     public int[] calculateScore(QuestionSet qs) {

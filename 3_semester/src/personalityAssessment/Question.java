@@ -24,22 +24,36 @@ public class Question implements IQuestion {
         this.questionDirection = questionDirection;
     }
 
+    public Question(IQuestion q) {
+        this.question = q.getQuestion();
+        this.questionFactor = q.getQuestionsfactor();
+        this.questionDirection = q.getQuestionDirection();
+        this.questionAnswer = q.getQuestionAnswer();
+    }
+    
+    
+
+    @Override
     public String getQuestion() {
         return question;
     }
 
+    @Override
     public int getQuestionsfactor() {
         return questionFactor;
     }
 
+    @Override
     public boolean getQuestionDirection() {
         return questionDirection;
     }
 
-    public int getQuestionsAnswer() {
+    @Override
+    public int getQuestionAnswer() {
         return questionAnswer;
     }
 
+    @Override
     public void setQuestionAnswer(int ans) {
         this.questionAnswer = ans;
     }

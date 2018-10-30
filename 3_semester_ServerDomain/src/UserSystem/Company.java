@@ -5,6 +5,9 @@
  */
 package UserSystem;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Sebas
@@ -35,6 +38,13 @@ public class Company extends User{
         super(email, phonenr, address, zipcode, city, country, region);
         this.companyName = companyName;
         this.website = website;
+    }
+    
+    public Company(ResultSet set) throws SQLException{
+        super(set);
+        this.companyName = set.getString("CompanyName");
+        this.website = set.getString("Website");
+        
     }
 
 }
