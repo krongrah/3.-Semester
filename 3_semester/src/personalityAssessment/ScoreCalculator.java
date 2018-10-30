@@ -5,6 +5,8 @@
  */
 package personalityAssessment;
 
+import ProjectInterfaces.IQuestionSet;
+
 /**
  *
  * @author ahmadhamid
@@ -17,14 +19,14 @@ public class ScoreCalculator {
         this.pf = pf;
     }
 
-    public int[] calculateScore(QuestionSet qs) {
+    public int[] calculateScore(IQuestionSet iqs) {
         int[] score = new int[5];
         int aTotal = 0, bTotal = 0, cTotal = 0, dTotal = 0, eTotal = 0, fTotal = 0, gTotal = 0, hTotal = 0, iTotal = 0, jTotal = 0;
 
         for (int i = 0; i < 50; i++) {
-            int scorePoint = getPoint(qs, i);
+            int scorePoint = getPoint(iqs, i);
 
-            switch (qs.getQuestionFactors()[i]) {
+            switch (iqs.getAnswers().get(i)) {
                 case 1:
                     aTotal += scorePoint;
                 case 2:
@@ -51,10 +53,10 @@ public class ScoreCalculator {
         return score;
     }
 
-    public int getPoint(QuestionSet qs, int i) {
+    public int getPoint(IQuestionSet iqs, int i) {
         int scorePoint = 0;
-        if (qs.getQuestionDirections()[i] == false) {
-            switch (qs.getAnswers()[i]) {
+        if (iqs.getQuestionSet().get(i).getQuestionDirection() == false) {
+            switch (iqs.getAnswers().get(i)) {
                 case 1:
                     scorePoint += 5;
                 case 2:
@@ -67,7 +69,7 @@ public class ScoreCalculator {
                     scorePoint += 1;
             }
         } else {
-            switch (qs.getAnswers()[i]) {
+            switch (iqs.getAnswers().get(i)) {
                 case 1:
                     scorePoint += 1;
                 case 2:
