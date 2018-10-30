@@ -19,6 +19,7 @@ import UserSystem.UserManager;
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
+
     private static IUserManager userManager = new UserManager();
     private IClientSecurity security = new SecuritySystemFacade();
 
