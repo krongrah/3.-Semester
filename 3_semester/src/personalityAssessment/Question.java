@@ -53,6 +53,7 @@ public class Question implements IQuestion {
         return questionAnswer;
     }
 
+    @Override
     public void setQuestionAnswer(int ans) {
         this.questionAnswer = ans;
     }
