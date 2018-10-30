@@ -1,5 +1,6 @@
 CREATE TABLE Users (
   Username VARCHAR(100) PRIMARY KEY ,
+  Password VARCHAR(100),
   IsCompany BOOLEAN,
   Email VARCHAR(100),
   Phonenr INTEGER,

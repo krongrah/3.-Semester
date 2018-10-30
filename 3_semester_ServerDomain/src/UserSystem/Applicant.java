@@ -5,6 +5,9 @@
  */
 package UserSystem;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Sebas
@@ -43,6 +46,11 @@ public class Applicant extends User {
         this.name = name;
         this.personalityTest = personalityTest;
         this.experience = experience;
+    }
+    
+    public Applicant(ResultSet set) throws SQLException{
+        super(set);
+        this.name = set.getString("Name");
     }
 
     /**
