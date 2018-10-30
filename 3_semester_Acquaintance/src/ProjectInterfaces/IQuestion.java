@@ -19,4 +19,6 @@ public interface IQuestion {
 
     public int getQuestionAnswer();
     
+    public void setQuestionAnswer(int ans);
+    
 }

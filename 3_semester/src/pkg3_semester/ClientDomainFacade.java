@@ -22,7 +22,6 @@ public class ClientDomainFacade implements IClientDomain {
     private static IUserManager userManager = new UserManager();
     private IClientSecurity security = new SecuritySystemFacade();
 
-
     /**
      * Injects an instance of the Client Communication facade
      *
