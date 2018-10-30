@@ -6,6 +6,8 @@
 package UserSystem;
 
 import ProjectInterfaces.IUser;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -41,10 +43,14 @@ public class User implements IUser {
      */
     private String region;
 
+    public User(){
+        
+    }
+    
     /**
      * User constructor
      * @param email : String
-     * @param phonenr : String
+     * @param phonenr : Integer
      * @param address : String
      * @param zipcode : String
      * @param city : String
@@ -59,6 +65,18 @@ public class User implements IUser {
         this.city = city;
         this.country = country;
         this.region = region;
+    }
+
+    public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
+        email = user.getString("Email");
+        phonenr = user.getInt("phonenr");
+        address = user.getString("address");
+        zipcode = user.getString("zipcode");
+        city = user.getString("city");
+        country = user.getString("country");
+        region = user.getString("region");
+        
+        
     }
 
     /**
@@ -124,6 +142,42 @@ public class User implements IUser {
     public String getRegion() {
         return region;
     }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public void setPhonenr(Integer phonenr) {
+        this.phonenr = phonenr;
+    }
+
+    @Override
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public void setRegion(String region) {
+        this.region = region;
+    }
+    
     
     
 }

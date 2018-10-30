@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg3_semester_clientgui;
+package GUI;
 
 import GUI.TheJobGUI;
 import ProjectInterfaces.IClientDomain;
@@ -18,8 +18,8 @@ import ProjectInterfaces.IClientGui;
 public class GuiFacade implements IClientGui {
 
     private TheJobGUI starter = new TheJobGUI();
-    private IClientDomain domain;
-    private IClientGui clientGui = null;
+    private static IClientDomain domain;
+    private static IClientGui clientGui = null;
 
     @Override
     public void start(String[] args) {
@@ -34,7 +34,6 @@ public class GuiFacade implements IClientGui {
 
     @Override
     public IClientDomain getDomain() {
-        System.out.println("Domain called");
         return this.domain;
     }
     
@@ -43,7 +42,6 @@ public class GuiFacade implements IClientGui {
     public IClientGui getInstance() {
         if (clientGui == null) {
             clientGui = new GuiFacade();
-            System.out.println("Getinstance GUI");
         }
         return clientGui;
         

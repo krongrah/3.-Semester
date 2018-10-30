@@ -6,6 +6,7 @@
 package Controller;
 
 import Common.IController;
+import GUI.GuiFacade;
 import ProjectInterfaces.IClientGui;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import pkg3_semester_clientgui.GuiFacade;
 
 /**
  * FXML Controller class
@@ -46,7 +46,7 @@ public class LoginController implements Initializable, IController<ScreenControl
     @FXML
     private void signIn(ActionEvent event) {
         screenController.unloadPopupController();
-        gui.getDomain().login("username", "password");
+        gui.getDomain().login(username.getText(), password.getText());
     }
 
     @FXML

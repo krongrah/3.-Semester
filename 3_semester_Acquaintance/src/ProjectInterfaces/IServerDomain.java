@@ -17,4 +17,8 @@ public interface IServerDomain {
      * @param persistence 
      */
     public void injectPersistence(IServerPersistence persistence);
+    
+    public IUser getUser(String username, String password);
+    
+    public IQuestionSet getQuestionSet();
 }

@@ -19,7 +19,7 @@ import UserSystem.UserManager;
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
-    private IUserManager userManager = new UserManager();
+    private static IUserManager userManager = new UserManager();
     private IClientSecurity security = new SecuritySystemFacade();
 
     /**
@@ -44,15 +44,14 @@ public class ClientDomainFacade implements IClientDomain {
      */
     @Override
     public boolean login(String username, String password) {
-        System.out.println("Domain login started " + username + password);
-        //String hashedPwd = security.Hash(password);
-//        userManager.setActiveUser(comm.login(username, hashedPwd));
-//        if (userManager.getActiveUser() == null) {
-//            return false;
-//        } else {
-//            return true;
-//        }
+        
+        String hashedPwd = security.Hash(password);
+        userManager.setActiveUser(comm.login(username, hashedPwd));
+        if (userManager.getActiveUser() == null) {
+            return false;
+        } else {
             return true;
+        }
     }
 
     /**
