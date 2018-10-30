@@ -17,6 +17,18 @@ public interface IClientGui {
      * @param domain 
      */
     public void injectdomain(IClientDomain domain);
+    
+    /**
+     * Gets the client domain
+     * @return IClientDomain
+     */
+    public IClientDomain getDomain();
+    
+    /**
+     * Gets an instance of ClientGui
+     * @return IClientGui
+     */
+    public IClientGui getInstance();
 
     
     /**

@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="3_semester_ClientGui.jar" size="504575" download="eager" />
-    <jar href="lib\3_semester_Acquaintance.jar" size="2676" download="eager" />
+    <jar href="3_semester_ClientGui.jar" size="1527124" download="eager" />
+    <jar href="lib\3_semester_Acquaintance.jar" size="4297" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="3_semester_ClientGui" >
     <param name="requiredFXVersion" value="8.0+"/>

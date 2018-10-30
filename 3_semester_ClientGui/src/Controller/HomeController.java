@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import ProjectInterfaces.IClientGui;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -14,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Screen;
 
@@ -25,6 +25,8 @@ import javafx.stage.Screen;
  */
 public class HomeController implements Initializable {
 
+    private IClientGui gui;
+    
     @FXML
     private ImageView HomeBackgroundImage;
     @FXML
@@ -48,6 +50,8 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
+        gui = gui.getInstance();
+        
         LoginScreen.setVisible(false);
         SignUpScreen.setVisible(false);
 

@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserSystem;
+package ProjectInterfaces;
 
 /**
  *
  * @author Sebas
  */
-public class UserManager {    
-    public void login(String Username, String Password){
-        
-    }
+public interface IClientSecurity {
+    public String Hash(String value);
 }

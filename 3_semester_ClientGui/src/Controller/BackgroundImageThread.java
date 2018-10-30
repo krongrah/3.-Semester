@@ -41,18 +41,7 @@ public class BackgroundImageThread implements Runnable {
             for (Line line : lines) {
                 line.setOpacity(0.35);
             }
-
-            switch (count % 3) {
-                case 0:
-                    lines.get(count % 3).setOpacity(0.85);
-                    break;
-                case 1:
-                    lines.get(count % 3).setOpacity(0.85);
-                    break;
-                case 2:
-                    lines.get(count % 3).setOpacity(0.85);
-                    break;
-            }
+            lines.get(count % 3).setOpacity(0.85);
 
             HomeBackgroundImage.setFitWidth(Screen.getPrimary().getVisualBounds().getWidth());
             HomeBackgroundImage.setFitHeight(Screen.getPrimary().getVisualBounds().getHeight());

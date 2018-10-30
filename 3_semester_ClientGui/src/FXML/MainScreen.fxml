@@ -171,7 +171,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="4">
+                        <AnchorPane id="Menu_Containers" onMouseClicked="#openAllJobs" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="4">
                            <children>
                               <Label alignment="CENTER" styleClass="TopMenuText" text="Jobs" textFill="#212121" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>

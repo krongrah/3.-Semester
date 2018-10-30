@@ -14,4 +14,20 @@ public interface IUser {
      * When the user takes the personality test
      */
     public void doTest();
+    
+    public void setEmail(String email);
+
+    public void setPhonenr(Integer phonenr);
+
+    public void setAddress(String address); 
+
+    public void setZipcode(String zipcode); 
+            
+    public void setCity(String city); 
+
+    public void setCountry(String country);    
+
+    public void setRegion(String region); 
+        
+    
 }
