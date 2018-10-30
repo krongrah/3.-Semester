@@ -5,15 +5,21 @@
  */
 package ProjectInterfaces;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author mikkellarsen
  */
 public interface IQueryHandler {
     
-    public IUser getUser(String username, String password);
+    public Connection connect() throws SQLException;
     
-    public IQuestionSet getQuestionSet();
+    public ResultSet getUser(String username, String password) throws SQLException;
+    
+    public ResultSet getQuestionSet() throws SQLException;
     
     
     

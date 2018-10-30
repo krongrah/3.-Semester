@@ -20,42 +20,9 @@ public class QuestionSet implements IQuestionSet, Serializable {
     public QuestionSet(PersonalityFacade pf) {
         this.pf = pf;
 
-        importQuestions();
-    }
-
-    @Override
-    public void importQuestions() {
-        //TODO import downloading questions from database.
-        String[] ses;
-    }
-    
-    public void importQuestions2() {
         
     }
 
-    @Override
-    public String[] getQuestions() {
-        return questions;
-    }
-
-    @Override
-    public int[] getQuestionFactors() {
-        return questionsfactor;
-    }
-
-    @Override
-    public boolean[] getQuestionDirections() {
-        return questionDirection;
-    }
-
-    @Override
-    public int[] getAnswers() {
-        return questionsAnswer;
-    }
-
-    @Override
-    public void setAnswers(int questionNumber, int answer) {
-        questionsAnswer[questionNumber] = answer;
-    }
+    
 
 }

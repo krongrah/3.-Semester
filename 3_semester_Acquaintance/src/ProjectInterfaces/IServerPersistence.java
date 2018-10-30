@@ -5,10 +5,17 @@
  */
 package ProjectInterfaces;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * The interface for Server Persistence
  * @author Krongrah
  */
 public interface IServerPersistence {
 
+    public ResultSet getUser(String username, String password) throws SQLException;
+    
+    public ResultSet getQuestionSet() throws SQLException; 
+    
 }
