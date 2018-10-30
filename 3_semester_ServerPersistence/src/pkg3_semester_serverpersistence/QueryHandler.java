@@ -45,7 +45,7 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public ResultSet getQuestionSet() throws SQLException {
         Connection con = connect();
-        PreparedStatement statement = con.prepareStatement("SELECT * FROM PQuestionSet");
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM \"P");
         
         return statement.executeQuery();
        
