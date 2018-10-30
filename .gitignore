@@ -46,3 +46,4 @@ out/
 3_semester_ClientStarter/dist/lib/3_semester_ClientComm.jar
 3_semester_ClientStarter/dist/lib/3_semester_ClientDomain.jar
 3_semester_ClientStarter/dist/lib/3_semester_ClientGui.jar
+*.jar
