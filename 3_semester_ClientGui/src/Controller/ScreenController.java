@@ -181,4 +181,10 @@ public class ScreenController implements Initializable, IController<ScreenContro
         unloadController();
     }
 
+    @FXML
+    private void openAllJobs(MouseEvent event) {
+        unload();
+        loadController("FXML/Jobs.fxml");
+    }
+
 }

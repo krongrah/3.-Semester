@@ -176,6 +176,19 @@
 
 
 
+.ApplyNowButton{
+    -fx-background-color: #61B329;
+    -fx-text-fill: #fff;
+}
+.ApplyNowButton:hover{
+    -fx-background-color: #397D02;
+}
+
+
+
+
+
+
 
 
 
