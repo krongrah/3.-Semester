@@ -61,10 +61,5 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
         return domain.getQuestionSet();
     }
 
-    @Override
-    public String sup() throws RemoteException {
-        System.out.println("sup John");
-        return "sup john";
-    }
 
 }

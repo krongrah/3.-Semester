@@ -15,7 +15,6 @@ import java.rmi.RemoteException;
 public interface IComm extends Remote{
     
     public IQuestionSet getQuestionSet() throws RemoteException;
-    public String sup()throws RemoteException;
     
     
 }

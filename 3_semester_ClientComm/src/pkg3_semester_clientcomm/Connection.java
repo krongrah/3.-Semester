@@ -35,7 +35,7 @@ public class Connection {
     /**
      * The IP of the server.
      */
-    private String IP = "localhost";//"10.123.3.31";
+    private String address = "rmi://localhost/theJob";//"10.123.3.31";
     /**
      * An object output stream.
      */
@@ -48,33 +48,19 @@ public class Connection {
     public boolean Connect() {
 
         try {
-            Registry r=LocateRegistry.getRegistry(9001);
-            IComm icomm=(IComm)r.lookup("rmi://localhost/theJob");
-            System.out.println("John is back" + icomm.sup());
+            Registry r=LocateRegistry.getRegistry(port);
+            IComm icomm=(IComm)r.lookup(address);
+            System.out.println(icomm.getQuestionSet().toString());
             return true;
         } catch (NotBoundException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return false;    }
-
-    /**
-     * Sends an object to the server.
-     *
-     * @param object The object being send.
-     * @return returns True if the object was successfully sent.
-     */
-    public boolean SendObject(Serializable object) {
-        try {
-            stream.writeObject(object);
-            return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+        return false;    
     }
+
+
 
     /**
      * Disconnects the client from the server.
