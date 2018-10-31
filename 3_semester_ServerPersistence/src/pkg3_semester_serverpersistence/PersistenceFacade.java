@@ -34,17 +34,25 @@ public class PersistenceFacade implements IServerPersistence {
         return handler.getQuestionSet();
     }
 
+
     @Override
     public ResultSet getComapnyUser(int i) throws SQLException {
         return handler.getCompanyUser(i);
     }
 
+    /**
+     *
+     * @param jobpost
+     * @param applicant
+     * @throws SQLException
+     */
     @Override
-    public void applyForJob(IJobPost jobpost, IUser applicant) {
-        handler.
+    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
+        handler.applyForJob(jobpost, applicant);
     }
-    
-    
+
+
+
 
     
 

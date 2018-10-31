@@ -26,4 +26,5 @@ public interface IQueryHandler {
     public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException;
     
     
+    
 }

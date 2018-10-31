@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
  */
 public interface IJobPost extends Remote {
     
-    
     public void addApplicant(IUser applicant);
+    
     
 }

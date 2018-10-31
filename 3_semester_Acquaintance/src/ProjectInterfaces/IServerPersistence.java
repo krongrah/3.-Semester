@@ -20,5 +20,5 @@ public interface IServerPersistence {
     
     public ResultSet getComapnyUser(int i) throws SQLException;
     
-    public void applyForJob(IJobPost jobpost,IUser applicant);
+    public void applyForJob(IJobPost jobpost,IUser applicant) throws SQLException;
 }

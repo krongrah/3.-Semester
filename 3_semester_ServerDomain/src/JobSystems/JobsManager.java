@@ -5,9 +5,9 @@
  */
 package JobSystems;
 
+import UserSystem.Applicant;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IUser;
-import UserSystem.Applicant;
 
 /**
  *Communicates with the UserSystem package to make it possible for the user to
@@ -27,12 +27,11 @@ public class JobsManager {
     }
     
     
-    
-    public void applyForJob(JobPost jobpost,Applicant applicant){
-        
-    }
-    
-    public IUser getCompanyUser(int i){
+public void applyForJob(JobPost jobpost,Applicant applicant){
+     
+}
+
+ public IUser getCompanyUser(int i){
         return serverdomain.getInstance().getCompanyUser(i);
     }
 }

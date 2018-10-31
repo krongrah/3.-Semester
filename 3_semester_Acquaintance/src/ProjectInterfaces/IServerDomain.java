@@ -18,9 +18,9 @@ public interface IServerDomain {
      */
     public void injectPersistence(IServerPersistence persistence);
     
-    public IUser getUser(String username, String password);
-    
     public IUser getCompanyUser(int i);
+    
+    public IUser getUser(String username, String password);
     
     public IQuestionSet getQuestionSet();
     

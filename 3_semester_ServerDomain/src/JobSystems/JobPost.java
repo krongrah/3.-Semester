@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package JobSystems;
 
 import ProjectInterfaces.IJobPost;
@@ -15,10 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-/**
- *The JobPost is the class that holds information about a certain job.
- * @author Naik
- */
 class JobPost extends UnicastRemoteObject implements IJobPost {
     private int id;
     private String title;
@@ -54,14 +46,15 @@ class JobPost extends UnicastRemoteObject implements IJobPost {
     
     private IUser getCompanyUser(ResultSet set) throws SQLException{
         return jobmanager.getInstance().getCompanyUser(id);
+
        
     }
     
-    @Override
+ 
     public void addApplicant(IUser applicant){
         applicants.add(applicant);
+
     }
-    
   
     public int getId() {
         return id;
@@ -77,9 +70,9 @@ class JobPost extends UnicastRemoteObject implements IJobPost {
 
     public List<IUser> getApplicants() {
         return applicants;
-    }
+
     
 
-        
-   
+
+    }
 }

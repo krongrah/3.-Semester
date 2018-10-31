@@ -58,11 +58,13 @@ public class QueryHandler implements IQueryHandler {
         return DriverManager.getConnection(url, user, password);
 
     }
-
+    
     @Override
     public ResultSet getCompanyUser(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
