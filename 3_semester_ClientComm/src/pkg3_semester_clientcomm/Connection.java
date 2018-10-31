@@ -6,6 +6,8 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IComm;
+import ProjectInterfaces.IQuestionSet;
+import ProjectInterfaces.TestObject;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -50,7 +52,9 @@ public class Connection {
         try {
             Registry r=LocateRegistry.getRegistry(port);
             IComm icomm=(IComm)r.lookup(address);
-            System.out.println(icomm.getQuestionSet().toString());
+            TestObject derp=icomm.getTest();
+            System.out.println("created");
+            System.out.println(derp.toString());
             return true;
         } catch (NotBoundException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);

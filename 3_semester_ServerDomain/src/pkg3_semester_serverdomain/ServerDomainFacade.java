@@ -26,7 +26,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     
     /**
-     * The interface for the serverpersistence
+     * The interface for the server persistence
      */
     IServerPersistence persistence;
 
@@ -60,11 +60,14 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
-        try {
-            return new QuestionSet(persistence.getQuestionSet());
-        } catch (Exception e) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return null;
+        
+        return new QuestionSet();
+        
+//        try {
+//            return new QuestionSet(persistence.getQuestionSet());
+//        } catch (Exception e) {
+//            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//        return null;
     }
 }

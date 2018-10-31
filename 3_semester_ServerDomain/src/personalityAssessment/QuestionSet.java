@@ -31,6 +31,9 @@ public class QuestionSet implements IQuestionSet, Serializable {
             addToList(new Question(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getBoolean(4)));
         }
     }
+
+    public QuestionSet() {
+    }
     
     @Override
     public List<IQuestion> getQuestionSet() {

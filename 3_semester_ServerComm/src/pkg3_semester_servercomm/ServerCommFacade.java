@@ -61,5 +61,10 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
         return domain.getQuestionSet();
     }
 
+    @Override
+    public TestObject getTest() throws RemoteException {
+        return new TestObject();
+    }
+
 
 }

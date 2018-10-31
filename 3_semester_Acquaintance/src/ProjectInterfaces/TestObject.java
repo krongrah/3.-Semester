@@ -6,17 +6,14 @@
 package ProjectInterfaces;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
- * @author mikkellarsen
+ * @author Krongrah
  */
-public interface IQuestionSet extends Serializable{
-    
-    public List<IQuestion> getQuestionSet();
-    
-    public void addToList(IQuestion q);
-
-    public List<Integer> getAnswers();
+public class TestObject implements Serializable{
+    @Override
+    public String toString(){
+    return "done";
+    }
 }
