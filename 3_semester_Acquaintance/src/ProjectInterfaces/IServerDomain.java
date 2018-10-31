@@ -21,4 +21,5 @@ public interface IServerDomain {
     public IUser getUser(String username, String password);
     
     public IQuestionSet getQuestionSet();
+    
 }
