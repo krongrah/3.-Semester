@@ -41,6 +41,7 @@ public class LoginController implements Initializable, IController<ScreenControl
     public void initialize(URL url, ResourceBundle rb) {
         
         gui = gui.getInstance();
+        gui.getDomain().connectToServer();
     }
 
     @FXML

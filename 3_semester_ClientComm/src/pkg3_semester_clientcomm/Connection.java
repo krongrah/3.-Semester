@@ -5,10 +5,15 @@
  */
 package pkg3_semester_clientcomm;
 
+import ProjectInterfaces.IComm;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,15 +46,19 @@ public class Connection {
      * @return returns true if the connection was successful.
      */
     public boolean Connect() {
+
         try {
-            s = new Socket(IP, port);
-            stream = new ObjectOutputStream(s.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            Registry r=LocateRegistry.getRegistry(9001);
+            IComm icomm=(IComm)r.lookup("rmi://localhost/theJob");
+            System.out.println("John is back" + icomm.sup());
+            return true;
+        } catch (NotBoundException ex) {
+            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RemoteException ex) {
+            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
-    }
+        
+        return false;    }
 
     /**
      * Sends an object to the server.

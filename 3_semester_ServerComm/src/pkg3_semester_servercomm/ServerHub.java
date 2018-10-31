@@ -8,6 +8,8 @@ package pkg3_semester_servercomm;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -55,18 +57,24 @@ public class ServerHub {
      * each of which will be assigned a dedicated thread.
      */
     void start() {
+        
+        
+        
+        
+        
+        
 
-        while (true) {
-            try {
-                Socket s = ssocket.accept();
-                System.out.println("User connected.");
-                threadPool.submit(new Service(s));
-
-            } catch (IOException ex) {
-                Logger.getLogger(ServerHub.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
+//        while (true) {
+//            try {
+//                Socket s = ssocket.accept();
+//                System.out.println("User connected.");
+//                threadPool.submit(new Service(s));
+//
+//            } catch (IOException ex) {
+//                Logger.getLogger(ServerHub.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//        }
 
     }
 

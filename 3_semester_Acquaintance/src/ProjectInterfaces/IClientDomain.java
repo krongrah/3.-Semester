@@ -30,4 +30,6 @@ public interface IClientDomain {
      * Logs out the active user
      */
     public void logout();
+    
+    public boolean connectToServer();
 }

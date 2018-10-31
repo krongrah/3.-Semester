@@ -6,6 +6,12 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.*;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This Facade represents the ServerCommunication, and allows other subsystems
@@ -13,8 +19,11 @@ import ProjectInterfaces.*;
  *
  * @author Krongrah
  */
-public class ServerCommFacade implements IServerComm {
+public class ServerCommFacade extends UnicastRemoteObject implements IServerComm, IComm {
 
+    public ServerCommFacade()throws RemoteException{
+    }
+    
     /**
      * This is a reference to the domain layer beneath this Communications
      * layer.
@@ -43,12 +52,19 @@ public class ServerCommFacade implements IServerComm {
      */
     @Override
     public void startServer() {
-        hub = new ServerHub();
-        hub.start();
+//        hub = new ServerHub();
+//        hub.start();
     }
     
+    @Override
     public IQuestionSet getQuestionSet() {
         return domain.getQuestionSet();
+    }
+
+    @Override
+    public String sup() throws RemoteException {
+        System.out.println("sup John");
+        return "sup john";
     }
 
 }
