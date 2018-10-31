@@ -5,6 +5,8 @@
  */
 package JobSystems;
 
+import ProjectInterfaces.IServerDomain;
+import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 
 /**
@@ -13,9 +15,24 @@ import UserSystem.Applicant;
  * @author Naik
  */
 public class JobsManager {
-    
-    
-    public void applyForJob(JobPost a,Applicant b){
+    private static JobsManager jobmanager;
+    private static IServerDomain serverdomain;
+
+    public JobsManager getInstance() {
+        if(jobmanager==null){
+            jobmanager = new JobsManager();
+            
+        }
+        return jobmanager;
     }
     
+    
+    
+    public void applyForJob(JobPost jobpost,Applicant applicant){
+        
+    }
+    
+    public IUser getCompanyUser(int i){
+        return serverdomain.getInstance().getCompanyUser(i);
+    }
 }

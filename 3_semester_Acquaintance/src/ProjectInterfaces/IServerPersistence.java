@@ -18,4 +18,7 @@ public interface IServerPersistence {
     
     public ResultSet getQuestionSet() throws SQLException; 
     
+    public ResultSet getComapnyUser(int i) throws SQLException;
+    
+    public void applyForJob(IJobPost jobpost,IUser applicant);
 }

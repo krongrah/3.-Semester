@@ -41,7 +41,6 @@ public class Company extends User{
     }
     
     public Company(ResultSet set) throws SQLException{
-        super(set);
         this.companyName = set.getString("CompanyName");
         this.website = set.getString("Website");
         

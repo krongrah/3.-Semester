@@ -7,6 +7,7 @@ package pkg3_semester_serverpersistence;
 
 import ProjectInterfaces.IQueryHandler;
 import ProjectInterfaces.IServerPersistence;
+import ProjectInterfaces.IUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -30,6 +31,11 @@ public class PersistenceFacade implements IServerPersistence {
     @Override
     public ResultSet getQuestionSet() throws SQLException {
         return handler.getQuestionSet();
+    }
+
+    @Override
+    public ResultSet getComapnyUser(int i) throws SQLException {
+        return handler.getCompanyUser(i);
     }
     
     

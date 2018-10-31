@@ -5,7 +5,9 @@
  */
 package pkg3_semester_serverpersistence;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
+import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -55,6 +57,16 @@ public class QueryHandler implements IQueryHandler {
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
 
+    }
+
+    @Override
+    public ResultSet getCompanyUser(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

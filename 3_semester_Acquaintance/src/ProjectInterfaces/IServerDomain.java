@@ -20,5 +20,11 @@ public interface IServerDomain {
     
     public IUser getUser(String username, String password);
     
+    public IUser getCompanyUser(int i);
+    
     public IQuestionSet getQuestionSet();
+    
+    public IServerDomain getInstance();
+    
+    public void applyForJob(IJobPost jobpost, IUser applicant);
 }
