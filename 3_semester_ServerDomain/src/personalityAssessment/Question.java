@@ -47,7 +47,7 @@ public class Question implements IQuestion {
 
     @Override
     public void setQuestionAnswer(int ans) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.questionAnswer = ans;
     }
     
     

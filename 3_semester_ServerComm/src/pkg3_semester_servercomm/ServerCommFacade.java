@@ -5,8 +5,7 @@
  */
 package pkg3_semester_servercomm;
 
-import ProjectInterfaces.IServerComm;
-import ProjectInterfaces.IServerDomain;
+import ProjectInterfaces.*;
 
 /**
  * This Facade represents the ServerCommunication, and allows other subsystems
@@ -46,6 +45,10 @@ public class ServerCommFacade implements IServerComm {
     public void startServer() {
         hub = new ServerHub();
         hub.start();
+    }
+    
+    public IQuestionSet getQuestionSet() {
+        return domain.getQuestionSet();
     }
 
 }

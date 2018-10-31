@@ -11,12 +11,5 @@ nbproject/build-impl.xml
 .idea/
 out/
 *.iml
-/3_semester/nbproject/private/
-/3_semester_ServerStarter/nbproject/private/
-/3_semester_Acquaintance/nbproject/private/
-/3_semester_ClientComm/nbproject/private/
-/3_semester_ClientGui/nbproject/private/
-/3_semester_ClientStarter/nbproject/private/
-/3_semester_ServerComm/nbproject/private/
-/3_semester_ServerDomain/nbproject/private/
-/3_semester_ServerPersistence/nbproject/private/
+
+
