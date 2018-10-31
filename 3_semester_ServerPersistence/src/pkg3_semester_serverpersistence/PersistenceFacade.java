@@ -5,6 +5,7 @@
  */
 package pkg3_semester_serverpersistence;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
 import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
@@ -36,6 +37,11 @@ public class PersistenceFacade implements IServerPersistence {
     @Override
     public ResultSet getComapnyUser(int i) throws SQLException {
         return handler.getCompanyUser(i);
+    }
+
+    @Override
+    public void applyForJob(IJobPost jobpost, IUser applicant) {
+        handler.
     }
     
     
