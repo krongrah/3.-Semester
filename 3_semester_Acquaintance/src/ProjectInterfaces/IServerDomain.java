@@ -29,6 +29,8 @@ public interface IServerDomain {
     public IServerDomain getInstance();
     
     public void applyForJob(IJobPost jobpost, IUser applicant);
+    
+    public List<IUser> getApplicants(int id);
 
     public IUser login(String username, String hashedPwd);
 
