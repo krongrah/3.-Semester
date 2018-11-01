@@ -81,7 +81,7 @@ public class HomeController implements Initializable {
         Thread bckgswitcher = new Thread(new BackgroundImageThread(images, HomeBackgroundImage, lines));
         bckgswitcher.start();
 
-        bckgswitcher.setDaemon(false);
+        bckgswitcher.setDaemon(true);
         
         updateSignInButton();
     }
