@@ -25,7 +25,7 @@
                   </ImageView>
                   <AnchorPane fx:id="screen" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="466.0">
                      <children>
-                        <GridPane alignment="BOTTOM_CENTER" prefHeight="300.0" style="-fx-background-color: #212121;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <GridPane alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" style="-fx-background-color: #212121;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" />
