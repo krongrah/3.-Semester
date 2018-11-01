@@ -195,4 +195,9 @@ public class User implements IUser {
         this.region = region;
     }
 
+    @Override
+    public int getUserId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

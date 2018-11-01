@@ -11,8 +11,6 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * The facade of the server persistence
@@ -36,6 +34,16 @@ public class PersistenceFacade implements IServerPersistence {
         return handler.getQuestionSet();
     }
 
+    
+    @Override
+    public ResultSet getApplicants() throws SQLException {
+        return handler.getApplicants();
+    }
+
+    @Override
+    public ResultSet getJobs() throws SQLException {
+        return handler.getJobs();
+    }
 
 
     @Override
@@ -55,6 +63,7 @@ public class PersistenceFacade implements IServerPersistence {
     }
 
    
+
     //Database tester
     public static void main(String[] args) {
         PersistenceFacade pf = new PersistenceFacade();
@@ -71,3 +80,5 @@ public class PersistenceFacade implements IServerPersistence {
     }
 
 }
+
+    
