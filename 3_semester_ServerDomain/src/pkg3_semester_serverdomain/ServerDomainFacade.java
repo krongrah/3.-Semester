@@ -15,6 +15,7 @@ import UserSystem.Company;
 import UserSystem.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import personalityAssessment.*;
@@ -96,6 +97,21 @@ public class ServerDomainFacade implements IServerDomain {
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public IUser login(String username, String hashedPwd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int[] calculateScore(IUser user, IQuestionSet set) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
