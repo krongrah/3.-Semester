@@ -58,8 +58,8 @@ public class PersistenceFacade implements IServerPersistence {
      * @throws SQLException
      */
     @Override
-    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
-        handler.applyForJob(jobpost, applicant);
+    public void applyForJob(int jobPostId, int applicantId) throws SQLException {
+        handler.applyForJob(jobPostId, applicantId);
     }
 
    

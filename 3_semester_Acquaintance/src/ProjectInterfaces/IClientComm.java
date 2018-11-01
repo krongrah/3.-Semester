@@ -5,6 +5,8 @@
  */
 package ProjectInterfaces;
 
+import java.util.List;
+
 /**
  * The interface for the Client communication
  * @author Krongrah
@@ -18,4 +20,6 @@ public interface IClientComm {
      * @return returns true if the connection was successful.
      */
     public boolean connectToServer();
+    
+    public List<IJobPost> getAllJobs();
 }
