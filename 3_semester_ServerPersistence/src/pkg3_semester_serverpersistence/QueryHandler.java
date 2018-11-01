@@ -48,9 +48,9 @@ public class QueryHandler implements IQueryHandler {
     public ResultSet getQuestionSet() throws SQLException {
         Connection con = connect();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM PQuestionSet");
-        
+
         return statement.executeQuery();
-       
+
     }
 
     @Override
@@ -58,45 +58,58 @@ public class QueryHandler implements IQueryHandler {
         return DriverManager.getConnection(url, user, password);
 
     }
-    
+
     @Override
     public ResultSet getCompanyUser(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
         Connection con = connect();
-        
+        PreparedStatement statement;
+
         if (jobpost.getId() == 1) {
-            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_1\" WHERE \"Job_1\".ID = ?");
-            statement.setInt(1, applicant);
+            statement = con.prepareStatement("INSERT INTO \"Job_1\" WHERE \"Job_1\".job1_user_id = ?");
+            statement.setInt(1, applicant.getUserId());
+            statement.executeQuery();
+
         } else if (jobpost.getId() == 2) {
-            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_2\" WHERE \"Job_2\".ID = ?");
+            statement = con.prepareStatement("INSERT INTO \"Job_2\" WHERE \"Job_2\".job2_user_id = ?");
+            statement.setInt(1, applicant.getUserId());
+            statement.executeQuery();
+
         } else if (jobpost.getId() == 3) {
-            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_3\" WHERE \"Job_3\".ID = ?");
+            statement = con.prepareStatement("INSERT INTO \"Job_3\" WHERE \"Job_3\".job3_user_id = ?");
+            statement.setInt(1, applicant.getUserId());
+            statement.executeQuery();
+
         } else if (jobpost.getId() == 4) {
-            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_4\" WHERE \"Job_4\".ID = ?");
+            statement = con.prepareStatement("INSERT INTO \"Job_4\" WHERE \"Job_4\".job4_user_id = ?");
+            statement.setInt(1, applicant.getUserId());
+            statement.executeQuery();
+
         } else if (jobpost.getId() == 5) {
-            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_5\" WHERE \"Job_5\".ID = ?");
+            statement = con.prepareStatement("INSERT INTO \"Job_5\" WHERE \"Job_5\".job5_user_id = ?");
+            statement.setInt(1, applicant.getUserId());
+            statement.executeQuery();
         }
-        
-        
-        
+
     }
 
     @Override
     public ResultSet getApplicants() throws SQLException {
-        return null; //To do when relevant
+        Connection con = connect();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM \"Job_1\" UNION SELECT * FROM \"Job_2\" UNION SELECT * FROM \"Job_3\" UNION SELECT * FROM \"Job_4\" UNION SELECT * FROM \"Job_5\"");
+        
+        return statement.executeQuery();
     }
 
     @Override
     public ResultSet getJobs() throws SQLException {
         Connection con = connect();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs");
-        
+
         return statement.executeQuery();
     }
 
