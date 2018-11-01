@@ -5,6 +5,8 @@
  */
 package ProjectInterfaces;
 
+import java.util.List;
+
 /**
  * The interface for the Client GUI
  * @author Krongrah
@@ -36,4 +38,6 @@ public interface IClientGui {
      * @param args 
      */
     public void start(String[] args);
+    
+    public List<IJobPost> getAllJobs();
 }

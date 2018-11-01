@@ -26,10 +26,6 @@ public class JobsManager {
         return jobmanager;
     }
     
-    
-public void applyForJob(JobPost jobpost,Applicant applicant){
-     
-}
 
  public IUser getCompanyUser(int i){
         return serverdomain.getInstance().getCompanyUser(i);

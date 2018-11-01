@@ -67,7 +67,7 @@ public class QueryHandler implements IQueryHandler {
 
 
     @Override
-    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
+    public void applyForJob(int jobPostId, int applicantId) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

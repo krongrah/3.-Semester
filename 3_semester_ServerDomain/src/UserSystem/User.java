@@ -37,6 +37,8 @@ public class User implements IUser {
      * Region of residence
      */
     private String region;
+    
+    private int id;
 
     public User(){
         
@@ -52,7 +54,8 @@ public class User implements IUser {
      * @param country : String
      * @param region : String
      */
-    public User(String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+    public User( int Id, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        this.id = id;
         this.email = email;
         this.phonenr = phonenr;
         this.address = address;
@@ -63,6 +66,7 @@ public class User implements IUser {
     }
 
     public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
+        id = user.getInt("Id");
         email = user.getString("Email");
         phonenr = user.getInt("phonenr");
         address = user.getString("address");
@@ -82,6 +86,9 @@ public class User implements IUser {
         //todo
     }
 
+    public int getId(){
+        return id;
+    }
     /**
      * Gets the email
      * @return email address : String

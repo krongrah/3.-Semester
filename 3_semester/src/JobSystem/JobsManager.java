@@ -15,7 +15,8 @@ import UserSystem.Applicant;
  */
 public class JobsManager {
         private static JobsManager jobmanager;
-    private static IServerDomain serverdomain;
+        private static JobPost jobPost;
+//    private static IServerDomain serverdomain;
 
     public JobsManager getInstance() {
         if(jobmanager==null){
@@ -26,12 +27,6 @@ public class JobsManager {
     }
     
     
-public void applyForJob(JobPost jobpost,Applicant applicant){
-     
-}
 
- public IUser getCompanyUser(int i){
-        return serverdomain.getInstance().getCompanyUser(i);
-    }
     
 }

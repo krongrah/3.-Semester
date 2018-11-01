@@ -15,5 +15,6 @@ public interface IJobPost{
     
     public void addApplicant(IUser applicant);
     
+    public int getId();
     
 }

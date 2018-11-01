@@ -39,23 +39,8 @@ public class JobPost implements IJobPost {
         this.description = set.getString("description");
             
     }
-      /* 
-    public void setApplicants(ResultSet set) throws SQLException{
-        while(set.next()){
-            applicants.add(new Applicant(set));
-        }
-            
-    }
-    
-    public void setCompany(ResultSet set) throws SQLException{
-        this.company = new Company(set);
-    }
-    */
-    private IUser getCompanyUser(ResultSet set) throws SQLException{
-        return jobmanager.getInstance().getCompanyUser(id);
 
-       
-    }
+
     
  
     public void addApplicant(IUser applicant){

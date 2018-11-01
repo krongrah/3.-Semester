@@ -5,6 +5,8 @@
  */
 package ProjectInterfaces;
 
+import java.util.List;
+
 /**
  * The interface for the Client domain
  * @author Krongrah
@@ -35,4 +37,6 @@ public interface IClientDomain {
      * Logs out the active user
      */
     public void logout();
+    
+    public List<IJobPost> getAllJobs();
 }

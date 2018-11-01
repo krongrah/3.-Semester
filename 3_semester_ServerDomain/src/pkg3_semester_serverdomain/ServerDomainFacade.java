@@ -91,7 +91,7 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
         try {
-            persistence.applyForJob(jobpost, applicant);
+            persistence.applyForJob(jobpost.getId(), applicant.getId());
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }

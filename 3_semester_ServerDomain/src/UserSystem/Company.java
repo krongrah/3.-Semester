@@ -35,7 +35,7 @@ public class Company extends User{
      * @param region  : String
      */
     public Company(String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(email, phonenr, address, zipcode, city, country, region);
+        super(id, email, phonenr, address, zipcode, city, country, region);
         this.companyName = companyName;
         this.website = website;
     }

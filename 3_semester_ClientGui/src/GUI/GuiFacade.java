@@ -8,6 +8,8 @@ package GUI;
 import GUI.TheJobGUI;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
+import ProjectInterfaces.IJobPost;
+import java.util.List;
 
 /**
  * Communcation layer, and Communcates with the 
@@ -45,6 +47,11 @@ public class GuiFacade implements IClientGui {
         }
         return clientGui;
         
+    }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+        return domain.getAllJobs();
     }
     
     
