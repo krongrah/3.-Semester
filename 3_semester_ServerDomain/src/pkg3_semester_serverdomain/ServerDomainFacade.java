@@ -12,6 +12,7 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
+import UserSystem.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -90,7 +91,11 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
-        persistence.applyForJob(jobpost, applicant);
+        try {
+            persistence.applyForJob(jobpost, applicant);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
