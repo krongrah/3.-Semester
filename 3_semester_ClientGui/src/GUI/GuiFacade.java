@@ -34,9 +34,8 @@ public class GuiFacade implements IClientGui {
         
     }
 
-    @Override
-    public IClientDomain getDomain() {
-        return this.domain;
+    public static IClientDomain getDomain() {
+        return domain;
     }
     
     

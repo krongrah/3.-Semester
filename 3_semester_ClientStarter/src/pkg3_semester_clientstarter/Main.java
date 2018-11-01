@@ -14,7 +14,7 @@ import pkg3_semester_clientcomm.ClientCommFacade;
 
 /**
  *
- * Starts the all the progesses in the client
+ * Starts the all the processes in the client
  * 
  * And starts the GUIFacade
  */

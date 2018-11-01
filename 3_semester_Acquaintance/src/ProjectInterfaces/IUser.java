@@ -13,11 +13,13 @@ public interface IUser {
     /**
      * When the user takes the personality test
      */
-    public void doTest();
-    
     public String getUsername();
     
+<<<<<<< HEAD
     public int getId();
+=======
+    public int getUserId();
+>>>>>>> master
     
     public void setEmail(String email);
 

@@ -15,27 +15,29 @@ import UserSystem.Company;
 import UserSystem.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import personalityAssessment.*;
 
 /**
- *Facade for the ServerDomain
+ * Facade for the ServerDomain
+ *
  * @author Krongrah
  */
 public class ServerDomainFacade implements IServerDomain {
 
     ServerDomainFacade serverdomain;
     /**
-     * The interface for the serverpersistence
+     * The interface for the server persistence
      */
     IServerPersistence persistence;
 
-    
     /**
-     * Inject method for persistence 
-     * Injects ServerPersistence into ServerDomainFacade
-     * @param persistence 
+     * Inject method for persistence Injects ServerPersistence into
+     * ServerDomainFacade
+     *
+     * @param persistence
      */
     @Override
     public void injectPersistence(IServerPersistence persistence) {
@@ -46,10 +48,10 @@ public class ServerDomainFacade implements IServerDomain {
     public IUser getUser(String username, String password) {
         try {
             ResultSet set = persistence.getUser(username, password);
-            
-            if(set.getBoolean("IsCompany")){
+
+            if (set.getBoolean("IsCompany")) {
                 return new Company(set);
-            }else{
+            } else {
                 return new Applicant(set);
             }
         } catch (SQLException ex) {
@@ -61,6 +63,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
+        
         try {
             return new QuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
@@ -69,10 +72,10 @@ public class ServerDomainFacade implements IServerDomain {
         return null;
     }
 
-@Override
+    @Override
     public IUser getCompanyUser(int i) {
         try {
-            return new User(persistence.getComapnyUser(i));
+            return new User(persistence.getCompanyUser(i));
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -81,22 +84,42 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IServerDomain getInstance() {
-        if(this.serverdomain==null){
+        if (this.serverdomain == null) {
             serverdomain = new ServerDomainFacade();
         }
         return serverdomain;
     }
 
-
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
         try {
+<<<<<<< HEAD
             persistence.applyForJob(jobpost.getId(), applicant.getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+=======
+            persistence.applyForJob(jobpost, applicant);
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    
+
+    @Override
+    public IUser login(String username, String hashedPwd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int[] calculateScore(IUser user, IQuestionSet set) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> master
+    }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

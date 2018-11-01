@@ -5,6 +5,8 @@
  */
 package ProjectInterfaces;
 
+import java.util.List;
+
 /**
  * The interface for the Server Domain
  * @author Krongrah
@@ -27,4 +29,11 @@ public interface IServerDomain {
     public IServerDomain getInstance();
     
     public void applyForJob(IJobPost jobpost, IUser applicant);
+
+    public IUser login(String username, String hashedPwd);
+
+    public int[] calculateScore(IUser user, IQuestionSet set);
+
+    public List<IJobPost> getAllJobs();
+
 }

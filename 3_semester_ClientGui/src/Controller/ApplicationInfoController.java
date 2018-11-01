@@ -6,14 +6,12 @@
 package Controller;
 
 import Common.IController;
-import GUI.GuiFacade;
-import ProjectInterfaces.IClientGui;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -22,42 +20,40 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Sebas
  */
-public class LoginController implements Initializable, IController<ScreenController> {
+public class ApplicationInfoController implements Initializable, IController<ScreenController> {
 
-    private IClientGui gui = new GuiFacade();
-    
-    @FXML
-    private AnchorPane LoginScreen;
     private ScreenController screenController;
+
     @FXML
-    private TextField username;
+    private AnchorPane SignUpScreen;
     @FXML
-    private PasswordField password;
+    private Label applicationDesc;
+    @FXML
+    private TextField experience;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         
-        gui = gui.getInstance();
-        GuiFacade.getDomain().connectToServer();
+        applicationDesc.setText("The application is predicated on a personality assessment, which is based on the Big Five. This means that... ");
     }
 
     @FXML
-    private void signIn(ActionEvent event) {
-        screenController.unloadPopupController();
-        GuiFacade.getDomain().login(username.getText(), password.getText());
+    private void cancel(ActionEvent event) {
+        this.screenController.unloadPopupController();
     }
 
     @FXML
-    private void cancelLogin(ActionEvent event) {
-        screenController.unloadPopupController();
+    private void proceed(ActionEvent event) {
+        this.screenController.openPersonalityTest();
     }
 
     @Override
     public void setParrentController(ScreenController parentController) {
-        screenController = parentController;
+        this.screenController = parentController;
     }
 
     @Override

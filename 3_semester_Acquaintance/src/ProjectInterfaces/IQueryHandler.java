@@ -21,9 +21,18 @@ public interface IQueryHandler {
     
     public ResultSet getQuestionSet() throws SQLException;
     
+    public ResultSet getApplicants() throws SQLException;
+    
+    public ResultSet getJobs() throws SQLException;
+
     public ResultSet getCompanyUser(int id) throws SQLException;
     
+<<<<<<< HEAD
     public void applyForJob(int jobPostId, int applicantId) throws SQLException;
+=======
+    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException;
+
+>>>>>>> master
     
     
     

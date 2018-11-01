@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="SignUpScreen" maxHeight="1.7976931348623157E308" maxWidth="650.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.JobsController">
+<AnchorPane fx:id="SignUpScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.JobsController">
    <children>
-      <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" maxHeight="600.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="50.0">
          <content>
             <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
                <children>
@@ -133,27 +133,27 @@
                               <Insets top="25.0" />
                            </GridPane.margin>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#applyForDCWJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button fx:id="DCWButton" mnemonicParsing="false" onAction="#applyForDCWJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#applyForULJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                        <Button fx:id="ULButton" mnemonicParsing="false" onAction="#applyForULJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#applyForTMJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <Button fx:id="TMButton" mnemonicParsing="false" onAction="#applyForTMJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#applyForSEJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button fx:id="SEButton" mnemonicParsing="false" onAction="#applyForSEJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#applyForDoctorJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="DoctorButton" mnemonicParsing="false" onAction="#applyForDoctorJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>

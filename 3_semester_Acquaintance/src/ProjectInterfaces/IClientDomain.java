@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface IClientDomain {
 
-    public IClientDomain getInstance();
     
     /**
      * Method for injecting Client communication
@@ -38,5 +37,9 @@ public interface IClientDomain {
      */
     public void logout();
     
+<<<<<<< HEAD
     public List<IJobPost> getAllJobs();
+=======
+    public boolean connectToServer();
+>>>>>>> master
 }

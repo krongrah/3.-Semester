@@ -51,6 +51,8 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
     private ArrayList<Image> images = new ArrayList();
     private ArrayList<Line> lines = new ArrayList();
+    @FXML
+    private AnchorPane testWindow;
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -64,7 +66,6 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
         //HomeBackgroundImage.setFitWidth(Screen.getPrimary().getVisualBounds().getWidth());
         //HomeBackgroundImage.setFitHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
         Thread bckgswitcher = new Thread(new BackgroundImageThread(images, HomeBackgroundImage, lines));
         bckgswitcher.start();
         bckgswitcher.isDaemon();
@@ -72,6 +73,7 @@ public class ScreenController implements Initializable, IController<ScreenContro
         loadController("FXML/HomeDesc.fxml");
 
         popupWindow.setVisible(false);
+        testWindow.setVisible(false);
     }
 
     /**
@@ -129,8 +131,33 @@ public class ScreenController implements Initializable, IController<ScreenContro
         }
     }
 
+    private void loadApplicationController(String url) {
+        try {
+            unloadController();
+            testWindow.setVisible(true);
+            testWindow.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(url));
+            Node node = loader.load();
+            screenController = loader.getController();
+            screenController.setParrentController(this);
+
+            AnchorPane.setTopAnchor(node, 0.0);
+            AnchorPane.setRightAnchor(node, 0.0);
+            AnchorPane.setLeftAnchor(node, 0.0);
+            AnchorPane.setBottomAnchor(node, 0.0);
+
+            testWindow.getChildren().add(node);
+        } catch (IOException ex) {
+            Logger.getLogger(ScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void unloadPopupController() {
         popupWindow.setVisible(false);
+    }
+
+    public void unloadTestController() {
+        testWindow.setVisible(false);
     }
 
     @FXML
@@ -153,6 +180,15 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
     public void openBasicPersonalityTest() {
         loadPopupController("FXML/PersonalityTest.fxml");
+    }
+
+    public void openPersonalityTest() {
+        loadPopupController("FXML/PersonalityTest.fxml");
+    }
+    
+    public void openApplicationInfo(){
+        unload();
+        loadPopupController("FXML/ApplicationInfo.fxml");
     }
 
     private void signIn(ActionEvent event) {

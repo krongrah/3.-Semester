@@ -48,9 +48,9 @@ public class QueryHandler implements IQueryHandler {
     public ResultSet getQuestionSet() throws SQLException {
         Connection con = connect();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM PQuestionSet");
-        
+
         return statement.executeQuery();
-       
+
     }
 
     @Override
@@ -58,17 +58,44 @@ public class QueryHandler implements IQueryHandler {
         return DriverManager.getConnection(url, user, password);
 
     }
-    
+
     @Override
     public ResultSet getCompanyUser(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
+        Connection con = connect();
+        PreparedStatement statement;
+        
+        String job = "Job" + jobpost.getId() + "_applicants";
+        
+        statement = con.prepareStatement("INSERT INTO " + job + " VALUES = (?)");
+        statement.setInt(1, applicant.getUserId());
+        statement.executeQuery();
 
+    }
 
     @Override
+<<<<<<< HEAD
     public void applyForJob(int jobPostId, int applicantId) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+=======
+    public ResultSet getApplicants() throws SQLException {
+        Connection con = connect();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM \"Job_1\" UNION SELECT * FROM \"Job_2\" UNION SELECT * FROM \"Job_3\" UNION SELECT * FROM \"Job_4\" UNION SELECT * FROM \"Job_5\"");
+
+        return statement.executeQuery();
+    }
+
+    @Override
+    public ResultSet getJobs() throws SQLException {
+        Connection con = connect();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs");
+
+        return statement.executeQuery();
+>>>>>>> master
     }
 
 }

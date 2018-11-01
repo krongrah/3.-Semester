@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -45,6 +46,16 @@ public class JobsController implements Initializable, IController<ScreenControll
     private Label ulJob_Title;
     @FXML
     private AnchorPane SignUpScreen;
+    @FXML
+    private Button DCWButton;
+    @FXML
+    private Button ULButton;
+    @FXML
+    private Button TMButton;
+    @FXML
+    private Button SEButton;
+    @FXML
+    private Button DoctorButton;
 
     /**
      * Initializes the controller class.
@@ -65,22 +76,42 @@ public class JobsController implements Initializable, IController<ScreenControll
 
     @FXML
     private void applyForDCWJob(ActionEvent event) {
+        disableApplicationButton(DCWButton);
+        showApplicationInfo();
     }
 
     @FXML
     private void applyForULJob(ActionEvent event) {
+        disableApplicationButton(ULButton);
+        showApplicationInfo();
     }
 
     @FXML
     private void applyForTMJob(ActionEvent event) {
+        disableApplicationButton(TMButton);
+        showApplicationInfo();
     }
 
     @FXML
     private void applyForSEJob(ActionEvent event) {
+        disableApplicationButton(SEButton);
+        showApplicationInfo();
     }
 
     @FXML
     private void applyForDoctorJob(ActionEvent event) {
+        disableApplicationButton(DoctorButton);
+        showApplicationInfo();
+
+    }
+
+    public void showApplicationInfo() {
+        this.screenController.openApplicationInfo();
+    }
+
+    public void disableApplicationButton(Button button) {
+        button.setDisable(true);
+        button.setText("Application sent");
     }
 
     @FXML

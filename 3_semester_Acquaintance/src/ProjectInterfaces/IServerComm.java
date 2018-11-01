@@ -17,8 +17,4 @@ public interface IServerComm {
      */
     public void injectDomain(IServerDomain domain);
 
-    /**
-     * The method for starting the server
-     */
-    public void startServer();
 }
