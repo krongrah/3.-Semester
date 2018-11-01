@@ -6,10 +6,14 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IComm;
+import ProjectInterfaces.IJobPost;
+import ProjectInterfaces.IQuestionSet;
+import ProjectInterfaces.IUser;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +24,8 @@ import java.util.logging.Logger;
  */
 public class Connection {
 
+    
+    IComm icomm;
     /**
      * Port of the server.
      */
@@ -36,7 +42,7 @@ public class Connection {
 
         try {
             Registry r=LocateRegistry.getRegistry(port);
-            IComm icomm=(IComm)r.lookup(address);
+            icomm=(IComm)r.lookup(address);
             return true;
         } catch (NotBoundException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,7 +52,46 @@ public class Connection {
         return false;    
     }
 
-
+    public IQuestionSet getQuestionSet(){
+        try {
+            return icomm.getQuestionSet();
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public IUser login(String username, String hashedPwd){
+        try {
+            return icomm.login(username, hashedPwd);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public int[] calculateScore(IUser user, IQuestionSet set){
+        try {
+            return icomm.calculateScore(user, set);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public List<IJobPost> getJobAllPosts(){
+        try {
+            return icomm.getJobAllPosts();
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    
+    }
+    public void applyForJob(IUser user, IJobPost job){
+        try {
+            icomm.applyForJob(user, job);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 
 }
