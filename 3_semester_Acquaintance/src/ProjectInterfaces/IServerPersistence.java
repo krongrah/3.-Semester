@@ -22,7 +22,7 @@ public interface IServerPersistence {
     
     public ResultSet getJobs() throws SQLException;
     
-    public ResultSet getComapnyUser(int i) throws SQLException;
+    public ResultSet getCompanyUser(int i) throws SQLException;
     
     public void applyForJob(IJobPost jobpost,IUser applicant) throws SQLException;
 }

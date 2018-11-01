@@ -67,16 +67,14 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
         Connection con = connect();
-        PreparedStatement statement, statement2;
+        PreparedStatement statement;
         
         String job = "Job" + jobpost.getId() + "_applicants";
-        String jobTable = "job" + jobpost.getId() + "_user_id";
+        String user_id = "job" + jobpost.getId() + "_user_id";
 
-        statement = con.prepareStatement("INSERT INTO" + job + " WHERE " + jobTable + " = ?");
+        statement = con.prepareStatement("INSERT INTO " + job + " WHERE " + user_id + " = ?");
         statement.setInt(1, applicant.getUserId());
         statement.executeQuery();
-        
-        statement2 = con.prepareStatement("SELECT * FROM job1_applicants");
 
     }
 
