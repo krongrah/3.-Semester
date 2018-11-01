@@ -6,11 +6,8 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IComm;
-import ProjectInterfaces.IQuestionSet;
-import ProjectInterfaces.TestObject;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.Socket;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -27,10 +24,6 @@ import java.util.logging.Logger;
 public class Connection {
 
     /**
-     * A socket.
-     */
-    private Socket s;
-    /**
      * Port of the server.
      */
     private int port = 9001;
@@ -38,11 +31,6 @@ public class Connection {
      * The IP of the server.
      */
     private String address = "rmi://localhost/theJob";//"10.123.3.31";
-    /**
-     * An object output stream.
-     */
-    private ObjectOutputStream stream;
-
     /**
      * connects the connection to the server.
      * @return returns true if the connection was successful.
@@ -52,9 +40,6 @@ public class Connection {
         try {
             Registry r=LocateRegistry.getRegistry(port);
             IComm icomm=(IComm)r.lookup(address);
-            TestObject derp=icomm.getTest();
-            System.out.println("created");
-            System.out.println(derp.toString());
             return true;
         } catch (NotBoundException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,17 +51,5 @@ public class Connection {
 
 
 
-    /**
-     * Disconnects the client from the server.
-     */
-    public void disconnect() {
-        try {
-            stream.close();
-            s.close();
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 
 }

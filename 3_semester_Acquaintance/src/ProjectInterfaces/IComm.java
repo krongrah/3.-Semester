@@ -14,7 +14,9 @@ import java.rmi.RemoteException;
  */
 public interface IComm extends Remote{
     
+    //todo add methods calls going to the server
     public IQuestionSet getQuestionSet() throws RemoteException;
-    public TestObject getTest() throws RemoteException;
+    
+    
     
 }

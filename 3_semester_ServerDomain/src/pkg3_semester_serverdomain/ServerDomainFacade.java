@@ -11,7 +11,6 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
-import UserSystem.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -61,13 +60,11 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public IQuestionSet getQuestionSet() {
         
-        return new QuestionSet();
-        
-//        try {
-//            return new QuestionSet(persistence.getQuestionSet());
-//        } catch (Exception e) {
-//            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
-//        }
-//        return null;
+        try {
+            return new QuestionSet(persistence.getQuestionSet());
+        } catch (Exception e) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
     }
 }

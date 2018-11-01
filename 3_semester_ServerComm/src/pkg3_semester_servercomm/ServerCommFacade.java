@@ -6,9 +6,9 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.*;
-import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,19 +21,19 @@ import java.util.logging.Logger;
  */
 public class ServerCommFacade extends UnicastRemoteObject implements IServerComm, IComm {
 
-    public ServerCommFacade()throws RemoteException{
+    public ServerCommFacade() throws RemoteException {
+        Registry r = LocateRegistry.createRegistry(9001);
+        IComm i = (IComm) this;
+        r.rebind("rmi://localhost/theJob", i);
+        System.out.println("Server is ready.");
+
     }
-    
+
     /**
      * This is a reference to the domain layer beneath this Communications
      * layer.
      */
     private IServerDomain domain;
-    /**
-     * This is the server hub that new clients connect to, and which assigns
-     * them a dedicated thread.
-     */
-    private ServerHub hub;
 
     /**
      * This injects a reference to the domain layer into this instance, so calls
@@ -46,25 +46,9 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
         this.domain = domain;
     }
 
-    /**
-     * This method instantiates the server hub, and then starts it, thus
-     * allowing clients to connect.
-     */
-    @Override
-    public void startServer() {
-//        hub = new ServerHub();
-//        hub.start();
-    }
-    
     @Override
     public IQuestionSet getQuestionSet() {
         return domain.getQuestionSet();
     }
-
-    @Override
-    public TestObject getTest() throws RemoteException {
-        return new TestObject();
-    }
-
 
 }
