@@ -20,7 +20,8 @@ import java.util.logging.Logger;
 import personalityAssessment.*;
 
 /**
- *Facade for the ServerDomain
+ * Facade for the ServerDomain
+ *
  * @author Krongrah
  */
 public class ServerDomainFacade implements IServerDomain {
@@ -31,11 +32,11 @@ public class ServerDomainFacade implements IServerDomain {
      */
     IServerPersistence persistence;
 
-    
     /**
-     * Inject method for persistence 
-     * Injects ServerPersistence into ServerDomainFacade
-     * @param persistence 
+     * Inject method for persistence Injects ServerPersistence into
+     * ServerDomainFacade
+     *
+     * @param persistence
      */
     @Override
     public void injectPersistence(IServerPersistence persistence) {
@@ -46,10 +47,10 @@ public class ServerDomainFacade implements IServerDomain {
     public IUser getUser(String username, String password) {
         try {
             ResultSet set = persistence.getUser(username, password);
-            
-            if(set.getBoolean("IsCompany")){
+
+            if (set.getBoolean("IsCompany")) {
                 return new Company(set);
-            }else{
+            } else {
                 return new Applicant(set);
             }
         } catch (SQLException ex) {
@@ -70,7 +71,7 @@ public class ServerDomainFacade implements IServerDomain {
         return null;
     }
 
-@Override
+    @Override
     public IUser getCompanyUser(int i) {
         try {
             return new User(persistence.getComapnyUser(i));
@@ -82,12 +83,11 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IServerDomain getInstance() {
-        if(this.serverdomain==null){
+        if (this.serverdomain == null) {
             serverdomain = new ServerDomainFacade();
         }
         return serverdomain;
     }
-
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
@@ -97,7 +97,5 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    
 
 }

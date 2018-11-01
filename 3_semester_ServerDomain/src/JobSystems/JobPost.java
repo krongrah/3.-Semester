@@ -6,12 +6,13 @@ import ProjectInterfaces.IUser;
 import java.util.List;
 import UserSystem.Applicant;
 import UserSystem.Company;
-import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-class JobPost  implements IJobPost {
+
+class JobPost implements IJobPost {
+
     private int id;
     private String title;
     private String description;
@@ -34,6 +35,7 @@ class JobPost  implements IJobPost {
             
     }
        
+    @Override
     public void setApplicants(ResultSet set) throws SQLException{
         while(set.next()){
             applicants.add(new Applicant(set));
@@ -41,23 +43,23 @@ class JobPost  implements IJobPost {
             
     }
     
+    @Override
     public void setCompany(ResultSet set) throws SQLException{
         this.company = new Company(set);
     }
     
     private IUser getCompanyUser(ResultSet set) throws SQLException{
-        return jobmanager.getInstance().getCompanyUser(id);
-
-       
+        return jobmanager.getInstance().getCompanyUser(id); 
     }
     
- 
+
     @Override
     public void addApplicant(IUser applicant){
         applicants.add(applicant);
 
     }
   
+    @Override
     public int getId() {
         return id;
     }
@@ -72,9 +74,6 @@ class JobPost  implements IJobPost {
 
     public List<IUser> getApplicants() {
         return applicants;
-
-    
-
-
+        
     }
 }

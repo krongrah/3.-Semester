@@ -16,7 +16,11 @@ public interface IServerPersistence {
 
     public ResultSet getUser(String username, String password) throws SQLException;
     
-    public ResultSet getQuestionSet() throws SQLException; 
+    public ResultSet getQuestionSet() throws SQLException;
+    
+    public ResultSet getApplicants() throws SQLException;
+    
+    public ResultSet getJobs() throws SQLException;
     
     public ResultSet getComapnyUser(int i) throws SQLException;
     

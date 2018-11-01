@@ -27,4 +27,5 @@ public interface IServerDomain {
     public IServerDomain getInstance();
     
     public void applyForJob(IJobPost jobpost, IUser applicant);
+
 }

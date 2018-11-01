@@ -40,9 +40,10 @@ public class Applicant extends User {
      * @param city : String
      * @param country : String
      * @param region : String
+     * @param id
      */
-    public Applicant(String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(email, phonenr, address, zipcode, city, country, region);
+    public Applicant(String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region, int id) {
+        super(email, phonenr, address, zipcode, city, country, region, id);
         this.name = name;
         this.personalityTest = personalityTest;
         this.experience = experience;
