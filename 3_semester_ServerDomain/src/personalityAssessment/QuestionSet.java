@@ -7,6 +7,7 @@ package personalityAssessment;
 
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
  *
  * @author ahmadhamid
  */
-public class QuestionSet implements IQuestionSet {
+public class QuestionSet implements IQuestionSet, Serializable {
 
     private PersonalityFacade pf;
     private List<IQuestion> questions = new ArrayList();
@@ -29,6 +30,9 @@ public class QuestionSet implements IQuestionSet {
         while(rs.next()) {
             addToList(new Question(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getBoolean(4)));
         }
+    }
+
+    public QuestionSet() {
     }
     
     @Override

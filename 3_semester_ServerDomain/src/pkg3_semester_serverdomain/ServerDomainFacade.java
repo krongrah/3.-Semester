@@ -28,7 +28,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     ServerDomainFacade serverdomain;
     /**
-     * The interface for the serverpersistence
+     * The interface for the server persistence
      */
     IServerPersistence persistence;
 
@@ -62,6 +62,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
+        
         try {
             return new QuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
