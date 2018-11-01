@@ -27,7 +27,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     ServerDomainFacade serverdomain;
     /**
-     * The interface for the serverpersistence
+     * The interface for the server persistence
      */
     IServerPersistence persistence;
 
@@ -61,6 +61,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
+        
         try {
             return new QuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
@@ -90,7 +91,11 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
-        persistence.applyForJob(jobpost, applicant);
+        try {
+            persistence.applyForJob(jobpost, applicant);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

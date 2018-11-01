@@ -14,7 +14,7 @@ import SecuritySystem.SecuritySystemFacade;
 import UserSystem.UserManager;
 
 /**
- * Communcation between the other 2 layers, which are the GUI and the ClientComm
+ * Communication between the other 2 layers, which are the GUI and the ClientComm
  *
  */
 public class ClientDomainFacade implements IClientDomain {

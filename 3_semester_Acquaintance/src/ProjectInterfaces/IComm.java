@@ -5,16 +5,18 @@
  */
 package ProjectInterfaces;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
- * The interface for the Server Communication
+ *
  * @author Krongrah
  */
-public interface IServerComm {
-
-    /**
-     * The method to inject the server domain
-     * @param domain 
-     */
-    public void injectDomain(IServerDomain domain);
-
+public interface IComm extends Remote{
+    
+    //todo add methods calls going to the server
+    public IQuestionSet getQuestionSet() throws RemoteException;
+    
+    
+    
 }
