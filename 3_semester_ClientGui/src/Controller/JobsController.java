@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -45,6 +46,16 @@ public class JobsController implements Initializable, IController<ScreenControll
     private Label ulJob_Title;
     @FXML
     private AnchorPane SignUpScreen;
+    @FXML
+    private Button DCWButton;
+    @FXML
+    private Button ULButton;
+    @FXML
+    private Button TMButton;
+    @FXML
+    private Button SEButton;
+    @FXML
+    private Button DoctorButton;
 
     /**
      * Initializes the controller class.
@@ -65,22 +76,46 @@ public class JobsController implements Initializable, IController<ScreenControll
 
     @FXML
     private void applyForDCWJob(ActionEvent event) {
+        screenController.unloadPopupController();
+        screenController.openBasicPersonalityTest();
+        disableApplicationButton(DCWButton);
     }
 
     @FXML
     private void applyForULJob(ActionEvent event) {
+        screenController.unloadPopupController();
+        screenController.openPersonalityTest();
+        disableApplicationButton(ULButton);
+
     }
 
     @FXML
     private void applyForTMJob(ActionEvent event) {
+        screenController.unloadPopupController();
+        screenController.openBasicPersonalityTest();
+        disableApplicationButton(TMButton);
+
     }
 
     @FXML
     private void applyForSEJob(ActionEvent event) {
+        screenController.unloadPopupController();
+        screenController.openBasicPersonalityTest();
+        disableApplicationButton(SEButton);
+
     }
 
     @FXML
     private void applyForDoctorJob(ActionEvent event) {
+        screenController.unloadPopupController();
+        screenController.openBasicPersonalityTest();
+        disableApplicationButton(DoctorButton);
+
+    }
+
+    public void disableApplicationButton(Button button) {
+        button.setDisable(true);
+        button.setText("Application sent");
     }
 
     @FXML

@@ -49,6 +49,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
     @FXML
     private void cancel(ActionEvent event) {
         screenController.unloadPopupController();
+        screenController.unloadTestController();
     }
 
     @FXML
