@@ -19,7 +19,7 @@ public interface IComm extends Remote{
     public IQuestionSet getQuestionSet() throws RemoteException;
     public IUser login(String username, String hashedPwd)throws RemoteException;
     public int[] calculateScore(IUser user, IQuestionSet set) throws RemoteException;
-    public List<IJobPost> getJobAllPosts();
-    public void applyForJob(IUser user, IJobPost job);
+    public List<IJobPost> getJobAllPosts()throws RemoteException;
+    public void applyForJob(IUser user, IJobPost job)throws RemoteException;
     
 }
