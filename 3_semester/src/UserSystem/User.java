@@ -85,6 +85,7 @@ public class User implements IUser {
      *
      * @return Username : String
      */
+    @Override
     public String getUsername() {
         return username;
     }

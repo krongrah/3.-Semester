@@ -15,6 +15,8 @@ public interface IUser {
      */
     public void doTest();
     
+    public String getUsername();
+    
     public void setEmail(String email);
 
     public void setPhonenr(Integer phonenr);

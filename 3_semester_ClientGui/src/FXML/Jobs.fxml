@@ -1,167 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="BOTTOM_CENTER" prefHeight="1300.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.JobsController">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="600.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="200.0" prefWidth="200.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+<AnchorPane fx:id="SignUpScreen" maxHeight="1.7976931348623157E308" maxWidth="650.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.JobsController">
    <children>
-      <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../Images/Jobs/daycare.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../Images/Jobs/doctor.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../Images/Jobs/software.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../Images/Jobs/telemarketing.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../Images/Jobs/unskilled.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="dcwJob_Title" text="Daycare worker job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="dcwJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets bottom="25.0" top="65.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="doctorJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <padding>
-            <Insets top="65.0" />
-         </padding>
-         <GridPane.margin>
-            <Insets bottom="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="doctorJob_Title" text="Doctor job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="seJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <padding>
-            <Insets top="65.0" />
-         </padding>
-         <GridPane.margin>
-            <Insets bottom="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="seJob_Tiltle" text="Software engineer job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="tmJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <padding>
-            <Insets top="65.0" />
-         </padding>
-         <GridPane.margin>
-            <Insets bottom="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="tmJob_Title" text="Telemarketing job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="ulJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <padding>
-            <Insets top="65.0" />
-         </padding>
-         <GridPane.margin>
-            <Insets bottom="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="ulJob_Title" text="Unskilled labour job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Button mnemonicParsing="false" onAction="#applyForDCWJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#applyForULJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#applyForTMJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#applyForSEJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#applyForDoctorJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
+      <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <content>
+            <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+               <children>
+                  <GridPane alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="950.0" prefHeight="1300.0" prefWidth="950.0" style="-fx-background-color: #212121;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Images/Jobs/daycare.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Images/Jobs/doctor.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Images/Jobs/software.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Images/Jobs/telemarketing.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="55.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Images/Jobs/unskilled.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="dcwJob_Title" text="Daycare worker job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="dcwJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="25.0" top="65.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="doctorJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets top="65.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="doctorJob_Title" text="Doctor job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="seJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets top="65.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="seJob_Tiltle" text="Software engineer job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="tmJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets top="65.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="tmJob_Title" text="Telemarketing job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="ulJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets top="65.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets bottom="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="ulJob_Title" text="Unskilled labour job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="25.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#applyForDCWJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#applyForULJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#applyForTMJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#applyForSEJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#applyForDoctorJob" styleClass="ApplyNowButton" stylesheets="@../Stylesheets/BasicLook.css" text="Apply now!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnSpan="3" />
+                        <Label onMouseClicked="#closeJobs" text="X" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label text="All jobs" textFill="#212121" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="600.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="200.0" prefWidth="200.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ScrollPane>
    </children>
-</GridPane>
+</AnchorPane>
