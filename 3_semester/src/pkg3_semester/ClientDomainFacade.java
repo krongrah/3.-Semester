@@ -36,6 +36,7 @@ public class ClientDomainFacade implements IClientDomain {
         userManager = this.userManager.getInstance();
     }
 
+    @Override
     public boolean connectToServer() {
         return comm.connectToServer();
     }

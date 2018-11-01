@@ -16,7 +16,7 @@ public interface IComm extends Remote{
     
     //todo add methods calls going to the server
     public IQuestionSet getQuestionSet() throws RemoteException;
-    
+    public IUser login(String username, String hashedPwd)throws RemoteException;
     
     
 }

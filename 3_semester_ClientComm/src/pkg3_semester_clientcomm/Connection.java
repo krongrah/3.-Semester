@@ -6,9 +6,6 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IComm;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
