@@ -58,10 +58,7 @@ class JobPost implements IJobPost {
         applicants.add(applicant);
 
     }
-<<<<<<< HEAD
-=======
   
->>>>>>> master
     @Override
     public int getId() {
         return id;

@@ -35,13 +35,9 @@ public class Company extends User{
      * @param region  : String
      * @param id
      */
-<<<<<<< HEAD
-    public Company(String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(id, email, phonenr, address, zipcode, city, country, region);
-=======
-    public Company(String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region, int id) {
+
+    public Company( int id, String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
         super(email, phonenr, address, zipcode, city, country, region, id);
->>>>>>> master
         this.companyName = companyName;
         this.website = website;
     }

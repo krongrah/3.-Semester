@@ -84,22 +84,10 @@ public class ClientDomainFacade implements IClientDomain {
         return userManager.hasActiveUser();
     }
 
-<<<<<<< HEAD
-    @Override
-    public IClientDomain getInstance() {
-        if(this.domain == null){
-            domain = new ClientDomainFacade();
-        }
-        return domain;
-            
-    }
-
     @Override
     public List<IJobPost> getAllJobs() {
        return comm.getAllJobs();
     }
     
 
-=======
->>>>>>> master
 }

@@ -37,9 +37,7 @@ public interface IClientDomain {
      */
     public void logout();
     
-<<<<<<< HEAD
     public List<IJobPost> getAllJobs();
-=======
     public boolean connectToServer();
->>>>>>> master
+
 }

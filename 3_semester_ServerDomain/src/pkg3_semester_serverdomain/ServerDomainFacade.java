@@ -93,18 +93,11 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
         try {
-<<<<<<< HEAD
-            persistence.applyForJob(jobpost.getId(), applicant.getId());
+            persistence.applyForJob(jobpost.getId(), applicant.getUserId());
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-=======
-            persistence.applyForJob(jobpost, applicant);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+}
 
     @Override
     public IUser login(String username, String hashedPwd) {
@@ -114,12 +107,13 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public int[] calculateScore(IUser user, IQuestionSet set) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> master
     }
 
     @Override
     public List<IJobPost> getAllJobs() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }

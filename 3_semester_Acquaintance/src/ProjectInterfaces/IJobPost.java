@@ -15,15 +15,11 @@ public interface IJobPost{
     
     public void addApplicant(IUser applicant);
     
-<<<<<<< HEAD
     public int getId();
-=======
     public void setApplicants(ResultSet set) throws SQLException;
     
     public void setCompany(ResultSet set) throws SQLException;
     
-    public int getId();
     
->>>>>>> master
     
 }

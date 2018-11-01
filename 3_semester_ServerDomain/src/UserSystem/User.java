@@ -38,15 +38,11 @@ public class User implements IUser {
      */
     private String region;
     
-<<<<<<< HEAD
-    private int id;
-=======
     /**
      * User ID of the user
      */
     private int userId;
     
->>>>>>> master
 
     public User(){
         
@@ -63,12 +59,7 @@ public class User implements IUser {
      * @param region : String
      * @param userId
      */
-<<<<<<< HEAD
-    public User( int Id, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        this.id = id;
-=======
     public User(String email, Integer phonenr, String address, String zipcode, String city, String country, String region, int userId) {
->>>>>>> master
         this.email = email;
         this.phonenr = phonenr;
         this.address = address;
@@ -80,7 +71,6 @@ public class User implements IUser {
     }
 
     public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
-        id = user.getInt("Id");
         email = user.getString("Email");
         phonenr = user.getInt("phonenr");
         address = user.getString("address");
@@ -101,9 +91,6 @@ public class User implements IUser {
         //todo
     }
 
-    public int getId(){
-        return id;
-    }
     /**
      * Gets the email
      * @return email address : String
@@ -199,15 +186,12 @@ public class User implements IUser {
     public String getUsername() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public int getUserId() {
         return userId;
     }
 
->>>>>>> master
     
     
     

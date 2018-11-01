@@ -15,11 +15,7 @@ public interface IUser {
      */
     public String getUsername();
     
-<<<<<<< HEAD
-    public int getId();
-=======
     public int getUserId();
->>>>>>> master
     
     public void setEmail(String email);
 

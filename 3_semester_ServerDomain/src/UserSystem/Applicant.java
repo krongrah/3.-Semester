@@ -42,13 +42,8 @@ public class Applicant extends User {
      * @param region : String
      * @param id
      */
-<<<<<<< HEAD
     public Applicant(int id,String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(id, email, phonenr, address, zipcode, city, country, region);
-=======
-    public Applicant(String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region, int id) {
-        super(email, phonenr, address, zipcode, city, country, region, id);
->>>>>>> master
+        super(email, phonenr, address, zipcode, city, country, region,id);
         this.name = name;
         this.personalityTest = personalityTest;
         this.experience = experience;
