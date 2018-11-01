@@ -75,7 +75,7 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public IUser getCompanyUser(int i) {
         try {
-            return new User(persistence.getComapnyUser(i));
+            return new User(persistence.getCompanyUser(i));
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
             return null;
