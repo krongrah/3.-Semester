@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -42,6 +43,8 @@ public class JobsController implements Initializable, IController<ScreenControll
     private Label ulJob_Desc;
     @FXML
     private Label ulJob_Title;
+    @FXML
+    private AnchorPane SignUpScreen;
 
     /**
      * Initializes the controller class.

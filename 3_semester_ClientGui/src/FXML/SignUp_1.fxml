@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="SignUpScreen" maxHeight="950.0" maxWidth="850.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.JobsController">
+<AnchorPane fx:id="SignUpScreen" maxHeight="680.0" maxWidth="850.0" prefHeight="680.0" prefWidth="850.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
    <children>
-      <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" maxWidth="950.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="950.0">
+      <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <content>
             <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="950.0">
                <children>
