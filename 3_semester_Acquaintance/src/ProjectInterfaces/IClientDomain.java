@@ -11,6 +11,7 @@ package ProjectInterfaces;
  */
 public interface IClientDomain {
 
+    public IClientDomain getInstance();
     
     /**
      * Method for injecting Client communication
@@ -25,6 +26,10 @@ public interface IClientDomain {
      * @return true if successful login, else false.
      */
     public boolean login(String username, String password);
+    
+    public IUser getActiveUser();
+    
+    public boolean isLoggedIn();
     
     /**
      * Logs out the active user

@@ -5,6 +5,7 @@
  */
 package pkg3_semester_serverdomain;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
@@ -23,7 +24,7 @@ import personalityAssessment.*;
  */
 public class ServerDomainFacade implements IServerDomain {
 
-    
+    ServerDomainFacade serverdomain;
     /**
      * The interface for the server persistence
      */
@@ -67,4 +68,31 @@ public class ServerDomainFacade implements IServerDomain {
         }
         return null;
     }
+
+@Override
+    public IUser getCompanyUser(int i) {
+        try {
+            return new User(persistence.getComapnyUser(i));
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    @Override
+    public IServerDomain getInstance() {
+        if(this.serverdomain==null){
+            serverdomain = new ServerDomainFacade();
+        }
+        return serverdomain;
+    }
+
+
+    @Override
+    public void applyForJob(IJobPost jobpost, IUser applicant) {
+        persistence.applyForJob(jobpost, applicant);
+    }
+
+    
+
 }

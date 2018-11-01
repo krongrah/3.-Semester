@@ -51,4 +51,9 @@ public class UserManager implements IUserManager {
         return userManager;
     }
 
+    @Override
+    public boolean hasActiveUser() {
+        return this.activeUser != null;
+    }
+
 }
