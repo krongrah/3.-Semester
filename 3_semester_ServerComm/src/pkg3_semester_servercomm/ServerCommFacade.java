@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,6 +50,26 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     @Override
     public IQuestionSet getQuestionSet() {
         return domain.getQuestionSet();
+    }
+
+    @Override
+    public IUser login(String username, String hashedPwd) throws RemoteException {
+        return domain.login(username, hashedPwd);
+    }
+
+    @Override
+    public int[] calculateScore(IUser user, IQuestionSet set) throws RemoteException {
+        return domain.calculateScore(user, set);
+    }
+
+    @Override
+    public List<IJobPost> getJobAllPosts() {
+       return domain.getAllJobs();
+    }
+
+    @Override
+    public void applyForJob(IUser user, IJobPost job) {
+        domain.applyForJob(job, user);
     }
 
 }
