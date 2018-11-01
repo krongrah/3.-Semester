@@ -99,10 +99,27 @@ public class ServerDomainFacade implements IServerDomain {
         }
     }
 
+
     @Override
     public List<IUser> getApplicants(int id) {
         return null;
         
      }
+
+    @Override
+    public IUser login(String username, String hashedPwd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int[] calculateScore(IUser user, IQuestionSet set) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

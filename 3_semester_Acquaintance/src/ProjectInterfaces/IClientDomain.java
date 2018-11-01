@@ -11,7 +11,6 @@ package ProjectInterfaces;
  */
 public interface IClientDomain {
 
-    public IClientDomain getInstance();
     
     /**
      * Method for injecting Client communication

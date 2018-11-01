@@ -32,4 +32,10 @@ public interface IServerDomain {
     
     public List<IUser> getApplicants(int id);
 
+    public IUser login(String username, String hashedPwd);
+
+    public int[] calculateScore(IUser user, IQuestionSet set);
+
+    public List<IJobPost> getAllJobs();
+
 }

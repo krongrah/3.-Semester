@@ -17,11 +17,9 @@ import java.util.List;
  */
 public class QuestionSet implements IQuestionSet, Serializable {
 
-    private PersonalityFacade pf;
     private List<IQuestion> questions = new ArrayList();
 
-    public QuestionSet(PersonalityFacade pf) {
-        this.pf = pf;
+    public QuestionSet() {
     }
 
     public QuestionSet(List<Question> ql) {
@@ -44,13 +42,10 @@ public class QuestionSet implements IQuestionSet, Serializable {
 
     @Override
     public List<Integer> getAnswers() {
-        List<Integer> l = new ArrayList<>();
-        int i = 0;
-
-        while (!(questions.size() == i + 1)) {
-            l.add(questions.get(i).getQuestionAnswer());
-        }
-        return l;
+        //shouldn't be a thing.
+        return null;
     }
+
+    
 
 }

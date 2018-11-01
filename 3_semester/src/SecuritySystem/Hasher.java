@@ -37,7 +37,7 @@ public class Hasher implements IHasher {
      * Converts a byte array to a hex string
      *
      * @param hash : byte array
-     * @return A convertion of a byte array to a hex string
+     * @return A conversion of a byte array to a hex string
      */
     private static String bytesToHex(byte[] hash) {
         StringBuffer hexString = new StringBuffer();

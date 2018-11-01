@@ -5,6 +5,8 @@
  */
 package UserSystem;
 
+import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 
@@ -14,27 +16,48 @@ import ProjectInterfaces.IUserManager;
  */
 public class UserManager implements IUserManager {
 
-    private static IUserManager userManager = null;
-
     /**
      * Stores the active user of the system
      */
     private IUser activeUser;
+    private IClientSecurity security;
+    private IClientComm comm;
+    
+    public UserManager(IClientSecurity security, IClientComm comm){
+    this.comm=comm;
+    this.security=security;
+    }
+    
 
+    @Override
+    public boolean login(String username, String password){
+    if (!hasActiveUser()) {
+            String hashedPwd = security.Hash(password);
+            setActiveUser(comm.login(username, hashedPwd));
+            if (getActiveUser() == null) {
+                return false;
+            } else {
+                return true;
+            }
+        }else{
+            return false;
+        }
+    }
+    
     /**
      * Logs out the user in the system
      */
+    @Override
     public void logout() {
         this.activeUser = null;
     }
 
     /**
-     * Sets the active user as an object of the Iuser interface
+     * Sets the active user as an object of the IUser interface
      *
      * @param user : IUser
      */
-    @Override
-    public void setActiveUser(IUser user) {
+    private void setActiveUser(IUser user) {
         this.activeUser = user;
     }
 
@@ -42,14 +65,8 @@ public class UserManager implements IUserManager {
     public IUser getActiveUser() {
         return this.activeUser;
     }
-
-    @Override
-    public IUserManager getInstance() {
-        if (userManager == null) {
-            userManager = new UserManager();
-        }
-        return userManager;
-    }
+    
+    
 
     @Override
     public boolean hasActiveUser() {
