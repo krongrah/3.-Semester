@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package ProjectInterfaces;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,6 +14,12 @@ import java.rmi.RemoteException;
 public interface IJobPost{
     
     public void addApplicant(IUser applicant);
+    
+    public void setApplicants(ResultSet set) throws SQLException;
+    
+    public void setCompany(ResultSet set) throws SQLException;
+    
+    public int getId();
     
     
 }

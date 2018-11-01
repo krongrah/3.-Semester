@@ -68,7 +68,23 @@ public class QueryHandler implements IQueryHandler {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = connect();
+        
+        if (jobpost.getId() == 1) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_1\" WHERE \"Job_1\".ID = ?");
+            statement.setInt(1, applicant);
+        } else if (jobpost.getId() == 2) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_2\" WHERE \"Job_2\".ID = ?");
+        } else if (jobpost.getId() == 3) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_3\" WHERE \"Job_3\".ID = ?");
+        } else if (jobpost.getId() == 4) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_4\" WHERE \"Job_4\".ID = ?");
+        } else if (jobpost.getId() == 5) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO \"Job_5\" WHERE \"Job_5\".ID = ?");
+        }
+        
+        
+        
     }
 
     @Override
