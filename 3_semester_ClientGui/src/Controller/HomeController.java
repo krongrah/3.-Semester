@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,8 +13,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Screen;
@@ -38,10 +41,18 @@ public class HomeController implements Initializable {
 
     private ArrayList<Image> images = new ArrayList();
     private ArrayList<Line> lines = new ArrayList();
-    @FXML
     private AnchorPane LoginScreen;
     @FXML
     private AnchorPane SignUpScreen;
+    @FXML
+    private AnchorPane screen;
+    @FXML
+    private Button signInButton;
+    @FXML
+    private AnchorPane popupWindow;
+    
+    
+    private IClientDomain clientDomain;
 
     /**
      * Initializes the controller class.
@@ -51,6 +62,7 @@ public class HomeController implements Initializable {
         // TODO
 
         gui = gui.getInstance();
+        clientDomain = clientDomain.getInstance();
         
         LoginScreen.setVisible(false);
         SignUpScreen.setVisible(false);
@@ -68,8 +80,19 @@ public class HomeController implements Initializable {
 
         Thread bckgswitcher = new Thread(new BackgroundImageThread(images, HomeBackgroundImage, lines));
         bckgswitcher.start();
-        bckgswitcher.isDaemon();
+        bckgswitcher.setDaemon(false);
+        
+        updateSignInButton();
+            
 
+    }
+    
+    public void updateSignInButton(){
+        if(clientDomain.isLoggedIn()){
+            //If a user already is logged in
+            signInButton.setDisable(true);
+            signInButton.setText(clientDomain.getActiveUser().getUsername());
+        }
     }
 
     @FXML
@@ -77,17 +100,15 @@ public class HomeController implements Initializable {
         LoginScreen.setVisible(true);
     }
 
-    @FXML
     private void signIn(ActionEvent event) {
         LoginScreen.setVisible(false);
+        updateSignInButton();
     }
 
-    @FXML
     private void cancelLogin(ActionEvent event) {
         LoginScreen.setVisible(false);
     }
 
-    @FXML
     private void signUp(ActionEvent event) {
         SignUpScreen.setVisible(false);
     }
@@ -104,6 +125,10 @@ public class HomeController implements Initializable {
     @FXML
     private void openSignUpScreen(ActionEvent event) {
         SignUpScreen.setVisible(true);
+    }
+
+    @FXML
+    private void moved(MouseEvent event) {
     }
 
 }

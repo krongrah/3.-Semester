@@ -18,5 +18,7 @@ public interface IUserManager {
     public void setActiveUser(IUser user);
     
     public IUser getActiveUser();
+    
+    public boolean hasActiveUser();
 
 }

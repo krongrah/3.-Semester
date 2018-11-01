@@ -18,8 +18,14 @@ public interface IServerDomain {
      */
     public void injectPersistence(IServerPersistence persistence);
     
+    public IUser getCompanyUser(int i);
+    
     public IUser getUser(String username, String password);
     
     public IQuestionSet getQuestionSet();
     
+    public IServerDomain getInstance();
+    
+    public void applyForJob(IJobPost jobpost, IUser applicant);
+
 }
