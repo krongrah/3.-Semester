@@ -70,9 +70,8 @@ public class QueryHandler implements IQueryHandler {
         PreparedStatement statement;
         
         String job = "Job" + jobpost.getId() + "_applicants";
-        String user_id = "job" + jobpost.getId() + "_user_id";
-
-        statement = con.prepareStatement("INSERT INTO " + job + " WHERE " + user_id + " = ?");
+        
+        statement = con.prepareStatement("INSERT INTO " + job + " VALUES = (?)");
         statement.setInt(1, applicant.getUserId());
         statement.executeQuery();
 
