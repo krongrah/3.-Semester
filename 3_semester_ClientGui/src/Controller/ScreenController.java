@@ -183,7 +183,12 @@ public class ScreenController implements Initializable, IController<ScreenContro
     }
 
     public void openPersonalityTest() {
-        loadApplicationController("FXML/PersonalityTest.fxml");
+        loadPopupController("FXML/PersonalityTest.fxml");
+    }
+    
+    public void openApplicationInfo(){
+        unload();
+        loadPopupController("FXML/ApplicationInfo.fxml");
     }
 
     private void signIn(ActionEvent event) {
