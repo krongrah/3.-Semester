@@ -11,7 +11,7 @@ import java.rmi.RemoteException;
  *
  * @author Naik
  */
-public interface IJobPost extends Remote {
+public interface IJobPost{
     
     public void addApplicant(IUser applicant);
     
