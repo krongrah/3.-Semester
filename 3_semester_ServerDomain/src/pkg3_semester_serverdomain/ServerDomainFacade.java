@@ -93,12 +93,11 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
         try {
-            persistence.applyForJob(jobpost, applicant);
+            persistence.applyForJob(jobpost.getId(), applicant.getUserId());
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
+}
 
     @Override
     public List<IUser> getApplicants(int id) {
@@ -120,6 +119,7 @@ public class ServerDomainFacade implements IServerDomain {
     public List<IJobPost> getAllJobs() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
 
 }

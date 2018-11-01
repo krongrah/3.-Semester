@@ -65,20 +65,20 @@ public class QueryHandler implements IQueryHandler {
     }
 
     @Override
-    public void applyForJob(IJobPost jobpost, IUser applicant) throws SQLException {
+    public void applyForJob(int jobPostId, int applicantId) throws SQLException {
         Connection con = connect();
         PreparedStatement statement;
         
-        String job = "Job" + jobpost.getId() + "_applicants";
+        String job = "Job" + jobPostId + "_applicants";
         
         statement = con.prepareStatement("INSERT INTO " + job + " VALUES = (?)");
-        statement.setInt(1, applicant.getUserId());
-        statement.executeQuery();
-
+        statement.setInt(1, applicantId);
+        statement.executeQuery(); new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ResultSet getApplicants(int id) throws SQLException {
+
         Connection con = connect();
         PreparedStatement statement;
         

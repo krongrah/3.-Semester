@@ -5,6 +5,8 @@
  */
 package ProjectInterfaces;
 
+import java.util.List;
+
 /**
  * The interface for the Client domain
  * @author Krongrah
@@ -35,5 +37,7 @@ public interface IClientDomain {
      */
     public void logout();
     
+    public List<IJobPost> getAllJobs();
     public boolean connectToServer();
+
 }

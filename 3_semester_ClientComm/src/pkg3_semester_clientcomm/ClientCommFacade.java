@@ -6,7 +6,9 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
+import java.util.List;
 
 /**
  * is responsible for the communication between all client communication to the
@@ -40,6 +42,11 @@ public class ClientCommFacade implements IClientComm {
     public boolean connectToServer() {
         connection = new Connection();
         return connection.Connect();
+    }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

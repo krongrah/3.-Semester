@@ -8,10 +8,12 @@ package pkg3_semester;
 import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientSecurity;
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
 import UserSystem.UserManager;
+import java.util.List;
 
 /**
  * Communication between the other 2 layers, which are the GUI and the ClientComm
@@ -81,5 +83,11 @@ public class ClientDomainFacade implements IClientDomain {
     public boolean isLoggedIn() {
         return userManager.hasActiveUser();
     }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+       return comm.getAllJobs();
+    }
+    
 
 }
