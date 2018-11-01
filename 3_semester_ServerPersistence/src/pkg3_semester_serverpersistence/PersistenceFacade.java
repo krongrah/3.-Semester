@@ -36,8 +36,8 @@ public class PersistenceFacade implements IServerPersistence {
 
     
     @Override
-    public ResultSet getApplicants() throws SQLException {
-        return handler.getApplicants();
+    public ResultSet getApplicants(int id) throws SQLException {
+        return handler.getApplicants(id);
     }
 
     @Override

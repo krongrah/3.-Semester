@@ -15,6 +15,7 @@ import UserSystem.Company;
 import UserSystem.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import personalityAssessment.*;
@@ -97,5 +98,11 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public List<IUser> getApplicants(int id) {
+        return null;
+        
+     }
 
 }
