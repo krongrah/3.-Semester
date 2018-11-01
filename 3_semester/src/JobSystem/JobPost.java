@@ -7,7 +7,6 @@ package JobSystem;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
-import UserSystem.Applicant;
 import UserSystem.Company;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +22,6 @@ public class JobPost implements IJobPost {
     private String description;
     private List<IUser> applicants;
     private Company company;
-    private static JobsManager jobmanager;
     
 
     public JobPost(int id, String title, String description, List<IUser> applicants) {
