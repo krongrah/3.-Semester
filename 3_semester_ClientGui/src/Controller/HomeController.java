@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import GUI.GuiFacade;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
 import java.net.URL;
@@ -62,7 +63,7 @@ public class HomeController implements Initializable {
         // TODO
 
         gui = gui.getInstance();
-        clientDomain = clientDomain.getInstance();
+        clientDomain = GuiFacade.getDomain();
         
         LoginScreen.setVisible(false);
         SignUpScreen.setVisible(false);

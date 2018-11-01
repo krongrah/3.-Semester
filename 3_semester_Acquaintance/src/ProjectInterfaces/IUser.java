@@ -13,8 +13,6 @@ public interface IUser {
     /**
      * When the user takes the personality test
      */
-    public void doTest();
-    
     public String getUsername();
     
     public int getUserId();

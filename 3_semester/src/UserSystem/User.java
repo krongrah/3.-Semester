@@ -53,6 +53,7 @@ public class User implements IUser {
     /**
      * User constructor
      *
+     * @param isCompany
      * @param email : String
      * @param phonenr : String
      * @param address : String
@@ -70,14 +71,6 @@ public class User implements IUser {
         this.city = city;
         this.country = country;
         this.region = region;
-    }
-
-    /**
-     * When the user takes the personality test Changes a value related to test
-     * whether or not the user has taken the test
-     */
-    public void doTest() {
-        //todo
     }
 
     /**
