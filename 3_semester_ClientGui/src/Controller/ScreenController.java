@@ -157,7 +157,7 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
     private void signIn(ActionEvent event) {
         unloadPopupController();
-
+        loadController("FXML/HomeController.fxml");
     }
 
     private void cancelLogin(ActionEvent event) {
