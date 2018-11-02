@@ -56,7 +56,7 @@ public class ClientCommFacade implements IClientComm {
     }
 
     @Override
-    public int[] calculateScore(IUser user, IQuestionSet set) {
+    public List<Integer> calculateScore(IUser user, IQuestionSet set) {
        return connection.calculateScore(user, set);
     }
 
@@ -68,6 +68,11 @@ public class ClientCommFacade implements IClientComm {
     @Override
     public void applyForJob(IUser user, IJobPost job) {
       connection.applyForJob(user, job);
+    }
+
+    @Override
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
+        connection.applyForJob(user, job, questionSet);
     }
     
     

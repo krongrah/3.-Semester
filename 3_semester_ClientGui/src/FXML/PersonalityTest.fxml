@@ -62,7 +62,7 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Button id="CancelButton" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #949494;" stylesheets="@../Stylesheets/BasicLook.css" text="Cancel" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <Button id="CancelButton" fx:id="cancel" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #949494;" stylesheets="@../Stylesheets/BasicLook.css" text="Cancel" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -76,7 +76,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="LoginButton" mnemonicParsing="false" onAction="#nextQuestion" style="-fx-background-color: #70a1e3;" stylesheets="@../Stylesheets/BasicLook.css" text="Next Question" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <Button id="LoginButton" fx:id="next" mnemonicParsing="false" onAction="#nextQuestion" style="-fx-background-color: #70a1e3;" stylesheets="@../Stylesheets/BasicLook.css" text="Next Question" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
                            <font>
                               <Font size="16.0" />
                            </font>
