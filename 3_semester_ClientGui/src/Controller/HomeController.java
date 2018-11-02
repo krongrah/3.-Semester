@@ -102,7 +102,11 @@ public class HomeController implements Initializable {
 
     private void signIn(ActionEvent event) {
         LoginScreen.setVisible(false);
-        updateSignInButton();
+        
+        if(clientDomain.getActiveUser() != null){
+            signInButton.setText(clientDomain.getActiveUser().getUsername());
+            signInButton.setDisable(true);
+        }
     }
 
     private void cancelLogin(ActionEvent event) {

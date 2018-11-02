@@ -33,11 +33,11 @@ public class ServerDomainFacade implements IServerDomain {
      * The interface for the server persistence
      */
     private IServerPersistence persistence;
-    
+
     private PersonalityFacade personal;
-    
-    public ServerDomainFacade(){
-    personal=new PersonalityFacade();
+
+    public ServerDomainFacade() {
+        personal = new PersonalityFacade();
     }
 
     /**
@@ -62,6 +62,7 @@ public class ServerDomainFacade implements IServerDomain {
                 return new Applicant(set);
             }
         } catch (SQLException ex) {
+            System.out.println("Didnt login (server Domain error)");
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
@@ -70,7 +71,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
-        
+
         try {
             return personal.getQuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
@@ -104,13 +105,13 @@ public class ServerDomainFacade implements IServerDomain {
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 
     @Override
     public List<IUser> getApplicants(int id) {
         return null;
-        
-     }
+
+    }
 
     @Override
     public IUser login(String username, String hashedPwd) {
@@ -121,7 +122,7 @@ public class ServerDomainFacade implements IServerDomain {
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public List<IJobPost> getAllJobs() {
         /*
@@ -139,9 +140,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
-        
+
     }
-
-
 
 }
