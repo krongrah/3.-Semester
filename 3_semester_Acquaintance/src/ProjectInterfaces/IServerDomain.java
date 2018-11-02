@@ -36,6 +36,6 @@ public interface IServerDomain {
 
     public int[] calculateScore(IUser user, IQuestionSet set);
 
-    public List<IJobPost> getAllJobs();
+    public List<JobPost> getAllJobs();
 
 }
