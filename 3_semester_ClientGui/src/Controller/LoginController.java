@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -25,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 public class LoginController implements Initializable, IController<ScreenController> {
 
     private IClientGui gui = new GuiFacade();
-    
+
     @FXML
     private AnchorPane LoginScreen;
     private ScreenController screenController;
@@ -33,21 +34,37 @@ public class LoginController implements Initializable, IController<ScreenControl
     private TextField username;
     @FXML
     private PasswordField password;
+    @FXML
+    private Label requiredField;
+    @FXML
+    private Label loginFailed;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         gui = gui.getInstance();
         GuiFacade.getDomain().connectToServer();
+
+        requiredField.setVisible(false);
+        loginFailed.setVisible(false);
     }
 
     @FXML
     private void signIn(ActionEvent event) {
-        screenController.unloadPopupController();
-        GuiFacade.getDomain().login(username.getText(), password.getText());
+        if (username.getText().isEmpty() || password.getText().isEmpty()) {
+            requiredField.setVisible(true);
+        } else {
+            requiredField.setVisible(false);
+            if (GuiFacade.getDomain().login(username.getText(), password.getText())) {
+                loginFailed.setVisible(false);
+                screenController.unloadPopupController();
+            } else {
+                loginFailed.setVisible(true);
+            }
+        }
     }
 
     @FXML

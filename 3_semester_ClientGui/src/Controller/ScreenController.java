@@ -6,6 +6,7 @@
 package Controller;
 
 import Common.IController;
+import ProjectInterfaces.IJobPost;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
     private ArrayList<Image> images = new ArrayList();
     private ArrayList<Line> lines = new ArrayList();
+    
+    private IJobPost applyingForJob;
     @FXML
     private AnchorPane testWindow;
 
@@ -215,6 +218,14 @@ public class ScreenController implements Initializable, IController<ScreenContro
     @Override
     public void unload() {
         unloadController();
+    }
+    
+    public void setApplyingForJob(IJobPost job){
+        this.applyingForJob = job;
+    }
+    
+    public IJobPost getApplyingForJobPost(){
+        return this.applyingForJob;
     }
 
     @FXML

@@ -41,7 +41,7 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Label fx:id="applicationDesc" alignment="CENTER" prefHeight="261.0" prefWidth="781.0" text="Label" textAlignment="CENTER" textFill="#212121" wrapText="true" GridPane.rowIndex="1">
+                  <Label fx:id="applicationDesc" alignment="CENTER" contentDisplay="CENTER" prefHeight="261.0" prefWidth="781.0" text="Label" textFill="#212121" wrapText="true" GridPane.rowIndex="1">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -67,6 +67,11 @@
                      </graphic>
                      <font>
                         <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="requiredField" contentDisplay="BOTTOM" text="* This field is required" textFill="#ff5353" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>

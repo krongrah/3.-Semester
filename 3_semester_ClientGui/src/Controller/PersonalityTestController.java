@@ -59,8 +59,10 @@ public class PersonalityTestController implements Initializable, IController<Scr
     private Button cancel;
     @FXML
     private Button next;
-    
+
     private IJobPost job;
+    @FXML
+    private Label requiredField;
 
     /**
      * Initializes the controller class.
@@ -69,12 +71,16 @@ public class PersonalityTestController implements Initializable, IController<Scr
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         domain = GuiFacade.getDomain();
-        
+
+        job = screenController.getApplyingForJobPost();
+
         questionSet = domain.getAllQuestions();
 
         currentQuestion = questionSet.getQuestion(number);
 
         progress.setProgress(number / 100);
+
+        requiredField.setVisible(false);
     }
 
     @FXML
@@ -85,23 +91,30 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     @FXML
     private void nextQuestion(ActionEvent event) {
-        if (number < 100) {
+        if (saveAnswer() != 0) {
+            requiredField.setVisible(false);
+            if (number < 100) {
 
-            currentQuestion = questionSet.getQuestion(number);
+                currentQuestion = questionSet.getQuestion(number);
 
-            currentQuestion.setQuestionAnswer(saveAnswer());
+                currentQuestion.setQuestionAnswer(saveAnswer());
 
-            resetAnswers();
-            setQuestionText();
-            number++;
-        }else{
-            domain.calculateScore(domain.getActiveUser(), questionSet);
-            
-            next.setText("Send application!");
-            
-            domain.calculateScore(domain.getActiveUser(), questionSet);
-            
-            //domain.saveApplication(user, , questionSet);
+                resetAnswers();
+
+                setQuestionText();
+
+                number++;
+            } else {
+                domain.calculateScore(domain.getActiveUser(), questionSet);
+
+                next.setText("Send application!");
+
+                domain.calculateScore(domain.getActiveUser(), questionSet);
+
+                domain.saveApplication(domain.getActiveUser(), screenController.getApplyingForJobPost(), questionSet);
+            }
+        } else {
+            requiredField.setVisible(true);
         }
 
     }
