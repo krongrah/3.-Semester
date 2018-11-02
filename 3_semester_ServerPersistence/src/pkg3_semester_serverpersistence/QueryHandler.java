@@ -34,7 +34,7 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public ResultSet getUser(String username, String password) throws SQLException {
         Connection con = connect();
-        PreparedStatement statement = con.prepareStatement("SELECT * FROM \"Users\" WHERE \"Users\".Username = ? AND \"Users\".Password = ?");
+        PreparedStatement statement = con.prepareStatement("SELECT Users.Username, Users.IsCompany, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.Country, Users.Region, Users.UserId FROM Users, LogIn WHERE Users.Username = ? AND LogIn.hPassword = ?;");
 
         statement.setString(1, username);
 
@@ -47,7 +47,7 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public ResultSet getQuestionSet() throws SQLException {
         Connection con = connect();
-        PreparedStatement statement = con.prepareStatement("SELECT * FROM PQuestionSet");
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Questions");
 
         return statement.executeQuery();
 
@@ -61,7 +61,12 @@ public class QueryHandler implements IQueryHandler {
 
     @Override
     public ResultSet getCompanyUser(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = connect();
+        PreparedStatement statement;
+        
+        statement = con.prepareStatement("SELECT Users.Username, Users.UserId, companyinfo.companyname, companyinfo.website, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region FROM Users, companyinfo WHERE IsCompany = TRUE AND Users.UserId = ?;");
+        statement.setInt(1, id);
+        return statement.executeQuery();
     }
 
     @Override
@@ -71,9 +76,9 @@ public class QueryHandler implements IQueryHandler {
         
         String job = "Job" + jobPostId + "_applicants";
         
-        statement = con.prepareStatement("INSERT INTO " + job + " VALUES = (?)");
+        statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?)");
         statement.setInt(1, applicantId);
-        statement.executeQuery(); new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        statement.executeQuery();
     }
 
     @Override
