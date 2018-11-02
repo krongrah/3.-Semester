@@ -16,6 +16,7 @@ import java.rmi.registry.Registry;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.*;
 
 /**
  * A connection to the server.
@@ -64,6 +65,7 @@ public class Connection {
         try {
             return icomm.login(username, hashedPwd);
         } catch (RemoteException ex) {
+            System.out.println("Didnt log in");
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
