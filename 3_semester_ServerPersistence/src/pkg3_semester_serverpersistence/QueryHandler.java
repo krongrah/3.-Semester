@@ -34,7 +34,7 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public ResultSet getUser(String username, String password) throws SQLException {
         Connection con = connect();
-        PreparedStatement statement = con.prepareStatement("SELECT Users.Username, Users.IsCompany, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.Country, Users.Region, Users.UserId FROM Users, LogIn WHERE Users.Username = ? AND LogIn.hPassword = ?;");
+        PreparedStatement statement = con.prepareStatement("SELECT Users.Username, Users.IsCompany, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.Country, Users.Region, Users.UserId FROM Users, LogIn WHERE Users.username = ? AND LogIn.hpassword = ?;");
 
         statement.setString(1, username);
 
