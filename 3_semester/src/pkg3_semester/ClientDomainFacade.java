@@ -29,8 +29,8 @@ public class ClientDomainFacade implements IClientDomain {
     private IClientSecurity security;
 
     public ClientDomainFacade() {
-        userManager = new UserManager(security, comm);
         security = new SecuritySystemFacade();
+        
     }
 
     /**
@@ -41,6 +41,7 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
+        userManager = new UserManager(security, comm);
     }
 
     @Override
@@ -58,6 +59,7 @@ public class ClientDomainFacade implements IClientDomain {
      */
     @Override
     public boolean login(String username, String password) {
+        comm.connectToServer();
         return userManager.login(username, password);
     }
 
@@ -79,9 +81,10 @@ public class ClientDomainFacade implements IClientDomain {
         return userManager.getActiveUser();
     }
 
-    private Applicant getActiveApplicant(){
+    private Applicant getActiveApplicant() {
         return (Applicant) userManager.getActiveUser();
     }
+
     /**
      * Gets a boolean value of whether a user is logged in already
      *
@@ -113,10 +116,13 @@ public class ClientDomainFacade implements IClientDomain {
     }
 
     /**
-     * Used for the first application of a job. This is because, a user is required to fill a personality assessment the fist time, not any other times
+     * Used for the first application of a job. This is because, a user is
+     * required to fill a personality assessment the fist time, not any other
+     * times
+     *
      * @param user
      * @param job
-     * @param set 
+     * @param set
      */
     @Override
     public void saveApplication(IUser user, IJobPost job, IQuestionSet set) {
@@ -125,15 +131,13 @@ public class ClientDomainFacade implements IClientDomain {
 
     /**
      * Used for any applications after the first one
+     *
      * @param user
-     * @param job 
+     * @param job
      */
     @Override
     public void saveApplication(IUser user, IJobPost job) {
         comm.applyForJob(user, job);
     }
-
-    
-    
 
 }

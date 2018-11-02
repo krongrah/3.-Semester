@@ -9,6 +9,7 @@ import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
+import commondata.User;
 import java.util.List;
 
 /**
@@ -26,7 +27,10 @@ public class ClientCommFacade implements IClientComm {
      */
     @Override
     public IUser login(String username, String hashedPwd) {
-        return null;
+        connectToServer();
+        IUser user = connection.login(username, hashedPwd);
+        System.out.println("now logged in: " + user.getUsername());
+        return user; 
     }
 
     /**
