@@ -40,8 +40,8 @@ public class JobPost implements IJobPost, Serializable{
     }
     
 //    public JobPost(ResultSet set) throws SQLException{
-//        this.id = set.getInt("Id");
-//        this.title = set.getString("Title");
+//        this.id = set.getInt("id");
+//        this.title = set.getString("title");
 //        this.description = set.getString("description");
 //            
 //    }
