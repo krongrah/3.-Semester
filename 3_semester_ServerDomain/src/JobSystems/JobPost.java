@@ -17,8 +17,6 @@ class JobPost implements IJobPost {
     private String title;
     private String description;
     private List<IUser> applicants;
-    private Company company;
-    private static JobsManager jobmanager;
     private String companyName;
     private String companyWebsite;
     
@@ -44,7 +42,6 @@ class JobPost implements IJobPost {
         while(set.next()){
             applicants.add(new Applicant(set));
         }
-            
     }
     
     @Override
@@ -52,11 +49,6 @@ class JobPost implements IJobPost {
         this.company = new Company(set);
     }
     
-    private IUser getCompanyUser(ResultSet set) throws SQLException{
-        return jobmanager.getInstance().getCompanyUser(id); 
-    }
-    
-
     @Override
     public void addApplicant(IUser applicant){
         applicants.add(applicant);
@@ -68,17 +60,14 @@ class JobPost implements IJobPost {
         return id;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public String getDescription() {
         return description;
-    }
-
-    public List<IUser> getApplicants() {
-        return applicants;
-        
     }
 
     @Override

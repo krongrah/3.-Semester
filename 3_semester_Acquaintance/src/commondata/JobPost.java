@@ -9,6 +9,7 @@ import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -16,15 +17,63 @@ import java.sql.SQLException;
  */
 public class JobPost implements IJobPost{
 
+    private int id;
+    private String title;
+    private String description;
+    private List<IUser> applicants;
+    private String companyName;
+    private String companyWebsite;
+    
+
+    public JobPost(int id, String title, String description, List<IUser> applicants) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.applicants = applicants;
+    }
+    
+    public JobPost(ResultSet set) throws SQLException{
+        this.id = set.getInt("Id");
+        this.title = set.getString("Title");
+        this.description = set.getString("description");
+            
+    }
+    
+    public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.applicants = applicants;
+        this.companyName = companyName;
+        this.companyWebsite = companyWebsite;
+        this.applicants = applicants;
+    }
+
+
+    
+ 
     @Override
-    public void addApplicant(IUser applicant) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addApplicant(IUser applicant){
+        applicants.add(applicant);
+
+    }
+  
+    @Override
+    public int getId() {
+        return id;
     }
 
     @Override
-    public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getTitle() {
+        return title;
     }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    
 
     @Override
     public void setApplicants(ResultSet set) throws SQLException {
@@ -33,29 +82,18 @@ public class JobPost implements IJobPost{
 
     @Override
     public void setCompany(ResultSet set) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+               throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-    @Override
-    public String getTitle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String getCompanyName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return companyName;
     }
 
     @Override
     public String getCompanyWebsite() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return companyWebsite;
     }
-    
-    
     
 }

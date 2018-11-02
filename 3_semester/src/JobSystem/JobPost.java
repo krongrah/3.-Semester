@@ -41,30 +41,28 @@ public class JobPost implements IJobPost {
 
     
  
+    @Override
     public void addApplicant(IUser applicant){
         applicants.add(applicant);
 
     }
   
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
-    public List<IUser> getApplicants() {
-        return applicants;
-
     
-
-
-    }
 
     @Override
     public void setApplicants(ResultSet set) throws SQLException {
