@@ -74,6 +74,7 @@ public class User implements IUser, Serializable {
         this.region = region;
         this.userId = userId;
         this.username = username;
+        
     }
 
     public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
