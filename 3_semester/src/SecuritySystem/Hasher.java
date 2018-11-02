@@ -17,6 +17,10 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Hasher implements IHasher{
 
+//    public static void main(String[] args) throws NoSuchAlgorithmException {
+//        System.out.println(hash("password"));
+//    }
+    
     /**
      * Hashes the value from a string to a byte array, then calls bytesToHex()
      *
