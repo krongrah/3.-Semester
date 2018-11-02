@@ -117,16 +117,17 @@ public class ServerDomainFacade implements IServerDomain {
     
     @Override
     public List<IJobPost> getAllJobs() {
-   /*    while(persistence.getAllJobs().next()){
+        /*
+      while(persistence.getAllJobs().next()){
            int i = persistence.getAllJobs().getInt("id");
-           string 
-           string
+           string s1 = persistence.getAllJobs().getString("title")
+           string s2 = persistence.getAllJobs().getString("description");
         
                    
            
            
-       }
-*/ return null;
+       }*/ return null;
+
     }
 
 
