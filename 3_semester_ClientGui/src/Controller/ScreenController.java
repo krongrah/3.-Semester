@@ -90,6 +90,7 @@ public class ScreenController implements Initializable, IController<ScreenContro
         if(domain.getActiveUser() != null){
             singInButton.setDisable(true);
             singInButton.setText(domain.getActiveUser().getUsername());
+            singInButton.setOpacity(1);
         }
     }
 
