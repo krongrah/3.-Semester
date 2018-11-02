@@ -5,6 +5,7 @@
  */
 package UserSystem;
 
+import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -30,6 +31,7 @@ public class Applicant extends User {
     /**
      * Applicant constructor method
      *
+     * @param set
      * @param name : String
      * @param personalityTest : Boolean
      * @param experience : Integer
@@ -41,14 +43,15 @@ public class Applicant extends User {
      * @param country : String
      * @param region : String
      * @param id
+     * @throws java.sql.SQLException
      */
-    public Applicant(int id,String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(email, phonenr, address, zipcode, city, country, region,id);
-        this.name = name;
-        this.personalityTest = personalityTest;
-        this.experience = experience;
-        
-    }
+//    public Applicant(int id,String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+//        super(email, phonenr, address, zipcode, city, country, region,id);
+//        this.name = name;
+//        this.personalityTest = personalityTest;
+//        this.experience = experience;
+//        
+//    }
     
     public Applicant(ResultSet set) throws SQLException{
         super(set);

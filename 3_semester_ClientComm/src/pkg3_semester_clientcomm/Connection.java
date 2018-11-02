@@ -68,7 +68,7 @@ public class Connection {
             return null;
         }
     }
-    public int[] calculateScore(IUser user, IQuestionSet set){
+    public List<Integer> calculateScore(IUser user, IQuestionSet set){
         try {
             return icomm.calculateScore(user, set);
         } catch (RemoteException ex) {
@@ -88,6 +88,14 @@ public class Connection {
     public void applyForJob(IUser user, IJobPost job){
         try {
             icomm.applyForJob(user, job);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet){
+        try {
+            icomm.applyForJob(user, job, questionSet);
         } catch (RemoteException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,6 +5,8 @@
  */
 package UserSystem;
 
+import commondata.User;
+
 /**
  *
  * @author Sebas
@@ -32,6 +34,8 @@ public class Applicant extends User {
     /**
      * Applicant constructor method
      *
+     * @param username
+     * @param userId
      * @param name : String
      * @param personalityTest : Boolean
      * @param gender
@@ -44,8 +48,8 @@ public class Applicant extends User {
      * @param country : String
      * @param region : String
      */
-    public Applicant(String name, Boolean personalityTest, String gender, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(false, email, phonenr, address, zipcode, city, country, region);
+    public Applicant(String username, int userId, String name, Boolean personalityTest, String gender, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        super(username, userId, false, email, phonenr, address, zipcode, city, country, region);
         this.name = name;
         this.personalityTest = personalityTest;
         this.gender = gender;

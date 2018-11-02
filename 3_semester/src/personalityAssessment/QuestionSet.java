@@ -46,6 +46,11 @@ public class QuestionSet implements IQuestionSet, Serializable {
         return null;
     }
 
+    @Override
+    public IQuestion getQuestion(int i) {
+        return questions.get(i);
+    }
+
     
 
 }

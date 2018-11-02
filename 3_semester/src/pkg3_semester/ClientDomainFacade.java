@@ -9,14 +9,17 @@ import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IJobPost;
+import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
+import UserSystem.Applicant;
 import UserSystem.UserManager;
 import java.util.List;
 
 /**
- * Communication between the other 2 layers, which are the GUI and the ClientComm
+ * Communication between the other 2 layers, which are the GUI and the
+ * ClientComm
  *
  */
 public class ClientDomainFacade implements IClientDomain {
@@ -25,11 +28,11 @@ public class ClientDomainFacade implements IClientDomain {
     private IUserManager userManager;
     private IClientSecurity security;
 
-    
-    public ClientDomainFacade(){
-    userManager = new UserManager(security, comm);
-    security = new SecuritySystemFacade();
+    public ClientDomainFacade() {
+        userManager = new UserManager(security, comm);
+        security = new SecuritySystemFacade();
     }
+
     /**
      * Injects an instance of the Client Communication facade
      *
@@ -68,6 +71,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     /**
      * Gets the active user in the system
+     *
      * @return a IUser object
      */
     @Override
@@ -75,8 +79,12 @@ public class ClientDomainFacade implements IClientDomain {
         return userManager.getActiveUser();
     }
 
+    private Applicant getActiveApplicant(){
+        return (Applicant) userManager.getActiveUser();
+    }
     /**
      * Gets a boolean value of whether a user is logged in already
+     *
      * @return true if a user is logged in, false if not.
      */
     @Override
@@ -86,8 +94,46 @@ public class ClientDomainFacade implements IClientDomain {
 
     @Override
     public List<IJobPost> getAllJobs() {
-       return comm.getAllJobs();
+        return comm.getAllJobs();
     }
+
+    @Override
+    public IQuestionSet getAllQuestions() {
+        return comm.getQuestionSet();
+    }
+
+    @Override
+    public void setExperience(int exp) {
+        getActiveApplicant().setExperience(exp);
+    }
+
+    @Override
+    public List<Integer> calculateScore(IUser user, IQuestionSet set) {
+        return comm.calculateScore(user, set);
+    }
+
+    /**
+     * Used for the first application of a job. This is because, a user is required to fill a personality assessment the fist time, not any other times
+     * @param user
+     * @param job
+     * @param set 
+     */
+    @Override
+    public void saveApplication(IUser user, IJobPost job, IQuestionSet set) {
+        comm.applyForJob(user, job, set);
+    }
+
+    /**
+     * Used for any applications after the first one
+     * @param user
+     * @param job 
+     */
+    @Override
+    public void saveApplication(IUser user, IJobPost job) {
+        comm.applyForJob(user, job);
+    }
+
+    
     
 
 }
