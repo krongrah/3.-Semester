@@ -30,7 +30,7 @@ import javafx.stage.Screen;
 public class HomeController implements Initializable {
 
     private IClientGui gui;
-    
+
     @FXML
     private ImageView HomeBackgroundImage;
     @FXML
@@ -51,8 +51,7 @@ public class HomeController implements Initializable {
     private Button signInButton;
     @FXML
     private AnchorPane popupWindow;
-    
-    
+
     private IClientDomain clientDomain;
 
     /**
@@ -64,7 +63,7 @@ public class HomeController implements Initializable {
 
         gui = gui.getInstance();
         clientDomain = GuiFacade.getDomain();
-        
+
         LoginScreen.setVisible(false);
         SignUpScreen.setVisible(false);
 
@@ -78,17 +77,28 @@ public class HomeController implements Initializable {
 
         HomeBackgroundImage.setFitWidth(Screen.getPrimary().getVisualBounds().getWidth());
         HomeBackgroundImage.setFitHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
+        
+        
+        
+        System.out.println("Was maybe logged in");
+        if (clientDomain.isLoggedIn()) {
+            System.out.println("Was logged in");
+            //If a user already is logged in
+            signInButton.setDisable(true);
+            signInButton.setText(clientDomain.getActiveUser().getUsername());
+        }
+        
+        
+        
         Thread bckgswitcher = new Thread(new BackgroundImageThread(images, HomeBackgroundImage, lines));
         bckgswitcher.start();
 
         bckgswitcher.setDaemon(true);
-        
-        updateSignInButton();
+
     }
-    
-    public void updateSignInButton(){
-        if(clientDomain.isLoggedIn()){
+
+    public void updateSignInButton() {
+        if (clientDomain.isLoggedIn()) {
             //If a user already is logged in
             signInButton.setDisable(true);
             signInButton.setText(clientDomain.getActiveUser().getUsername());
@@ -98,12 +108,18 @@ public class HomeController implements Initializable {
     @FXML
     private void openSignIn(ActionEvent event) {
         LoginScreen.setVisible(true);
+        System.out.println("Signed in");
+
+        if (clientDomain.getActiveUser() != null) {
+            signInButton.setText(clientDomain.getActiveUser().getUsername());
+            signInButton.setDisable(true);
+        }
     }
 
     private void signIn(ActionEvent event) {
         LoginScreen.setVisible(false);
-        
-        if(clientDomain.getActiveUser() != null){
+
+        if (clientDomain.getActiveUser() != null) {
             signInButton.setText(clientDomain.getActiveUser().getUsername());
             signInButton.setDisable(true);
         }
@@ -129,10 +145,6 @@ public class HomeController implements Initializable {
     @FXML
     private void openSignUpScreen(ActionEvent event) {
         SignUpScreen.setVisible(true);
-    }
-
-    @FXML
-    private void moved(MouseEvent event) {
     }
 
 }

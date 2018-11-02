@@ -6,6 +6,8 @@
 package Controller;
 
 import Common.IController;
+import GUI.GuiFacade;
+import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IJobPost;
 import java.io.IOException;
 import java.net.URL;
@@ -45,9 +47,6 @@ public class ScreenController implements Initializable, IController<ScreenContro
     @FXML
     private AnchorPane popupWindow;
 
-    /**
-     * Reference to main controller
-     */
     private ScreenController mainController;
 
     private ArrayList<Image> images = new ArrayList();
@@ -56,6 +55,8 @@ public class ScreenController implements Initializable, IController<ScreenContro
     private IJobPost applyingForJob;
     @FXML
     private AnchorPane testWindow;
+    
+    private IClientDomain domain;
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -70,13 +71,14 @@ public class ScreenController implements Initializable, IController<ScreenContro
         //HomeBackgroundImage.setFitWidth(Screen.getPrimary().getVisualBounds().getWidth());
         //HomeBackgroundImage.setFitHeight(Screen.getPrimary().getVisualBounds().getHeight());
         Thread bckgswitcher = new Thread(new BackgroundImageThread(images, HomeBackgroundImage, lines));
+        bckgswitcher.setDaemon(true);
         bckgswitcher.start();
-        bckgswitcher.isDaemon();
 
         loadController("FXML/HomeDesc.fxml");
 
         popupWindow.setVisible(false);
         testWindow.setVisible(false);
+        domain = GuiFacade.getDomain();
     }
 
     /**
@@ -196,7 +198,8 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
     private void signIn(ActionEvent event) {
         unloadPopupController();
-        loadController("FXML/HomeController.fxml");
+        System.out.println("Loaded");
+        loadController("FXML/MainScreen.fxml");
     }
 
     private void cancelLogin(ActionEvent event) {
