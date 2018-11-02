@@ -35,9 +35,9 @@ public class UserManager implements IUserManager {
             System.out.println(hashedPwd);
             setActiveUser(comm.login(username, hashedPwd));
             if (getActiveUser() == null) {
-                return false;
-            } else {
                 return true;
+            } else {
+                return false;
             }
         } else {
             return false;
