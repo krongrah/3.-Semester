@@ -32,12 +32,12 @@ public class JobPost implements IJobPost{
         this.applicants = applicants;
     }
     
-    public JobPost(ResultSet set) throws SQLException{
-        this.id = set.getInt("Id");
-        this.title = set.getString("Title");
-        this.description = set.getString("description");
-            
-    }
+//    public JobPost(ResultSet set) throws SQLException{
+//        this.id = set.getInt("Id");
+//        this.title = set.getString("Title");
+//        this.description = set.getString("description");
+//            
+//    }
     
     public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
         this.id = id;
@@ -71,19 +71,6 @@ public class JobPost implements IJobPost{
     @Override
     public String getDescription() {
         return description;
-    }
-
-    
-
-    @Override
-    public void setApplicants(ResultSet set) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setCompany(ResultSet set) throws SQLException {
-               throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
     }
 
     @Override

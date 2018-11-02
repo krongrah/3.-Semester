@@ -25,10 +25,4 @@ public interface IJobPost{
     
     public String getCompanyWebsite();
     
-    public void setApplicants(ResultSet set) throws SQLException;
-    
-    public void setCompany(ResultSet set) throws SQLException;
-    
-    
-    
 }
