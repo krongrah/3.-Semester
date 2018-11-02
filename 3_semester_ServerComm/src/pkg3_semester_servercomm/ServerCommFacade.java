@@ -11,8 +11,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * This Facade represents the ServerCommunication, and allows other subsystems
@@ -48,7 +46,7 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     }
 
     @Override
-    public IQuestionSet getQuestionSet() {
+    public IQuestionSet getQuestionSet() throws RemoteException  {
         return domain.getQuestionSet();
     }
 
@@ -63,12 +61,12 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     }
 
     @Override
-    public List<IJobPost> getJobAllPosts() {
+    public List<IJobPost> getJobAllPosts() throws RemoteException  {
        return domain.getAllJobs();
     }
 
     @Override
-    public void applyForJob(IUser user, IJobPost job) {
+    public void applyForJob(IUser user, IJobPost job) throws RemoteException  {
         domain.applyForJob(job, user);
     }
 
