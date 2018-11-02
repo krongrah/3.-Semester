@@ -9,6 +9,7 @@ import ProjectInterfaces.IComm;
 import ProjectInterfaces.IServerComm;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
+import ProjectInterfaces.IUser;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -42,6 +43,11 @@ public class Main {
             IServerPersistence persistence = new PersistenceFacade();
             comm.injectDomain(domain);
             domain.injectPersistence(persistence);
+            
+            /*IComm commit=(IComm) comm;
+            IUser i = commit.login("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
+            System.out.println(i.getCity());*/
+            
         } catch (RemoteException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
