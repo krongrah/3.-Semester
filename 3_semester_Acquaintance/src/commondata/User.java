@@ -44,9 +44,9 @@ public class User implements IUser, Serializable {
      * Region of residence
      */
     private String region;
-    
+
     private int userId;
-    
+
     private String username;
 
     /**
@@ -72,30 +72,32 @@ public class User implements IUser, Serializable {
         this.city = city;
         this.country = country;
         this.region = region;
-        this.userId=userId;
-        this.username=username;
-    }
-    
-        public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
-        username = user.getString("username");
-        userId = user.getInt("userid");
-        email = user.getString("email");
-        phonenr = user.getInt("phonenr");
-        address = user.getString("address");
-        zipcode = user.getString("zipcode");
-        city = user.getString("city");
-        country = user.getString("country");
-        region = user.getString("region");
-        userId = user.getInt("userid");
-        isCompany=user.getBoolean("isCompany");
-        
-        
+        this.userId = userId;
+        this.username = username;
     }
 
+    public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
+        while (user.next()) {
+            username = user.getString("username");
+            userId = user.getInt("userid");
+            email = user.getString("email");
+            phonenr = user.getInt("phonenr");
+            address = user.getString("address");
+            zipcode = user.getString("zipcode");
+            city = user.getString("city");
+            country = user.getString("country");
+            region = user.getString("region");
+            userId = user.getInt("userid");
+            isCompany = user.getBoolean("isCompany");
+
+        }
+
+    }
 
     /**
      * gets whether the user is a company
-     * @return 
+     *
+     * @return
      */
     @Override
     public boolean getIsCompany() {
@@ -172,16 +174,14 @@ public class User implements IUser, Serializable {
         return region;
     }
 
-
     @Override
     public int getUserId() {
-      return userId;
+        return userId;
     }
 
     @Override
     public String getUsername() {
-       return username;
+        return username;
     }
-
 
 }

@@ -64,7 +64,7 @@ public class LoginController implements Initializable, IController<ScreenControl
             requiredField.setVisible(true);
         } else {
             requiredField.setVisible(false);
-            if (domain.login(username.getText(), password.getText())) {
+            if (!domain.login(username.getText(), password.getText())) {
                 loginFailed.setVisible(false);
                 screenController.unloadPopupController();
             } else {

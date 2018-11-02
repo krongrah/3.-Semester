@@ -69,12 +69,13 @@ public class PersistenceFacade implements IServerPersistence {
 
         try {
             //ResultSet rs = pf.getQuestionSet();
-            ResultSet rs = pf.getUser("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
+            //ResultSet rs = pf.getUser("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
+            IUser u = pf.login("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
             
-            while(rs.next()) {
-                System.out.println(rs.getString(1) + " " + rs.getBoolean(2));
-        }
-        } catch (SQLException ex) {
+//            while(rs.next()) {
+//                System.out.println(rs.getString(1) + " " + rs.getBoolean(2));
+//        }
+        } catch (Exception ex) {
             System.out.println(ex);
         }
     }
