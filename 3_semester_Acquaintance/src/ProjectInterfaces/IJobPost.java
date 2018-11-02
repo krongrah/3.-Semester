@@ -16,6 +16,15 @@ public interface IJobPost{
     public void addApplicant(IUser applicant);
     
     public int getId();
+    
+    public String getTitle();
+    
+    public String getDescription();
+    
+    public String getCompanyName();
+    
+    public String getCompanyWebsite();
+    
     public void setApplicants(ResultSet set) throws SQLException;
     
     public void setCompany(ResultSet set) throws SQLException;

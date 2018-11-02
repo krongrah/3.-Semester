@@ -114,10 +114,20 @@ public class ServerDomainFacade implements IServerDomain {
     public int[] calculateScore(IUser user, IQuestionSet set) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public List<IJobPost> getAllJobs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*
+      while(persistence.getAllJobs().next()){
+           int i = persistence.getAllJobs().getInt("id");
+           string s1 = persistence.getAllJobs().getString("title")
+           string s2 = persistence.getAllJobs().getString("description");
+        
+                   
+           
+           
+       }*/ return null;
+
     }
 
 

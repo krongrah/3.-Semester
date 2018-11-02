@@ -19,21 +19,25 @@ class JobPost implements IJobPost {
     private List<IUser> applicants;
     private Company company;
     private static JobsManager jobmanager;
+    private String companyName;
+    private String companyWebsite;
     
 
-    public JobPost(int id, String title, String description, List<IUser> applicants) {
+    public JobPost(int id, String title, String description, List<IUser> applicants, String companyName, String companyWebsite) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.applicants = applicants;
+        this.companyName = companyName;
+        this.companyWebsite = companyWebsite;
     }
-    
+    /*
     public JobPost(ResultSet set) throws SQLException{
         this.id = set.getInt("Id");
         this.title = set.getString("Title");
         this.description = set.getString("description");
             
-    }
+    }*/
        
     @Override
     public void setApplicants(ResultSet set) throws SQLException{
@@ -75,5 +79,15 @@ class JobPost implements IJobPost {
     public List<IUser> getApplicants() {
         return applicants;
         
+    }
+
+    @Override
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    @Override
+    public String getCompanyWebsite() {
+        return companyWebsite;
     }
 }
