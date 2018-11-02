@@ -10,26 +10,60 @@ package ProjectInterfaces;
  * @author Sebas
  */
 public interface IUser {
-    /**
-     * When the user takes the personality test
-     */
-    public String getUsername();
     
     public int getUserId();
     
-    public void setEmail(String email);
+    public String getUsername();
+    
+public boolean getIsCompany();
 
-    public void setPhonenr(Integer phonenr);
+    /**
+     * Gets the email
+     *
+     * @return email address : String
+     */
+    public String getEmail();
 
-    public void setAddress(String address); 
+    /**
+     * Gets the phone number
+     *
+     * @return phonenumber : Integer
+     */
+    public Integer getPhonenr();
 
-    public void setZipcode(String zipcode); 
-            
-    public void setCity(String city); 
+    /**
+     * Gets the address of the user
+     *
+     * @return Address : String
+     */
+    public String getAddress();
+    /**
+     * Gets the zipcode of the user
+     *
+     * @return zipcode : String
+     */
+    public String getZipcode();
 
-    public void setCountry(String country);    
+    /**
+     * Gets the city of the user
+     *
+     * @return City : String
+     */
+    public String getCity();
 
-    public void setRegion(String region); 
+    /**
+     * Gets the country of the user
+     *
+     * @return country : String
+     */
+    public String getCountry();
+
+    /**
+     * Gets the region of the user
+     *
+     * @return region : String
+     */
+    public String getRegion();
         
     
 }
