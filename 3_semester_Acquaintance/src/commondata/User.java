@@ -77,7 +77,9 @@ public class User implements IUser, Serializable {
     }
     
         public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
-        email = user.getString("Email");
+        username = user.getString("username");
+        userId = user.getInt("userid");
+        email = user.getString("email");
         phonenr = user.getInt("phonenr");
         address = user.getString("address");
         zipcode = user.getString("zipcode");
@@ -85,7 +87,7 @@ public class User implements IUser, Serializable {
         country = user.getString("country");
         region = user.getString("region");
         userId = user.getInt("userid");
-        isCompany=user.getBoolean("IsCompany");
+        isCompany=user.getBoolean("isCompany");
         
         
     }
