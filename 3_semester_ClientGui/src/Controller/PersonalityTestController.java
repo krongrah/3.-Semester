@@ -6,6 +6,8 @@
 package Controller;
 
 import Common.IController;
+import GUI.GuiFacade;
+import ProjectInterfaces.IClientDomain;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -38,12 +40,14 @@ public class PersonalityTestController implements Initializable, IController<Scr
     @FXML
     private Label question;
 
+    private IClientDomain domain;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        domain = GuiFacade.
     }
 
     @FXML

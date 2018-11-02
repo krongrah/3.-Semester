@@ -40,7 +40,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <ProgressBar id="progressBar" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="35.0" prefHeight="35.0" progress="0.44" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <ProgressBar id="progressBar" fx:id="progress" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="35.0" prefHeight="35.0" progress="0.44" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
                         <Group GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <children>
                               <RadioButton id="LargestTestRadioD" fx:id="disagree_large" alignment="CENTER_RIGHT" mnemonicParsing="false" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css">
