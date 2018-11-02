@@ -5,6 +5,7 @@
  */
 package ProjectInterfaces;
 
+import commondata.JobPost;
 import java.util.List;
 
 /**
@@ -34,5 +35,5 @@ public interface IClientGui {
      */
     public void start(String[] args);
     
-    public List<IJobPost> getAllJobs();
+    public List<JobPost> getAllJobs();
 }
