@@ -92,7 +92,9 @@ public class User implements IUser {
 
     /**
      * gets whether the user is a company
+     * @return 
      */
+    @Override
     public boolean getIsCompany() {
         return isCompany;
     }
@@ -102,6 +104,7 @@ public class User implements IUser {
      *
      * @return email address : String
      */
+    @Override
     public String getEmail() {
         return email;
     }
@@ -111,6 +114,7 @@ public class User implements IUser {
      *
      * @return phonenumber : Integer
      */
+    @Override
     public Integer getPhonenr() {
         return phonenr;
     }
@@ -120,6 +124,7 @@ public class User implements IUser {
      *
      * @return Address : String
      */
+    @Override
     public String getAddress() {
         return address;
     }
@@ -129,6 +134,7 @@ public class User implements IUser {
      *
      * @return zipcode : String
      */
+    @Override
     public String getZipcode() {
         return zipcode;
     }
@@ -138,6 +144,7 @@ public class User implements IUser {
      *
      * @return City : String
      */
+    @Override
     public String getCity() {
         return city;
     }
@@ -147,6 +154,7 @@ public class User implements IUser {
      *
      * @return country : String
      */
+    @Override
     public String getCountry() {
         return country;
     }
@@ -156,6 +164,7 @@ public class User implements IUser {
      *
      * @return region : String
      */
+    @Override
     public String getRegion() {
         return region;
     }
