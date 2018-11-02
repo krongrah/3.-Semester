@@ -30,7 +30,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     public ClientDomainFacade() {
         security = new SecuritySystemFacade();
-        userManager = new UserManager(security, comm);
+        
     }
 
     /**
@@ -41,6 +41,7 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
+        userManager = new UserManager(security, comm);
     }
 
     @Override

@@ -8,8 +8,11 @@ package pkg3_semester_serverpersistence;
 import ProjectInterfaces.IQueryHandler;
 import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
+import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The facade of the server persistence
@@ -80,7 +83,14 @@ public class PersistenceFacade implements IServerPersistence {
 
     @Override
     public IUser login(String username, String hashedPwd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            IUser user=new User(handler.getUser(username, hashedPwd));
+            return user;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PersistenceFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }
