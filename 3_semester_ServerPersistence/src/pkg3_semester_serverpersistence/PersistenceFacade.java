@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 /**
  * The facade of the server persistence
+ *
  * @author Krongrah
  */
 public class PersistenceFacade implements IServerPersistence {
@@ -23,9 +24,9 @@ public class PersistenceFacade implements IServerPersistence {
     private String url = "jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk/si3_2018_group_5_db";
     private String user = "si3_2018_group_5";
     private String password = "taint76;perl";
-    
+
     private IQueryHandler handler = new QueryHandler(url, user, password);
-    
+
     @Override
     public ResultSet getUser(String username, String password) throws SQLException {
         return handler.getUser(username, password);
@@ -36,7 +37,6 @@ public class PersistenceFacade implements IServerPersistence {
         return handler.getQuestionSet();
     }
 
-    
     @Override
     public ResultSet getApplicants(int id) throws SQLException {
         return handler.getApplicants(id);
@@ -46,7 +46,6 @@ public class PersistenceFacade implements IServerPersistence {
     public ResultSet getAllJobs() throws SQLException {
         return handler.getAllJobs();
     }
-
 
     @Override
     public ResultSet getCompanyUser(int i) throws SQLException {
@@ -64,18 +63,16 @@ public class PersistenceFacade implements IServerPersistence {
         handler.applyForJob(jobPostId, applicantId);
     }
 
-   
-
     //Database tester
     public static void main(String[] args) {
         PersistenceFacade pf = new PersistenceFacade();
-        
+
         try {
             ResultSet rs = pf.getQuestionSet();
-            
-            while(rs.next()) {
+
+            while (rs.next()) {
                 System.out.println(rs.getInt(1) + " " + rs.getString(2));
-        }
+            }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -84,9 +81,9 @@ public class PersistenceFacade implements IServerPersistence {
     @Override
     public IUser login(String username, String hashedPwd) {
         try {
-            IUser user=new User(handler.getUser(username, hashedPwd));
+            IUser user = new User(handler.getUser(username, hashedPwd));
             return user;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(PersistenceFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -94,5 +91,3 @@ public class PersistenceFacade implements IServerPersistence {
     }
 
 }
-
-    
