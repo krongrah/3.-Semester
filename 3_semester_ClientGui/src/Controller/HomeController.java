@@ -147,4 +147,8 @@ public class HomeController implements Initializable {
         SignUpScreen.setVisible(true);
     }
 
+    @FXML
+    private void moved(MouseEvent event) {
+    }
+
 }

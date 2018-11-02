@@ -137,7 +137,7 @@
                      <children>
                         <AnchorPane id="Menu_Containers" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnIndex="7">
                            <children>
-                              <Button layoutX="40.0" layoutY="25.0" mnemonicParsing="false" onAction="#openSignIn" style="-fx-background-color: transparent;" styleClass="TopMenuButton" text="Sign in" textFill="#212121">
+                              <Button id="signInButton" layoutX="40.0" layoutY="25.0" mnemonicParsing="false" onAction="#openSignIn" style="-fx-background-color: transparent;" styleClass="TopMenuButton" text="Sign in" textFill="#212121">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
