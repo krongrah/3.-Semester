@@ -26,12 +26,8 @@ public interface IServerDomain {
     
     public IQuestionSet getQuestionSet();
     
-    public IServerDomain getInstance();
-    
     public void applyForJob(IJobPost jobpost, IUser applicant);
     
-    public List<IUser> getApplicants(int id);
-
     public IUser login(String username, String hashedPwd);
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set);

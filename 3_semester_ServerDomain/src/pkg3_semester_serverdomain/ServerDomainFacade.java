@@ -12,7 +12,6 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
-import commondata.QuestionSet;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,16 +27,16 @@ import personalityAssessment.*;
  */
 public class ServerDomainFacade implements IServerDomain {
 
-    private ServerDomainFacade serverdomain;
+    //private ServerDomainFacade serverdomain;
     /**
      * The interface for the server persistence
      */
     private IServerPersistence persistence;
-    
+
     private PersonalityFacade personal;
-    
-    public ServerDomainFacade(){
-    personal=new PersonalityFacade();
+
+    public ServerDomainFacade() {
+        personal = new PersonalityFacade();
     }
 
     /**
@@ -70,7 +69,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IQuestionSet getQuestionSet() {
-        
+
         try {
             return personal.getQuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
@@ -90,11 +89,8 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public IServerDomain getInstance() {
-        if (this.serverdomain == null) {
-            serverdomain = new ServerDomainFacade();
-        }
-        return serverdomain;
+    public IUser login(String username, String hashedPwd) {
+        return persistence.login(username, hashedPwd);
     }
 
     @Override
@@ -104,24 +100,18 @@ public class ServerDomainFacade implements IServerDomain {
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 
     @Override
-    public List<IUser> getApplicants(int id) {
-        return null;
-        
-     }
+    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
 
-    @Override
-    public IUser login(String username, String hashedPwd) {
-        return persistence.login(username, hashedPwd);
     }
 
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public List<IJobPost> getAllJobs() {
         /*
@@ -136,12 +126,5 @@ public class ServerDomainFacade implements IServerDomain {
        }*/ return null;
 
     }
-
-    @Override
-    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
-        
-    }
-
-
 
 }
