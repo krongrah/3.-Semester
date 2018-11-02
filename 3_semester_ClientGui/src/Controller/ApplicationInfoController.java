@@ -25,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
 public class ApplicationInfoController implements Initializable, IController<ScreenController> {
 
     private ScreenController screenController;
-    
+
     private IClientDomain domain;
 
     @FXML
@@ -34,6 +34,8 @@ public class ApplicationInfoController implements Initializable, IController<Scr
     private Label applicationDesc;
     @FXML
     private TextField experience;
+    @FXML
+    private Label requiredField;
 
     /**
      * Initializes the controller class.
@@ -41,10 +43,12 @@ public class ApplicationInfoController implements Initializable, IController<Scr
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
         applicationDesc.setText("The application is predicated on a personality assessment, which is based on the Big Five. This means that... ");
-        
+
         domain = GuiFacade.getDomain();
+        
+        requiredField.setVisible(false);
     }
 
     @FXML
@@ -54,8 +58,13 @@ public class ApplicationInfoController implements Initializable, IController<Scr
 
     @FXML
     private void proceed(ActionEvent event) {
-        domain.setExperience(Integer.valueOf(experience.getText()));
-        this.screenController.openPersonalityTest();
+        if (!experience.getText().isEmpty()) {
+            requiredField.setVisible(false);
+            domain.setExperience(Integer.valueOf(experience.getText()));
+            this.screenController.openPersonalityTest();
+        }else{
+            requiredField.setVisible(true); 
+        }
     }
 
     @Override
