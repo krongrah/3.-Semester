@@ -50,7 +50,6 @@ public class LoginController implements Initializable, IController<ScreenControl
     public void initialize(URL url, ResourceBundle rb) {
 
         gui = gui.getInstance();
-        GuiFacade.getDomain().connectToServer();
         
         domain = GuiFacade.getDomain();
 
@@ -67,6 +66,7 @@ public class LoginController implements Initializable, IController<ScreenControl
             if (!domain.login(username.getText(), password.getText())) {
                 loginFailed.setVisible(false);
                 screenController.unloadPopupController();
+                screenController.updateSigInButton();
             } else {
                 loginFailed.setVisible(true);
             }

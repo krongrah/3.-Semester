@@ -73,6 +73,24 @@ public class JobsController implements Initializable, IController<ScreenControll
         domain = GuiFacade.getDomain();
         jobs = domain.getAllJobs();
 
+        
+        if(domain.getActiveUser() == null){
+            DCWButton.setText("Log in to apply!");
+            ULButton.setText("Log in to apply!");
+            TMButton.setText("Log in to apply!");
+            SEButton.setText("Log in to apply!");
+            DoctorButton.setText("Log in to apply!");
+            
+            
+            DCWButton.setDisable(true);
+            ULButton.setDisable(true);
+            TMButton.setDisable(true);
+            SEButton.setDisable(true);
+            DoctorButton.setDisable(true);
+        }
+        
+        
+        
         dcwJob_Title.setText(jobs.get(1).getTitle() + " by " + jobs.get(1).getCompanyName());
         dcwJob_Desc.setText(jobs.get(1).getDescription() + " for more, visit: " + jobs.get(1).getCompanyWebsite());
         
