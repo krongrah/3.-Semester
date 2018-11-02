@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -57,6 +58,8 @@ public class ScreenController implements Initializable, IController<ScreenContro
     private AnchorPane testWindow;
     
     private IClientDomain domain;
+    @FXML
+    private Button singInButton;
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -80,6 +83,14 @@ public class ScreenController implements Initializable, IController<ScreenContro
         testWindow.setVisible(false);
         domain = GuiFacade.getDomain();
         domain.connectToServer();
+    }
+    
+    
+    public void updateSigInButton(){
+        if(domain.getActiveUser() != null){
+            singInButton.setDisable(true);
+            singInButton.setText(domain.getActiveUser().getUsername());
+        }
     }
 
     /**
