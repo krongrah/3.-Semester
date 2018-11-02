@@ -107,11 +107,11 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IUser login(String username, String hashedPwd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.login(username, hashedPwd);
     }
 
     @Override
-    public int[] calculateScore(IUser user, IQuestionSet set) {
+    public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -128,6 +128,11 @@ public class ServerDomainFacade implements IServerDomain {
            
        }*/ return null;
 
+    }
+
+    @Override
+    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
+        
     }
 
 

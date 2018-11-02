@@ -29,5 +29,10 @@ public class QuestionSet implements IQuestionSet{
     public List<Integer> getAnswers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public IQuestion getQuestion(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
