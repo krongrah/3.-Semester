@@ -9,6 +9,7 @@ import ProjectInterfaces.IComm;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
+import commondata.JobPost;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -78,7 +79,7 @@ public class Connection {
             return null;
         }
     }
-    public List<IJobPost> getJobAllPosts(){
+    public List<JobPost> getJobAllPosts(){
         try {
             return icomm.getJobAllPosts();
         } catch (RemoteException ex) {

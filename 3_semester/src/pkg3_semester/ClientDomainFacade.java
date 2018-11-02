@@ -15,6 +15,7 @@ import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
 import UserSystem.Applicant;
 import UserSystem.UserManager;
+import commondata.JobPost;
 import java.util.List;
 
 /**
@@ -96,7 +97,7 @@ public class ClientDomainFacade implements IClientDomain {
     }
 
     @Override
-    public List<IJobPost> getAllJobs() {
+    public List<JobPost> getAllJobs() {
         return comm.getAllJobs();
     }
 

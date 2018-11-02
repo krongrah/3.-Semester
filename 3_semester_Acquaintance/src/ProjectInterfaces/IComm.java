@@ -5,6 +5,7 @@
  */
 package ProjectInterfaces;
 
+import commondata.JobPost;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -22,7 +23,7 @@ public interface IComm extends Remote {
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set) throws RemoteException;
 
-    public List<IJobPost> getJobAllPosts() throws RemoteException;
+    public List<JobPost> getJobAllPosts() throws RemoteException;
 
     public void applyForJob(IUser user, IJobPost job) throws RemoteException;
 

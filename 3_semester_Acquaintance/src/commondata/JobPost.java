@@ -32,6 +32,12 @@ public class JobPost implements IJobPost{
         this.applicants = applicants;
     }
     
+    public JobPost(int id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+    
 //    public JobPost(ResultSet set) throws SQLException{
 //        this.id = set.getInt("Id");
 //        this.title = set.getString("Title");

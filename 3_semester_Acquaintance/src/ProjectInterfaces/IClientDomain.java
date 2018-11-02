@@ -5,6 +5,7 @@
  */
 package ProjectInterfaces;
 
+import commondata.JobPost;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public interface IClientDomain {
      */
     public void logout();
 
-    public List<IJobPost> getAllJobs();
+    public List<JobPost> getAllJobs();
 
     public boolean connectToServer();
 

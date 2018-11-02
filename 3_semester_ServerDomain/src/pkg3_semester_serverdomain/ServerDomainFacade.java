@@ -12,10 +12,12 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
+import commondata.JobPost;
 import commondata.QuestionSet;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -124,17 +126,18 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public List<IJobPost> getAllJobs() {
-        /*
-      while(persistence.getAllJobs().next()){
-           int i = persistence.getAllJobs().getInt("id");
-           string s1 = persistence.getAllJobs().getString("title")
-           string s2 = persistence.getAllJobs().getString("description");
-        
-                   
-           
-           
-       }*/ return null;
+    public List<JobPost> getAllJobs() {
+        List<JobPost> jobs = new ArrayList();
+        try {
+            ResultSet rs = persistence.getAllJobs();
+            while (rs.next()) {
+                jobs.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description")));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return jobs;
 
     }
 

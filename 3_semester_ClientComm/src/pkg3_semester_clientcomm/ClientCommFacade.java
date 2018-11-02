@@ -9,6 +9,7 @@ import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
+import commondata.JobPost;
 import commondata.User;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class ClientCommFacade implements IClientComm {
     }
 
     @Override
-    public List<IJobPost> getAllJobs() {
+    public List<JobPost> getAllJobs() {
        return connection.getJobAllPosts();
     }
 
@@ -62,11 +63,6 @@ public class ClientCommFacade implements IClientComm {
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
        return connection.calculateScore(user, set);
-    }
-
-    @Override
-    public List<IJobPost> getJobAllPosts() {
-      return connection.getJobAllPosts();
     }
 
     @Override
