@@ -12,7 +12,6 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
-import commondata.QuestionSet;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,7 +27,7 @@ import personalityAssessment.*;
  */
 public class ServerDomainFacade implements IServerDomain {
 
-    private ServerDomainFacade serverdomain;
+    //private ServerDomainFacade serverdomain;
     /**
      * The interface for the server persistence
      */
@@ -91,11 +90,8 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public IServerDomain getInstance() {
-        if (this.serverdomain == null) {
-            serverdomain = new ServerDomainFacade();
-        }
-        return serverdomain;
+    public IUser login(String username, String hashedPwd) {
+        return persistence.login(username, hashedPwd);
     }
 
     @Override
@@ -108,19 +104,21 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public List<IUser> getApplicants(int id) {
-        return null;
-
-    }
-
-    @Override
-    public IUser login(String username, String hashedPwd) {
-        return persistence.login(username, hashedPwd);
+    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
+        try {
+            //todo save personality answers in persistence
+            persistence.applyForJob(job.getId(), user.getUserId());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //todo, has yet to be implemented, and is not yet necessary;
+        //int[] i = personal.calculateScore(u);
+        return null;
+        
     }
 
     @Override
@@ -135,11 +133,6 @@ public class ServerDomainFacade implements IServerDomain {
            
            
        }*/ return null;
-
-    }
-
-    @Override
-    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
 
     }
 

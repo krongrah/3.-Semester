@@ -64,7 +64,7 @@ public class QueryHandler implements IQueryHandler {
         Connection con = connect();
         PreparedStatement statement;
         
-        statement = con.prepareStatement("SELECT Users.Username, Users.UserId, companyinfo.companyname, companyinfo.website, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region FROM Users, companyinfo WHERE IsCompany = TRUE AND Users.UserId = ?;");
+        statement = con.prepareStatement("SELECT Users.Username, Users.UserId, companyinfo.companyname, companyinfo.website, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region FROM Users, companyinfo WHERE IsCompany = TRUE AND Users.Username = companyinfo.username AND Users.UserId = ?;");
         statement.setInt(1, id);
         return statement.executeQuery();
     }

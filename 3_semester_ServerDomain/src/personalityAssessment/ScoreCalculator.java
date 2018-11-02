@@ -13,12 +13,6 @@ import ProjectInterfaces.IQuestionSet;
  */
 public class ScoreCalculator {
 
-    private PersonalityFacade pf;
-
-    public ScoreCalculator(PersonalityFacade pf) {
-        this.pf = pf;
-    }
-
     public int[] calculateScore(IQuestionSet iqs) {
         int[] score = new int[5];
         int aTotal = 0, bTotal = 0, cTotal = 0, dTotal = 0, eTotal = 0, fTotal = 0, gTotal = 0, hTotal = 0, iTotal = 0, jTotal = 0;
