@@ -30,7 +30,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     public ClientDomainFacade() {
         security = new SecuritySystemFacade();
-        
+
     }
 
     /**
@@ -97,6 +97,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     @Override
     public List<IJobPost> getAllJobs() {
+        comm.connectToServer();
         return comm.getAllJobs();
     }
 

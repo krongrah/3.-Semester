@@ -12,9 +12,11 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
+import commondata.JobPost;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -118,21 +120,6 @@ public class ServerDomainFacade implements IServerDomain {
         //todo, has yet to be implemented, and is not yet necessary;
         //int[] i = personal.calculateScore(u);
         return null;
-        
-    }
-
-    @Override
-    public List<IJobPost> getAllJobs() {
-        /*
-      while(persistence.getAllJobs().next()){
-           int i = persistence.getAllJobs().getInt("id");
-           string s1 = persistence.getAllJobs().getString("title")
-           string s2 = persistence.getAllJobs().getString("description");
-        
-                   
-           
-           
-       }*/ return null;
 
     }
 
