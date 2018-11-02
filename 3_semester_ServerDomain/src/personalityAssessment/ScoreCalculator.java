@@ -26,7 +26,7 @@ public class ScoreCalculator {
         for (int i = 0; i < 50; i++) {
             int scorePoint = getPoint(iqs, i);
 
-            switch (iqs.getAnswers().get(i)) {
+            switch (iqs.getQuestion(i).getQuestionAnswer()) {
                 case 1:
                     aTotal += scorePoint;
                 case 2:
@@ -56,7 +56,7 @@ public class ScoreCalculator {
     public int getPoint(IQuestionSet iqs, int i) {
         int scorePoint = 0;
         if (iqs.getQuestionSet().get(i).getQuestionDirection() == false) {
-            switch (iqs.getAnswers().get(i)) {
+            switch (iqs.getQuestion(i).getQuestionAnswer()) {
                 case 1:
                     scorePoint += 5;
                 case 2:
@@ -69,7 +69,7 @@ public class ScoreCalculator {
                     scorePoint += 1;
             }
         } else {
-            switch (iqs.getAnswers().get(i)) {
+            switch (iqs.getQuestion(i).getQuestionAnswer()) {
                 case 1:
                     scorePoint += 1;
                 case 2:

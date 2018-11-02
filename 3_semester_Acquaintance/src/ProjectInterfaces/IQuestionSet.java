@@ -18,7 +18,5 @@ public interface IQuestionSet extends Serializable{
     
     public void addToList(IQuestion q);
 
-    public List<Integer> getAnswers();
-    
     public IQuestion getQuestion(int i);
 }
