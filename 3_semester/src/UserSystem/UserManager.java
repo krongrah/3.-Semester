@@ -22,16 +22,15 @@ public class UserManager implements IUserManager {
     private IUser activeUser;
     private IClientSecurity security;
     private IClientComm comm;
-    
-    public UserManager(IClientSecurity security, IClientComm comm){
-    this.comm=comm;
-    this.security=security;
+
+    public UserManager(IClientSecurity security, IClientComm comm) {
+        this.comm = comm;
+        this.security = security;
     }
-    
 
     @Override
-    public boolean login(String username, String password){
-    if (!hasActiveUser()) {
+    public boolean login(String username, String password) {
+        if (!hasActiveUser()) {
             String hashedPwd = security.Hash(password);
             setActiveUser(comm.login(username, hashedPwd));
             if (getActiveUser() == null) {
@@ -39,11 +38,11 @@ public class UserManager implements IUserManager {
             } else {
                 return true;
             }
-        }else{
+        } else {
             return false;
         }
     }
-    
+
     /**
      * Logs out the user in the system
      */
@@ -65,8 +64,6 @@ public class UserManager implements IUserManager {
     public IUser getActiveUser() {
         return this.activeUser;
     }
-    
-    
 
     @Override
     public boolean hasActiveUser() {

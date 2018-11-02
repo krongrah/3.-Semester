@@ -26,7 +26,8 @@ public class ClientCommFacade implements IClientComm {
      */
     @Override
     public IUser login(String username, String hashedPwd) {
-        return null;
+        connectToServer();
+        return connection.login(username, hashedPwd);
     }
 
     /**

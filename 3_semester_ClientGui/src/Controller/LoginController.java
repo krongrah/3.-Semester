@@ -7,6 +7,7 @@ package Controller;
 
 import Common.IController;
 import GUI.GuiFacade;
+import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,9 +27,12 @@ import javafx.scene.layout.AnchorPane;
 public class LoginController implements Initializable, IController<ScreenController> {
 
     private IClientGui gui = new GuiFacade();
+    
+    private IClientDomain domain;
 
     @FXML
     private AnchorPane LoginScreen;
+    
     private ScreenController screenController;
     @FXML
     private TextField username;
@@ -47,6 +51,8 @@ public class LoginController implements Initializable, IController<ScreenControl
 
         gui = gui.getInstance();
         GuiFacade.getDomain().connectToServer();
+        
+        domain = GuiFacade.getDomain();
 
         requiredField.setVisible(false);
         loginFailed.setVisible(false);
@@ -58,7 +64,7 @@ public class LoginController implements Initializable, IController<ScreenControl
             requiredField.setVisible(true);
         } else {
             requiredField.setVisible(false);
-            if (GuiFacade.getDomain().login(username.getText(), password.getText())) {
+            if (domain.login(username.getText(), password.getText())) {
                 loginFailed.setVisible(false);
                 screenController.unloadPopupController();
             } else {
