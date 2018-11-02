@@ -40,12 +40,14 @@ public class Applicant extends User {
      * @param city : String
      * @param country : String
      * @param region : String
+     * @param id
      */
-    public Applicant(String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(email, phonenr, address, zipcode, city, country, region);
+    public Applicant(int id,String name, Boolean personalityTest, int experience, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        super(email, phonenr, address, zipcode, city, country, region,id);
         this.name = name;
         this.personalityTest = personalityTest;
         this.experience = experience;
+        
     }
     
     public Applicant(ResultSet set) throws SQLException{
@@ -62,9 +64,6 @@ public class Applicant extends User {
         this.experience = experience;
     }
 
-    public void applyForJob() {
-        //todo
-    }
 
     /**
      * Gets the name of the applicant

@@ -5,12 +5,12 @@
  */
 package pkg3_semester_serverpersistence;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
 import ProjectInterfaces.IServerPersistence;
+import ProjectInterfaces.IUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * The facade of the server persistence
@@ -33,7 +33,37 @@ public class PersistenceFacade implements IServerPersistence {
     public ResultSet getQuestionSet() throws SQLException {
         return handler.getQuestionSet();
     }
+
     
+    @Override
+    public ResultSet getApplicants(int id) throws SQLException {
+        return handler.getApplicants(id);
+    }
+
+    @Override
+    public ResultSet getJobs() throws SQLException {
+        return handler.getJobs();
+    }
+
+
+    @Override
+    public ResultSet getCompanyUser(int i) throws SQLException {
+        return handler.getCompanyUser(i);
+    }
+
+    /**
+     *
+     * @param jobpost
+     * @param applicant
+     * @throws SQLException
+     */
+    @Override
+    public void applyForJob(int jobPostId, int applicantId) throws SQLException {
+        handler.applyForJob(jobPostId, applicantId);
+    }
+
+   
+
     //Database tester
     public static void main(String[] args) {
         PersistenceFacade pf = new PersistenceFacade();
@@ -48,4 +78,7 @@ public class PersistenceFacade implements IServerPersistence {
             System.out.println(ex);
         }
     }
+
 }
+
+    

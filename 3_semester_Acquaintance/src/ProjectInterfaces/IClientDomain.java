@@ -5,13 +5,14 @@
  */
 package ProjectInterfaces;
 
+import java.util.List;
+
 /**
  * The interface for the Client domain
  * @author Krongrah
  */
 public interface IClientDomain {
 
-    public IClientDomain getInstance();
     
     /**
      * Method for injecting Client communication
@@ -35,4 +36,8 @@ public interface IClientDomain {
      * Logs out the active user
      */
     public void logout();
+    
+    public List<IJobPost> getAllJobs();
+    public boolean connectToServer();
+
 }

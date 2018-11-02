@@ -6,7 +6,10 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IJobPost;
+import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
+import java.util.List;
 
 /**
  * is responsible for the communication between all client communication to the
@@ -41,5 +44,32 @@ public class ClientCommFacade implements IClientComm {
         connection = new Connection();
         return connection.Connect();
     }
+
+    @Override
+    public List<IJobPost> getAllJobs() {
+       return connection.getJobAllPosts();
+    }
+
+    @Override
+    public IQuestionSet getQuestionSet() {
+       return connection.getQuestionSet();
+    }
+
+    @Override
+    public int[] calculateScore(IUser user, IQuestionSet set) {
+       return connection.calculateScore(user, set);
+    }
+
+    @Override
+    public List<IJobPost> getJobAllPosts() {
+      return connection.getJobAllPosts();
+    }
+
+    @Override
+    public void applyForJob(IUser user, IJobPost job) {
+      connection.applyForJob(user, job);
+    }
+    
+    
 
 }

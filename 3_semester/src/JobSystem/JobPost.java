@@ -1,24 +1,27 @@
-
-package JobSystems;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package JobSystem;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
-import java.util.List;
-import UserSystem.Applicant;
 import UserSystem.Company;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-
-
-class JobPost implements IJobPost {
-
+/**
+ *
+ * @author Naik
+ */
+public class JobPost implements IJobPost {
     private int id;
     private String title;
     private String description;
     private List<IUser> applicants;
     private Company company;
-    private static JobsManager jobmanager;
     
 
     public JobPost(int id, String title, String description, List<IUser> applicants) {
@@ -34,32 +37,15 @@ class JobPost implements IJobPost {
         this.description = set.getString("description");
             
     }
-       
-    @Override
-    public void setApplicants(ResultSet set) throws SQLException{
-        while(set.next()){
-            applicants.add(new Applicant(set));
-        }
-            
-    }
-    
-    @Override
-    public void setCompany(ResultSet set) throws SQLException{
-        this.company = new Company(set);
-    }
-    
-    private IUser getCompanyUser(ResultSet set) throws SQLException{
-        return jobmanager.getInstance().getCompanyUser(id); 
-    }
-    
 
-    @Override
+
+    
+ 
     public void addApplicant(IUser applicant){
         applicants.add(applicant);
 
     }
   
-    @Override
     public int getId() {
         return id;
     }
@@ -74,6 +60,20 @@ class JobPost implements IJobPost {
 
     public List<IUser> getApplicants() {
         return applicants;
-        
+
+    
+
+
     }
+
+    @Override
+    public void setApplicants(ResultSet set) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setCompany(ResultSet set) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

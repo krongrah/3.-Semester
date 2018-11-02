@@ -8,23 +8,28 @@ package pkg3_semester;
 import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientSecurity;
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
 import UserSystem.UserManager;
+import java.util.List;
 
 /**
- * Communcation between the other 2 layers, which are the GUI and the ClientComm
+ * Communication between the other 2 layers, which are the GUI and the ClientComm
  *
  */
 public class ClientDomainFacade implements IClientDomain {
 
     private IClientComm comm;
-    private static IUserManager userManager = new UserManager();
-    private IClientSecurity security = new SecuritySystemFacade();
-    
-    private IClientDomain domain;
+    private IUserManager userManager;
+    private IClientSecurity security;
 
+    
+    public ClientDomainFacade(){
+    userManager = new UserManager(security, comm);
+    security = new SecuritySystemFacade();
+    }
     /**
      * Injects an instance of the Client Communication facade
      *
@@ -33,9 +38,9 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void injectClientComm(IClientComm comm) {
         this.comm = comm;
-        userManager = this.userManager.getInstance();
     }
 
+    @Override
     public boolean connectToServer() {
         return comm.connectToServer();
     }
@@ -50,17 +55,7 @@ public class ClientDomainFacade implements IClientDomain {
      */
     @Override
     public boolean login(String username, String password) {
-        if (!userManager.hasActiveUser()) {
-            String hashedPwd = security.Hash(password);
-            userManager.setActiveUser(comm.login(username, hashedPwd));
-            if (userManager.getActiveUser() == null) {
-                return false;
-            } else {
-                return true;
-            }
-        }else{
-            return false;
-        }
+        return userManager.login(username, password);
     }
 
     /**
@@ -90,12 +85,9 @@ public class ClientDomainFacade implements IClientDomain {
     }
 
     @Override
-    public IClientDomain getInstance() {
-        if(this.domain == null){
-            domain = new ClientDomainFacade();
-        }
-        return domain;
-            
+    public List<IJobPost> getAllJobs() {
+       return comm.getAllJobs();
     }
+    
 
 }

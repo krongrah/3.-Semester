@@ -5,13 +5,14 @@
  */
 package ProjectInterfaces;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author mikkellarsen
  */
-public interface IQuestionSet {
+public interface IQuestionSet extends Serializable{
     
     public List<IQuestion> getQuestionSet();
     

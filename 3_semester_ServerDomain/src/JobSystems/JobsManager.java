@@ -6,6 +6,8 @@
 package JobSystems;
 
 import UserSystem.Applicant;
+import ProjectInterfaces.IServerDomain;
+import ProjectInterfaces.IUser;
 
 /**
  *Communicates with the UserSystem package to make it possible for the user to
@@ -13,9 +15,19 @@ import UserSystem.Applicant;
  * @author Naik
  */
 public class JobsManager {
-    
-    
-    public void applyForJob(JobPost a,Applicant b){
+    private static JobsManager jobmanager;
+    private static IServerDomain serverdomain;
+
+    public JobsManager getInstance() {
+        if(jobmanager==null){
+            jobmanager = new JobsManager();
+            
+        }
+        return jobmanager;
     }
     
+
+ public IUser getCompanyUser(int i){
+        return serverdomain.getInstance().getCompanyUser(i);
+    }
 }

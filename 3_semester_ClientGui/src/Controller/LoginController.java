@@ -41,12 +41,13 @@ public class LoginController implements Initializable, IController<ScreenControl
     public void initialize(URL url, ResourceBundle rb) {
         
         gui = gui.getInstance();
+        GuiFacade.getDomain().connectToServer();
     }
 
     @FXML
     private void signIn(ActionEvent event) {
         screenController.unloadPopupController();
-        gui.getDomain().login(username.getText(), password.getText());
+        GuiFacade.getDomain().login(username.getText(), password.getText());
     }
 
     @FXML

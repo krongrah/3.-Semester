@@ -11,14 +11,12 @@ package ProjectInterfaces;
  */
 public interface IUserManager {
 
-    public IUserManager getInstance();
-    
     public void logout();
 
-    public void setActiveUser(IUser user);
-    
     public IUser getActiveUser();
     
     public boolean hasActiveUser();
+    
+    public boolean login(String username, String password);
 
 }

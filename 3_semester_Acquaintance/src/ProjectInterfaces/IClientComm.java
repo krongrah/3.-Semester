@@ -5,11 +5,16 @@
  */
 package ProjectInterfaces;
 
+import java.rmi.RemoteException;
+import java.util.List;
+
 /**
  * The interface for the Client communication
+ *
  * @author Krongrah
  */
 public interface IClientComm {
+
     public IUser login(String username, String hashedPwd);
 
     /**
@@ -18,4 +23,14 @@ public interface IClientComm {
      * @return returns true if the connection was successful.
      */
     public boolean connectToServer();
+
+    public List<IJobPost> getAllJobs();
+
+    public IQuestionSet getQuestionSet();
+
+    public int[] calculateScore(IUser user, IQuestionSet set);
+
+    public List<IJobPost> getJobAllPosts();
+
+    public void applyForJob(IUser user, IJobPost job);
 }

@@ -34,6 +34,7 @@ public class Applicant extends User {
      *
      * @param name : String
      * @param personalityTest : Boolean
+     * @param gender
      * @param experience : Integer
      * @param email : String
      * @param phonenr : String

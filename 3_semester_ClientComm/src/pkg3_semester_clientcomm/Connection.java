@@ -5,10 +5,15 @@
  */
 package pkg3_semester_clientcomm;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.net.Socket;
+import ProjectInterfaces.IComm;
+import ProjectInterfaces.IJobPost;
+import ProjectInterfaces.IQuestionSet;
+import ProjectInterfaces.IUser;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,10 +24,8 @@ import java.util.logging.Logger;
  */
 public class Connection {
 
-    /**
-     * A socket.
-     */
-    private Socket s;
+    
+    IComm icomm;
     /**
      * Port of the server.
      */
@@ -30,54 +33,65 @@ public class Connection {
     /**
      * The IP of the server.
      */
-    private String IP = "localhost";//"10.123.3.31";
-    /**
-     * An object output stream.
-     */
-    private ObjectOutputStream stream;
-
+    private String address = "rmi://localhost/theJob";//"10.123.3.31";
     /**
      * connects the connection to the server.
      * @return returns true if the connection was successful.
      */
     public boolean Connect() {
-        try {
-            s = new Socket(IP, port);
-            stream = new ObjectOutputStream(s.getOutputStream());
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        return true;
-    }
 
-    /**
-     * Sends an object to the server.
-     *
-     * @param object The object being send.
-     * @return returns True if the object was successfully sent.
-     */
-    public boolean SendObject(Serializable object) {
         try {
-            stream.writeObject(object);
+            Registry r=LocateRegistry.getRegistry(port);
+            icomm=(IComm)r.lookup(address);
             return true;
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+        } catch (NotBoundException ex) {
+            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RemoteException ex) {
+            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;    
     }
 
-    /**
-     * Disconnects the client from the server.
-     */
-    public void disconnect() {
+    public IQuestionSet getQuestionSet(){
         try {
-            stream.close();
-            s.close();
-        } catch (IOException ex) {
+            return icomm.getQuestionSet();
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public IUser login(String username, String hashedPwd){
+        try {
+            return icomm.login(username, hashedPwd);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public int[] calculateScore(IUser user, IQuestionSet set){
+        try {
+            return icomm.calculateScore(user, set);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public List<IJobPost> getJobAllPosts(){
+        try {
+            return icomm.getJobAllPosts();
+        } catch (RemoteException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    
+    }
+    public void applyForJob(IUser user, IJobPost job){
+        try {
+            icomm.applyForJob(user, job);
+        } catch (RemoteException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+
 
 }

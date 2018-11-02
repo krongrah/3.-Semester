@@ -5,7 +5,9 @@
  */
 package pkg3_semester_serverpersistence;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
+import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -46,15 +48,53 @@ public class QueryHandler implements IQueryHandler {
     public ResultSet getQuestionSet() throws SQLException {
         Connection con = connect();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM PQuestionSet");
-        
+
         return statement.executeQuery();
-       
+
     }
 
     @Override
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
 
+    }
+
+    @Override
+    public ResultSet getCompanyUser(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void applyForJob(int jobPostId, int applicantId) throws SQLException {
+        Connection con = connect();
+        PreparedStatement statement;
+        
+        String job = "Job" + jobPostId + "_applicants";
+        
+        statement = con.prepareStatement("INSERT INTO " + job + " VALUES = (?)");
+        statement.setInt(1, applicantId);
+        statement.executeQuery(); new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet getApplicants(int id) throws SQLException {
+
+        Connection con = connect();
+        PreparedStatement statement;
+        
+        String job = "job" + id + "_applicants";
+        
+        statement = con.prepareStatement("SELECT * FROM " + job);
+
+        return statement.executeQuery();
+    }
+
+    @Override
+    public ResultSet getJobs() throws SQLException {
+        Connection con = connect();
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs");
+
+        return statement.executeQuery();
     }
 
 }
