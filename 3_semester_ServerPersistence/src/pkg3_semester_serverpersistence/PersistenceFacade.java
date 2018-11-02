@@ -5,7 +5,6 @@
  */
 package pkg3_semester_serverpersistence;
 
-import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
 import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
@@ -77,6 +76,11 @@ public class PersistenceFacade implements IServerPersistence {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public IUser login(String username, String hashedPwd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

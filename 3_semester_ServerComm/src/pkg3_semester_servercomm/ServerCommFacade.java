@@ -56,7 +56,7 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     }
 
     @Override
-    public int[] calculateScore(IUser user, IQuestionSet set) throws RemoteException {
+    public List<Integer> calculateScore(IUser user, IQuestionSet set) throws RemoteException {
         return domain.calculateScore(user, set);
     }
 
@@ -68,6 +68,11 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     @Override
     public void applyForJob(IUser user, IJobPost job) throws RemoteException  {
         domain.applyForJob(job, user);
+    }
+
+    @Override
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) throws RemoteException {
+       domain.applyForJob(job, user, questionSet);
     }
 
 }
