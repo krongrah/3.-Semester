@@ -36,5 +36,13 @@ public class Company extends User{
         this.companyName = companyName;
         this.website = website;
     }
+    
+    public String getCompanyName(){
+        return companyName;
+    }
+    
+    public String getWebsite(){
+        return website;
+    }
 
 }
