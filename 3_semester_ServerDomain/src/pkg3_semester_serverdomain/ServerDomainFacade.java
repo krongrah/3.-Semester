@@ -12,7 +12,7 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
-import UserSystem.User;
+import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;

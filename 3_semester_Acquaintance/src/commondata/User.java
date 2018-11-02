@@ -1,14 +1,20 @@
-package UserSystem;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package commondata;
 
 import ProjectInterfaces.IUser;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author Sebas
- */
 public class User implements IUser {
+
+    /**
+     * Whether the user is a company user
+     */
+    private boolean isCompany;
     /**
      * Email
      */
@@ -22,7 +28,7 @@ public class User implements IUser {
      */
     private String address;
     /**
-     * Zipcode for the address
+     * Zip code for the address
      */
     private String zipcode;
     /**
@@ -38,28 +44,26 @@ public class User implements IUser {
      */
     private String region;
     
-    /**
-     * User ID of the user
-     */
     private int userId;
     
+    private String username;
 
-    public User(){
-        
-    }
-    
     /**
      * User constructor
+     *
+     * @param username
+     * @param userId
+     * @param isCompany
      * @param email : String
-     * @param phonenr : Integer
+     * @param phonenr : String
      * @param address : String
      * @param zipcode : String
      * @param city : String
      * @param country : String
      * @param region : String
-     * @param userId
      */
-    public User(String email, Integer phonenr, String address, String zipcode, String city, String country, String region, int userId) {
+    public User(String username, int userId, boolean isCompany, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        this.isCompany = isCompany;
         this.email = email;
         this.phonenr = phonenr;
         this.address = address;
@@ -67,10 +71,11 @@ public class User implements IUser {
         this.city = city;
         this.country = country;
         this.region = region;
-        this.userId = userId;
+        this.userId=userId;
+        this.username=username;
     }
-
-    public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
+    
+        public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
         email = user.getString("Email");
         phonenr = user.getInt("phonenr");
         address = user.getString("address");
@@ -79,20 +84,22 @@ public class User implements IUser {
         country = user.getString("country");
         region = user.getString("region");
         userId = user.getInt("userid");
+        isCompany=user.getBoolean("IsCompany");
         
         
     }
 
+
     /**
-     * When the user takes the personality test
-     * Changes a value related to test whether or not the user has taken the test
+     * gets whether the user is a company
      */
-    public void doTest(){
-        //todo
+    public boolean getIsCompany() {
+        return isCompany;
     }
 
     /**
      * Gets the email
+     *
      * @return email address : String
      */
     public String getEmail() {
@@ -101,6 +108,7 @@ public class User implements IUser {
 
     /**
      * Gets the phone number
+     *
      * @return phonenumber : Integer
      */
     public Integer getPhonenr() {
@@ -109,6 +117,7 @@ public class User implements IUser {
 
     /**
      * Gets the address of the user
+     *
      * @return Address : String
      */
     public String getAddress() {
@@ -117,6 +126,7 @@ public class User implements IUser {
 
     /**
      * Gets the zipcode of the user
+     *
      * @return zipcode : String
      */
     public String getZipcode() {
@@ -125,6 +135,7 @@ public class User implements IUser {
 
     /**
      * Gets the city of the user
+     *
      * @return City : String
      */
     public String getCity() {
@@ -133,6 +144,7 @@ public class User implements IUser {
 
     /**
      * Gets the country of the user
+     *
      * @return country : String
      */
     public String getCountry() {
@@ -141,58 +153,22 @@ public class User implements IUser {
 
     /**
      * Gets the region of the user
+     *
      * @return region : String
      */
     public String getRegion() {
         return region;
     }
 
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @Override
-    public void setPhonenr(Integer phonenr) {
-        this.phonenr = phonenr;
-    }
-
-    @Override
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    @Override
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    @Override
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Override
-    public void setRegion(String region) {
-        this.region = region;
+    public int getUserId() {
+      return userId;
     }
 
     @Override
     public String getUsername() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return username;
     }
 
-    @Override
-    public int getUserId() {
-        return userId;
-    }
-
-    
-    
-    
 }
