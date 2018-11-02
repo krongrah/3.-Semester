@@ -7,32 +7,42 @@ package commondata;
 
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
+import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author Krongrah
  */
-public class QuestionSet implements IQuestionSet{
+public class QuestionSet implements IQuestionSet, Serializable{
+
+ private List<IQuestion> questions = new ArrayList();
+
+//    public QuestionSet() {
+//    }
+//
+    public QuestionSet(List<IQuestion> ql) {
+        questions=ql;
+    }
+ 
+
 
     @Override
     public List<IQuestion> getQuestionSet() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return questions;
     }
 
     @Override
     public void addToList(IQuestion q) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Integer> getAnswers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        questions.add(q);
     }
 
     @Override
     public IQuestion getQuestion(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return questions.get(i);
     }
     
 }

@@ -6,10 +6,11 @@
 package commondata;
 
 import ProjectInterfaces.IUser;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class User implements IUser {
+public class User implements IUser, Serializable {
 
     /**
      * Whether the user is a company user

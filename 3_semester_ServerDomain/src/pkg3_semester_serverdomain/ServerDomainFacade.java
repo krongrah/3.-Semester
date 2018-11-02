@@ -12,6 +12,7 @@ import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
 import UserSystem.Applicant;
 import UserSystem.Company;
+import commondata.QuestionSet;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,11 +28,17 @@ import personalityAssessment.*;
  */
 public class ServerDomainFacade implements IServerDomain {
 
-    ServerDomainFacade serverdomain;
+    private ServerDomainFacade serverdomain;
     /**
      * The interface for the server persistence
      */
-    IServerPersistence persistence;
+    private IServerPersistence persistence;
+    
+    private PersonalityFacade personal;
+    
+    public ServerDomainFacade(){
+    personal=new PersonalityFacade();
+    }
 
     /**
      * Inject method for persistence Injects ServerPersistence into
@@ -65,7 +72,7 @@ public class ServerDomainFacade implements IServerDomain {
     public IQuestionSet getQuestionSet() {
         
         try {
-            return new QuestionSet(persistence.getQuestionSet());
+            return personal.getQuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
         }
