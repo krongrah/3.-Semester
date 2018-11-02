@@ -20,6 +20,12 @@ import java.util.logging.Logger;
  * @author ahmadhamid
  */
 public class PersonalityFacade {
+    
+    ScoreCalculator sc;
+    
+    public PersonalityFacade(){
+    sc=new ScoreCalculator();
+    }
 
     public IQuestionSet getQuestionSet(ResultSet rs) {
         List<IQuestion> q = new ArrayList();
@@ -34,6 +40,10 @@ public class PersonalityFacade {
             
         }
         return null;
+    }
+    
+    public int[] calculateScore(IQuestionSet questionSet) {
+        return sc.calculateScore(questionSet);
     }
 
 }

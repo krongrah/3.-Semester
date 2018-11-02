@@ -104,12 +104,21 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
+        try {
 
+            //todo save personality answers in persistence
+            persistence.applyForJob(job.getId(), user.getUserId());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //todo, has yet to be implemented, and is not yet necessary;
+        //int[] i = personal.calculateScore(u);
+        return null;
+        
     }
 
     @Override
