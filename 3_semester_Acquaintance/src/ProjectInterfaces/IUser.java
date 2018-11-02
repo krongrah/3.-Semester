@@ -12,10 +12,12 @@ package ProjectInterfaces;
 public interface IUser {
     
     public int getUserId();
+        
+    public void setEmail(String email);
     
     public String getUsername();
     
-public boolean getIsCompany();
+    public boolean getIsCompany();
 
     /**
      * Gets the email

@@ -6,6 +6,8 @@
 package Controller;
 
 import Common.IController;
+import GUI.GuiFacade;
+import ProjectInterfaces.IClientDomain;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 public class ApplicationInfoController implements Initializable, IController<ScreenController> {
 
     private ScreenController screenController;
+    
+    private IClientDomain domain;
 
     @FXML
     private AnchorPane SignUpScreen;
@@ -39,6 +43,8 @@ public class ApplicationInfoController implements Initializable, IController<Scr
         // TODO
         
         applicationDesc.setText("The application is predicated on a personality assessment, which is based on the Big Five. This means that... ");
+        
+        domain = GuiFacade.getDomain();
     }
 
     @FXML
@@ -48,6 +54,7 @@ public class ApplicationInfoController implements Initializable, IController<Scr
 
     @FXML
     private void proceed(ActionEvent event) {
+        domain.setExperience(Integer.valueOf(experience.getText()));
         this.screenController.openPersonalityTest();
     }
 

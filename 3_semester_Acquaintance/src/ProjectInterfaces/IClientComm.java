@@ -28,9 +28,11 @@ public interface IClientComm {
 
     public IQuestionSet getQuestionSet();
 
-    public int[] calculateScore(IUser user, IQuestionSet set);
+    public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
     public List<IJobPost> getJobAllPosts();
 
     public void applyForJob(IUser user, IJobPost job);
+
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet);
 }
