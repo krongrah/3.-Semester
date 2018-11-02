@@ -5,7 +5,6 @@
  */
 package JobSystems;
 
-import UserSystem.Applicant;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IUser;
 
