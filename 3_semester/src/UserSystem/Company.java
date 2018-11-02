@@ -5,6 +5,8 @@
  */
 package UserSystem;
 
+import commondata.User;
+
 /**
  *
  * @author Sebas
@@ -21,6 +23,8 @@ public class Company extends User{
 
     /**
      * Company constructor
+     * @param username
+     * @param userId
      * @param companyName
      * @param website
      * @param email
@@ -31,8 +35,8 @@ public class Company extends User{
      * @param country
      * @param region 
      */
-    public Company(String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(true, email, phonenr, address, zipcode, city, country, region);
+    public Company(String username, int userId, String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+        super(username, userId, true, email, phonenr, address, zipcode, city, country, region);
         this.companyName = companyName;
         this.website = website;
     }

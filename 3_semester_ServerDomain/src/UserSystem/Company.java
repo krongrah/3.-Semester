@@ -5,6 +5,7 @@
  */
 package UserSystem;
 
+import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -35,16 +36,18 @@ public class Company extends User{
      * @param region  : String
      * @param id
      */
-
-    public Company( int id, String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        super(email, phonenr, address, zipcode, city, country, region, id);
-        this.companyName = companyName;
-        this.website = website;
-    }
+ 
+//    public Company( int id, String companyName, String website, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
+//        super(email, phonenr, address, zipcode, city, country, region, id);
+//        this.companyName = companyName;
+//        this.website = website;
+//    }
     
     public Company(ResultSet set) throws SQLException{
+        super(set);
         this.companyName = set.getString("CompanyName");
         this.website = set.getString("Website");
+        
         
     }
 
