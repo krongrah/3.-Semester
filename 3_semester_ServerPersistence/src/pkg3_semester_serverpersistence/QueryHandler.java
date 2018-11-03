@@ -98,11 +98,11 @@ public class QueryHandler implements IQueryHandler {
         PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs");
 
         ResultSet rs = statement.executeQuery();
-
-        System.out.println(rs.getString(0));
-        System.out.println(rs.getString(1));
-        System.out.println(rs.getString(2));
-        System.out.println("");
+        
+//        System.out.println(rs.getString(0));
+//        System.out.println(rs.getString(1));
+//        System.out.println(rs.getString(2));
+//        System.out.println("");
 
         return rs;
     }
