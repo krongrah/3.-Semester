@@ -39,12 +39,14 @@ public class JobPost implements IJobPost, Serializable{
         this.description = description;
     }
     
-//    public JobPost(ResultSet set) throws SQLException{
-//        this.id = set.getInt("id");
-//        this.title = set.getString("title");
-//        this.description = set.getString("description");
-//            
-//    }
+    public JobPost(ResultSet set) throws SQLException{
+        this.id = set.getInt("id");
+        this.title = set.getString("title");
+        this.description = set.getString("description");
+        this.companyName = set.getString("");
+        this.companyWebsite = set.getString("");
+            
+    }
     
     public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
         this.id = id;

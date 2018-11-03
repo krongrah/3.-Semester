@@ -131,7 +131,7 @@ public class ServerDomainFacade implements IServerDomain {
         try {
             ResultSet rs = persistence.getAllJobs();
             while (rs.next()) {
-                jobs.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description")));
+                jobs.add(new JobPost(rs));
 
             }
         } catch (SQLException ex) {
