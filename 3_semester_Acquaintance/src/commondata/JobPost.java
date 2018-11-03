@@ -7,6 +7,7 @@ package commondata;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Krongrah
  */
-public class JobPost implements IJobPost{
+public class JobPost implements Serializable, IJobPost{
 
     private int id;
     private String title;
