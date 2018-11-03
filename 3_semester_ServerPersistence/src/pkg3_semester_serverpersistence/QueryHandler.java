@@ -21,15 +21,15 @@ import java.util.logging.Logger;
  * @author mikkellarsen
  */
 public class QueryHandler implements IQueryHandler {
-    
-    public static void Main(String[] args) {
+
+    public static void main(String[] args) {
         try {
-            new QueryHandler("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk/si3_2018_group_5_db","si3_2018_group_5","taint76;perl").getAllJobs();
+            System.out.println("Trying");
+            new QueryHandler("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk/si3_2018_group_5_db", "si3_2018_group_5", "taint76;perl").getAllJobs();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     private String url;
     private String user;
@@ -119,7 +119,5 @@ public class QueryHandler implements IQueryHandler {
 
         return rs;
     }
-
-    
 
 }
