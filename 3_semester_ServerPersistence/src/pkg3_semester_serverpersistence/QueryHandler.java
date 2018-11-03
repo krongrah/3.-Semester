@@ -5,9 +5,7 @@
  */
 package pkg3_semester_serverpersistence;
 
-import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
-import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,15 +20,6 @@ import java.util.logging.Logger;
  */
 public class QueryHandler implements IQueryHandler {
     
-    public static void Main(String[] args) {
-        try {
-            new QueryHandler("jdbc:postgresql://tek-mmmi-db0a.tek.c.sdu.dk/si3_2018_group_5_db","si3_2018_group_5","taint76;perl").getAllJobs();
-        } catch (SQLException ex) {
-            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-
     private String url;
     private String user;
     private String password;
@@ -112,7 +101,7 @@ public class QueryHandler implements IQueryHandler {
 
         ResultSet rs = statement.executeQuery();
 
-        System.out.println(rs.getInt(0));
+        System.out.println(rs.getString(0));
         System.out.println(rs.getString(1));
         System.out.println(rs.getString(2));
         System.out.println("");
