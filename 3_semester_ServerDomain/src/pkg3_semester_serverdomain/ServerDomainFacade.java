@@ -13,7 +13,6 @@ import ProjectInterfaces.IUser;
 import commondata.Applicant;
 import commondata.Company;
 import commondata.JobPost;
-import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -54,20 +53,19 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IUser getUser(String username, String password) {
-        return new Applicant("",1,"",false,"",1,"",1,"","","","","");
-//        try {
-//            ResultSet set = persistence.getUser(username, password);
-//            System.out.println("");
-//            if (set.getBoolean(1)) {
-//                return new Company(set);
-//            } else {
-//                return new Applicant(set);
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("Didnt login (server Domain error)");
-//            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-//            return null;
-//        }
+        //return new Applicant("",1,"",false,"",1,"",1,"","","","","");
+        try {
+            ResultSet set = persistence.getUser(username, password);
+            if (set.getBoolean("iscompany")) {
+                return new Company(set);
+            } else {
+                return new Applicant(set);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Didnt login (server Domain error)");
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
         //Missing return value: No User found (To be specified)
     }
 

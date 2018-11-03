@@ -49,6 +49,8 @@ public class PersistenceFacade implements IServerPersistence {
 
     /**
      *
+     * @param jobPostId
+     * @param applicantId
      * @param jobpost
      * @param applicant
      * @throws SQLException
@@ -56,27 +58,6 @@ public class PersistenceFacade implements IServerPersistence {
     @Override
     public void applyForJob(int jobPostId, int applicantId) throws SQLException {
         handler.applyForJob(jobPostId, applicantId);
-    }
-
-    //Database tester
-    public static void main(String[] args) {
-        PersistenceFacade pf = new PersistenceFacade();
-
-        try {
-            //ResultSet rs = pf.getQuestionSet();
-            //ResultSet rs = pf.getUser("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
-
-            ResultSet rs = pf.getUser("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
-            //IUser user = pf.login("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
-            System.out.println();
-            //System.out.println(user.getUsername() + " " + user.getEmail());
-            
-//            while(rs.next()) {
-//                System.out.println(rs.getString(1) + " " + rs.getBoolean(2));
-//        }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
     }
 
     

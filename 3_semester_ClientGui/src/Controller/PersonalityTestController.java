@@ -52,7 +52,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     private IQuestion currentQuestion;
 
-    private int number = 0;
+    private int number = 1;
     @FXML
     private ProgressBar progress;
     @FXML
@@ -81,6 +81,8 @@ public class PersonalityTestController implements Initializable, IController<Scr
         progress.setProgress(number / 100);
 
         requiredField.setVisible(false);
+        
+        question.setText(questionSet.getQuestion(0).getQuestion());
     }
 
     @FXML
@@ -104,6 +106,8 @@ public class PersonalityTestController implements Initializable, IController<Scr
                 setQuestionText();
 
                 number++;
+                progress();
+                
             } else {
                 domain.calculateScore(domain.getActiveUser(), questionSet);
 
@@ -133,19 +137,19 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     private int saveAnswer() {
         int val = 0;
-        if (disagree_large.isArmed()) {
+        if (disagree_large.isSelected()) {
             val = 1;
         }
-        if (disagree_small.isArmed()) {
+        if (disagree_small.isSelected()) {
             val = 2;
         }
-        if (neutral.isArmed()) {
+        if (neutral.isSelected()) {
             val = 3;
         }
-        if (agree_small.isArmed()) {
+        if (agree_small.isSelected()) {
             val = 4;
         }
-        if (agree_large.isArmed()) {
+        if (agree_large.isSelected()) {
             val = 5;
         }
         return val;
@@ -159,6 +163,10 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     @Override
     public void unload() {
+    }
+    
+    private void progress(){
+        this.progress.setProgress(number/100);
     }
 
 }
