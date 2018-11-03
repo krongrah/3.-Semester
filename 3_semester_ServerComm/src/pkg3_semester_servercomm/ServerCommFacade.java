@@ -52,7 +52,8 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
 
     @Override
     public IUser login(String username, String hashedPwd) throws RemoteException {
-        return domain.login(username, hashedPwd);
+        IUser i=domain.getUser(username, hashedPwd);
+        return i;
     }
 
     @Override

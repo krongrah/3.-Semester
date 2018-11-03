@@ -5,11 +5,13 @@
  */
 package ProjectInterfaces;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sebas
  */
-public interface IUser {
+public interface IUser extends Serializable{
     
     public int getUserId();
         
