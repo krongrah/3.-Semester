@@ -54,19 +54,20 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public IUser getUser(String username, String password) {
-        try {
-            ResultSet set = persistence.getUser(username, password);
-            System.out.println("");
-            if (set.getBoolean("Iscompany")) {
-                return new Company(set);
-            } else {
-                return new Applicant(set);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Didnt login (server Domain error)");
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+        return new Applicant("",1,"",false,"",1,"",1,"","","","","");
+//        try {
+//            ResultSet set = persistence.getUser(username, password);
+//            System.out.println("");
+//            if (set.getBoolean(1)) {
+//                return new Company(set);
+//            } else {
+//                return new Applicant(set);
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println("Didnt login (server Domain error)");
+//            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
         //Missing return value: No User found (To be specified)
     }
 

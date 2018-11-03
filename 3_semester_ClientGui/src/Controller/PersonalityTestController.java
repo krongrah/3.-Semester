@@ -72,7 +72,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
         // TODO
         domain = GuiFacade.getDomain();
 
-        job = screenController.getApplyingForJobPost();
+        
 
         questionSet = domain.getAllQuestions();
 
@@ -154,6 +154,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
     @Override
     public void setParrentController(ScreenController parentController) {
         screenController = parentController;
+        job = screenController.getApplyingForJobPost();
     }
 
     @Override
