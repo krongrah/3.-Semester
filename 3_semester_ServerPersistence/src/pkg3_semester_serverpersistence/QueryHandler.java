@@ -11,15 +11,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author mikkellarsen
  */
 public class QueryHandler implements IQueryHandler {
-    
+
     private String url;
     private String user;
     private String password;
@@ -108,7 +106,5 @@ public class QueryHandler implements IQueryHandler {
 
         return rs;
     }
-
-    
 
 }
