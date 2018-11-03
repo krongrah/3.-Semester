@@ -10,8 +10,8 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
-import UserSystem.Applicant;
-import UserSystem.Company;
+import commondata.Applicant;
+import commondata.Company;
 import commondata.JobPost;
 import commondata.User;
 import java.sql.ResultSet;
@@ -56,8 +56,8 @@ public class ServerDomainFacade implements IServerDomain {
     public IUser getUser(String username, String password) {
         try {
             ResultSet set = persistence.getUser(username, password);
-
-            if (set.getBoolean("IsCompany")) {
+            System.out.println("");
+            if (set.getBoolean("Iscompany")) {
                 return new Company(set);
             } else {
                 return new Applicant(set);
@@ -79,21 +79,6 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
-    }
-
-    @Override
-    public IUser getCompanyUser(int i) {
-        try {
-            return new User(persistence.getCompanyUser(i));
-        } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
-
-    @Override
-    public IUser login(String username, String hashedPwd) {
-        return persistence.login(username, hashedPwd);
     }
 
     @Override

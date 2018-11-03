@@ -89,22 +89,32 @@ public class JobsController implements Initializable, IController<ScreenControll
             DoctorButton.setDisable(true);
         }
         
+        //todo delete
+        System.out.println(jobs.size());
+        for (IJobPost job:jobs) {
+            System.out.println("index: "+jobs.indexOf(job));
+            System.out.println("name: "+job.getCompanyName());
+            System.out.println("title: "+job.getTitle());
+            System.out.println("website: "+job.getCompanyWebsite());
+            System.out.println("");
+        }
         
         
-        dcwJob_Title.setText(jobs.get(1).getTitle() + " by " + jobs.get(1).getCompanyName());
-        dcwJob_Desc.setText(jobs.get(1).getDescription() + " for more, visit: " + jobs.get(1).getCompanyWebsite());
         
-        doctorJob_Title.setText(jobs.get(2).getTitle() + " by " + jobs.get(2).getCompanyName());
-        doctorJob_Desc.setText(jobs.get(2).getDescription() + " for more, visit: " + jobs.get(2).getCompanyWebsite());
+        dcwJob_Title.setText(jobs.get(0).getTitle() + " by " + jobs.get(0).getCompanyName());
+        dcwJob_Desc.setText(jobs.get(0).getDescription() + " for more, visit: " + jobs.get(0).getCompanyWebsite());
         
-        seJob_Title.setText(jobs.get(3).getTitle() + " by " + jobs.get(3).getCompanyName());
-        seJob_Desc.setText(jobs.get(3).getDescription() + " for more, visit: " + jobs.get(3).getCompanyWebsite());
+        doctorJob_Title.setText(jobs.get(1).getTitle() + " by " + jobs.get(1).getCompanyName());
+        doctorJob_Desc.setText(jobs.get(1).getDescription() + " for more, visit: " + jobs.get(1).getCompanyWebsite());
         
-        tmJob_Title.setText(jobs.get(4).getTitle() + " by " + jobs.get(4).getCompanyName());
-        tmJob_Desc.setText(jobs.get(4).getDescription() + " for more, visit: " + jobs.get(4).getCompanyWebsite());
+        //seJob_Title.setText(jobs.get(2).getTitle() );//+ " by " + jobs.get(2).getCompanyName());
+        //seJob_Desc.setText("3");//jobs.get(2).getDescription() + " for more, visit: " + jobs.get(2).getCompanyWebsite());
         
-        ulJob_Title.setText(jobs.get(5).getTitle() + " by " + jobs.get(5).getCompanyName());
-        ulJob_Desc.setText(jobs.get(5).getDescription() + " for more, visit: " + jobs.get(5).getCompanyWebsite());
+        tmJob_Title.setText(jobs.get(3).getTitle() + " by " + jobs.get(3).getCompanyName());
+        tmJob_Desc.setText(jobs.get(3).getDescription() + " for more, visit: " + jobs.get(3).getCompanyWebsite());
+        
+        ulJob_Title.setText(jobs.get(4).getTitle() + " by " + jobs.get(4).getCompanyName());
+        ulJob_Desc.setText(jobs.get(4).getDescription() + " for more, visit: " + jobs.get(4).getCompanyWebsite());
 
     }
 

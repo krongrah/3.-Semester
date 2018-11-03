@@ -31,7 +31,7 @@ public class PersistenceFacade implements IServerPersistence {
     public ResultSet getUser(String username, String password) throws SQLException {
         return handler.getUser(username, password);
     }
-
+    
     @Override
     public ResultSet getQuestionSet() throws SQLException {
         return handler.getQuestionSet();
@@ -45,11 +45,6 @@ public class PersistenceFacade implements IServerPersistence {
     @Override
     public ResultSet getAllJobs() throws SQLException {
         return handler.getAllJobs();
-    }
-
-    @Override
-    public ResultSet getCompanyUser(int i) throws SQLException {
-        return handler.getCompanyUser(i);
     }
 
     /**
@@ -72,9 +67,9 @@ public class PersistenceFacade implements IServerPersistence {
             //ResultSet rs = pf.getUser("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
 
             ResultSet rs = pf.getUser("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
-            IUser user = pf.login("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
+            //IUser user = pf.login("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
             System.out.println();
-            System.out.println(user.getUsername() + " " + user.getEmail());
+            //System.out.println(user.getUsername() + " " + user.getEmail());
             
 //            while(rs.next()) {
 //                System.out.println(rs.getString(1) + " " + rs.getBoolean(2));
@@ -84,16 +79,6 @@ public class PersistenceFacade implements IServerPersistence {
         }
     }
 
-    @Override
-    public IUser login(String username, String hashedPwd) {
-        try {
-            IUser user = new User(handler.getUser(username, hashedPwd));
-            return user;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(PersistenceFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+    
 
 }
