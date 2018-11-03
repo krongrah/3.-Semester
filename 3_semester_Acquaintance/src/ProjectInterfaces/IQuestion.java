@@ -5,11 +5,13 @@
  */
 package ProjectInterfaces;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mikkellarsen
  */
-public interface IQuestion {
+public interface IQuestion extends Serializable{
     
     public String getQuestion();
 

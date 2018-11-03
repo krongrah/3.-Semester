@@ -5,9 +5,7 @@
  */
 package pkg3_semester_serverpersistence;
 
-import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
-import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +32,7 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public ResultSet getUser(String username, String password) throws SQLException {
         Connection con = connect();
-        PreparedStatement statement = con.prepareStatement("SELECT Users.Username, Users.IsCompany, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region, Users.UserId FROM Users, LogIn WHERE Users.Username = ? AND LogIn.hPassword = ?;");
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM Users, LogIn WHERE Users.Username = ? AND LogIn.hPassword = ?"); //Users.Username, Users.IsCompany, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region, Users.UserId FROM Users, LogIn WHERE Users.Username = ? AND LogIn.hPassword = ?;");
 
         statement.setString(1, username);
 
@@ -63,7 +61,7 @@ public class QueryHandler implements IQueryHandler {
     public ResultSet getCompanyUser(int id) throws SQLException {
         Connection con = connect();
         PreparedStatement statement;
-        
+
         statement = con.prepareStatement("SELECT Users.Username, Users.UserId, companyinfo.companyname, companyinfo.website, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region FROM Users, companyinfo WHERE IsCompany = TRUE AND Users.Username = companyinfo.username AND Users.UserId = ?;");
         statement.setInt(1, id);
         return statement.executeQuery();
@@ -73,9 +71,9 @@ public class QueryHandler implements IQueryHandler {
     public void applyForJob(int jobPostId, int applicantId) throws SQLException {
         Connection con = connect();
         PreparedStatement statement;
-        
+
         String job = "Job" + jobPostId + "_applicants";
-        
+
         statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?)");
         statement.setInt(1, applicantId);
         statement.executeQuery();
@@ -86,9 +84,9 @@ public class QueryHandler implements IQueryHandler {
 
         Connection con = connect();
         PreparedStatement statement;
-        
+
         String job = "job" + id + "_applicants";
-        
+
         statement = con.prepareStatement("SELECT * FROM " + job);
 
         return statement.executeQuery();
@@ -99,8 +97,14 @@ public class QueryHandler implements IQueryHandler {
         Connection con = connect();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs");
 
-        return statement.executeQuery();
-    }
+        ResultSet rs = statement.executeQuery();
+        
+//        System.out.println(rs.getString(0));
+//        System.out.println(rs.getString(1));
+//        System.out.println(rs.getString(2));
+//        System.out.println("");
 
+        return rs;
+    }
 
 }
