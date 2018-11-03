@@ -25,7 +25,6 @@ import java.sql.*;
  */
 public class Connection {
 
-    
     IComm icomm;
     /**
      * Port of the server.
@@ -34,26 +33,28 @@ public class Connection {
     /**
      * The IP of the server.
      */
-    private String address = "rmi://localhost/theJob";//"10.123.3.31";
+    private String address = "10.123.3.31";
+
     /**
      * connects the connection to the server.
+     *
      * @return returns true if the connection was successful.
      */
     public boolean Connect() {
 
         try {
-            Registry r=LocateRegistry.getRegistry(port);
-            icomm=(IComm)r.lookup(address);
+            Registry r = LocateRegistry.getRegistry(address, port);
+            icomm = (IComm) r.lookup("theJobConnect");
             return true;
         } catch (NotBoundException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;    
+        return false;
     }
 
-    public IQuestionSet getQuestionSet(){
+    public IQuestionSet getQuestionSet() {
         try {
             return icomm.getQuestionSet();
         } catch (RemoteException ex) {
@@ -61,7 +62,8 @@ public class Connection {
             return null;
         }
     }
-    public IUser login(String username, String hashedPwd){
+
+    public IUser login(String username, String hashedPwd) {
         try {
             return icomm.login(username, hashedPwd);
         } catch (RemoteException ex) {
@@ -70,7 +72,8 @@ public class Connection {
             return null;
         }
     }
-    public List<Integer> calculateScore(IUser user, IQuestionSet set){
+
+    public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         try {
             return icomm.calculateScore(user, set);
         } catch (RemoteException ex) {
@@ -78,30 +81,30 @@ public class Connection {
             return null;
         }
     }
-    public List<IJobPost> getJobAllPosts(){
+
+    public List<IJobPost> getJobAllPosts() {
         try {
             return icomm.getJobAllPosts();
         } catch (RemoteException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    
+
     }
-    public void applyForJob(IUser user, IJobPost job){
+
+    public void applyForJob(IUser user, IJobPost job) {
         try {
             icomm.applyForJob(user, job);
         } catch (RemoteException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet){
+
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
         try {
             icomm.applyForJob(user, job, questionSet);
         } catch (RemoteException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
 }
