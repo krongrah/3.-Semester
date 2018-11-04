@@ -66,7 +66,6 @@ public class Connection {
     public IUser login(String username, String hashedPwd) {
         try {
             return icomm.login(username, hashedPwd);
-            
         } catch (RemoteException ex) {
             System.out.println("Didnt log in");
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);

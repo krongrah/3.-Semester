@@ -52,7 +52,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     private IQuestion currentQuestion;
 
-    private int number = 1;
+    private int number = 0;
     @FXML
     private ProgressBar progress;
     @FXML
@@ -72,7 +72,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
         // TODO
         domain = GuiFacade.getDomain();
 
-        
+        job = screenController.getApplyingForJobPost();
 
         questionSet = domain.getAllQuestions();
 
@@ -81,8 +81,6 @@ public class PersonalityTestController implements Initializable, IController<Scr
         progress.setProgress(number / 100);
 
         requiredField.setVisible(false);
-        
-        question.setText(questionSet.getQuestion(0).getQuestion());
     }
 
     @FXML
@@ -106,8 +104,6 @@ public class PersonalityTestController implements Initializable, IController<Scr
                 setQuestionText();
 
                 number++;
-                progress();
-                
             } else {
                 domain.calculateScore(domain.getActiveUser(), questionSet);
 
@@ -137,19 +133,19 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     private int saveAnswer() {
         int val = 0;
-        if (disagree_large.isSelected()) {
+        if (disagree_large.isArmed()) {
             val = 1;
         }
-        if (disagree_small.isSelected()) {
+        if (disagree_small.isArmed()) {
             val = 2;
         }
-        if (neutral.isSelected()) {
+        if (neutral.isArmed()) {
             val = 3;
         }
-        if (agree_small.isSelected()) {
+        if (agree_small.isArmed()) {
             val = 4;
         }
-        if (agree_large.isSelected()) {
+        if (agree_large.isArmed()) {
             val = 5;
         }
         return val;
@@ -158,15 +154,10 @@ public class PersonalityTestController implements Initializable, IController<Scr
     @Override
     public void setParrentController(ScreenController parentController) {
         screenController = parentController;
-        job = screenController.getApplyingForJobPost();
     }
 
     @Override
     public void unload() {
-    }
-    
-    private void progress(){
-        this.progress.setProgress(number/100);
     }
 
 }
