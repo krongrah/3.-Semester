@@ -15,7 +15,9 @@ import java.util.List;
  *
  * @author Krongrah
  */
-public class JobPost implements IJobPost{
+
+public class JobPost implements Serializable, IJobPost {
+
 
     private int id;
     private String title;
@@ -23,7 +25,6 @@ public class JobPost implements IJobPost{
     private List<IUser> applicants;
     private String companyName;
     private String companyWebsite;
-    
 
     public JobPost(int id, String title, String description, List<IUser> applicants) {
         this.id = id;
@@ -31,7 +32,14 @@ public class JobPost implements IJobPost{
         this.description = description;
         this.applicants = applicants;
     }
+
+    public JobPost(int id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
     
+
 //    public JobPost(ResultSet set) throws SQLException{
 //        this.id = set.getInt("Id");
 //        this.title = set.getString("Title");
@@ -39,6 +47,16 @@ public class JobPost implements IJobPost{
 //            
 //    }
     
+
+    public JobPost(int id, String title, String description, String companyName, String companyWebsite) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.companyName = companyName;
+        this.companyWebsite = companyWebsite;
+    }
+
+
     public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
         this.id = id;
         this.title = title;
@@ -49,15 +67,12 @@ public class JobPost implements IJobPost{
         this.applicants = applicants;
     }
 
-
-    
- 
     @Override
-    public void addApplicant(IUser applicant){
+    public void addApplicant(IUser applicant) {
         applicants.add(applicant);
 
     }
-  
+
     @Override
     public int getId() {
         return id;
@@ -82,5 +97,5 @@ public class JobPost implements IJobPost{
     public String getCompanyWebsite() {
         return companyWebsite;
     }
-    
+
 }

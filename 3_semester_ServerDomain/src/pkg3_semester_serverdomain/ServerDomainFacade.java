@@ -129,10 +129,19 @@ public class ServerDomainFacade implements IServerDomain {
            string s1 = persistence.getAllJobs().getString("title")
            string s2 = persistence.getAllJobs().getString("description");
         
-                   
-           
-           
-       }*/ return null;
+*/
+        try {
+            ResultSet rs = persistence.getAllJobs();
+            
+            while (rs.next()) {
+                ijps.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getString("companyname"), rs.getString("website"))); 
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(ijps.size());
+        return ijps;
 
     }
 
