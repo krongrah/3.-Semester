@@ -136,9 +136,12 @@ public class ServerDomainFacade implements IServerDomain {
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return jobs;
 
+        return jobs;
     }
+
+
+}
 
  
 

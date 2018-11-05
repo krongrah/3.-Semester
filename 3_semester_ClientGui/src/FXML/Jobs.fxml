@@ -49,7 +49,7 @@
                               <Insets top="25.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="dcwJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Label fx:id="dcwJob_Desc" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -85,14 +85,6 @@
                            </padding>
                            <GridPane.margin>
                               <Insets bottom="25.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <Label fx:id="seJob_Tiltle" text="Software engineer job" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="25.0" />
                            </GridPane.margin>
                         </Label>
                         <Label fx:id="tmJob_Desc" maxWidth="1.7976931348623157E308" prefHeight="245.0" prefWidth="400.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur tempus dolor. Vestibulum fringilla nibh dignissim vehicula dictum. Nunc pellentesque semper neque, eget tristique sapien. Donec dui purus, varius ac felis eget, euismod ullamcorper risus. Donec scelerisque arcu eros, nec pharetra elit tempor eget. Aenean non augue nec justo aliquam scelerisque a ac ipsum. Pellentesque nec diam commodo, tempor lectus at, egestas mi. Donec faucibus, justo at congue volutpat, justo nibh vestibulum ex, eu iaculis tortor nibh ut est. Donec hendrerit, nibh ut condimentum laoreet, nisi lacus cursus ex, id hendrerit orci leo vitae leo. Aliquam rutrum sem quis libero tincidunt fermentum. In id ipsum id enim sollicitudin tempus. Donec facilisis consequat tristique. Ut ac dolor gravida, tincidunt erat vestibulum, ultricies nisl. Praesent convallis dolor nec luctus placerat. Pellentesque fermentum urna sit amet neque vehicula, id tristique tortor eleifend. Proin nec imperdiet libero." textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
@@ -172,6 +164,14 @@
                               <Font size="32.0" />
                            </font>
                         </Label>
+                        <Label fx:id="seJob_Title" text="Software engineer job" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="25.0" />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
@@ -180,7 +180,7 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
