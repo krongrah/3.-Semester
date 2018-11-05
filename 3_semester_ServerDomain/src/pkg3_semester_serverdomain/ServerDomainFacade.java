@@ -30,7 +30,7 @@ import personalityAssessment.*;
  */
 public class ServerDomainFacade implements IServerDomain {
 
-    private ServerDomainFacade serverdomain;
+    //private ServerDomainFacade serverdomain;
     /**
      * The interface for the server persistence
      */
@@ -93,11 +93,8 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public IServerDomain getInstance() {
-        if (this.serverdomain == null) {
-            serverdomain = new ServerDomainFacade();
-        }
-        return serverdomain;
+    public IUser login(String username, String hashedPwd) {
+        return persistence.login(username, hashedPwd);
     }
 
     @Override
@@ -110,23 +107,25 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public List<IUser> getApplicants(int id) {
-        return null;
-
-    }
-
-    @Override
-    public IUser login(String username, String hashedPwd) {
-        return persistence.login(username, hashedPwd);
+    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
+        try {
+            //todo save personality answers in persistence
+            persistence.applyForJob(job.getId(), user.getUserId());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //todo, has yet to be implemented, and is not yet necessary;
+        //int[] i = personal.calculateScore(u);
+        return null;
+        
     }
 
     @Override
-    public List<JobPost> getAllJobs() {
+/*    public List<JobPost> getAllJobs() {
         List<JobPost> jobs = new ArrayList();
         try {
             ResultSet rs = persistence.getAllJobs();
@@ -139,10 +138,24 @@ public class ServerDomainFacade implements IServerDomain {
         }
         return jobs;
 
-    }
+    }*/
 
-    @Override
-    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
+ 
+
+    public List<IJobPost> getAllJobs() {
+
+        try {
+            ResultSet rs = persistence.getAllJobs();
+            
+            while (rs.next()) {
+                ijps.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getString("companyname"), rs.getString("website"))); 
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(ijps.size());
+        return ijps;
 
     }
 
