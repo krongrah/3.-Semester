@@ -31,7 +31,6 @@ public class ClientDomainFacade implements IClientDomain {
 
     public ClientDomainFacade() {
         security = new SecuritySystemFacade();
-        
 
     }
 

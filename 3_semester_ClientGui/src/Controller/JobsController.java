@@ -62,7 +62,7 @@ public class JobsController implements Initializable, IController<ScreenControll
 
     private IClientDomain domain;
 
-    private List<IJobPost> jobs;
+    private List<JobPost> jobs;
     @FXML
     private Label seJob_Title;
 
