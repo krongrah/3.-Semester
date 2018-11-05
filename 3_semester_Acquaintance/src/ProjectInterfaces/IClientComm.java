@@ -5,6 +5,7 @@
  */
 package ProjectInterfaces;
 
+import commondata.JobPost;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -24,13 +25,11 @@ public interface IClientComm {
      */
     public boolean connectToServer();
 
-    public List<IJobPost> getAllJobs();
+    public List<JobPost> getAllJobs();
 
     public IQuestionSet getQuestionSet();
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
-
-    public List<IJobPost> getJobAllPosts();
 
     public void applyForJob(IUser user, IJobPost job);
 

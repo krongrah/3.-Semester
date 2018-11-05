@@ -6,6 +6,7 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.*;
+import commondata.JobPost;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -61,7 +62,7 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     }
 
     @Override
-    public List<IJobPost> getJobAllPosts() throws RemoteException  {
+    public List<JobPost> getJobAllPosts() throws RemoteException  {
        return domain.getAllJobs();
     }
 

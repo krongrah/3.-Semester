@@ -9,6 +9,7 @@ import Common.IController;
 import GUI.GuiFacade;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IJobPost;
+import commondata.JobPost;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -63,7 +64,7 @@ public class JobsController implements Initializable, IController<ScreenControll
 
     private IClientDomain domain;
 
-    private List<IJobPost> jobs;
+    private List<JobPost> jobs;
 
     /**
      * Initializes the controller class.

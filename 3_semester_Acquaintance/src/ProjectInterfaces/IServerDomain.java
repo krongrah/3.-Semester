@@ -5,6 +5,7 @@
  */
 package ProjectInterfaces;
 
+import commondata.JobPost;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public interface IServerDomain {
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
-    public List<IJobPost> getAllJobs();
+    public List<JobPost> getAllJobs();
 
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet);
 
