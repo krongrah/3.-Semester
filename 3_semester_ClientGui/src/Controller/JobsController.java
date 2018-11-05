@@ -89,18 +89,6 @@ public class JobsController implements Initializable, IController<ScreenControll
             DoctorButton.setDisable(true);
         }
         
-        //todo delete
-        System.out.println(jobs.size());
-        for (IJobPost job:jobs) {
-            System.out.println("index: "+jobs.indexOf(job));
-            System.out.println("name: "+job.getCompanyName());
-            System.out.println("title: "+job.getTitle());
-            System.out.println("website: "+job.getCompanyWebsite());
-            System.out.println("");
-        }
-        
-        
-        
         dcwJob_Title.setText(jobs.get(0).getTitle() + " by " + jobs.get(0).getCompanyName());
         dcwJob_Desc.setText(jobs.get(0).getDescription() + " for more, visit: " + jobs.get(0).getCompanyWebsite());
         
