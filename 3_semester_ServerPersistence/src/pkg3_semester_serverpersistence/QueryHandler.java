@@ -95,7 +95,7 @@ public class QueryHandler implements IQueryHandler {
     @Override
     public ResultSet getAllJobs() throws SQLException {
         Connection con = connect();
-        PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs");
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM jobs, companyinfo");
 
         ResultSet rs = statement.executeQuery();
         
