@@ -5,7 +5,6 @@
  */
 package personalityAssessment;
 
-import commondata.Question;
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
 import commondata.QuestionSet;
@@ -34,12 +33,13 @@ public class PersonalityFacade {
         try {
             while (rs.next()) {
                 q.add(new Question(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getBoolean(4)));
+                return qs;
             }
         } catch (SQLException ex) {
             Logger.getLogger(PersonalityFacade.class.getName()).log(Level.SEVERE, null, ex);
             
         }
-        return qs;
+        return null;
     }
     
     public int[] calculateScore(IQuestionSet questionSet) {

@@ -13,7 +13,7 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
-import commondata.Applicant;
+import UserSystem.Applicant;
 import UserSystem.UserManager;
 import java.util.List;
 

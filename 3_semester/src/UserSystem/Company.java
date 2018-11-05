@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commondata;
+package UserSystem;
 
-import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import commondata.User;
 
 /**
  *
  * @author Sebas
  */
-public class Company extends User implements Serializable{
+public class Company extends User{
     /**
      * A given company's name
      */
@@ -41,14 +39,6 @@ public class Company extends User implements Serializable{
         super(username, userId, true, email, phonenr, address, zipcode, city, country, region);
         this.companyName = companyName;
         this.website = website;
-    }
-    
-        public Company(ResultSet set) throws SQLException{
-        super(set);
-        this.companyName = set.getString("CompanyName");
-        this.website = set.getString("Website");
-        
-        
     }
     
     public String getCompanyName(){

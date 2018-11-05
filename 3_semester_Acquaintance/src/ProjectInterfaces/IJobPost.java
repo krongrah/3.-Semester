@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package ProjectInterfaces;
-import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author Naik
  */
-public interface IJobPost extends Serializable{
+public interface IJobPost{
     
     public void addApplicant(IUser applicant);
     

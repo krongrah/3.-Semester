@@ -7,7 +7,6 @@ package commondata;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,7 +15,9 @@ import java.util.List;
  *
  * @author Krongrah
  */
+
 public class JobPost implements Serializable, IJobPost {
+
 
     private int id;
     private String title;
@@ -38,6 +39,15 @@ public class JobPost implements Serializable, IJobPost {
         this.description = description;
     }
     
+
+//    public JobPost(ResultSet set) throws SQLException{
+//        this.id = set.getInt("Id");
+//        this.title = set.getString("Title");
+//        this.description = set.getString("description");
+//            
+//    }
+    
+
     public JobPost(int id, String title, String description, String companyName, String companyWebsite) {
         this.id = id;
         this.title = title;
@@ -45,6 +55,7 @@ public class JobPost implements Serializable, IJobPost {
         this.companyName = companyName;
         this.companyWebsite = companyWebsite;
     }
+
 
     public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
         this.id = id;

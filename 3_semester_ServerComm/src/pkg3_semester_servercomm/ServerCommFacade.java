@@ -23,7 +23,7 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     public ServerCommFacade() throws RemoteException {
         Registry r = LocateRegistry.createRegistry(9001);
         IComm i = (IComm) this;
-        r.rebind("rmi://localhost/theJob", i);
+        r.rebind("theJobConnect", i);
         System.out.println("Server is ready.");
 
     }
@@ -52,8 +52,7 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
 
     @Override
     public IUser login(String username, String hashedPwd) throws RemoteException {
-        IUser i=domain.getUser(username, hashedPwd);
-        return i;
+        return domain.login(username, hashedPwd);
     }
 
     @Override

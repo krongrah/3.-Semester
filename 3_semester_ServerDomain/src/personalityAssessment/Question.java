@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commondata;
+package personalityAssessment;
 
 import ProjectInterfaces.IQuestion;
-import java.io.Serializable;
 
 /**
  *
  * @author ahmadhamid
  */
-public class Question implements IQuestion, Serializable {
+public class Question implements IQuestion {
     private final String question;
     private final int questionFactor;
     private final boolean questionDirection;
