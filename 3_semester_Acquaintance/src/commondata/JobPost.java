@@ -46,8 +46,8 @@ public class JobPost implements IJobPost, Serializable{
         this.id = set.getInt("id");
         this.title = set.getString("title");
         this.description = set.getString("description");
-        this.companyName = set.getString("");
-        this.companyWebsite = set.getString("");
+        this.companyName = set.getString("companyname");
+        this.companyWebsite = set.getString("companywebsite");
             
     }
 
