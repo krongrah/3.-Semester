@@ -39,8 +39,6 @@ public class JobsController implements Initializable, IController<ScreenControll
     @FXML
     private Label seJob_Desc;
     @FXML
-    private Label seJob_Title;
-    @FXML
     private Label tmJob_Desc;
     @FXML
     private Label tmJob_Title;
@@ -64,6 +62,8 @@ public class JobsController implements Initializable, IController<ScreenControll
     private IClientDomain domain;
 
     private List<IJobPost> jobs;
+    @FXML
+    private Label seJob_Title;
 
     /**
      * Initializes the controller class.
@@ -107,8 +107,8 @@ public class JobsController implements Initializable, IController<ScreenControll
         doctorJob_Title.setText(jobs.get(1).getTitle() + " by " + jobs.get(1).getCompanyName());
         doctorJob_Desc.setText(jobs.get(1).getDescription() + " for more, visit: " + jobs.get(1).getCompanyWebsite());
         
-        //seJob_Title.setText(jobs.get(2).getTitle() );//+ " by " + jobs.get(2).getCompanyName());
-        //seJob_Desc.setText("3");//jobs.get(2).getDescription() + " for more, visit: " + jobs.get(2).getCompanyWebsite());
+        seJob_Title.setText(jobs.get(2).getTitle() + " by " + jobs.get(2).getCompanyName());
+        seJob_Desc.setText(jobs.get(2).getDescription() + " for more, visit: " + jobs.get(2).getCompanyWebsite());
         
         tmJob_Title.setText(jobs.get(3).getTitle() + " by " + jobs.get(3).getCompanyName());
         tmJob_Desc.setText(jobs.get(3).getDescription() + " for more, visit: " + jobs.get(3).getCompanyWebsite());
