@@ -22,10 +22,6 @@ public interface IServerPersistence {
     
     public ResultSet getAllJobs() throws SQLException;
     
-    public ResultSet getCompanyUser(int i) throws SQLException;
-    
     public void applyForJob(int jobPostId, int applicantId) throws SQLException;
-
-    public IUser login(String username, String hashedPwd);
 
 }

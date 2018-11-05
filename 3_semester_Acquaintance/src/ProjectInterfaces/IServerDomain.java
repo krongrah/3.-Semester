@@ -19,17 +19,13 @@ public interface IServerDomain {
      * @param persistence 
      */
     public void injectPersistence(IServerPersistence persistence);
-    
-    public IUser getCompanyUser(int i);
-    
+        
     public IUser getUser(String username, String password);
     
     public IQuestionSet getQuestionSet();
     
     public void applyForJob(IJobPost jobpost, IUser applicant);
     
-    public IUser login(String username, String hashedPwd);
-
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
     public List<IJobPost> getAllJobs();
