@@ -125,7 +125,7 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-/*    public List<JobPost> getAllJobs() {
+    public List<JobPost> getAllJobs() {
         List<JobPost> jobs = new ArrayList();
         try {
             ResultSet rs = persistence.getAllJobs();
@@ -138,25 +138,25 @@ public class ServerDomainFacade implements IServerDomain {
         }
         return jobs;
 
-    }*/
+    }
 
  
 
-    public List<IJobPost> getAllJobs() {
-
-        try {
-            ResultSet rs = persistence.getAllJobs();
-            
-            while (rs.next()) {
-                ijps.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getString("companyname"), rs.getString("website"))); 
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println(ijps.size());
-        return ijps;
-
-    }
+//    public List<JobPost> getAllJobs() {
+//
+//        try {
+//            ResultSet rs = persistence.getAllJobs();
+//            
+//            while (rs.next()) {
+//                ijps.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getString("companyname"), rs.getString("website"))); 
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println(ijps.size());
+//        return ijps;
+//
+//    }
 
 }
