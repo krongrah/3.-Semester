@@ -44,7 +44,7 @@ public class Connection {
     public boolean Connect() {
 
         try {
-            Registry r = LocateRegistry.getRegistry(address, port);
+            Registry r = LocateRegistry.getRegistry("localhost", port);
             icomm = (IComm) r.lookup("theJobConnect");
             return true;
         } catch (NotBoundException ex) {

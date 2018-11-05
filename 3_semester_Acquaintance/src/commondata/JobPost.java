@@ -16,9 +16,7 @@ import java.util.List;
  *
  * @author Krongrah
  */
-
-public class JobPost implements IJobPost, Serializable{
-
+public class JobPost implements IJobPost, Serializable {
 
     private int id;
     private String title;
@@ -39,19 +37,15 @@ public class JobPost implements IJobPost, Serializable{
         this.title = title;
         this.description = description;
     }
-    
 
-    
-    public JobPost(ResultSet set) throws SQLException{
+    public JobPost(ResultSet set) throws SQLException {
         this.id = set.getInt("id");
         this.title = set.getString("title");
         this.description = set.getString("description");
         this.companyName = set.getString("companyname");
-        this.companyWebsite = set.getString("companywebsite");
-            
-    }
+        this.companyWebsite = set.getString("website");
 
-    
+    }
 
     public JobPost(int id, String title, String description, String companyName, String companyWebsite) {
         this.id = id;
@@ -60,7 +54,6 @@ public class JobPost implements IJobPost, Serializable{
         this.companyName = companyName;
         this.companyWebsite = companyWebsite;
     }
-
 
     public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
         this.id = id;
