@@ -48,6 +48,19 @@ public class User implements IUser, Serializable {
     private int userId;
 
     private String username;
+    
+     /**
+     * Applicants name
+     */
+    private String name;
+    /**
+     * Has taken the personality test
+     */
+    private Boolean personalityTest;
+    /**
+     * Years of experience in their given field
+     */
+    private int experience;
 
     /**
      * User constructor
@@ -75,6 +88,7 @@ public class User implements IUser, Serializable {
         this.userId = userId;
         this.username = username;
         
+        
     }
 
     public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
@@ -90,6 +104,7 @@ public class User implements IUser, Serializable {
             region = user.getString("region");
             userId = user.getInt("userid");
             isCompany = user.getBoolean("isCompany");
+            name = user.getString("username");
 
         }
 
@@ -183,6 +198,42 @@ public class User implements IUser, Serializable {
     @Override
     public String getUsername() {
         return username;
+    }
+    
+        /**
+     * Sets the years of experience the applicant has in their field
+     *
+     * @param experience : Integer
+     */
+    @Override
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+
+    /**
+     * Gets the name of the applicant
+     *
+     * @return Name : String
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Gets whether or not the personality test has been completed
+     * @return personalityTest : Boolean
+     */
+    public Boolean getPersonalityTest() {
+        return personalityTest;
+    }
+
+    /**
+     * Gets the years of experience the applicant has
+     * @return experience : integer
+     */
+    public int getExperience() {
+        return experience;
     }
 
 }

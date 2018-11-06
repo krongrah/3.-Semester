@@ -16,6 +16,8 @@ public interface IUser {
     public String getUsername();
     
     public boolean getIsCompany();
+    
+    public Boolean getPersonalityTest();
 
     /**
      * Gets the email
@@ -64,6 +66,8 @@ public interface IUser {
      * @return region : String
      */
     public String getRegion();
+
+    public void setExperience(int exp);
         
     
 }

@@ -13,7 +13,6 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
-import UserSystem.Applicant;
 import UserSystem.UserManager;
 import commondata.JobPost;
 import java.util.List;
@@ -82,10 +81,6 @@ public class ClientDomainFacade implements IClientDomain {
         return userManager.getActiveUser();
     }
 
-    private Applicant getActiveApplicant() {
-        return (Applicant) userManager.getActiveUser();
-    }
-
     /**
      * Gets a boolean value of whether a user is logged in already
      *
@@ -109,7 +104,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     @Override
     public void setExperience(int exp) {
-        getActiveApplicant().setExperience(exp);
+        getActiveUser().setExperience(exp);
     }
 
     @Override

@@ -6,7 +6,6 @@
 package ProjectInterfaces;
 
 import commondata.JobPost;
-import java.rmi.RemoteException;
 import java.util.List;
 
 /**

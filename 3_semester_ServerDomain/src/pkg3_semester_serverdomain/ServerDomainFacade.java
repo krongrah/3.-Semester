@@ -10,10 +10,7 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
 import ProjectInterfaces.IUser;
-import UserSystem.Applicant;
-import UserSystem.Company;
 import commondata.JobPost;
-import commondata.QuestionSet;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,12 +54,9 @@ public class ServerDomainFacade implements IServerDomain {
     public IUser getUser(String username, String password) {
         try {
             ResultSet set = persistence.getUser(username, password);
-
-            if (set.getBoolean("IsCompany")) {
-                return new Company(set);
-            } else {
-                return new Applicant(set);
-            }
+           
+                return new User(set);
+            
         } catch (SQLException ex) {
             System.out.println("Didnt login (server Domain error)");
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
