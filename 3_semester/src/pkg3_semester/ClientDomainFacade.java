@@ -122,7 +122,7 @@ public class ClientDomainFacade implements IClientDomain {
      * @param set
      */
     @Override
-    public void saveApplication(IUser user, IJobPost job, IQuestionSet set) {
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet set) {
         comm.applyForJob(user, job, set);
     }
 
@@ -133,7 +133,7 @@ public class ClientDomainFacade implements IClientDomain {
      * @param job
      */
     @Override
-    public void saveApplication(IUser user, IJobPost job) {
+    public void applyForJob(IUser user, IJobPost job) {
         comm.applyForJob(user, job);
     }
 

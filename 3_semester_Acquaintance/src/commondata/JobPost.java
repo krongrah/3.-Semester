@@ -21,22 +21,9 @@ public class JobPost implements IJobPost, Serializable {
     private int id;
     private String title;
     private String description;
-    private List<IUser> applicants;
+    //private List<IUser> applicants;
     private String companyName;
     private String companyWebsite;
-
-    public JobPost(int id, String title, String description, List<IUser> applicants) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.applicants = applicants;
-    }
-
-    public JobPost(int id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-    }
 
     public JobPost(ResultSet set) throws SQLException {
         this.id = set.getInt("id");
@@ -44,30 +31,6 @@ public class JobPost implements IJobPost, Serializable {
         this.description = set.getString("description");
         this.companyName = set.getString("companyname");
         this.companyWebsite = set.getString("website");
-
-    }
-
-    public JobPost(int id, String title, String description, String companyName, String companyWebsite) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.companyName = companyName;
-        this.companyWebsite = companyWebsite;
-    }
-
-    public JobPost(int id, String title, String description, String companyName, String companyWebsite, List<IUser> applicants) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.applicants = applicants;
-        this.companyName = companyName;
-        this.companyWebsite = companyWebsite;
-        this.applicants = applicants;
-    }
-
-    @Override
-    public void addApplicant(IUser applicant) {
-        applicants.add(applicant);
 
     }
 

@@ -10,5 +10,6 @@ package ProjectInterfaces;
  * @author Sebas
  */
 public interface IClientSecurity {
+
     public String Hash(String value);
 }

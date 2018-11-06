@@ -50,8 +50,8 @@ public interface IClientDomain {
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
-    public void saveApplication(IUser user, IJobPost job, IQuestionSet set);
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet set);
 
-    public void saveApplication(IUser user, IJobPost job);
+    public void applyForJob(IUser user, IJobPost job);
 
 }

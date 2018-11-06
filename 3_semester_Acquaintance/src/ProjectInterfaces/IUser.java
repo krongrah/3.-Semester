@@ -10,13 +10,11 @@ package ProjectInterfaces;
  * @author Sebas
  */
 public interface IUser {
-    
+
     public int getUserId();
-        
+
     public String getUsername();
-    
-    public boolean getIsCompany();
-    
+
     public Boolean getPersonalityTest();
 
     /**
@@ -39,6 +37,7 @@ public interface IUser {
      * @return Address : String
      */
     public String getAddress();
+
     /**
      * Gets the zipcode of the user
      *
@@ -68,6 +67,5 @@ public interface IUser {
     public String getRegion();
 
     public void setExperience(int exp);
-        
-    
+
 }

@@ -5,15 +5,12 @@
  */
 package pkg3_semester_serverpersistence;
 
-import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQueryHandler;
-import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.postgresql.core.Query;
 
 /**
  *
@@ -58,16 +55,6 @@ public class QueryHandler implements IQueryHandler {
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
 
-    }
-
-    @Override
-    public ResultSet getCompanyUser(int id) throws SQLException {
-        Connection con = connect();
-        PreparedStatement statement;
-        
-        statement = con.prepareStatement("SELECT Users.Username, Users.UserId, companyinfo.companyname, companyinfo.website, Users.Email, Users.Phonenr, Users.Address, Users.Zipcode, Users.City, Users.Country, Users.Region FROM Users, companyinfo WHERE IsCompany = TRUE AND Users.Username = companyinfo.username AND Users.UserId = ?;");
-        statement.setInt(1, id);
-        return statement.executeQuery();
     }
 
     @Override

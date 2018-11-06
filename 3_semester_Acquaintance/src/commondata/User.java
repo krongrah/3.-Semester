@@ -13,10 +13,6 @@ import java.sql.SQLException;
 public class User implements IUser, Serializable {
 
     /**
-     * Whether the user is a company user
-     */
-    private boolean isCompany;
-    /**
      * Email
      */
     private String email;
@@ -56,40 +52,11 @@ public class User implements IUser, Serializable {
     /**
      * Has taken the personality test
      */
-    private Boolean personalityTest;
+    private Boolean personalityTest=true;
     /**
      * Years of experience in their given field
      */
     private int experience;
-
-    /**
-     * User constructor
-     *
-     * @param username
-     * @param userId
-     * @param isCompany
-     * @param email : String
-     * @param phonenr : String
-     * @param address : String
-     * @param zipcode : String
-     * @param city : String
-     * @param country : String
-     * @param region : String
-     */
-    public User(String username, int userId, boolean isCompany, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        this.isCompany = isCompany;
-        this.email = email;
-        this.phonenr = phonenr;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.country = country;
-        this.region = region;
-        this.userId = userId;
-        this.username = username;
-        
-        
-    }
 
     public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
         while (user.next()) {
@@ -103,22 +70,13 @@ public class User implements IUser, Serializable {
             country = user.getString("country");
             region = user.getString("region");
             userId = user.getInt("userid");
-            isCompany = user.getBoolean("isCompany");
             name = user.getString("username");
+            //personalityTest=user.getBoolean("personalitytest");
 
         }
 
     }
 
-    /**
-     * gets whether the user is a company
-     *
-     * @return
-     */
-    @Override
-    public boolean getIsCompany() {
-        return isCompany;
-    }
 
     /**
      * Gets the email
@@ -224,6 +182,7 @@ public class User implements IUser, Serializable {
      * Gets whether or not the personality test has been completed
      * @return personalityTest : Boolean
      */
+    @Override
     public Boolean getPersonalityTest() {
         return personalityTest;
     }

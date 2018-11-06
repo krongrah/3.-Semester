@@ -12,11 +12,9 @@ import java.util.List;
  *
  * @author mikkellarsen
  */
-public interface IQuestionSet extends Serializable{
-    
+public interface IQuestionSet extends Serializable {
+
     public List<IQuestion> getQuestionSet();
-    
-    public void addToList(IQuestion q);
 
     public IQuestion getQuestion(int i);
 }

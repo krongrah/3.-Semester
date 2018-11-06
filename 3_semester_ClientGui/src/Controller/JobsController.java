@@ -119,30 +119,35 @@ public class JobsController implements Initializable, IController<ScreenControll
     @FXML
     private void applyForDCWJob(ActionEvent event) {
         disableApplicationButton(DCWButton);
+        screenController.setApplyingForJob(jobs.get(0));
         showApplicationInfo();
     }
 
     @FXML
     private void applyForULJob(ActionEvent event) {
         disableApplicationButton(ULButton);
+        screenController.setApplyingForJob(jobs.get(4));
         showApplicationInfo();
     }
 
     @FXML
     private void applyForTMJob(ActionEvent event) {
         disableApplicationButton(TMButton);
+        screenController.setApplyingForJob(jobs.get(3));
         showApplicationInfo();
     }
 
     @FXML
     private void applyForSEJob(ActionEvent event) {
         disableApplicationButton(SEButton);
+        screenController.setApplyingForJob(jobs.get(2));
         showApplicationInfo();
     }
 
     @FXML
     private void applyForDoctorJob(ActionEvent event) {
         disableApplicationButton(DoctorButton);
+        screenController.setApplyingForJob(jobs.get(1));
         showApplicationInfo();
 
     }
