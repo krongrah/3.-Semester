@@ -83,21 +83,13 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
-        try {
             persistence.applyForJob(jobpost.getId(), applicant.getUserId());
-        } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
-        try {
             //todo save personality answers in persistence
             persistence.applyForJob(job.getId(), user.getUserId());
-        } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override

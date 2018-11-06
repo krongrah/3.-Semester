@@ -15,13 +15,13 @@ import java.sql.SQLException;
  */
 public interface IServerPersistence {
 
-    public ResultSet getUser(String username, String password) throws SQLException;
+    public ResultSet getUser(String username, String password);
 
-    public ResultSet getQuestionSet() throws SQLException;
+    public ResultSet getQuestionSet();
 
-    public ResultSet getAllJobs() throws SQLException;
+    public ResultSet getAllJobs();
 
-    public void applyForJob(int jobPostId, int applicantId) throws SQLException;
+    public void applyForJob(int jobPostId, int applicantId);
 
     public IUser login(String username, String hashedPwd);
 
