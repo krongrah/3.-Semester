@@ -55,7 +55,7 @@ public class Applicant extends User {
     
     public Applicant(ResultSet set) throws SQLException{
         super(set);
-        this.name = set.getString("Name");
+        this.name = set.getString("username");
     }
 
     /**
