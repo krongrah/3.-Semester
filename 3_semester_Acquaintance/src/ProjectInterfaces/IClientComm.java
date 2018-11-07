@@ -19,10 +19,8 @@ public interface IClientComm {
 
     /**
      * Connects the client to the server.
-     *
-     * @return returns true if the connection was successful.
      */
-    public boolean connectToServer();
+    public void connectToServer();
 
     public List<JobPost> getAllJobs();
 

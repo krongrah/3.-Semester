@@ -45,8 +45,8 @@ public class ClientDomainFacade implements IClientDomain {
     }
 
     @Override
-    public boolean connectToServer() {
-        return comm.connectToServer();
+    public void connectToServer() {
+        comm.connectToServer();
     }
 
     /**
