@@ -14,9 +14,9 @@ public interface IUserManager {
     public void logout();
 
     public IUser getActiveUser();
-    
+
     public boolean hasActiveUser();
-    
+
     public boolean login(String username, String password);
 
 }

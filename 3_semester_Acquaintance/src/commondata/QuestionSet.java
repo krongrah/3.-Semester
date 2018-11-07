@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package commondata;
 
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
 import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +10,13 @@ import java.util.List;
  *
  * @author Krongrah
  */
-public class QuestionSet implements IQuestionSet, Serializable{
+public class QuestionSet implements IQuestionSet, Serializable {
 
- private List<IQuestion> questions = new ArrayList();
+    private List<IQuestion> questions = new ArrayList();
 
-//    public QuestionSet() {
-//    }
-//
     public QuestionSet(List<IQuestion> ql) {
-        questions=ql;
+        questions = ql;
     }
- 
-
 
     @Override
     public List<IQuestion> getQuestionSet() {
@@ -36,13 +24,8 @@ public class QuestionSet implements IQuestionSet, Serializable{
     }
 
     @Override
-    public void addToList(IQuestion q) {
-        questions.add(q);
-    }
-
-    @Override
     public IQuestion getQuestion(int i) {
         return questions.get(i);
     }
-    
+
 }

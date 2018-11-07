@@ -5,16 +5,10 @@
  */
 package pkg3_semester_serverstarter;
 
-import ProjectInterfaces.IComm;
 import ProjectInterfaces.IServerComm;
 import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IServerPersistence;
-import ProjectInterfaces.IUser;
-import java.net.MalformedURLException;
-import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pkg3_semester_servercomm.ServerCommFacade;
@@ -29,25 +23,15 @@ import pkg3_semester_serverpersistence.PersistenceFacade;
  */
 public class Main {
 
-    /**
-     * Main method is invoked when the Server is starting
-     *
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         try {
-            // TODO code application logic here
 
             IServerComm comm = new ServerCommFacade();
             IServerDomain domain = new ServerDomainFacade();
             IServerPersistence persistence = new PersistenceFacade();
             comm.injectDomain(domain);
             domain.injectPersistence(persistence);
-            
-            /*IComm commit=(IComm) comm;
-            IUser i = commit.login("Test", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");
-            System.out.println(i.getCity());*/
-            
+
         } catch (RemoteException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }

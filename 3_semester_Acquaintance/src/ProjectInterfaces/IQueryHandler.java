@@ -7,29 +7,21 @@ package ProjectInterfaces;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  *
  * @author mikkellarsen
  */
 public interface IQueryHandler {
-    
-    public Connection connect() throws SQLException;
-    
-    public ResultSet getUser(String username, String password) throws SQLException;
-    
-    public ResultSet getQuestionSet() throws SQLException;
-    
-    public ResultSet getApplicants(int id) throws SQLException;
-    
-    public ResultSet getAllJobs() throws SQLException;
 
-    public ResultSet getCompanyUser(int id) throws SQLException;
-    
-    public void applyForJob(int jobPostId, int applicantId) throws SQLException;
+    public Connection connect();
 
-    
-    
-    
+    public ResultSet getUser(String username, String password);
+
+    public ResultSet getQuestionSet();
+
+    public ResultSet getAllJobs();
+
+    public void applyForJob(int jobPostId, int applicantId);
+
 }

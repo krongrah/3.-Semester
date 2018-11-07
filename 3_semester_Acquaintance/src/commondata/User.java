@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package commondata;
 
 import ProjectInterfaces.IUser;
@@ -12,10 +7,6 @@ import java.sql.SQLException;
 
 public class User implements IUser, Serializable {
 
-    /**
-     * Whether the user is a company user
-     */
-    private boolean isCompany;
     /**
      * Email
      */
@@ -48,34 +39,19 @@ public class User implements IUser, Serializable {
     private int userId;
 
     private String username;
-
-    /**
-     * User constructor
-     *
-     * @param username
-     * @param userId
-     * @param isCompany
-     * @param email : String
-     * @param phonenr : String
-     * @param address : String
-     * @param zipcode : String
-     * @param city : String
-     * @param country : String
-     * @param region : String
+    
+     /**
+     * Applicants name
      */
-    public User(String username, int userId, boolean isCompany, String email, Integer phonenr, String address, String zipcode, String city, String country, String region) {
-        this.isCompany = isCompany;
-        this.email = email;
-        this.phonenr = phonenr;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.country = country;
-        this.region = region;
-        this.userId = userId;
-        this.username = username;
-        
-    }
+    private String name;
+    /**
+     * Has taken the personality test
+     */
+    private Boolean personalityTest=true;
+    /**
+     * Years of experience in their given field
+     */
+    private int experience;
 
     public User(ResultSet user) throws SQLException { //Can't determine whether its an applicant or company 
         while (user.next()) {
@@ -89,21 +65,13 @@ public class User implements IUser, Serializable {
             country = user.getString("country");
             region = user.getString("region");
             userId = user.getInt("userid");
-            isCompany = user.getBoolean("isCompany");
+            name = user.getString("username");
+            //personalityTest=user.getBoolean("personalitytest");
 
         }
 
     }
 
-    /**
-     * gets whether the user is a company
-     *
-     * @return
-     */
-    @Override
-    public boolean getIsCompany() {
-        return isCompany;
-    }
 
     /**
      * Gets the email
@@ -183,6 +151,43 @@ public class User implements IUser, Serializable {
     @Override
     public String getUsername() {
         return username;
+    }
+    
+        /**
+     * Sets the years of experience the applicant has in their field
+     *
+     * @param experience : Integer
+     */
+    @Override
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+
+    /**
+     * Gets the name of the applicant
+     *
+     * @return Name : String
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Gets whether or not the personality test has been completed
+     * @return personalityTest : Boolean
+     */
+    @Override
+    public Boolean getPersonalityTest() {
+        return personalityTest;
+    }
+
+    /**
+     * Gets the years of experience the applicant has
+     * @return experience : integer
+     */
+    public int getExperience() {
+        return experience;
     }
 
 }

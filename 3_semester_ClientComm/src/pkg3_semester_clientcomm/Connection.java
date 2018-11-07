@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IComm;
@@ -17,7 +12,6 @@ import java.rmi.registry.Registry;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.*;
 
 /**
  * A connection to the server.
@@ -35,26 +29,22 @@ public class Connection {
      * The IP of the server.
      */
     private String address = "10.123.3.31";
+    //private String address = "localhost";
 
     /**
      * connects the connection to the server.
-     *
-     * @return returns true if the connection was successful.
      */
-    public boolean Connect() {
+    public void Connect() {
 
         try {
-            Registry r = LocateRegistry.getRegistry(address, port);
-            icomm = (IComm) r.lookup("theJobConnect");
-            return true;
+            icomm = (IComm) LocateRegistry.getRegistry(address, port).lookup("theJobConnect");
         } catch (NotBoundException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
     }
-
+    
     public IQuestionSet getQuestionSet() {
         try {
             return icomm.getQuestionSet();

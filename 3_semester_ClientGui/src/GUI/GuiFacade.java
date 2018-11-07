@@ -5,10 +5,8 @@
  */
 package GUI;
 
-import GUI.TheJobGUI;
 import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IClientGui;
-import ProjectInterfaces.IJobPost;
 import commondata.JobPost;
 import java.util.List;
 
@@ -48,12 +46,5 @@ public class GuiFacade implements IClientGui {
         return clientGui;
         
     }
-
-    @Override
-    public List<JobPost> getAllJobs() {
-        return domain.getAllJobs();
-    }
-    
-    
 
 }

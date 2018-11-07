@@ -10,31 +10,30 @@ import java.util.List;
 
 /**
  * The interface for the Server Domain
+ *
  * @author Krongrah
  */
 public interface IServerDomain {
 
-    
     /**
      * The method for injecting the Server Persistence interface
-     * @param persistence 
+     *
+     * @param persistence
      */
     public void injectPersistence(IServerPersistence persistence);
-    
-    public IUser getCompanyUser(int i);
-    
+
     public IUser getUser(String username, String password);
-    
+
     public IQuestionSet getQuestionSet();
-    
+
     public void applyForJob(IJobPost jobpost, IUser applicant);
-    
+
+    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet);
+
     public IUser login(String username, String hashedPwd);
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
     public List<JobPost> getAllJobs();
-
-    public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet);
 
 }
