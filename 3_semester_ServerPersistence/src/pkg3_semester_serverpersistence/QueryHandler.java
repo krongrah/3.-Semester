@@ -88,21 +88,6 @@ public class QueryHandler implements IQueryHandler {
     }
 
     @Override
-    public ResultSet getApplicants(int id) {
-
-        try {
-            Connection con = connect();
-            PreparedStatement statement;
-            String job = "job" + id + "_applicants";
-            statement = con.prepareStatement("SELECT * FROM " + job);
-            return statement.executeQuery();
-        } catch (SQLException ex) {
-            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    @Override
     public ResultSet getAllJobs() {
         try {
             Connection con = connect();

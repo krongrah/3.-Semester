@@ -7,7 +7,6 @@ package ProjectInterfaces;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  *
@@ -20,8 +19,6 @@ public interface IQueryHandler {
     public ResultSet getUser(String username, String password);
 
     public ResultSet getQuestionSet();
-
-    public ResultSet getApplicants(int id);
 
     public ResultSet getAllJobs();
 

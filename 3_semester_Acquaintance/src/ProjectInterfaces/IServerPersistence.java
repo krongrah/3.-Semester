@@ -6,7 +6,6 @@
 package ProjectInterfaces;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * The interface for Server Persistence
