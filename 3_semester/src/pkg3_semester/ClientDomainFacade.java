@@ -15,16 +15,7 @@ import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
 import UserSystem.UserManager;
 import commondata.JobPost;
-import commondata.User;
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.List;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SealedObject;
 
 /**
  * Communication between the other 2 layers, which are the GUI and the
