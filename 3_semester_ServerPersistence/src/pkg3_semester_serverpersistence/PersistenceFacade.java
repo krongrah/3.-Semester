@@ -41,7 +41,6 @@ public class PersistenceFacade implements IServerPersistence {
      *
      * @param jobPostId
      * @param applicantId
-     * @throws SQLException
      */
     @Override
     public void applyForJob(int jobPostId, int applicantId) {

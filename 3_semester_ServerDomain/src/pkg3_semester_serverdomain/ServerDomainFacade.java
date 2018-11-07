@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pkg3_semester_serverdomain;
 
 import ProjectInterfaces.IJobPost;
@@ -53,21 +48,16 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public IUser getUser(String username, String password) {
         try {
-            ResultSet set = persistence.getUser(username, password);
-           
-                return new User(set);
-            
+                return new User(persistence.getUser(username, password));
         } catch (SQLException ex) {
             System.out.println("Didnt login (server Domain error)");
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        //Missing return value: No User found (To be specified)
     }
 
     @Override
     public IQuestionSet getQuestionSet() {
-
         try {
             return personal.getQuestionSet(persistence.getQuestionSet());
         } catch (Exception e) {
@@ -95,9 +85,7 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         //todo, has yet to be implemented, and is not yet necessary;
-        //int[] i = personal.calculateScore(u);
-        return null;
-        
+        return personal.calculateScore(set);
     }
 
     @Override
@@ -107,35 +95,10 @@ public class ServerDomainFacade implements IServerDomain {
             ResultSet rs = persistence.getAllJobs();
             while (rs.next()) {
                 jobs.add(new JobPost(rs));
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return jobs;
     }
-
-
 }
-
- 
-
-//    public List<JobPost> getAllJobs() {
-//
-//        try {
-//            ResultSet rs = persistence.getAllJobs();
-//            
-//            while (rs.next()) {
-//                ijps.add(new JobPost(rs.getInt("id"), rs.getString("title"), rs.getString("description"), rs.getString("companyname"), rs.getString("website"))); 
-//            }
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        System.out.println(ijps.size());
-//        return ijps;
-//
-//    }
-
-

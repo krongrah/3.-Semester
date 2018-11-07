@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package personalityAssessment;
 
+import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,14 +11,14 @@ import ProjectInterfaces.IQuestionSet;
  */
 public class ScoreCalculator {
 
-    public int[] calculateScore(IQuestionSet iqs) {
-        int[] score = new int[5];
+    public List<Integer> calculateScore(IQuestionSet iqs) {
+        List<Integer> list = new ArrayList();
         int aTotal = 0, bTotal = 0, cTotal = 0, dTotal = 0, eTotal = 0, fTotal = 0, gTotal = 0, hTotal = 0, iTotal = 0, jTotal = 0;
-
-        for (int i = 0; i < 50; i++) {
-            int scorePoint = getPoint(iqs, i);
-
-            switch (iqs.getQuestion(i).getQuestionAnswer()) {
+        List<IQuestion>questionList=iqs.getQuestionSet();
+        for (IQuestion q : iqs.getQuestionSet()) {
+            int scorePoint = getPoint(iqs, questionList.indexOf(q) );
+            
+            switch (q.getQuestionAnswer()) {
                 case 1:
                     aTotal += scorePoint;
                 case 2:
@@ -44,12 +42,12 @@ public class ScoreCalculator {
             }
         }
 
-        return score;
+        return list;
     }
 
     public int getPoint(IQuestionSet iqs, int i) {
         int scorePoint = 0;
-        if (iqs.getQuestionSet().get(i).getQuestionDirection() == false) {
+        if (!iqs.getQuestionSet().get(i).getQuestionDirection()) {
             switch (iqs.getQuestion(i).getQuestionAnswer()) {
                 case 1:
                     scorePoint += 5;

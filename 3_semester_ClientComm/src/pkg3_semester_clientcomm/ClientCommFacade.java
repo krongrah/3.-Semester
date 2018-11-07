@@ -10,7 +10,6 @@ import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import commondata.JobPost;
-import commondata.User;
 import java.util.List;
 
 /**
