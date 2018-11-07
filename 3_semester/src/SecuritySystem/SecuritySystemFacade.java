@@ -79,6 +79,11 @@ public class SecuritySystemFacade implements IClientSecurity {
 
     }
 
+    /**
+     * Hashes any string 
+     * @param value
+     * @return 
+     */
     @Override
     public String Hash(String value) {
         String hashed = null;
@@ -90,6 +95,13 @@ public class SecuritySystemFacade implements IClientSecurity {
         return hashed;
     }
 
+    /**
+     * Gets the cipher for encryption
+     * @return the cipher
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchPaddingException
+     * @throws InvalidKeyException 
+     */
     @Override
     public Cipher getEncryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
         Cipher cipher = Cipher.getInstance(transformation);
@@ -97,6 +109,13 @@ public class SecuritySystemFacade implements IClientSecurity {
         return cipher;
     }
 
+    /**
+     * Gets the cipher for decryption
+     * @return the cipher
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchPaddingException
+     * @throws InvalidKeyException 
+     */
     @Override
     public Cipher getDecryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
         Cipher cipher = Cipher.getInstance(transformation);
@@ -105,6 +124,12 @@ public class SecuritySystemFacade implements IClientSecurity {
 
     }
 
+    /**
+     * Encrypts an object according to the transformation string algorithm.
+     * @param ser : any serializable object (must be in commondata)
+     * @return new SealedObject - an encrypted serializable object.
+     * @throws IOException an error during de-serialization
+     */
     @Override
     public SealedObject encryptObject(Serializable ser) throws IOException {
         SealedObject seal = null;
@@ -122,6 +147,12 @@ public class SecuritySystemFacade implements IClientSecurity {
         return seal;
     }
 
+    /**
+     * Decrypts an object of the Serializable type according to the transformation string algorithm.
+     * @param seal Any sealedobject (A commondata object of the type serializable, which has been encrypted)
+     * @return a new Serializable object which is the decrypted SealedObject.
+     * @throws IOException - an exception during serialization
+     */
     @Override
     public Serializable decryptObject(SealedObject seal) throws IOException {
         Serializable ser = null;
