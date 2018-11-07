@@ -7,6 +7,7 @@ package ProjectInterfaces;
 
 import commondata.JobPost;
 import java.util.List;
+import javax.crypto.SealedObject;
 
 /**
  * The interface for the Client communication
@@ -15,11 +16,8 @@ import java.util.List;
  */
 public interface IClientComm {
 
-    public IUser login(String username, String hashedPwd);
+    public SealedObject login(String username, String hashedPwd);
 
-    /**
-     * Connects the client to the server.
-     */
     public void connectToServer();
 
     public List<JobPost> getAllJobs();

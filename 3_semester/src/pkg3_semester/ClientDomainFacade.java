@@ -12,7 +12,6 @@ import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
-import SecuritySystem.SecuritySystemFacade;
 import UserSystem.UserManager;
 import commondata.JobPost;
 import java.util.List;

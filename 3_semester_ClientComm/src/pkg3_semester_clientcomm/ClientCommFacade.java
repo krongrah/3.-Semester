@@ -5,7 +5,9 @@ import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import commondata.JobPost;
+import java.io.Serializable;
 import java.util.List;
+import javax.crypto.SealedObject;
 
 /**
  * is responsible for the communication between all client communication to the
@@ -23,11 +25,9 @@ public class ClientCommFacade implements IClientComm {
      * @return An object of the type IUser
      */
     @Override
-    public IUser login(String username, String hashedPwd) {
+    public SealedObject login(String username, String hashedPwd) {
         connectToServer();
-        IUser user = connection.login(username, hashedPwd);
-        System.out.println("now logged in: " + user.getUsername());
-        return user; 
+        return connection.login(username, hashedPwd);
     }
 
     /**

@@ -6,7 +6,9 @@
 package ProjectInterfaces;
 
 import commondata.JobPost;
+import java.io.Serializable;
 import java.util.List;
+import javax.crypto.SealedObject;
 
 /**
  * The interface for the Server Domain
@@ -22,7 +24,7 @@ public interface IServerDomain {
      */
     public void injectPersistence(IServerPersistence persistence);
 
-    public IUser getUser(String username, String password);
+    public SealedObject getUser(String username, String password);
 
     public IQuestionSet getQuestionSet();
 
@@ -30,7 +32,7 @@ public interface IServerDomain {
 
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet);
 
-    public IUser login(String username, String hashedPwd);
+    public SealedObject login(String username, String hashedPwd);
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 

@@ -5,13 +5,15 @@ import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import commondata.JobPost;
+import java.io.IOException;
+import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.SealedObject;
 
 /**
  * A connection to the server.
@@ -28,8 +30,8 @@ public class Connection {
     /**
      * The IP of the server.
      */
-    private String address = "10.123.3.31";
-    //private String address = "localhost";
+    //private String address = "10.123.3.31";
+    private String address = "localhost";
 
     /**
      * connects the connection to the server.
@@ -44,7 +46,7 @@ public class Connection {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public IQuestionSet getQuestionSet() {
         try {
             return icomm.getQuestionSet();
@@ -54,14 +56,14 @@ public class Connection {
         }
     }
 
-    public IUser login(String username, String hashedPwd) {
+    public SealedObject login(String username, String hashedPwd) {
+        SealedObject seal = null;
         try {
-            return icomm.login(username, hashedPwd);
-        } catch (RemoteException ex) {
-            System.out.println("Didnt log in");
+            seal = icomm.login(username, hashedPwd);
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
+        return seal;
     }
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
@@ -73,7 +75,7 @@ public class Connection {
         }
     }
 
-    public List<JobPost> getJobAllPosts(){
+    public List<JobPost> getJobAllPosts() {
 
         try {
             return icomm.getJobAllPosts();

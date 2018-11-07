@@ -7,6 +7,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import javax.crypto.SealedObject;
 
 /**
  * This Facade represents the ServerCommunication, and allows other subsystems
@@ -47,7 +48,7 @@ public class ServerCommFacade extends UnicastRemoteObject implements IServerComm
     }
 
     @Override
-    public IUser login(String username, String hashedPwd) throws RemoteException {
+    public SealedObject login(String username, String hashedPwd) throws RemoteException {
         return domain.login(username, hashedPwd);
     }
 
