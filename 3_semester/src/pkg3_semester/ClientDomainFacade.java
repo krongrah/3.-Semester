@@ -37,12 +37,7 @@ public class ClientDomainFacade implements IClientDomain {
     private IUserManager userManager;
     private IClientSecurity security;
 
-    public ClientDomainFacade() {
-        //security = new SecuritySystemFacade();
-
-    }
-
-    public static void main(String[] args) throws NoSuchAlgorithmException, IOException, NoSuchPaddingException, ClassNotFoundException, IllegalBlockSizeException, BadPaddingException, BadPaddingException, InvalidKeySpecException, InvalidKeyException {
+   /* public static void main(String[] args) throws NoSuchAlgorithmException, IOException, NoSuchPaddingException, ClassNotFoundException, IllegalBlockSizeException, BadPaddingException, BadPaddingException, InvalidKeySpecException, InvalidKeyException {
         IClientSecurity security = new SecuritySystemFacade();
         User user = new User("Dude", 24, false, "dude@gmail.com", 28891897, "Odensevej 12", "5200", "Odense", "Danmark", "Fyn");
         SealedObject seal = new SealedObject(user, security.getEncryptCipher()); //Made from a Serializable object. It's serializable content is encrypted.
@@ -55,7 +50,7 @@ public class ClientDomainFacade implements IClientDomain {
         //User decUser = (User) seal.getObject(security.getDecryptCipher());
         //System.out.println("Decrypted: " + decUser.toString());
 
-    }
+    }*/
 
     /**
      * Injects an instance of the Client Communication facade
