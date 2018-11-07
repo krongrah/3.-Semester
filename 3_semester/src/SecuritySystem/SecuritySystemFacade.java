@@ -7,17 +7,22 @@ package SecuritySystem;
 
 import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IHasher;
+import java.io.IOException;
+import java.io.Serializable;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import static javax.crypto.Cipher.DECRYPT_MODE;
 import static javax.crypto.Cipher.ENCRYPT_MODE;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -54,7 +59,6 @@ public class SecuritySystemFacade implements IClientSecurity {
     private String transformation = "DES";
     private SecretKeySpec secret;
     private SecretKey secretKey;
-   
 
     public SecuritySystemFacade() throws InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
         SecretKeyFactory factory = SecretKeyFactory.getInstance(transformation);
@@ -98,7 +102,47 @@ public class SecuritySystemFacade implements IClientSecurity {
         Cipher cipher = Cipher.getInstance(transformation);
         cipher.init(DECRYPT_MODE, secret);
         return cipher;
+
+    }
+
+    @Override
+    public SealedObject encryptObject(Serializable ser) throws IOException {
+        SealedObject seal = null;
+        try {
+            seal = new SealedObject(ser, getEncryptCipher());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return seal;
+    }
+
+    @Override
+    public Serializable decryptObject(SealedObject seal) throws IOException {
+        Serializable ser = null;
         
+        try {
+            ser = (Serializable) seal.getObject(getDecryptCipher());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return ser;
     }
 
 }
