@@ -37,8 +37,8 @@ public class ClientDomainFacade implements IClientDomain {
     private IUserManager userManager;
     private IClientSecurity security;
 
-    /*public ClientDomainFacade() {
-        security = new SecuritySystemFacade();
+    public ClientDomainFacade() {
+        //security = new SecuritySystemFacade();
 
     }
 
@@ -55,7 +55,7 @@ public class ClientDomainFacade implements IClientDomain {
         //User decUser = (User) seal.getObject(security.getDecryptCipher());
         //System.out.println("Decrypted: " + decUser.toString());
 
-    }*/
+    }
 
     /**
      * Injects an instance of the Client Communication facade
