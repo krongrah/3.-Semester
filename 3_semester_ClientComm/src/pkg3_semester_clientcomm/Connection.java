@@ -28,8 +28,8 @@ public class Connection {
     /**
      * The IP of the server.
      */
-    //private String address = "10.123.3.31";
-    private String address = "localhost";
+    private String address = "10.123.3.31";
+    //private String address = "localhost";
 
     /**
      * connects the connection to the server.
