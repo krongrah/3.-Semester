@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.*;
@@ -21,20 +16,20 @@ import java.util.List;
  */
 public class ServerCommFacade extends UnicastRemoteObject implements IServerComm, IComm {
 
+     /**
+     * This is a reference to the domain layer beneath this Communications
+     * layer.
+     */
+    private IServerDomain domain;
+    
+    
     public ServerCommFacade() throws RemoteException {
         Registry r = LocateRegistry.createRegistry(9001);
         IComm i = (IComm) this;
         r.rebind("theJobConnect", i);
         System.out.println("Server is ready.");
-
     }
-
-    /**
-     * This is a reference to the domain layer beneath this Communications
-     * layer.
-     */
-    private IServerDomain domain;
-
+    
     /**
      * This injects a reference to the domain layer into this instance, so calls
      * can be made onto said domain layer.

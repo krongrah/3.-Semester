@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package personalityAssessment;
 
 import ProjectInterfaces.IQuestion;
@@ -32,7 +27,7 @@ public class PersonalityFacade {
         IQuestionSet qs = new QuestionSet(q);
         try {
             while (rs.next()) {
-                q.add(new Question(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getBoolean(4)));
+                q.add(new Question(rs.getString(2), rs.getInt(3), rs.getBoolean(4)));
                 return qs;
             }
         } catch (SQLException ex) {
@@ -42,7 +37,7 @@ public class PersonalityFacade {
         return null;
     }
     
-    public int[] calculateScore(IQuestionSet questionSet) {
+    public List<Integer> calculateScore(IQuestionSet questionSet) {
         return sc.calculateScore(questionSet);
     }
 

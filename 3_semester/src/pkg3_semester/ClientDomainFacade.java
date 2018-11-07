@@ -13,7 +13,6 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import ProjectInterfaces.IUserManager;
 import SecuritySystem.SecuritySystemFacade;
-import UserSystem.Applicant;
 import UserSystem.UserManager;
 import commondata.JobPost;
 import commondata.User;
@@ -70,8 +69,8 @@ public class ClientDomainFacade implements IClientDomain {
     }
 
     @Override
-    public boolean connectToServer() {
-        return comm.connectToServer();
+    public void connectToServer() {
+        comm.connectToServer();
     }
 
     /**
@@ -106,10 +105,6 @@ public class ClientDomainFacade implements IClientDomain {
         return userManager.getActiveUser();
     }
 
-    private Applicant getActiveApplicant() {
-        return (Applicant) userManager.getActiveUser();
-    }
-
     /**
      * Gets a boolean value of whether a user is logged in already
      *
@@ -133,7 +128,7 @@ public class ClientDomainFacade implements IClientDomain {
 
     @Override
     public void setExperience(int exp) {
-        getActiveApplicant().setExperience(exp);
+        getActiveUser().setExperience(exp);
     }
 
     @Override
@@ -151,7 +146,7 @@ public class ClientDomainFacade implements IClientDomain {
      * @param set
      */
     @Override
-    public void saveApplication(IUser user, IJobPost job, IQuestionSet set) {
+    public void applyForJob(IUser user, IJobPost job, IQuestionSet set) {
         comm.applyForJob(user, job, set);
     }
 
@@ -162,7 +157,7 @@ public class ClientDomainFacade implements IClientDomain {
      * @param job
      */
     @Override
-    public void saveApplication(IUser user, IJobPost job) {
+    public void applyForJob(IUser user, IJobPost job) {
         comm.applyForJob(user, job);
     }
 

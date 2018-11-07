@@ -61,7 +61,17 @@ public class ApplicationInfoController implements Initializable, IController<Scr
         if (!experience.getText().isEmpty()) {
             requiredField.setVisible(false);
             domain.setExperience(Integer.valueOf(experience.getText()));
+            if(domain.getActiveUser().getPersonalityTest()){
+             domain.applyForJob(domain.getActiveUser(), screenController.getApplyingForJobPost());
+             
+            }else{
             this.screenController.openPersonalityTest();
+            }
+            
+            
+           
+            
+            
         }else{
             requiredField.setVisible(true); 
         }

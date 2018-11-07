@@ -10,7 +10,7 @@ package ProjectInterfaces;
  * @author mikkellarsen
  */
 public interface IQuestion {
-    
+
     public String getQuestion();
 
     public int getQuestionsfactor();
@@ -18,7 +18,7 @@ public interface IQuestion {
     public boolean getQuestionDirection();
 
     public int getQuestionAnswer();
-    
+
     public void setQuestionAnswer(int ans);
-    
+
 }

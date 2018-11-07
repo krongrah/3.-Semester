@@ -7,13 +7,15 @@ package ProjectInterfaces;
 
 /**
  * The interface for the Server Communication
+ *
  * @author Krongrah
  */
 public interface IServerComm {
 
     /**
      * The method to inject the server domain
-     * @param domain 
+     *
+     * @param domain
      */
     public void injectDomain(IServerDomain domain);
 
