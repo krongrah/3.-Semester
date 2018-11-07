@@ -10,7 +10,6 @@ import ProjectInterfaces.IHasher;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.logging.Level;
@@ -24,8 +23,6 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -35,54 +32,27 @@ import javax.crypto.spec.SecretKeySpec;
 public class SecuritySystemFacade implements IClientSecurity {
 
     private IHasher hasher = new Hasher();
-    final String password = "test";
-    int pswdIterations = 65536;
-    int keySize = 256;
-    byte[] ivBytes;
-    String certStr = "-----BEGIN CERTIFICATE-----\n"
-            + "MIICYDCCAckCBDm+nq8wDQYJKoZIhvcNAQEEBQAwdzELMAkGA1UEBhMCVVMxCzAJ\n"
-            + "BgNVBAgTAkNBMRIwEAYDVQQHEwlTdW5ueXZhbGUxHzAdBgNVBAoTFlN1biBNaWNy\n"
-            + "b3N5c3RlbXMsIEluYy4xETAPBgNVBAsTCEphdmFzb2Z0MRMwEQYDVQQDEwpSb2dl\n"
-            + "ciBQaGFtMB4XDTAwMDkxMjIxMjI1NVoXDTIwMDkwNzIxMjI1NVowdzELMAkGA1UE\n"
-            + "BhMCVVMxCzAJBgNVBAgTAkNBMRIwEAYDVQQHEwlTdW5ueXZhbGUxHzAdBgNVBAoT\n"
-            + "FlN1biBNaWNyb3N5c3RlbXMsIEluYy4xETAPBgNVBAsTCEphdmFzb2Z0MRMwEQYD\n"
-            + "VQQDEwpSb2dlciBQaGFtMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuUdLg\n"
-            + "t0BUE/MZ/wkcjDDK5VRAhuOphPizHV90S1goG7u0Ayf6w9V9WdJXswmbyf0SbRRj\n"
-            + "2IaH3ClRM/S+RuOZPzJyYY2GnIxUaIlOkWdBIcZv1l/ceXyal+C2oAF/ypRbstfE\n"
-            + "Lq5Y/AyQNEesi42Php+wTLT7GOBj1AMMBNLdYwIDAQABMA0GCSqGSIb3DQEBBAUA\n"
-            + "A4GBAEL9yV2GdVEeK7VdN3LKFxZ1egsZqtpzoUb37zqOXii27kdmIFGPPBal2/Ij\n"
-            + "us/Dphu+BMwxFerEUV7r/KfjDPk0Wofwdj7Ls2fcK4LzRvEI+OswvBaAAqJ3D+ja\n"
-            + "VcYBnS35IJDv0ocMUsPhr4kKUn0MQik3eixmh/Vz2Cu1bq1f\n"
-            + "-----END CERTIFICATE-----";
-    byte[] saltBytes = certStr.getBytes();
     private Cipher cipher;
     private String transformation = "DES";
     private SecretKeySpec secret;
     private SecretKey secretKey;
 
     public SecuritySystemFacade() throws InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
-        SecretKeyFactory factory = SecretKeyFactory.getInstance(transformation);
 
-        PBEKeySpec spec = new PBEKeySpec(
-                password.toCharArray(),
-                saltBytes,
-                pswdIterations,
-                keySize
-        );
+        secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
+        
+        secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
 
-        secretKey = KeyGenerator.getInstance(this.transformation).generateKey();
-
-        secret = new SecretKeySpec(secretKey.getEncoded(), transformation);
-
-        cipher = Cipher.getInstance(transformation);
-        cipher.init(ENCRYPT_MODE, secret);
+        cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
+        cipher.init(ENCRYPT_MODE, secret); //Initializes the cipher
 
     }
 
     /**
-     * Hashes any string 
+     * Hashes any string
+     *
      * @param value
-     * @return 
+     * @return
      */
     @Override
     public String Hash(String value) {
@@ -97,10 +67,11 @@ public class SecuritySystemFacade implements IClientSecurity {
 
     /**
      * Gets the cipher for encryption
+     *
      * @return the cipher
      * @throws NoSuchAlgorithmException
      * @throws NoSuchPaddingException
-     * @throws InvalidKeyException 
+     * @throws InvalidKeyException
      */
     @Override
     public Cipher getEncryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
@@ -111,10 +82,11 @@ public class SecuritySystemFacade implements IClientSecurity {
 
     /**
      * Gets the cipher for decryption
+     *
      * @return the cipher
      * @throws NoSuchAlgorithmException
      * @throws NoSuchPaddingException
-     * @throws InvalidKeyException 
+     * @throws InvalidKeyException
      */
     @Override
     public Cipher getDecryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
@@ -126,6 +98,7 @@ public class SecuritySystemFacade implements IClientSecurity {
 
     /**
      * Encrypts an object according to the transformation string algorithm.
+     *
      * @param ser : any serializable object (must be in commondata)
      * @return new SealedObject - an encrypted serializable object.
      * @throws IOException an error during de-serialization
@@ -148,15 +121,18 @@ public class SecuritySystemFacade implements IClientSecurity {
     }
 
     /**
-     * Decrypts an object of the Serializable type according to the transformation string algorithm.
-     * @param seal Any sealedobject (A commondata object of the type serializable, which has been encrypted)
+     * Decrypts an object of the Serializable type according to the
+     * transformation string algorithm.
+     *
+     * @param seal Any sealedobject (A commondata object of the type
+     * serializable, which has been encrypted)
      * @return a new Serializable object which is the decrypted SealedObject.
      * @throws IOException - an exception during serialization
      */
     @Override
     public Serializable decryptObject(SealedObject seal) throws IOException {
         Serializable ser = null;
-        
+
         try {
             ser = (Serializable) seal.getObject(getDecryptCipher());
         } catch (NoSuchAlgorithmException ex) {
@@ -172,7 +148,7 @@ public class SecuritySystemFacade implements IClientSecurity {
         } catch (BadPaddingException ex) {
             Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return ser;
     }
 
