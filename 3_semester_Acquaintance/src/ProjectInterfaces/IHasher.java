@@ -6,6 +6,7 @@
 package ProjectInterfaces;
 
 import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
 
 /**
  *

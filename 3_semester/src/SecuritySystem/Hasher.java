@@ -9,6 +9,10 @@ import ProjectInterfaces.IHasher;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  * Hasher class used for hashing a string value
@@ -16,7 +20,7 @@ import java.security.NoSuchAlgorithmException;
  * @author Sebas
  */
 public class Hasher implements IHasher{
-
+    
 //    public static void main(String[] args) throws NoSuchAlgorithmException {
 //        System.out.println(hash("password"));
 //    }
@@ -53,4 +57,5 @@ public class Hasher implements IHasher{
         }
         return hexString.toString();
     }
+    
 }

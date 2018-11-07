@@ -5,10 +5,19 @@
  */
 package ProjectInterfaces;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+
 /**
  *
  * @author Sebas
  */
 public interface IClientSecurity {
     public String Hash(String value);
+    
+    public Cipher getEncryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException;
+    public Cipher getDecryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException;
+    
 }

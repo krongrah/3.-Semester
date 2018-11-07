@@ -16,3 +16,7 @@ out/
 *.jar
 *.properties
 *.properties
+/3_semester_Acquaintance/nbproject/private/
+/3_semester_ClientComm/nbproject/private/
+/3_semester_ServerDomain/nbproject/private/
+*.xml
