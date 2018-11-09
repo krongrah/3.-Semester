@@ -37,14 +37,22 @@ public class SecuritySystemFacade implements IClientSecurity {
     private SecretKeySpec secret;
     private SecretKey secretKey;
 
-    public SecuritySystemFacade() throws InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
+    public SecuritySystemFacade(){
 
-        secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
-        
-        secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
-
-        cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
-        cipher.init(ENCRYPT_MODE, secret); //Initializes the cipher
+        try {
+            secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
+            
+            secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
+            
+            cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
+            cipher.init(ENCRYPT_MODE, secret); //Initializes the cipher
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

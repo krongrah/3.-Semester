@@ -42,6 +42,10 @@ public class ClientDomainFacade implements IClientDomain {
         //System.out.println("Decrypted: " + decUser.toString());
 
     }*/
+    
+    public ClientDomainFacade(){
+    security = new SecuritySystemFacade();
+    }
 
     /**
      * Injects an instance of the Client Communication facade
