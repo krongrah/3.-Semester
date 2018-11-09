@@ -8,7 +8,6 @@ import commondata.JobPost;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,8 +27,8 @@ public class Connection {
     /**
      * The IP of the server.
      */
-    private String address = "10.123.3.31";
-    //private String address = "localhost";
+    //private String address = "10.123.3.31";
+    private String address = "localhost";
 
     /**
      * connects the connection to the server.
