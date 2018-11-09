@@ -22,6 +22,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import commondata.CommonCipher;
 
 /**
  *
@@ -29,22 +30,14 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class SecuritySystemFacade {
 
-    private Cipher cipher;
-    private String transformation = "DES";
-    private SecretKeySpec secret;
-    private SecretKey secretKey;
     
-    public SecuritySystemFacade() throws InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
+    private CommonCipher common = new CommonCipher();
+    private Cipher cipher= common.getCipher();
+    private String transformation = common.getTransformation();
+    private SecretKeySpec secret = common.getKeySpec();
+    private SecretKey secretKey = common.getSecretKey();
 
-        secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
-        
-        secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
-
-        cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
-        cipher.init(ENCRYPT_MODE, secret); //Initializes the cipher
-
-    }
-
+    
     /**
      * Gets the cipher for encryption
      *

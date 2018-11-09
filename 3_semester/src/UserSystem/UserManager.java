@@ -48,7 +48,9 @@ public class UserManager implements IUserManager {
         if (hasActiveUser()) {
             String hashedPwd = security.Hash(password);
             try {
-                setActiveUser((User)security.decryptObject(comm.login(username, hashedPwd)));
+                User user = (User) security.decryptObject(comm.login(username, hashedPwd));
+                System.out.println(user.getUsername());
+                setActiveUser(user);
             } catch (IOException ex) {
                 Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -7,6 +7,7 @@ package SecuritySystem;
 
 import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IHasher;
+import commondata.CommonCipher;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
@@ -32,15 +33,16 @@ import javax.crypto.spec.SecretKeySpec;
 public class SecuritySystemFacade implements IClientSecurity {
 
     private IHasher hasher = new Hasher();
-    private Cipher cipher;
-    private String transformation = "DES";
-    private SecretKeySpec secret;
-    private SecretKey secretKey;
+    private CommonCipher common = new CommonCipher();
+    private Cipher cipher = common.getCipher();
+    private String transformation = common.getTransformation();
+    private SecretKeySpec secret = common.getKeySpec();
+    private SecretKey secretKey = common.getSecretKey();
 
     public SecuritySystemFacade() throws InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
 
         secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
-        
+
         secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
 
         cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
