@@ -22,4 +22,8 @@ public interface ICommonCipher {
     public SecretKeySpec getKeySpec();
 
     public SecretKey getSecretKey();
+    
+    public Cipher getEncryptCipher();
+    
+    public Cipher getDecryptCipher();
 }
