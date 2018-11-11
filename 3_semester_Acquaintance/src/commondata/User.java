@@ -39,15 +39,15 @@ public class User implements IUser, Serializable {
     private int userId;
 
     private String username;
-    
-     /**
+
+    /**
      * Applicants name
      */
     private String name;
     /**
      * Has taken the personality test
      */
-    private Boolean personalityTest=true;
+    private Boolean personalityTest = true;
     /**
      * Years of experience in their given field
      */
@@ -72,6 +72,19 @@ public class User implements IUser, Serializable {
 
     }
 
+    public User(String username, int userId, String email, Integer phonenr, String address, String zipcode, String city, String country, String region, String name, int experience) {
+        this.email = email;
+        this.phonenr = phonenr;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
+        this.region = region;
+        this.userId = userId;
+        this.username = username;
+        this.name = name;
+        this.experience = experience;
+    }
 
     /**
      * Gets the email
@@ -152,8 +165,8 @@ public class User implements IUser, Serializable {
     public String getUsername() {
         return username;
     }
-    
-        /**
+
+    /**
      * Sets the years of experience the applicant has in their field
      *
      * @param experience : Integer
@@ -162,7 +175,6 @@ public class User implements IUser, Serializable {
     public void setExperience(int experience) {
         this.experience = experience;
     }
-
 
     /**
      * Gets the name of the applicant
@@ -175,6 +187,7 @@ public class User implements IUser, Serializable {
 
     /**
      * Gets whether or not the personality test has been completed
+     *
      * @return personalityTest : Boolean
      */
     @Override
@@ -184,6 +197,7 @@ public class User implements IUser, Serializable {
 
     /**
      * Gets the years of experience the applicant has
+     *
      * @return experience : integer
      */
     public int getExperience() {

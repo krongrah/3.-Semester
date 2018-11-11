@@ -34,21 +34,6 @@ public class SecuritySystemFacade implements IClientSecurity {
 
     private IHasher hasher = new Hasher();
     private CommonCipher common = new CommonCipher();
-    private Cipher cipher = common.getCipher();
-    private String transformation = common.getTransformation();
-    private SecretKeySpec secret = common.getKeySpec();
-    private SecretKey secretKey = common.getSecretKey();
-
-    public SecuritySystemFacade() throws InvalidKeySpecException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
-
-        secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
-
-        secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
-
-        cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
-        cipher.init(ENCRYPT_MODE, secret); //Initializes the cipher
-
-    }
 
     /**
      * Hashes any string
@@ -77,9 +62,7 @@ public class SecuritySystemFacade implements IClientSecurity {
      */
     @Override
     public Cipher getEncryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-        Cipher cipher = Cipher.getInstance(transformation);
-        cipher.init(ENCRYPT_MODE, secret);
-        return cipher;
+        return common.getEncryptCipher();
     }
 
     /**
@@ -92,9 +75,7 @@ public class SecuritySystemFacade implements IClientSecurity {
      */
     @Override
     public Cipher getDecryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-        Cipher cipher = Cipher.getInstance(transformation);
-        cipher.init(DECRYPT_MODE, secret);
-        return cipher;
+        return common.getDecryptCipher();
 
     }
 
@@ -137,17 +118,17 @@ public class SecuritySystemFacade implements IClientSecurity {
 
         try {
             ser = (Serializable) seal.getObject(getDecryptCipher());
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchPaddingException ex) {
             Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidKeyException ex) {
-            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalBlockSizeException ex) {
-            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (BadPaddingException ex) {
             Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
 

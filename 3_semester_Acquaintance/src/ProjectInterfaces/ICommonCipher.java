@@ -15,8 +15,6 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public interface ICommonCipher {
 
-    public Cipher getCipher();
-
     public String getTransformation();
 
     public SecretKeySpec getKeySpec();

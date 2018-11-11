@@ -30,19 +30,18 @@ public class CommonCipher implements ICommonCipher {
     private SecretKeySpec secret;
     private SecretKey secretKey;
 
-    public Cipher getCipher() {
+    public CommonCipher() {
         try {
             secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
 
             secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
 
-            cipher = javax.crypto.Cipher.getInstance(transformation); //Returns an instance of the CommonCipher with a given algorithm
+            cipher = Cipher.getInstance(transformation); //Returns an instance of the CommonCipher with a given algorithm
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchPaddingException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return cipher;
     }
 
     public String getTransformation() {
@@ -67,16 +66,15 @@ public class CommonCipher implements ICommonCipher {
         Cipher cipher = null;
         try {
             cipher = Cipher.getInstance(transformation);
+            cipher.init(ENCRYPT_MODE, secret);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchPaddingException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            cipher.init(ENCRYPT_MODE, secret);
         } catch (InvalidKeyException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return cipher;
     }
 
@@ -90,13 +88,11 @@ public class CommonCipher implements ICommonCipher {
         Cipher cipher = null;
         try {
             cipher = Cipher.getInstance(transformation);
+            cipher.init(DECRYPT_MODE, secret);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchPaddingException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            cipher.init(DECRYPT_MODE, secret);
         } catch (InvalidKeyException ex) {
             Logger.getLogger(CommonCipher.class.getName()).log(Level.SEVERE, null, ex);
         }

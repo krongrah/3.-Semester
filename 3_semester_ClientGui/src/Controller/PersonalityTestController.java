@@ -112,6 +112,8 @@ public class PersonalityTestController implements Initializable, IController<Scr
                 domain.calculateScore(domain.getActiveUser(), questionSet);
 
                 domain.applyForJob(domain.getActiveUser(), screenController.getApplyingForJobPost(), questionSet);
+                
+                screenController.openResultsScreen();
             }
         } else {
             requiredField.setVisible(true);

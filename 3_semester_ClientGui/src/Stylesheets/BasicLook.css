@@ -190,8 +190,37 @@
 
 
 
+.progress{
+    -fx-border-radius: 0,0,0,0;
+}
+.progress .track{
+    -fx-background-color: rgba(0,0,0,0.1);
+    -fx-padding: 12px;
+}
 
 
+
+#openness .bar{
+    -fx-background-color: #70a1e3;
+    -fx-padding: 8px;
+    -fx-border-radius: 0,0,0,0;
+}#conscientiousness .bar{
+    -fx-background-color: #70a1e3;
+    -fx-padding: 8px;
+    -fx-border-radius: 0,0,0,0;
+}#extraversion .bar{
+    -fx-background-color: #70a1e3;
+    -fx-padding: 8px;
+    -fx-border-radius: 0,0,0,0;
+}#agreeableness .bar{
+    -fx-background-color: #70a1e3;
+    -fx-padding: 8px;
+    -fx-border-radius: 0,0,0,0;
+}#neuroticism .bar{
+    -fx-background-color: #70a1e3;
+    -fx-padding: 8px;
+    -fx-border-radius: 0,0,0,0;
+}
 
 
 

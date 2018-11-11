@@ -30,14 +30,8 @@ import commondata.CommonCipher;
  */
 public class SecuritySystemFacade {
 
-    
     private CommonCipher common = new CommonCipher();
-    private Cipher cipher= common.getCipher();
-    private String transformation = common.getTransformation();
-    private SecretKeySpec secret = common.getKeySpec();
-    private SecretKey secretKey = common.getSecretKey();
 
-    
     /**
      * Gets the cipher for encryption
      *
@@ -47,9 +41,7 @@ public class SecuritySystemFacade {
      * @throws InvalidKeyException
      */
     public Cipher getEncryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-        Cipher cipher = Cipher.getInstance(transformation);
-        cipher.init(ENCRYPT_MODE, secret);
-        return cipher;
+        return common.getEncryptCipher();
     }
 
     /**
@@ -61,10 +53,7 @@ public class SecuritySystemFacade {
      * @throws InvalidKeyException
      */
     public Cipher getDecryptCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-        Cipher cipher = Cipher.getInstance(transformation);
-        cipher.init(DECRYPT_MODE, secret);
-        return cipher;
-
+        return common.getDecryptCipher();
     }
 
     /**
@@ -103,13 +92,7 @@ public class SecuritySystemFacade {
         Serializable ser = null;
 
         try {
-            ser = (Serializable) seal.getObject(getDecryptCipher());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchPaddingException ex) {
-            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeyException ex) {
-            Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
+            ser = (Serializable) seal.getObject(common.getDecryptCipher());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SecuritySystemFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalBlockSizeException ex) {

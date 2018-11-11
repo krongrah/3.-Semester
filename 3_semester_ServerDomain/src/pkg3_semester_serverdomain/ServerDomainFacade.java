@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SealedObject;
 import personalityAssessment.*;
@@ -42,17 +43,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     public ServerDomainFacade() {
         personal = new PersonalityFacade();
-        try {
-            security = new SecuritySystemFacade();
-        } catch (InvalidKeySpecException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeyException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchPaddingException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        security = new SecuritySystemFacade();
     }
 
     /**
@@ -68,25 +59,47 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public SealedObject getUser(String username, String password) {
-        SealedObject encUser = null;
+        /*SealedObject encUser = null;
         try {
             encUser = security.encryptObject(new User(persistence.getUser(username, password)));
         } catch (SQLException ex) {
             System.out.println("Didnt login (server Domain error)");
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger
+                    .getLogger(ServerDomainFacade.class
+                            .getName()).log(Level.SEVERE, null, ex);
             return null;
+
+        } catch (IOException ex) {
+            Logger.getLogger(ServerDomainFacade.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+         */
+        User user = new User("Dude", 24, "dude@gmail.com", 28891897, "Odensevej 12", "5200", "Odense", "Danmark", "Fyn", "Sebastian Christiansen", 20);
+        SealedObject seal = null;
+        try {
+            seal = new SealedObject(user, security.getEncryptCipher()); //Made from a Serializable object. It's serializable content is encrypted.
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return encUser;
+        return seal;
     }
 
     @Override
     public IQuestionSet getQuestionSet() {
         try {
             return personal.getQuestionSet(persistence.getQuestionSet());
+
         } catch (Exception e) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ServerDomainFacade.class
+                    .getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
@@ -96,12 +109,16 @@ public class ServerDomainFacade implements IServerDomain {
         SealedObject encUser = null;
         try {
             encUser = security.encryptObject(new User(persistence.getUser(username, hashedPwd)));
+
         } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServerDomainFacade.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (IOException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServerDomainFacade.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return encUser;
     }
 
@@ -129,9 +146,11 @@ public class ServerDomainFacade implements IServerDomain {
             ResultSet rs = persistence.getAllJobs();
             while (rs.next()) {
                 jobs.add(new JobPost(rs));
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServerDomainFacade.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return jobs;
     }

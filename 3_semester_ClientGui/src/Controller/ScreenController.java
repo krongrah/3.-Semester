@@ -207,6 +207,12 @@ public class ScreenController implements Initializable, IController<ScreenContro
         unload();
         loadPopupController("FXML/ApplicationInfo.fxml");
     }
+    
+    public void openResultsScreen(){
+        unload();
+        loadPopupController("FXML/TestResults.fxml");
+    }
+        
 
     private void signIn(ActionEvent event) {
         unloadPopupController();

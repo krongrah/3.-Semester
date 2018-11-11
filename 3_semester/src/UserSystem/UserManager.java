@@ -30,17 +30,7 @@ public class UserManager implements IUserManager {
 
     public UserManager(IClientSecurity security, IClientComm comm) {
         this.comm = comm;
-        try {
-            this.security = new SecuritySystemFacade();
-        } catch (InvalidKeySpecException ex) {
-            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvalidKeyException ex) {
-            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchPaddingException ex) {
-            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.security = new SecuritySystemFacade();
     }
 
     @Override
