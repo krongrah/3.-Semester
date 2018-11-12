@@ -6,6 +6,9 @@
 package Tasks;
 
 import ProjectInterfaces.IUser;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,8 +26,10 @@ public class LoginTask extends Task{
 
     @Override
     public void run() {
-        IUser user = super.getDomain().login(username, hPassword);
-        //todo:
-        //Send the found user to the client..
+        try {
+            super.getOutputStream().writeObject(super.getDomain().login(username, hPassword));
+        } catch (IOException ex) {
+            Logger.getLogger(LoginTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

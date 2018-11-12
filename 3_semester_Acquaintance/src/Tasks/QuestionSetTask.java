@@ -5,6 +5,10 @@
  */
 package Tasks;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Sebas
@@ -17,7 +21,11 @@ public class QuestionSetTask extends Task{
     
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            super.getOutputStream().writeObject(super.getDomain().getQuestionSet());
+        } catch (IOException ex) {
+            Logger.getLogger(QuestionSetTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
