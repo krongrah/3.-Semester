@@ -225,7 +225,7 @@ public class ScreenController implements Initializable, IController<ScreenContro
 
     public void openTestResults(){
         unload();
-        loadPopupController("FXML/TestResults.fxmlsssss");
+        loadPopupController("FXML/TestResults.fxml");
     }
     
     @Override
