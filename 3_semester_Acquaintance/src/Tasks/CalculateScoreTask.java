@@ -5,19 +5,26 @@
  */
 package Tasks;
 
+import ProjectInterfaces.IQuestionSet;
+import ProjectInterfaces.IUser;
+
 /**
  *
  * @author Sebas
  */
 public class CalculateScoreTask extends Task implements Runnable {
 
-    CalculateScoreTask(){
-        
+    private IUser user;
+    private IQuestionSet set;
+
+    CalculateScoreTask(IUser user, IQuestionSet set) {
+        this.user = user;
+        this.set = set;
     }
-    
+
     @Override
     public void run() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
