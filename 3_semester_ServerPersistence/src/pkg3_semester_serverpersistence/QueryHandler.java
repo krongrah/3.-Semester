@@ -72,15 +72,16 @@ public class QueryHandler implements IQueryHandler {
     }
 
     @Override
-    public void applyForJob(int jobPostId, int applicantId) {
+    public void applyForJob(int jobPostId, int applicantId, double jobScore) {
         try {
             Connection con = connect();
             PreparedStatement statement;
 
             String job = "Job" + jobPostId + "_applicants";
 
-            statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?)");
+            statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
             statement.setInt(1, applicantId);
+            statement.setDouble(2, jobScore);
             statement.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,6 +96,20 @@ public class QueryHandler implements IQueryHandler {
             return statement.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public ResultSet getJobPrefScore(int jobPostId) {
+        try {
+            Connection con = connect();
+            PreparedStatement statement = con.prepareStatement("SELECT prefscore1, prefscore2, prefscore3, prefscore4, prefscore4, prefscore5, prefscore6, prefscore7, prefscore8, prefscore9, prefscore10 FROM jobs WHERE id = ?");
+            statement.setInt(1, jobPostId);
+            
+            return statement.executeQuery();
+        } catch (SQLException e) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jobCalculation.*;
 import personalityAssessment.*;
 
 /**
@@ -29,9 +30,12 @@ public class ServerDomainFacade implements IServerDomain {
     private IServerPersistence persistence;
 
     private PersonalityFacade personal;
+    
+    private JobCalFacade jobCal;
 
     public ServerDomainFacade() {
         personal = new PersonalityFacade();
+        jobCal = new JobCalFacade();
     }
 
     /**
@@ -73,13 +77,14 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
-            persistence.applyForJob(jobpost.getId(), applicant.getUserId());
+            //double score = jobCal.calculateScore(applicant, jobpost);
+            persistence.applyForJob(jobpost.getId(), applicant.getUserId(), 0.0);
     }
 
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
             //todo save personality answers in persistence
-            persistence.applyForJob(job.getId(), user.getUserId());
+            persistence.applyForJob(job.getId(), user.getUserId(), 0.0);
     }
 
     @Override
@@ -100,5 +105,23 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return jobs;
+    }
+
+    @Override
+    public List<Integer> getJobPrefScore(int jobPostId) {
+        List<Integer> prefScore = new ArrayList<>();
+        
+        try {
+            ResultSet rs = persistence.getJobPrefScore(jobPostId);
+            
+            while (rs.next()) {
+                for (int i = 1; i < 11; i++) {
+                    prefScore.add(rs.getInt(i));
+                } 
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return prefScore;
     }
 }
