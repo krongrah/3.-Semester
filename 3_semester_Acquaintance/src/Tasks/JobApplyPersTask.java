@@ -5,6 +5,7 @@
  */
 package Tasks;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 
@@ -12,19 +13,21 @@ import ProjectInterfaces.IUser;
  *
  * @author Sebas
  */
-public class CalculateScoreTask extends Task {
-
+public class JobApplyPersTask extends Task{
+    
     private IUser user;
+    private IJobPost job;
     private IQuestionSet set;
 
-    public CalculateScoreTask(IUser user, IQuestionSet set) {
+    public JobApplyPersTask(IUser user, IJobPost job, IQuestionSet set) {
         this.user = user;
+        this.job = job;
         this.set = set;
     }
-
+    
     @Override
     public void run() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

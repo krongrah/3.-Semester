@@ -11,7 +11,7 @@ package Tasks;
  */
 public class QuestionSetTask extends Task{
 
-    QuestionSetTask(){
+    public QuestionSetTask(){
         
     }
     

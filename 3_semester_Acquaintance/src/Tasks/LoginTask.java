@@ -16,8 +16,8 @@ public class LoginTask extends Task{
     private String username;
     private String hPassword;
     
-    LoginTask(String username, String password) {
-        username = username;
+    public LoginTask(String username, String password) {
+        this.username = username;
         hPassword = password;
     }
 

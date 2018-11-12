@@ -5,14 +5,21 @@
  */
 package Tasks;
 
+import ProjectInterfaces.IJobPost;
+import ProjectInterfaces.IUser;
+
 /**
  *
  * @author Sebas
  */
 public class JobApplyTask extends Task{
+    
+    private IUser user;
+    private IJobPost job;
 
-    JobApplyTask(){
-        
+    public JobApplyTask(IUser user, IJobPost job){
+        this.user=user;
+        this.job=job;
     }
     
     @Override

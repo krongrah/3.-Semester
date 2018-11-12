@@ -11,7 +11,7 @@ package Tasks;
  */
 public class AllJobsTask extends Task{
 
-    AllJobsTask(){
+    public AllJobsTask(){
         
     }
     
