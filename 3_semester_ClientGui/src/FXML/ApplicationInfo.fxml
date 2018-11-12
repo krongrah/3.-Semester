@@ -41,16 +41,19 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Label fx:id="applicationDesc" alignment="CENTER" contentDisplay="CENTER" prefHeight="261.0" prefWidth="781.0" text="Label" textFill="#212121" wrapText="true" GridPane.rowIndex="1">
+                  <Label fx:id="applicationDesc" alignment="CENTER" contentDisplay="CENTER" prefHeight="261.0" prefWidth="781.0" text="Label" textAlignment="CENTER" textFill="#212121" wrapText="true" GridPane.rowIndex="1">
                      <font>
-                        <Font size="25.0" />
-                     </font></Label>
+                        <Font size="20.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="55.0" right="55.0" />
+                     </GridPane.margin></Label>
                   <Button id="CancelButton" mnemonicParsing="false" onAction="#cancel" stylesheets="@../Stylesheets/BasicLook.css" text="Cancel" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="25.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="25.0" />
+                        <Font size="22.0" />
                      </font>
                   </Button>
                   <Button id="LoginButton" mnemonicParsing="false" onAction="#proceed" stylesheets="@../Stylesheets/BasicLook.css" text="Proceed to Personality Assessment" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
@@ -58,7 +61,7 @@
                         <Insets right="25.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="25.0" />
+                        <Font size="22.0" />
                      </font>
                   </Button>
                   <Label contentDisplay="BOTTOM" text="Enter you years of experience in the given field:" textFill="#212121" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
@@ -66,7 +69,7 @@
                         <TextField fx:id="experience" alignment="CENTER" maxWidth="200.0" promptText="fx. 5" style="-fx-background-color: transparent; -fx-border-color: #212121; -fx-border-radius: 25;" />
                      </graphic>
                      <font>
-                        <Font size="25.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
                   <Label fx:id="requiredField" contentDisplay="BOTTOM" text="* This field is required" textFill="#ff5353" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
