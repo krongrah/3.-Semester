@@ -46,8 +46,6 @@ public interface IClientDomain {
 
     public List<JobPost> getAllJobs();
 
-    public void connectToServer();
-
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
     public void applyForJob(IUser user, IJobPost job, IQuestionSet set);

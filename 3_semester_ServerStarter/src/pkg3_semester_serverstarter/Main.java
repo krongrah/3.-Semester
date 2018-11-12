@@ -24,17 +24,12 @@ import pkg3_semester_serverpersistence.PersistenceFacade;
 public class Main {
 
     public static void main(String[] args) {
-        try {
-
             IServerComm comm = new ServerCommFacade();
             IServerDomain domain = new ServerDomainFacade();
             IServerPersistence persistence = new PersistenceFacade();
             comm.injectDomain(domain);
             domain.injectPersistence(persistence);
-
-        } catch (RemoteException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            comm.start();
     }
 
 }

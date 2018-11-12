@@ -58,11 +58,6 @@ public class ClientDomainFacade implements IClientDomain {
         userManager = new UserManager(security, comm);
     }
 
-    @Override
-    public void connectToServer() {
-        comm.connectToServer();
-    }
-
     /**
      * Logs in the user, with a username and a password, the password is first
      * hashed using SHA-256.
@@ -73,7 +68,6 @@ public class ClientDomainFacade implements IClientDomain {
      */
     @Override
     public boolean login(String username, String password) {
-        comm.connectToServer();
         return userManager.login(username, password);
     }
 

@@ -1,74 +1,78 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pkg3_semester_servercomm;
 
-import ProjectInterfaces.*;
-import commondata.JobPost;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
+import ProjectInterfaces.IServerComm;
+import ProjectInterfaces.IServerDomain;
+import Tasks.Task;
+import static commondata.Constants.PORT;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.net.Socket;
 
 /**
- * This Facade represents the ServerCommunication, and allows other subsystems
- * to interact with it.
  *
- * @author Krongrah
+ * @author Kasper
  */
-public class ServerCommFacade extends UnicastRemoteObject implements IServerComm, IComm {
+public class ServerCommFacade implements IServerComm, IThreadPool {
 
-     /**
-     * This is a reference to the domain layer beneath this Communications
-     * layer.
-     */
+    private ServerSocket serv;
+    private List<Service> ServiceList;
     private IServerDomain domain;
-    
-    
-    public ServerCommFacade() throws RemoteException {
-        Registry r = LocateRegistry.createRegistry(9001);
-        IComm i = (IComm) this;
-        r.rebind("theJobConnect", i);
-        System.out.println("Server is ready.");
+    private ExecutorService tasks;
+
+    public ServerCommFacade() {
+        try {
+            serv = new ServerSocket(PORT);
+            ServiceList = new ArrayList();
+            tasks = Executors.newCachedThreadPool();
+        } catch (IOException ex) {
+            Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    /**
-     * This injects a reference to the domain layer into this instance, so calls
-     * can be made onto said domain layer.
-     *
-     * @param domain
-     */
+
+    @Override
+    public void start() {
+        Thread timeout = new Thread(new TimeoutThread(ServiceList));
+        timeout.setDaemon(true);
+        timeout.start();
+        
+
+        while (true) {
+            System.out.println("Server is ready.");
+            try {
+                Socket s=serv.accept();
+                Service service = new Service(s, domain);
+                ServiceList.add(service);
+                Thread t = new Thread(service);
+                t.setDaemon(true);
+                t.start();
+                
+
+            } catch (IOException ex) {
+                Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
+
     @Override
     public void injectDomain(IServerDomain domain) {
         this.domain = domain;
     }
 
     @Override
-    public IQuestionSet getQuestionSet() throws RemoteException  {
-        return domain.getQuestionSet();
-    }
-
-    @Override
-    public IUser login(String username, String hashedPwd) throws RemoteException {
-        return domain.login(username, hashedPwd);
-    }
-
-    @Override
-    public List<Integer> calculateScore(IUser user, IQuestionSet set) throws RemoteException {
-        return domain.calculateScore(user, set);
-    }
-
-    @Override
-    public List<JobPost> getJobAllPosts() throws RemoteException  {
-       return domain.getAllJobs();
-    }
-
-    @Override
-    public void applyForJob(IUser user, IJobPost job) throws RemoteException  {
-        domain.applyForJob(job, user);
-    }
-
-    @Override
-    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) throws RemoteException {
-       domain.applyForJob(job, user, questionSet);
+    public void execute(Task task) {
+       tasks.execute(task);
     }
 
 }

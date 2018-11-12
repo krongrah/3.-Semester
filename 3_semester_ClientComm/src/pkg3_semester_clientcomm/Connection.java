@@ -1,16 +1,19 @@
 package pkg3_semester_clientcomm;
 
-import ProjectInterfaces.IComm;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import commondata.JobPost;
-import java.rmi.NotBoundException;
+import java.net.Socket;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static commondata.Constants.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import Tasks.*;
 
 /**
  * A connection to the server.
@@ -19,82 +22,86 @@ import java.util.logging.Logger;
  */
 public class Connection {
 
-    IComm icomm;
-    /**
-     * Port of the server.
-     */
-    private int port = 9001;
-    /**
-     * The IP of the server.
-     */
-    //private String address = "10.123.3.31";
-    private String address = "localhost";
+    private ObjectInputStream inputStream;
+    private ObjectOutputStream outputStream;
 
     /**
      * connects the connection to the server.
      */
-    public void Connect() {
-
+    public void Connect() throws InterruptedException {
         try {
-            icomm = (IComm) LocateRegistry.getRegistry(address, port).lookup("theJobConnect");
-        } catch (NotBoundException ex) {
-            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Socket socket = new Socket(IP, PORT);
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
+
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public IQuestionSet getQuestionSet() {
         try {
-            return icomm.getQuestionSet();
-        } catch (RemoteException ex) {
+            outputStream.writeObject(new QuestionSetTask());
+            return (IQuestionSet) inputStream.readObject();
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     public IUser login(String username, String hashedPwd) {
         try {
-            return icomm.login(username, hashedPwd);
-        } catch (RemoteException ex) {
-            System.out.println("Didnt log in");
+            outputStream.writeObject(new LoginTask(username, hashedPwd));
+            return (IUser) inputStream.readObject();
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return null;
     }
 
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         try {
-            return icomm.calculateScore(user, set);
-        } catch (RemoteException ex) {
+            outputStream.writeObject(new CalculateScoreTask(user, set));
+            return (List<Integer>) inputStream.readObject();
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return null;
     }
 
-    public List<JobPost> getJobAllPosts(){
-
+    public List<JobPost> getJobAllPosts() {
         try {
-            return icomm.getJobAllPosts();
-        } catch (RemoteException ex) {
+            outputStream.writeObject(new AllJobsTask());
+            return (List<JobPost>) inputStream.readObject();
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        return null;
     }
 
     public void applyForJob(IUser user, IJobPost job) {
         try {
-            icomm.applyForJob(user, job);
-        } catch (RemoteException ex) {
+            outputStream.writeObject(new JobApplyTask(user, job));
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
         try {
-            icomm.applyForJob(user, job, questionSet);
-        } catch (RemoteException ex) {
+            outputStream.writeObject(new JobApplyPersTask(user, job, questionSet));
+        } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
