@@ -16,6 +16,7 @@ public class Main {
         IClientComm comm = new ClientCommFacade();
         gui.injectdomain(domain);
         domain.injectClientComm(comm);
+        System.out.println(domain.getAllQuestions().getQuestion(3).getQuestion());
         gui.start(args);
 
     }
