@@ -11,6 +11,7 @@ import ProjectInterfaces.IClientDomain;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
+import static commondata.Constants.NUMBER_OF_QUESTIONS;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -76,7 +77,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
         currentQuestion = questionSet.getQuestion(number);
 
-        progress.setProgress(number / 100);
+        progress.setProgress(number / NUMBER_OF_QUESTIONS);
 
         requiredField.setVisible(false);
     }
@@ -91,7 +92,7 @@ public class PersonalityTestController implements Initializable, IController<Scr
     private void nextQuestion(ActionEvent event) {
         if (saveAnswer() != 0) {
             requiredField.setVisible(false);
-            if (number < 100) {
+            if (number < NUMBER_OF_QUESTIONS) {
 
                 currentQuestion = questionSet.getQuestion(number);
 
