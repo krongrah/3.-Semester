@@ -29,6 +29,7 @@ public class Main {
             IServerPersistence persistence = new PersistenceFacade();
             comm.injectDomain(domain);
             domain.injectPersistence(persistence);
+            comm.start();
     }
 
 }

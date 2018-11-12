@@ -19,4 +19,6 @@ public interface IServerComm {
      */
     public void injectDomain(IServerDomain domain);
 
+    public void start();
+
 }

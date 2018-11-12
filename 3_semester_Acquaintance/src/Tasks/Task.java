@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
  *
  * @author Sebas
  */
-public class Task {
+public abstract class Task implements Runnable{
     private IServerDomain sDomain;
     private ObjectOutputStream output;
     
