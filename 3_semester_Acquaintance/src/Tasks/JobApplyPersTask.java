@@ -27,7 +27,7 @@ public class JobApplyPersTask extends Task{
     
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.getDomain().applyForJob(job, user, set);
     }
     
 }
