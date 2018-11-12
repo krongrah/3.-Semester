@@ -64,4 +64,9 @@ public class PersistenceFacade implements IServerPersistence {
         return handler.getJobPrefScore(jobPostId);
     }
 
+    @Override
+    public ResultSet getApplicants(int jobPostId) {
+        return handler.getApplicants(jobPostId);
+    }
+
 }

@@ -25,5 +25,7 @@ public interface IServerPersistence {
     public IUser login(String username, String hashedPwd);
     
     public ResultSet getJobPrefScore(int jobPostId);
+    
+    public ResultSet getApplicants(int jobPostId);
 
 }
