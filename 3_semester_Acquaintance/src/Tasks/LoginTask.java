@@ -5,14 +5,13 @@
  */
 package Tasks;
 
-import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IUser;
 
 /**
  *
  * @author Sebas
  */
-public class LoginTask extends Task implements Runnable {
+public class LoginTask extends Task{
     
     private String username;
     private String hPassword;

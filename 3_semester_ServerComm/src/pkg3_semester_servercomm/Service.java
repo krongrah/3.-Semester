@@ -6,6 +6,7 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.IServerDomain;
+import Tasks.LogOutTask;
 import Tasks.Task;
 import com.sun.rmi.rmid.ExecOptionPermission;
 import java.io.IOException;
@@ -26,14 +27,16 @@ public class Service implements Runnable {
     private Long lastAction;
     private Boolean isLoggedOut = false;
     private IServerDomain domain;
+    private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
 
     Service(Socket socket, IServerDomain domain) {
         lastAction = System.currentTimeMillis();
         try {
-            inputStream= new ObjectInputStream(socket.getInputStream());
-            outputStream=new ObjectOutputStream(socket.getOutputStream());
+            this.socket=socket;
+            inputStream = new ObjectInputStream(socket.getInputStream());
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -43,26 +46,23 @@ public class Service implements Runnable {
     public void run() {
         while (!isLoggedOut) {
             try {
-                
-                Task task=(Task)inputStream.readObject();
-                task.injectDomain(domain);
-                task.injectOutputStread(outputStream);
-                Thread thread=new Thread(task);
-                thread.start();
-                
+
+                Task task = (Task) inputStream.readObject();
+                if (task instanceof LogOutTask) {
+                    logOut();
+                } else {
+                    task.injectDomain(domain);
+                    task.injectOutputStread(outputStream);
+                    Thread thread = new Thread(task);
+                    thread.start();
+                }
+
             } catch (IOException ex) {
                 Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-            
-            
-            
-            
-            
-            
+
             lastAction = System.currentTimeMillis();
         }
     }
@@ -71,8 +71,14 @@ public class Service implements Runnable {
         return isLoggedOut;
     }
 
-    public void LogOut() {
+    public void logOut() {
         this.isLoggedOut = true;
+        try {
+            socket.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public Long getLastAction() {

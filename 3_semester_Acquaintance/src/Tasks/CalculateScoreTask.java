@@ -12,7 +12,7 @@ import ProjectInterfaces.IUser;
  *
  * @author Sebas
  */
-public class CalculateScoreTask extends Task implements Runnable {
+public class CalculateScoreTask extends Task {
 
     private IUser user;
     private IQuestionSet set;

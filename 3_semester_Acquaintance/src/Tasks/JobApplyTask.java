@@ -9,7 +9,7 @@ package Tasks;
  *
  * @author Sebas
  */
-public class JobApplyTask extends Task implements Runnable {
+public class JobApplyTask extends Task{
 
     JobApplyTask(){
         

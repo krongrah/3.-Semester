@@ -10,27 +10,27 @@ import static commondata.Constants.TIMEOUT_TIME_IN_MINUTES;
  *
  * @author Kasper
  */
-public class TimeoutThread implements Runnable{
+public class TimeoutThread implements Runnable {
 
-    private List<Service>list;
+    private List<Service> list;
     private Iterator<Service> it;
-    
-    TimeoutThread(List<Service> list){
-    this.list=list;
-    
+
+    TimeoutThread(List<Service> list) {
+        this.list = list;
+
     }
-    
+
     @Override
     public void run() {
-        while (true) {            
-            it=list.iterator();
-            while (it.hasNext()){
-                Service service=it.next();
-                if (service.getLastAction()+TIMEOUT_TIME_IN_MINUTES*60000<System.currentTimeMillis()) {
-                    service.LogOut();
+        while (true) {
+            it = list.iterator();
+            while (it.hasNext()) {
+                Service service = it.next();
+                if (service.getLastAction() + TIMEOUT_TIME_IN_MINUTES * 60000 < System.currentTimeMillis()) {
+                    service.logOut();
                 }
-                if(service.isLoggedOut()){
-                it.remove();
+                if (service.isLoggedOut()) {
+                    it.remove();
                 }
             }
             try {
@@ -40,5 +40,5 @@ public class TimeoutThread implements Runnable{
             }
         }
     }
-    
+
 }

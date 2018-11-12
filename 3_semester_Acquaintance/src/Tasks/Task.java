@@ -7,12 +7,13 @@ package Tasks;
 
 import ProjectInterfaces.IServerDomain;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /**
  *
  * @author Sebas
  */
-public abstract class Task implements Runnable{
+public abstract class Task implements Runnable, Serializable{
     private IServerDomain sDomain;
     private ObjectOutputStream output;
     
