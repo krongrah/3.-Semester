@@ -57,7 +57,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Group>
-                        <Label fx:id="question" alignment="CENTER" text="I find it easy to make new friends" textAlignment="CENTER" textFill="#212121" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        <Label fx:id="question" alignment="CENTER" text="I find it easy to make new friends" textAlignment="CENTER" textFill="#212121" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="22.0" />
                            </font>
