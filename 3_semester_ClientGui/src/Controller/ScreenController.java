@@ -246,5 +246,7 @@ public class ScreenController implements Initializable, IController<ScreenContro
         unload();
         loadPopupController("FXML/Jobs.fxml");
     }
+    
+    private void ExitPlatform(){}
 
 }

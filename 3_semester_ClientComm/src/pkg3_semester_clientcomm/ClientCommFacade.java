@@ -41,8 +41,8 @@ public class ClientCommFacade implements IClientComm {
      */
     @Override
     public final void connectToServer() {
+        connection = new Connection();
         try {
-            connection = new Connection();
             connection.Connect();
         } catch (InterruptedException ex) {
             Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,6 +72,11 @@ public class ClientCommFacade implements IClientComm {
     @Override
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
         connection.applyForJob(user, job, questionSet);
+    }
+
+    @Override
+    public void logout() {
+       connection.logout();
     }
 
 }
