@@ -53,7 +53,7 @@
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button id="LoginButton" mnemonicParsing="false" onAction="#proceed" stylesheets="@../Stylesheets/BasicLook.css" text="Proceed to Personality Assessment" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                  <Button id="LoginButton" fx:id="proceedButton" mnemonicParsing="false" onAction="#proceed" stylesheets="@../Stylesheets/BasicLook.css" text="Proceed to Personality Assessment" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="25.0" />
                      </GridPane.margin>
