@@ -43,8 +43,8 @@ public class PersistenceFacade implements IServerPersistence {
      * @param applicantId
      */
     @Override
-    public void applyForJob(int jobPostId, int applicantId) {
-        handler.applyForJob(jobPostId, applicantId);
+    public void applyForJob(int jobPostId, int applicantId, double jobScore) {
+        handler.applyForJob(jobPostId, applicantId, jobScore);
     }
 
     @Override
@@ -57,6 +57,11 @@ public class PersistenceFacade implements IServerPersistence {
             Logger.getLogger(PersistenceFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public ResultSet getJobPrefScore(int jobPostId) {
+        return handler.getJobPrefScore(jobPostId);
     }
 
 }

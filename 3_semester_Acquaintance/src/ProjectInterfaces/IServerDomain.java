@@ -35,5 +35,7 @@ public interface IServerDomain {
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
 
     public List<JobPost> getAllJobs();
+    
+    public List<Integer> getJobPrefScore(int jobPostId);
 
 }

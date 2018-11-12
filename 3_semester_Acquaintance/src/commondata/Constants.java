@@ -12,7 +12,7 @@ package commondata;
 public interface Constants {
     public final static int PORT=9001;
     public final static String IP= "localhost";
-    public final static int MAX_NUMBER_OF_CLIENTS=5;
     public final static int TIMEOUT_TIME_IN_MINUTES=30;
+    public final static int NUMBER_OF_QUESTIONS=3;
     
 }

@@ -20,8 +20,10 @@ public interface IServerPersistence {
 
     public ResultSet getAllJobs();
 
-    public void applyForJob(int jobPostId, int applicantId);
+    public void applyForJob(int jobPostId, int applicantId, double jobScore);
 
     public IUser login(String username, String hashedPwd);
+    
+    public ResultSet getJobPrefScore(int jobPostId);
 
 }
