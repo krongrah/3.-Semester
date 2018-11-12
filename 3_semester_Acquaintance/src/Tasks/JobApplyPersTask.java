@@ -7,6 +7,7 @@ package Tasks;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
+import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IUser;
 
 /**
@@ -27,7 +28,8 @@ public class JobApplyPersTask extends Task{
     
     @Override
     public void run() {
-        super.getDomain().applyForJob(job, user, set);
+    IServerDomain dom=super.getDomain();
+    dom.applyForJob(job, user, set);
     }
     
 }
