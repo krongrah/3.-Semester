@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IncomingCommunication;
+package pkg3_semester_servercomm;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static commondata.Constants.TIMEOUT_TIME;
+import static commondata.Constants.TIMEOUT_TIME_IN_MINUTES;
 
 /**
  *
@@ -31,7 +31,7 @@ public class TimeoutThread implements Runnable{
             it=list.iterator();
             while (it.hasNext()){
                 Service service=it.next();
-                if (service.getLastAction()+TIMEOUT_TIME*60000<System.currentTimeMillis()) {
+                if (service.getLastAction()+TIMEOUT_TIME_IN_MINUTES*60000<System.currentTimeMillis()) {
                     service.LogOut();
                 }
                 if(service.isLoggedOut()){

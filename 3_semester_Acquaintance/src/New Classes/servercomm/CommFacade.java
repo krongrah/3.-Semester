@@ -5,7 +5,7 @@
  */
 package servercomm;
 
-import IncomingCommunication.InCommFacade;
+import pkg3_semester_servercomm.InCommFacade;
 import OutgoingCommunication.OutCommFacade;
 import ServerInterfaces.IComm;
 import ServerInterfaces.IDomain;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IncomingCommunication;
+package pkg3_semester_servercomm;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,12 +21,10 @@ public class Service implements Runnable{
     
     private Long lastAction;
     private Boolean isLoggedOut=false;
-    private CommandInterpreter command;
     private BufferedReader br;
 
-    Service(Socket socket, CommandInterpreter command){
+    Service(Socket socket){
     lastAction=System.currentTimeMillis();
-    this.command=command;
         try {
             br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException ex) {
@@ -44,7 +42,8 @@ public class Service implements Runnable{
                 if(line.equals("logout")){
                 isLoggedOut=true;
                 }else{
-                    command.interpretCommand(line);
+                    
+                    
                 }
                 
                 

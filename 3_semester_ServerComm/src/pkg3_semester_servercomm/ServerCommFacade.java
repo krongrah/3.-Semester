@@ -1,74 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pkg3_semester_servercomm;
 
-import ProjectInterfaces.*;
-import commondata.JobPost;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
+import ProjectInterfaces.IServerComm;
+import ProjectInterfaces.IServerDomain;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * This Facade represents the ServerCommunication, and allows other subsystems
- * to interact with it.
  *
- * @author Krongrah
+ * @author Kasper
  */
-public class ServerCommFacade extends UnicastRemoteObject implements IServerComm, IComm {
+public class ServerCommFacade implements Runnable, IServerComm {
 
-     /**
-     * This is a reference to the domain layer beneath this Communications
-     * layer.
-     */
+    private ServerSocket serv;
+    private List<Service> threadPool;
     private IServerDomain domain;
-    
-    
-    public ServerCommFacade() throws RemoteException {
-        Registry r = LocateRegistry.createRegistry(9001);
-        IComm i = (IComm) this;
-        r.rebind("theJobConnect", i);
-        System.out.println("Server is ready.");
+
+    public ServerCommFacade() {
+        try {
+            serv = new ServerSocket();
+            threadPool = new ArrayList();
+        } catch (IOException ex) {
+            Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    /**
-     * This injects a reference to the domain layer into this instance, so calls
-     * can be made onto said domain layer.
-     *
-     * @param domain
-     */
+
+    @Override
+    public void run() {
+        
+        Thread timeout = new Thread(new TimeoutThread(threadPool));
+        timeout.start();
+        timeout.setDaemon(true);
+        
+        while (true) {
+            try {
+                
+                Service service = new Service(serv.accept());
+                threadPool.add(service);
+                Thread t = new Thread(service);
+                t.start();
+                t.setDaemon(true);
+
+            } catch (IOException ex) {
+                Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
+
     @Override
     public void injectDomain(IServerDomain domain) {
-        this.domain = domain;
-    }
-
-    @Override
-    public IQuestionSet getQuestionSet() throws RemoteException  {
-        return domain.getQuestionSet();
-    }
-
-    @Override
-    public IUser login(String username, String hashedPwd) throws RemoteException {
-        return domain.login(username, hashedPwd);
-    }
-
-    @Override
-    public List<Integer> calculateScore(IUser user, IQuestionSet set) throws RemoteException {
-        return domain.calculateScore(user, set);
-    }
-
-    @Override
-    public List<JobPost> getJobAllPosts() throws RemoteException  {
-       return domain.getAllJobs();
-    }
-
-    @Override
-    public void applyForJob(IUser user, IJobPost job) throws RemoteException  {
-        domain.applyForJob(job, user);
-    }
-
-    @Override
-    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) throws RemoteException {
-       domain.applyForJob(job, user, questionSet);
+       this.domain=domain;
     }
 
 }
