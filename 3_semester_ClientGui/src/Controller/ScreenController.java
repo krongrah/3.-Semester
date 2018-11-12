@@ -81,7 +81,6 @@ public class ScreenController implements Initializable, IController<ScreenContro
         popupWindow.setVisible(false);
         testWindow.setVisible(false);
         domain = GuiFacade.getDomain();
-        domain.connectToServer();
     }
     
     

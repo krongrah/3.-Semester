@@ -28,11 +28,11 @@ public class Connection {
     /**
      * connects the connection to the server.
      */
-    public void Connect() {
+    public void Connect() throws InterruptedException {
         try {
             Socket socket = new Socket(IP, PORT);
-            inputStream = new ObjectInputStream(socket.getInputStream());
             outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
 
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);

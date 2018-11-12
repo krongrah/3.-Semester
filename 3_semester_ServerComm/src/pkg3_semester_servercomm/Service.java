@@ -32,6 +32,7 @@ public class Service implements Runnable {
         lastAction = System.currentTimeMillis();
         try {
             this.socket=socket;
+            this.domain=domain;
             inputStream = new ObjectInputStream(socket.getInputStream());
             outputStream = new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException ex) {
