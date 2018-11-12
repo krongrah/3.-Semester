@@ -223,6 +223,11 @@ public class ScreenController implements Initializable, IController<ScreenContro
         loadController("FXML/HomeDesc.fxml");
     }
 
+    public void openTestResults(){
+        unload();
+        loadPopupController("FXML/TestResults.fxmlsssss");
+    }
+    
     @Override
     public void setParrentController(ScreenController parentController) {
         mainController = parentController;
