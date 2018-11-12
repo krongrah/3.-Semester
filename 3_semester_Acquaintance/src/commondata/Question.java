@@ -1,4 +1,4 @@
-package personalityAssessment;
+package commondata;
 
 import ProjectInterfaces.IQuestion;
 import java.io.Serializable;

@@ -1,5 +1,6 @@
 package personalityAssessment;
 
+import commondata.Question;
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
 import commondata.QuestionSet;
