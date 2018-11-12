@@ -25,5 +25,7 @@ public interface IQueryHandler {
     public void applyForJob(int jobPostId, int applicantId, double jobScore);
     
     public ResultSet getJobPrefScore(int jobPostId);
+    
+    public ResultSet getApplicants(int jobPostId);
 
 }

@@ -114,4 +114,20 @@ public class QueryHandler implements IQueryHandler {
         return null;
     }
 
+    @Override
+    public ResultSet getApplicants(int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            String job = "Job" + jobPostId + "_applicants";
+            
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM " + job + " ORDER BY pscore;");
+            
+            return statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }
