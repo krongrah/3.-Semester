@@ -72,8 +72,6 @@ public class PersonalityTestController implements Initializable, IController<Scr
         // TODO
         domain = GuiFacade.getDomain();
 
-        job = screenController.getApplyingForJobPost();
-
         questionSet = domain.getAllQuestions();
 
         currentQuestion = questionSet.getQuestion(number);
@@ -133,19 +131,19 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
     private int saveAnswer() {
         int val = 0;
-        if (disagree_large.isArmed()) {
+        if (disagree_large.isSelected()) {
             val = 1;
         }
-        if (disagree_small.isArmed()) {
+        if (disagree_small.isSelected()) {
             val = 2;
         }
-        if (neutral.isArmed()) {
+        if (neutral.isSelected()) {
             val = 3;
         }
-        if (agree_small.isArmed()) {
+        if (agree_small.isSelected()) {
             val = 4;
         }
-        if (agree_large.isArmed()) {
+        if (agree_large.isSelected()) {
             val = 5;
         }
         return val;
@@ -154,6 +152,8 @@ public class PersonalityTestController implements Initializable, IController<Scr
     @Override
     public void setParrentController(ScreenController parentController) {
         screenController = parentController;
+        
+        job = screenController.getApplyingForJobPost();
     }
 
     @Override
