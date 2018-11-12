@@ -84,7 +84,7 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
             //todo save personality answers in persistence
-            persistence.applyForJob(job.getId(), user.getUserId(), 0.0);
+            persistence.applyForJob(job.getId(), user.getUserId(), 3.2);
     }
 
     @Override
