@@ -12,8 +12,15 @@ import java.util.List;
  * server
  */
 public class ClientCommFacade implements IClientComm {
-    
-    //Test
+
+    /**
+     * The reference to the connection.
+     */
+    private Connection connection;
+
+    public ClientCommFacade() {
+        connectToServer();
+    }
 
     /**
      * Logs in the given user
@@ -24,51 +31,41 @@ public class ClientCommFacade implements IClientComm {
      */
     @Override
     public IUser login(String username, String hashedPwd) {
-        connectToServer();
-        IUser user = connection.login(username, hashedPwd);
-        System.out.println("now logged in: " + user.getUsername());
-        return user; 
+        return connection.login(username, hashedPwd);
     }
-
-    /**
-     * The reference to the connection.
-     */
-    private Connection connection;
 
     /**
      * Connects the connection to the server.
      */
     @Override
-    public void connectToServer() {
+    public final void connectToServer() {
         connection = new Connection();
         connection.Connect();
     }
 
     @Override
     public List<JobPost> getAllJobs() {
-       return connection.getJobAllPosts();
+        return connection.getJobAllPosts();
     }
 
     @Override
     public IQuestionSet getQuestionSet() {
-       return connection.getQuestionSet();
+        return connection.getQuestionSet();
     }
 
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
-       return connection.calculateScore(user, set);
+        return connection.calculateScore(user, set);
     }
 
     @Override
     public void applyForJob(IUser user, IJobPost job) {
-      connection.applyForJob(user, job);
+        connection.applyForJob(user, job);
     }
 
     @Override
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
         connection.applyForJob(user, job, questionSet);
     }
-    
-    
 
 }
