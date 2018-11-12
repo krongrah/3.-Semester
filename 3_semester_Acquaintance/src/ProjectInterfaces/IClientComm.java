@@ -31,4 +31,6 @@ public interface IClientComm {
     public void applyForJob(IUser user, IJobPost job);
 
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet);
+
+    public void logout();
 }

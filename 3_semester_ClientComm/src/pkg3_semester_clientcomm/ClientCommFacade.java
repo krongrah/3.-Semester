@@ -6,6 +6,8 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import commondata.JobPost;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * is responsible for the communication between all client communication to the
@@ -40,7 +42,11 @@ public class ClientCommFacade implements IClientComm {
     @Override
     public final void connectToServer() {
         connection = new Connection();
-        connection.Connect();
+        try {
+            connection.Connect();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ClientCommFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -66,6 +72,11 @@ public class ClientCommFacade implements IClientComm {
     @Override
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
         connection.applyForJob(user, job, questionSet);
+    }
+
+    @Override
+    public void logout() {
+       connection.logout();
     }
 
 }

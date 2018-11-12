@@ -20,7 +20,7 @@ import Tasks.*;
  *
  * @author Krongrah
  */
-public class Connection {
+class Connection {
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
@@ -28,7 +28,7 @@ public class Connection {
     /**
      * connects the connection to the server.
      */
-    public void Connect() throws InterruptedException {
+    void Connect() throws InterruptedException {
         try {
             Socket socket = new Socket(IP, PORT);
             outputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -39,7 +39,7 @@ public class Connection {
         }
     }
 
-    public IQuestionSet getQuestionSet() {
+    IQuestionSet getQuestionSet() {
         try {
             outputStream.writeObject(new QuestionSetTask());
             return (IQuestionSet) inputStream.readObject();
@@ -51,7 +51,7 @@ public class Connection {
         return null;
     }
 
-    public IUser login(String username, String hashedPwd) {
+    IUser login(String username, String hashedPwd) {
         try {
             outputStream.writeObject(new LoginTask(username, hashedPwd));
             return (IUser) inputStream.readObject();
@@ -64,7 +64,7 @@ public class Connection {
         return null;
     }
 
-    public List<Integer> calculateScore(IUser user, IQuestionSet set) {
+    List<Integer> calculateScore(IUser user, IQuestionSet set) {
         try {
             outputStream.writeObject(new CalculateScoreTask(user, set));
             return (List<Integer>) inputStream.readObject();
@@ -77,7 +77,7 @@ public class Connection {
         return null;
     }
 
-    public List<JobPost> getJobAllPosts() {
+    List<JobPost> getJobAllPosts() {
         try {
             outputStream.writeObject(new AllJobsTask());
             return (List<JobPost>) inputStream.readObject();
@@ -90,7 +90,7 @@ public class Connection {
         return null;
     }
 
-    public void applyForJob(IUser user, IJobPost job) {
+    void applyForJob(IUser user, IJobPost job) {
         try {
             outputStream.writeObject(new JobApplyTask(user, job));
         } catch (IOException ex) {
@@ -98,9 +98,17 @@ public class Connection {
         }
     }
 
-    public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
+    void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
         try {
             outputStream.writeObject(new JobApplyPersTask(user, job, questionSet));
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void logout() {
+        try {
+            outputStream.writeObject(new LogOutTask());
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
