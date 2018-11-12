@@ -47,7 +47,7 @@ public class User implements IUser, Serializable {
     /**
      * Has taken the personality test
      */
-    private Boolean personalityTest=true;
+    private Boolean personalityTest=false;
     /**
      * Years of experience in their given field
      */

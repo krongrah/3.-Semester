@@ -46,9 +46,9 @@ public class ServerCommFacade implements IServerComm, IThreadPool {
         timeout.setDaemon(true);
         timeout.start();
         
-
-        while (true) {
             System.out.println("Server is ready.");
+        while (true) {
+            
             try {
                 Socket s=serv.accept();
                 Service service = new Service(s, domain);
