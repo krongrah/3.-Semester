@@ -8,6 +8,7 @@ package pkg3_semester_servercomm;
 import ProjectInterfaces.IServerComm;
 import ProjectInterfaces.IServerDomain;
 import Tasks.Task;
+import static commondata.Constants.PORT;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.net.Socket;
 
 /**
  *
@@ -30,7 +32,7 @@ public class ServerCommFacade implements IServerComm, IThreadPool {
 
     public ServerCommFacade() {
         try {
-            serv = new ServerSocket();
+            serv = new ServerSocket(PORT);
             ServiceList = new ArrayList();
             tasks = Executors.newCachedThreadPool();
         } catch (IOException ex) {
@@ -41,17 +43,19 @@ public class ServerCommFacade implements IServerComm, IThreadPool {
     @Override
     public void start() {
         Thread timeout = new Thread(new TimeoutThread(ServiceList));
-        timeout.start();
         timeout.setDaemon(true);
+        timeout.start();
+        
 
         while (true) {
             try {
-
-                Service service = new Service(serv.accept(), domain);
+                Socket s=serv.accept();
+                Service service = new Service(s, domain);
                 ServiceList.add(service);
                 Thread t = new Thread(service);
-                t.start();
                 t.setDaemon(true);
+                t.start();
+                
 
             } catch (IOException ex) {
                 Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
