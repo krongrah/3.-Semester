@@ -77,6 +77,7 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void logout() {
         userManager.logout();
+        comm.logout();
     }
 
     /**

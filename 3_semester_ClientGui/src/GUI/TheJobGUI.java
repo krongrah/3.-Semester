@@ -6,11 +6,13 @@
 package GUI;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -35,7 +37,13 @@ public class TheJobGUI extends Application {
 
         stage.setTitle("TheJob - The best people for the best jobs");
         stage.getIcons().add(new Image("/Images/logo-light.png"));
-
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.out.println("Logging out");
+               GuiFacade.getDomain().logout();
+            }
+        });
         stage.show();
     }
 
