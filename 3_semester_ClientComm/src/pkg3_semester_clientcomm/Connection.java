@@ -113,4 +113,16 @@ class Connection {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    List<Integer> getPersonalityAssessment(IUser user) {
+        try {
+            outputStream.writeObject(new getPersonalityAssessmentTask(user));
+            return (List<Integer>) inputStream.readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

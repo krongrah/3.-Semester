@@ -146,4 +146,9 @@ public class ClientDomainFacade implements IClientDomain {
         comm.applyForJob(user, job);
     }
 
+    @Override
+    public List<Integer> getPersonalityAssessment(IUser user) {
+        return comm.getPersonalityAssessment(user);
+    }
+
 }
