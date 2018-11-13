@@ -35,7 +35,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     public ServerDomainFacade() {
         personal = new PersonalityFacade();
-        jobCal = new JobCalFacade();
+        jobCal = new JobCalFacade(persistence);
     }
 
     /**
@@ -79,6 +79,8 @@ public class ServerDomainFacade implements IServerDomain {
     public void applyForJob(IJobPost jobpost, IUser applicant) {
             //double score = jobCal.calculateScore(applicant, jobpost);
             persistence.applyForJob(jobpost.getId(), applicant.getUserId(), 0.0);
+            jobCal.getRankings(jobpost.getId(), applicant);
+            
     }
 
     @Override
