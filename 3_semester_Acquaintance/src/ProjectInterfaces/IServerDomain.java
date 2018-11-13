@@ -6,6 +6,7 @@
 package ProjectInterfaces;
 
 import commondata.JobPost;
+import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -37,5 +38,9 @@ public interface IServerDomain {
     public List<JobPost> getAllJobs();
     
     public List<Integer> getJobPrefScore(int jobPostId);
+    
+    public void setPersonalityAssessment(IUser user, List<Integer> list);
+    
+    public List<Integer> getPersonalityAssessment(IUser user);
 
 }

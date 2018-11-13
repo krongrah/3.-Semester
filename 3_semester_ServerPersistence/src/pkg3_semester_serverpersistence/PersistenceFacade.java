@@ -6,6 +6,7 @@ import ProjectInterfaces.IUser;
 import commondata.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,6 +63,16 @@ public class PersistenceFacade implements IServerPersistence {
     @Override
     public ResultSet getJobPrefScore(int jobPostId) {
         return handler.getJobPrefScore(jobPostId);
+    }
+    
+    @Override
+    public void setPersonalityAssessment(IUser user, String score) {
+        handler.setPersonalityAssessment(user, score);
+    }
+
+    @Override
+    public ResultSet getPersonalityAssessment(IUser user) {
+        return handler.getPersonalityAssessment(user);
     }
 
 }

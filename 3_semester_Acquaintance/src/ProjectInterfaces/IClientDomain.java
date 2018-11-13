@@ -51,5 +51,7 @@ public interface IClientDomain {
     public void applyForJob(IUser user, IJobPost job, IQuestionSet set);
 
     public void applyForJob(IUser user, IJobPost job);
+    
+    public List<Integer> getPersonalityAssessment(IUser user);
 
 }

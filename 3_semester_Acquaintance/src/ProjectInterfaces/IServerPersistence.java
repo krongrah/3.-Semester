@@ -6,6 +6,7 @@
 package ProjectInterfaces;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * The interface for Server Persistence
@@ -25,5 +26,9 @@ public interface IServerPersistence {
     public IUser login(String username, String hashedPwd);
     
     public ResultSet getJobPrefScore(int jobPostId);
+    
+    public void setPersonalityAssessment(IUser user, String score);
+    
+    public ResultSet getPersonalityAssessment(IUser user);
 
 }

@@ -6,11 +6,13 @@
 package pkg3_semester_serverpersistence;
 
 import ProjectInterfaces.IQueryHandler;
+import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -79,10 +81,12 @@ public class QueryHandler implements IQueryHandler {
 
             String job = "Job" + jobPostId + "_applicants";
 
-            statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
+            //statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
+            statement = con.prepareStatement("UPDATE job1_applicants SET \"pscore\" = ? WHERE job1_user_id = ?");
+            
             statement.setInt(1, applicantId);
             statement.setDouble(2, jobScore);
-            statement.executeQuery();
+            statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -126,6 +130,38 @@ public class QueryHandler implements IQueryHandler {
             return statement.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    @Override
+    public void setPersonalityAssessment(IUser user, String score) {        
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("UPDATE Users SET \"personalityassessment\" = ? WHERE UserId = ?;");
+            
+            statement.setString(1, score);
+            statement.setInt(2, user.getUserId());
+            
+            statement.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public ResultSet getPersonalityAssessment(IUser user) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("SELECT personalityAssessment FROM Users WHERE userid = ?");
+            
+            statement.setInt(1, user.getUserId());
+            
+            return statement.executeQuery();
+        } catch (Exception e) {
         }
         return null;
     }

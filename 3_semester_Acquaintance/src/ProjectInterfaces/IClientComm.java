@@ -33,4 +33,6 @@ public interface IClientComm {
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet);
 
     public void logout();
+    
+    public List<Integer> getPersonalityAssessment(IUser user);
 }
