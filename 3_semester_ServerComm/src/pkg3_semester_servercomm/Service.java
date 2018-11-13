@@ -21,18 +21,19 @@ import java.util.logging.Logger;
  */
 public class Service implements Runnable {
 
-    private Long lastAction;
-    private Boolean isLoggedOut = false;
+    private Boolean isLoggedOut;
     private IServerDomain domain;
+    private IExecutor executor;
     private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
 
-    Service(Socket socket, IServerDomain domain) {
-        lastAction = System.currentTimeMillis();
+    Service(Socket socket, IServerDomain domain, IExecutor executor) {
         try {
-            this.socket=socket;
-            this.domain=domain;
+            this.executor = executor;
+            isLoggedOut = false;
+            this.socket = socket;
+            this.domain = domain;
             inputStream = new ObjectInputStream(socket.getInputStream());
             outputStream = new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException ex) {
@@ -44,43 +45,36 @@ public class Service implements Runnable {
     public void run() {
         while (!isLoggedOut) {
             try {
-
+                //recieves a task from the client
                 Task task = (Task) inputStream.readObject();
+                //checks if the task is a LogOutTask, and logs out if true.
                 if (task instanceof LogOutTask) {
                     logOut();
                 } else {
+                    //injects the necessary objects into the task, 
+                    //and then executes it in the common executor.
                     task.injectDomain(domain);
-                    task.injectOutputStread(outputStream);
-                    Thread thread = new Thread(task);
-                    thread.start();
+                    task.injectOutputStream(outputStream);
+                    executor.execute(task);
                 }
-
             } catch (IOException ex) {
                 Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+                logOut();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            lastAction = System.currentTimeMillis();
         }
     }
 
-    public Boolean isLoggedOut() {
-        return isLoggedOut;
-    }
-
+    /**
+     * Closes the socket and ends the run-loop
+     */
     public void logOut() {
-        this.isLoggedOut = true;
         try {
             socket.close();
         } catch (IOException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        this.isLoggedOut = true;
     }
-
-    public Long getLastAction() {
-        return lastAction;
-    }
-
 }
