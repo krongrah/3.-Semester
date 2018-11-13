@@ -5,7 +5,6 @@
  */
 package pkg3_semester_servercomm;
 
-import ProjectInterfaces.IHasher;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
@@ -27,14 +26,32 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Sebas
  */
-public class Security {
+public class CommSecurity {
 
     private Cipher cipher;
     private String transformation = "DES";
     private SecretKeySpec secret;
     private SecretKey secretKey;
 
-    
+    public CommSecurity() {
+
+        try {
+            secretKey = KeyGenerator.getInstance(this.transformation).generateKey(); // Generates a key, based on a given Algorithm
+
+            secret = new SecretKeySpec(secretKey.getEncoded(), transformation); //Initializes the secretKeySpec with a given key's Byte[] value, and the algorithm
+
+            cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
+            cipher.init(ENCRYPT_MODE, secret); //Initializes the cipher
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     /**
      * Gets the cipher for encryption
      *
@@ -63,14 +80,6 @@ public class Security {
         return cipher;
 
     }
-    
-    public void setCipher(Cipher cipher){
-        this.cipher = cipher;
-    }
-    
-    public void setSecretKeySpec(SecretKeySpec secret){
-        this.secret = secret;
-    }
 
     /**
      * Encrypts an object according to the transformation string algorithm.
@@ -84,13 +93,13 @@ public class Security {
         try {
             seal = new SealedObject(ser, getEncryptCipher());
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchPaddingException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidKeyException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalBlockSizeException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         }
         return seal;
     }
@@ -110,17 +119,17 @@ public class Security {
         try {
             ser = (Serializable) seal.getObject(getDecryptCipher());
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchPaddingException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidKeyException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalBlockSizeException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         } catch (BadPaddingException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommSecurity.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return ser;

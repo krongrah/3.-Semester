@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 public class EncryptionTask extends Task {
 
     private static CommSecurity security;
+    
     @Override
     public void run() {
         security = new CommSecurity();

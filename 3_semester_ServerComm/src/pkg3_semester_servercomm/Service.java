@@ -9,7 +9,6 @@ import ProjectInterfaces.IServerDomain;
 import Tasks.EncryptionTask;
 import Tasks.LogOutTask;
 import Tasks.Task;
-import commondata.CommSecurity;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -48,13 +47,14 @@ public class Service implements Runnable {
     public void run() {
         while (!isLoggedOut) {
             try {
-                Task task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
+                Task task = (Task) inputStream.readObject();
                 if (task instanceof LogOutTask) {
                     logOut();
                 }
                 if (task instanceof EncryptionTask) {
                     security = (CommSecurity) inputStream.readObject();
                 } else {
+                    task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
                     task.injectDomain(domain);
                     task.injectOutputStread(outputStream);
                     Thread thread = new Thread(task);
