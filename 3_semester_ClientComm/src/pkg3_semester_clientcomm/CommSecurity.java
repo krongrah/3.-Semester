@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commondata;
+package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IHasher;
 import java.io.IOException;
@@ -81,6 +81,16 @@ public class CommSecurity {
         return cipher;
 
     }
+
+    public SecretKeySpec getSecret() {
+        return secret;
+    }
+
+    public SecretKey getSecretKey() {
+        return secretKey;
+    }
+    
+    
 
     /**
      * Encrypts an object according to the transformation string algorithm.

@@ -1,6 +1,5 @@
 package pkg3_semester_clientcomm;
 
-import commondata.CommSecurity;
 import ProjectInterfaces.IClientComm;
 import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IJobPost;

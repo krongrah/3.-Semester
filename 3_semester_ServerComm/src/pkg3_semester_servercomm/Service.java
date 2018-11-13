@@ -6,7 +6,6 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.IServerDomain;
-import Tasks.EncryptionTask;
 import Tasks.LogOutTask;
 import Tasks.Task;
 import java.io.IOException;
@@ -31,8 +30,9 @@ public class Service implements Runnable {
     private ObjectOutputStream outputStream;
     private CommSecurity security;
 
-    Service(Socket socket, IServerDomain domain, IExecutor executor) {
+    Service(Socket socket, IServerDomain domain, IExecutor executor, CommSecurity security) {
         try {
+            this.security = security;
             this.executor = executor;
             isLoggedOut = false;
             this.socket = socket;
@@ -49,15 +49,12 @@ public class Service implements Runnable {
         while (!isLoggedOut) {
             try {
                 //recieves a task from the client
-                Task task = (Task) inputStream.readObject();
+                Task task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
                 //checks if the task is a LogOutTask, and logs out if true.
                 if (task instanceof LogOutTask) {
                     logOut();
-                }
-                if (task instanceof EncryptionTask) {
-                    security = (CommSecurity) inputStream.readObject();
                 } else {
-                    task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
+                    //task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
                     //injects the necessary objects into the task, 
                     //and then executes it in the common executor.
                     task.injectDomain(domain);

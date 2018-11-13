@@ -23,13 +23,15 @@ class Connection {
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-    
+    private CommSecurity security;
+
     /**
      * connects the client to the server and creates an object input and output
      * stream.
      */
     void Connect() throws InterruptedException {
         try {
+            security = new CommSecurity();
             Socket socket = new Socket(IP, PORT);
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             inputStream = new ObjectInputStream(socket.getInputStream());
@@ -42,8 +44,7 @@ class Connection {
     /**
      * Sends the appropriate task object to the server, along with the relevant
      * arguments, and then waits for a response containing the expected return
-     * object.
-     * This pattern is repeated for all the methods below.
+     * object. This pattern is repeated for all the methods below.
      *
      * @return
      */
@@ -132,5 +133,15 @@ class Connection {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    private void sendTask(Task task) {
+
+        try {
+            TaskWrapper taskW = new TaskWrapper(security.encryptObject(task), security.getSecret());
+            outputStream.writeObject(taskW);
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

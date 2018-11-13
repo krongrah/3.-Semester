@@ -26,9 +26,11 @@ public class ServerCommFacade implements IServerComm, IExecutor {
     private ServerSocket serv;
     private ExecutorService Services;
     private ExecutorService tasks;
+    private CommSecurity security;
 
     public ServerCommFacade() {
         try {
+            security = new CommSecurity();
             serv = new ServerSocket(PORT);
             Services = Executors.newCachedThreadPool();
             tasks = Executors.newCachedThreadPool();
@@ -45,7 +47,7 @@ public class ServerCommFacade implements IServerComm, IExecutor {
         System.out.println("Server is ready.");
         while (true) {
             try {
-                Services.execute(new Service(serv.accept(), domain, this));
+                Services.execute(new Service(serv.accept(), domain, this, security));
             } catch (IOException ex) {
                 Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
