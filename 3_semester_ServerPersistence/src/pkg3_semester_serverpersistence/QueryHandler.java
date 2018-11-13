@@ -12,7 +12,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -74,7 +73,7 @@ public class QueryHandler implements IQueryHandler {
     }
 
     @Override
-    public void applyForJob(int jobPostId, int applicantId, double jobScore) {
+    public synchronized void applyForJob(int jobPostId, int applicantId, double jobScore) {
         try {
             Connection con = connect();
             PreparedStatement statement;
@@ -135,7 +134,7 @@ public class QueryHandler implements IQueryHandler {
     }
     
     @Override
-    public void setPersonalityAssessment(IUser user, String score) {        
+    public synchronized void setPersonalityAssessment(IUser user, String score) {        
         try {
             Connection con = connect();
             
