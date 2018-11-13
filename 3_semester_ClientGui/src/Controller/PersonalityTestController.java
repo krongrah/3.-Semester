@@ -104,7 +104,8 @@ public class PersonalityTestController implements Initializable, IController<Scr
 
                 number++;
             } else {
-                domain.calculateScore(domain.getActiveUser(), questionSet);
+                currentQuestion = questionSet.getQuestion(number);
+                currentQuestion.setQuestionAnswer(saveAnswer());
 
                 next.setText("Send application!");
 

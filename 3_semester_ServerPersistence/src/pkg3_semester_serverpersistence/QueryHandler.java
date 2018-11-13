@@ -6,6 +6,7 @@
 package pkg3_semester_serverpersistence;
 
 import ProjectInterfaces.IQueryHandler;
+import ProjectInterfaces.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -72,17 +73,19 @@ public class QueryHandler implements IQueryHandler {
     }
 
     @Override
-    public void applyForJob(int jobPostId, int applicantId, double jobScore) {
+    public synchronized void applyForJob(int jobPostId, int applicantId, double jobScore) {
         try {
             Connection con = connect();
             PreparedStatement statement;
 
             String job = "Job" + jobPostId + "_applicants";
 
-            statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
+            //statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
+            statement = con.prepareStatement("UPDATE job1_applicants SET \"pscore\" = ? WHERE job1_user_id = ?");
+            
             statement.setInt(1, applicantId);
             statement.setDouble(2, jobScore);
-            statement.executeQuery();
+            statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -126,6 +129,38 @@ public class QueryHandler implements IQueryHandler {
             return statement.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    @Override
+    public synchronized void setPersonalityAssessment(IUser user, String score) {        
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("UPDATE Users SET \"personalityassessment\" = ? WHERE UserId = ?;");
+            
+            statement.setString(1, score);
+            statement.setInt(2, user.getUserId());
+            
+            statement.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public ResultSet getPersonalityAssessment(IUser user) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("SELECT personalityAssessment FROM Users WHERE userid = ?");
+            
+            statement.setInt(1, user.getUserId());
+            
+            return statement.executeQuery();
+        } catch (Exception e) {
         }
         return null;
     }

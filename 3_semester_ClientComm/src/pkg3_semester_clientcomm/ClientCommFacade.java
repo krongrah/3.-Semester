@@ -83,4 +83,9 @@ public class ClientCommFacade implements IClientComm {
        connection.logout();
     }
 
+    @Override
+    public List<Integer> getPersonalityAssessment(IUser user) {
+        return connection.getPersonalityAssessment(user);
+    }
+
 }
