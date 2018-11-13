@@ -6,6 +6,7 @@
 package jobCalculation;
 
 import ProjectInterfaces.*;
+import pkg3_semester_serverdomain.ServerDomainFacade;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -19,19 +20,17 @@ import java.util.logging.Logger;
 public class JobCalFacade {
 
     private JobCalculator calculator;
-    private IServerPersistence persistence;
 
-    public JobCalFacade(IServerPersistence persistence) {
+    public JobCalFacade() {
         calculator = new JobCalculator();
-        this.persistence = persistence;
     }
 
     public double calculateScore(IUser user, IJobPost jobPost) {
         return calculator.calculateScore(user, jobPost);
     }
 
-    public int getRankings(int jobPostId, IUser user) {
-        ResultSet rs = persistence.getApplicants(jobPostId);
+    public int getRankings(int jobPostId, IUser user, IServerPersistence isp) {
+        ResultSet rs = isp.getApplicants(jobPostId);
         int i = 1;
         try {
             while (rs.next()) {

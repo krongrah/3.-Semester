@@ -94,17 +94,17 @@ public class ResultController implements Initializable, IController<ScreenContro
         this.openness.setProgress(oScore/100.0);
         this.op_percent.setText(String.valueOf(oScore));
         
-        this.conscientiousness.setProgress(oScore/100.0);
-        this.con_percent.setText(String.valueOf(oScore));
+        this.conscientiousness.setProgress(cScore/100.0);
+        this.con_percent.setText(String.valueOf(cScore));
         
-        this.extraversion.setProgress(oScore/100.0);
-        this.ext_percent.setText(String.valueOf(oScore));
+        this.extraversion.setProgress(eScore/100.0);
+        this.ext_percent.setText(String.valueOf(eScore));
         
-        this.agreeableness.setProgress(oScore/100.0);
-        this.agr_percent.setText(String.valueOf(oScore));
+        this.agreeableness.setProgress(aScore/100.0);
+        this.agr_percent.setText(String.valueOf(aScore));
         
-        this.neuroticism.setProgress(oScore/100.0);
-        this.neu_percent.setText(String.valueOf(oScore));
+        this.neuroticism.setProgress(nScore/100.0);
+        this.neu_percent.setText(String.valueOf(nScore));
     }
 
     @FXML

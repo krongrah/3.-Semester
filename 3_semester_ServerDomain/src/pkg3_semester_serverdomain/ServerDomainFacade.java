@@ -35,7 +35,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     public ServerDomainFacade() {
         personal = new PersonalityFacade();
-        jobCal = new JobCalFacade(persistence);
+        jobCal = new JobCalFacade();
     }
 
     /**
@@ -79,7 +79,7 @@ public class ServerDomainFacade implements IServerDomain {
     public void applyForJob(IJobPost jobpost, IUser applicant) {
             //double score = jobCal.calculateScore(applicant, jobpost);
             persistence.applyForJob(jobpost.getId(), applicant.getUserId(), 0.0);
-            jobCal.getRankings(jobpost.getId(), applicant);
+            getRankings(0, applicant, persistence);
             
     }
 
@@ -131,13 +131,13 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void setPersonalityAssessment(IUser user, List<Integer> list) {
-        StringBuilder score = new StringBuilder("\'");
+        StringBuilder score = new StringBuilder();
         int i;
         
         for (i = 0; i < (list.size() - 1); i++) {
             score.append(list.get(i) + ",");
         }
-        score.append(list.get(i) + "\'");
+        score.append(list.get(i));
         
         persistence.setPersonalityAssessment(user, score.toString());
     }
@@ -151,7 +151,9 @@ public class ServerDomainFacade implements IServerDomain {
             ResultSet rs = persistence.getPersonalityAssessment(user);
             while (rs.next()) {
                 String[] ses = rs.getString(1).split(",");
+                
                 for (int i = 0; i < ses.length; i++) {
+                    System.out.println(ses[i]);
                     list.add(Integer.parseInt(ses[i]));
                 }
             }
@@ -161,5 +163,10 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public int getRankings(int jobPostId, IUser user, IServerPersistence isp) {
+        return jobCal.getRankings(jobPostId, user, isp);
     }
 }
