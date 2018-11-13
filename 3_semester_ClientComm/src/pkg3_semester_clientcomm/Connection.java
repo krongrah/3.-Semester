@@ -5,7 +5,6 @@ import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
 import commondata.JobPost;
 import java.net.Socket;
-import java.rmi.RemoteException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +25,8 @@ class Connection {
     private ObjectOutputStream outputStream;
     
     /**
-     * connects the connection to the server.
+     * connects the client to the server and creates an object input and output
+     * stream.
      */
     void Connect() throws InterruptedException {
         try {
@@ -39,6 +39,14 @@ class Connection {
         }
     }
 
+    /**
+     * Sends the appropriate task object to the server, along with the relevant
+     * arguments, and then waits for a response containing the expected return
+     * object.
+     * This pattern is repeated for all the methods below.
+     *
+     * @return
+     */
     IQuestionSet getQuestionSet() {
         try {
             outputStream.writeObject(new QuestionSetTask());
@@ -112,5 +120,17 @@ class Connection {
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    List<Integer> getPersonalityAssessment(IUser user) {
+        try {
+            outputStream.writeObject(new getPersonalityAssessmentTask(user));
+            return (List<Integer>) inputStream.readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

@@ -11,52 +11,41 @@ import Tasks.Task;
 import static commondata.Constants.PORT;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.net.Socket;
 
 /**
  *
  * @author Kasper
  */
-public class ServerCommFacade implements IServerComm, IThreadPool {
+public class ServerCommFacade implements IServerComm, IExecutor {
 
-    private ServerSocket serv;
-    private List<Service> ServiceList;
     private IServerDomain domain;
+    private ServerSocket serv;
+    private ExecutorService Services;
     private ExecutorService tasks;
 
     public ServerCommFacade() {
         try {
             serv = new ServerSocket(PORT);
-            ServiceList = new ArrayList();
+            Services = Executors.newCachedThreadPool();
             tasks = Executors.newCachedThreadPool();
         } catch (IOException ex) {
             Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    /**
+     * main thread of the server. Adds services to the service thread pool, along with the necessary arguments.
+     */
     @Override
     public void start() {
-        Thread timeout = new Thread(new TimeoutThread(ServiceList));
-        timeout.setDaemon(true);
-        timeout.start();
-
         System.out.println("Server is ready.");
         while (true) {
-
             try {
-                Socket s = serv.accept();
-                Service service = new Service(s, domain);
-                ServiceList.add(service);
-                Thread t = new Thread(service);
-                t.setDaemon(true);
-                t.start();
-
+                Services.execute(new Service(serv.accept(), domain, this));
             } catch (IOException ex) {
                 Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -69,6 +58,10 @@ public class ServerCommFacade implements IServerComm, IThreadPool {
         this.domain = domain;
     }
 
+    /**
+     * executes a task sent from a service thread in a common thread pool.
+     * @param task 
+     */
     @Override
     public void execute(Task task) {
         tasks.execute(task);

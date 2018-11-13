@@ -7,6 +7,7 @@ package ProjectInterfaces;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.List;
 
 /**
  *
@@ -27,5 +28,9 @@ public interface IQueryHandler {
     public ResultSet getJobPrefScore(int jobPostId);
     
     public ResultSet getApplicants(int jobPostId);
+    
+    public void setPersonalityAssessment(IUser user, String score);
+    
+    public ResultSet getPersonalityAssessment(IUser user);
 
 }

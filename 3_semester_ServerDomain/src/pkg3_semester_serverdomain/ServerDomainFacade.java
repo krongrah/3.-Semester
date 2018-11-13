@@ -90,7 +90,9 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public List<Integer> calculateScore(IUser user, IQuestionSet set) {
         //todo, has yet to be implemented, and is not yet necessary;
-        return personal.calculateScore(set);
+        List<Integer> list = personal.calculateScore(set);
+        setPersonalityAssessment(user, list);
+        return list;
     }
 
     @Override
@@ -123,5 +125,39 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, e);
         }
         return prefScore;
+    }
+
+    @Override
+    public void setPersonalityAssessment(IUser user, List<Integer> list) {
+        StringBuilder score = new StringBuilder("\'");
+        int i;
+        
+        for (i = 0; i < (list.size() - 1); i++) {
+            score.append(list.get(i) + ",");
+        }
+        score.append(list.get(i) + "\'");
+        
+        persistence.setPersonalityAssessment(user, score.toString());
+    }
+
+    @Override
+    public List<Integer> getPersonalityAssessment(IUser user) {
+        List<Integer> list = new ArrayList<>();
+        
+        try {
+            
+            ResultSet rs = persistence.getPersonalityAssessment(user);
+            while (rs.next()) {
+                String[] ses = rs.getString(1).split(",");
+                for (int i = 0; i < ses.length; i++) {
+                    list.add(Integer.parseInt(ses[i]));
+                }
+            }
+            
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

@@ -8,8 +8,10 @@ package Controller;
 import Common.IController;
 import GUI.GuiFacade;
 import ProjectInterfaces.IClientDomain;
+import ProjectInterfaces.IQuestionSet;
 import commondata.QuestionSet;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,13 +50,15 @@ public class ResultController implements Initializable, IController<ScreenContro
     @FXML
     private Label neu_percent;
 
-    private QuestionSet questions;
+    private IQuestionSet questions;
 
     private IClientDomain domain;
 
     private ScreenController screenController;
     @FXML
     private Label header;
+    
+    private List<Integer> list;
     
     private int rank = 0;
     
@@ -71,14 +75,17 @@ public class ResultController implements Initializable, IController<ScreenContro
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         domain = GuiFacade.getDomain();
+        questions = domain.getAllQuestions();
         header.setText("Thank you for applying! You currently ranked nr. " + rank +", out of all applicants");
         
+        list = domain.getPersonalityAssessment(domain.getActiveUser());
+        
         //todo:
-        //oScore = ...
-        //cScore = ...
-        //eScore = ...
-        //aScore = ...
-        //nScore = ...
+        oScore = list.get(0) + list.get(1);
+        cScore = list.get(2) + list.get(3);
+        eScore = list.get(4) + list.get(5);
+        aScore = list.get(6) + list.get(7);
+        nScore = list.get(8) + list.get(9);
         
         setResults();
     }
