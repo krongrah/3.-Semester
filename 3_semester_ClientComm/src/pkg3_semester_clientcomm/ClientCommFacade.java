@@ -1,6 +1,8 @@
 package pkg3_semester_clientcomm;
 
+import commondata.CommSecurity;
 import ProjectInterfaces.IClientComm;
+import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
@@ -19,9 +21,11 @@ public class ClientCommFacade implements IClientComm {
      * The reference to the connection.
      */
     private Connection connection;
+    private CommSecurity security;
 
     public ClientCommFacade() {
         connectToServer();
+        security = new CommSecurity();
     }
 
     /**

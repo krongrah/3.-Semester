@@ -45,18 +45,17 @@ public class ServerCommFacade implements IServerComm, IThreadPool {
         Thread timeout = new Thread(new TimeoutThread(ServiceList));
         timeout.setDaemon(true);
         timeout.start();
-        
-            System.out.println("Server is ready.");
+
+        System.out.println("Server is ready.");
         while (true) {
-            
+
             try {
-                Socket s=serv.accept();
+                Socket s = serv.accept();
                 Service service = new Service(s, domain);
                 ServiceList.add(service);
                 Thread t = new Thread(service);
                 t.setDaemon(true);
                 t.start();
-                
 
             } catch (IOException ex) {
                 Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +71,7 @@ public class ServerCommFacade implements IServerComm, IThreadPool {
 
     @Override
     public void execute(Task task) {
-       tasks.execute(task);
+        tasks.execute(task);
     }
 
 }

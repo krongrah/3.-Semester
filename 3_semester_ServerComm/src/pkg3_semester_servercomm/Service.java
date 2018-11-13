@@ -6,14 +6,17 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.IServerDomain;
+import Tasks.EncryptionTask;
 import Tasks.LogOutTask;
 import Tasks.Task;
+import commondata.CommSecurity;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.SealedObject;
 
 /**
  *
@@ -27,12 +30,13 @@ public class Service implements Runnable {
     private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
+    private CommSecurity security;
 
     Service(Socket socket, IServerDomain domain) {
         lastAction = System.currentTimeMillis();
         try {
-            this.socket=socket;
-            this.domain=domain;
+            this.socket = socket;
+            this.domain = domain;
             inputStream = new ObjectInputStream(socket.getInputStream());
             outputStream = new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException ex) {
@@ -44,10 +48,12 @@ public class Service implements Runnable {
     public void run() {
         while (!isLoggedOut) {
             try {
-
-                Task task = (Task) inputStream.readObject();
+                Task task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
                 if (task instanceof LogOutTask) {
                     logOut();
+                }
+                if (task instanceof EncryptionTask) {
+                    security = (CommSecurity) inputStream.readObject();
                 } else {
                     task.injectDomain(domain);
                     task.injectOutputStread(outputStream);
@@ -76,7 +82,7 @@ public class Service implements Runnable {
         } catch (IOException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     public Long getLastAction() {

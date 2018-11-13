@@ -24,7 +24,7 @@ class Connection {
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-
+    
     /**
      * connects the connection to the server.
      */
