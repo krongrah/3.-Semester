@@ -125,7 +125,7 @@ class Connection {
 
     List<Integer> getPersonalityAssessment(IUser user) {
         try {
-            outputStream.writeObject(new getPersonalityAssessmentTask(user));
+            outputStream.writeObject(new PersonalityAssessmentTask(user));
             return (List<Integer>) inputStream.readObject();
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,7 +141,7 @@ class Connection {
 
     int getRanking(IJobPost jobPost, IUser user) {
         try {
-            outputStream.writeObject(new getRankingTask(jobPost, user));
+            outputStream.writeObject(new RankingTask(jobPost, user));
             return (int) inputStream.readObject();
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
