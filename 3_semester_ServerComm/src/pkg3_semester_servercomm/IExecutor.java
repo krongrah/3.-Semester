@@ -11,8 +11,8 @@ import Tasks.Task;
  *
  * @author Krongrah
  */
-public interface IThreadPool {
-    
+public interface IExecutor {
+
     public void execute(Task task);
-    
+
 }
