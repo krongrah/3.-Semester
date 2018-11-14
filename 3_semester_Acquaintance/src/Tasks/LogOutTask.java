@@ -9,13 +9,10 @@ package Tasks;
  *
  * @author Krongrah
  */
-public class LogOutTask extends Task{
+public class LogOutTask extends Task {
 
-    public LogOutTask(){}
-    
-    
-    @Override
-    public void run() {
+    public LogOutTask() {
+        super(TaskTypes.LOGOUT);
     }
-    
+
 }
