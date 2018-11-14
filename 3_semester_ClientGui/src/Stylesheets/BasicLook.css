@@ -91,6 +91,11 @@
     -fx-padding: 24px;
     -fx-background-color:#b4d9c3;
 }
+#LargestTestRadioA:hover .dot {
+    -fx-padding: 24px;
+    -fx-background-color:#b4d9c3;
+}
+
 
 #LargestTestRadioD .radio{
     -fx-background-color: transparent;
