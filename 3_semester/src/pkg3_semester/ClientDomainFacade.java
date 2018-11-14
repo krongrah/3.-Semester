@@ -133,6 +133,7 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void applyForJob(IUser user, IJobPost job, IQuestionSet set) {
         comm.applyForJob(user, job, set);
+        getActiveUser().setLastJob(job);
     }
 
     /**
@@ -144,6 +145,7 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public void applyForJob(IUser user, IJobPost job) {
         comm.applyForJob(user, job);
+        getActiveUser().setLastJob(job);
     }
 
     @Override

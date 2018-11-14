@@ -67,5 +67,9 @@ public interface IUser {
     public String getRegion();
 
     public void setExperience(int exp);
+    
+    public void setLastJob(IJobPost jobPost);
+    
+    public IJobPost getLastJob();
 
 }

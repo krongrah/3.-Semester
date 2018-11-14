@@ -78,8 +78,7 @@ public class ResultController implements Initializable, IController<ScreenContro
         questions = domain.getAllQuestions();
         list = domain.getPersonalityAssessment(domain.getActiveUser());
         // TODO Implement ranking. Problem: get jobpost.
-        //rank = domain.getRanking();
-        rank = 1;
+        rank = domain.getRanking(domain.getActiveUser().getLastJob(), domain.getActiveUser());
         
         header.setText("Thank you for applying! You currently ranked nr. " + rank +", out of all applicants");
         
