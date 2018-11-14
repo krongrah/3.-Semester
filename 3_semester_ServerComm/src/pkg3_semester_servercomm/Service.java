@@ -24,16 +24,14 @@ public class Service implements Runnable {
 
     private Boolean isLoggedOut;
     private IServerDomain domain;
-    private IExecutor executor;
     private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private CommSecurity security;
 
-    Service(Socket socket, IServerDomain domain, IExecutor executor, CommSecurity security) {
+    Service(Socket socket, IServerDomain domain, CommSecurity security) {
         try {
             this.security = security;
-            this.executor = executor;
             isLoggedOut = false;
             this.socket = socket;
             this.domain = domain;
@@ -49,26 +47,48 @@ public class Service implements Runnable {
         while (!isLoggedOut) {
             try {
                 //recieves a task from the client
-                Task task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
+                Task task = (Task)inputStream.readObject();
                 //checks if the task is a LogOutTask, and logs out if true.
-                if (task instanceof LogOutTask) {
-                    logOut();
-                } else {
-                    //task = (Task) security.decryptObject((SealedObject) inputStream.readObject());
-                    //injects the necessary objects into the task, 
-                    //and then executes it in the common executor.
-                    task.injectDomain(domain);
-                    task.injectOutputStream(outputStream);
-                    executor.execute(task);
+                
+                switch(task.getType()){
+                    case LOGIN:
+                        
+                        break;
+                    case LOGOUT:
+                        
+                        break;
+                    case APPLY:
+                        
+                        break;
+                    case APPLYPERS:
+                        
+                        break;
+                    case CALC:
+                        
+                        break;
+                    case ALLJOBS:
+                        
+                        break;
+                    case RANKING:
+                        
+                        break;
+                    case ASSESSMENT:
+                        
+                        break;
+                    case QUESTION:
+                        
+                        break;
+                    
+                    
                 }
-            } catch (IOException ex) {
+                } catch (IOException ex) {
                 Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
-                logOut();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
+    
 
     /**
      * Closes the socket and ends the run-loop

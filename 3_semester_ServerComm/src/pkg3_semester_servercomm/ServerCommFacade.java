@@ -20,12 +20,11 @@ import java.util.logging.Logger;
  *
  * @author Kasper
  */
-public class ServerCommFacade implements IServerComm, IExecutor {
+public class ServerCommFacade implements IServerComm {
 
     private IServerDomain domain;
     private ServerSocket serv;
     private ExecutorService Services;
-    private ExecutorService tasks;
     private CommSecurity security;
 
     public ServerCommFacade() {
@@ -33,7 +32,6 @@ public class ServerCommFacade implements IServerComm, IExecutor {
             security = new CommSecurity();
             serv = new ServerSocket(PORT);
             Services = Executors.newCachedThreadPool();
-            tasks = Executors.newCachedThreadPool();
         } catch (IOException ex) {
             Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,7 +45,7 @@ public class ServerCommFacade implements IServerComm, IExecutor {
         System.out.println("Server is ready.");
         while (true) {
             try {
-                Services.execute(new Service(serv.accept(), domain, this, security));
+                Services.execute(new Service(serv.accept(), domain, security));
             } catch (IOException ex) {
                 Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -64,9 +62,5 @@ public class ServerCommFacade implements IServerComm, IExecutor {
      * executes a task sent from a service thread in a common thread pool.
      * @param task 
      */
-    @Override
-    public void execute(Task task) {
-        tasks.execute(task);
-    }
 
 }

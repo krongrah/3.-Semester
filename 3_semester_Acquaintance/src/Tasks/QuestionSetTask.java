@@ -5,9 +5,7 @@
  */
 package Tasks;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import static Tasks.TaskTypes.QUESTION;
 
 /**
  *
@@ -16,16 +14,7 @@ import java.util.logging.Logger;
 public class QuestionSetTask extends Task{
 
     public QuestionSetTask(){
-        
-    }
-    
-    @Override
-    public void run() {
-        try {
-            super.getOutputStream().writeObject(super.getDomain().getQuestionSet());
-        } catch (IOException ex) {
-            Logger.getLogger(QuestionSetTask.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        super(QUESTION);
     }
     
 }
