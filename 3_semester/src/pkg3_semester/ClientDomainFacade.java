@@ -156,7 +156,6 @@ public class ClientDomainFacade implements IClientDomain {
     @Override
     public int getRanking(IJobPost jobPost, IUser user) {
         int i = comm.getRanking(jobPost, user);
-        System.out.println("Get ranking:" + i);
         return i;
     }
 
