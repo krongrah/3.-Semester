@@ -7,30 +7,28 @@ package Tasks;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author ahmadhamid
  */
 public class getRankingTask extends Task {
+
     private IJobPost jobPost;
     private IUser user;
 
     public getRankingTask(IJobPost jobPost, IUser user) {
+        super(TaskTypes.RANKING);
         this.jobPost = jobPost;
         this.user = user;
     }
 
-    @Override
-    public void run() {
-        try {
-            super.getOutputStream().writeObject(super.getDomain().getRankings(jobPost.getId(), user));
-        } catch (IOException ex) {
-            Logger.getLogger(getRankingTask.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public IJobPost getJobPost() {
+        return jobPost;
     }
-    
+
+    public IUser getUser() {
+        return user;
+    }
+
 }

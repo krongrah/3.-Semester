@@ -7,9 +7,6 @@ package Tasks;
 
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,17 +18,17 @@ public class CalculateScoreTask extends Task {
     private IQuestionSet set;
 
     public CalculateScoreTask(IUser user, IQuestionSet set) {
+        super(TaskTypes.CALC);
         this.user = user;
         this.set = set;
     }
 
-    @Override
-    public void run() {
-        try {
-            super.getOutputStream().writeObject(super.getDomain().calculateScore(user, set));
-        } catch (IOException ex) {
-            Logger.getLogger(CalculateScoreTask.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public IUser getUser() {
+        return user;
+    }
+
+    public IQuestionSet getSet() {
+        return set;
     }
 
 }
