@@ -31,4 +31,6 @@ public interface IServerPersistence {
     
     public ResultSet getPersonalityAssessment(IUser user);
 
+    public ResultSet getApplicants(int jobPostId);
+
 }

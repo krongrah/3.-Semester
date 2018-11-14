@@ -1,5 +1,6 @@
 package commondata;
 
+import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IUser;
 import java.io.Serializable;
 import java.sql.ResultSet;
@@ -39,6 +40,8 @@ public class User implements IUser, Serializable {
     private int userId;
 
     private String username;
+    
+    private IJobPost lastJob;
     
      /**
      * Applicants name
@@ -188,6 +191,16 @@ public class User implements IUser, Serializable {
      */
     public int getExperience() {
         return experience;
+    }
+
+    @Override
+    public void setLastJob(IJobPost jobPost) {
+        this.lastJob = jobPost;
+    }
+
+    @Override
+    public IJobPost getLastJob() {
+        return lastJob;
     }
 
 }

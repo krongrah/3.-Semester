@@ -53,5 +53,7 @@ public interface IClientDomain {
     public void applyForJob(IUser user, IJobPost job);
     
     public List<Integer> getPersonalityAssessment(IUser user);
+    
+    public int getRanking(IJobPost jobPost, IUser user);
 
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PersonalityTestController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PersonalityTestController">
    <children>
       <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -48,15 +48,15 @@
                         <ProgressBar id="progressBar" fx:id="progress" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="35.0" prefHeight="35.0" progress="0.44" stylesheets="@../Stylesheets/BasicLook.css" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
                         <Group GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <children>
-                              <RadioButton id="LargestTestRadioD" fx:id="disagree_large" alignment="CENTER_RIGHT" mnemonicParsing="false" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css">
+                              <RadioButton id="LargestTestRadioD" fx:id="disagree_large" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#nextQuestion" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="AgreementValues" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton id="MediumTestRadioD" fx:id="disagree_small" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="5.0" mnemonicParsing="false" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
-                              <RadioButton id="SmallTestRadioN" fx:id="neutral" alignment="CENTER_RIGHT" layoutX="190.0" layoutY="10.0" mnemonicParsing="false" styleClass="RadioNeutral" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
-                              <RadioButton id="MediumTestRadioA" fx:id="agree_small" alignment="CENTER_RIGHT" layoutX="270.0" layoutY="5.0" mnemonicParsing="false" styleClass="RadioAgree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
-                              <RadioButton id="LargestTestRadioA" fx:id="agree_large" alignment="CENTER_RIGHT" layoutX="360.0" mnemonicParsing="false" styleClass="RadioAgree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="MediumTestRadioD" fx:id="disagree_small" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="5.0" mnemonicParsing="false" onAction="#nextQuestion" styleClass="RadioDisagree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="SmallTestRadioN" fx:id="neutral" alignment="CENTER_RIGHT" layoutX="190.0" layoutY="10.0" mnemonicParsing="false" onAction="#nextQuestion" styleClass="RadioNeutral" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="MediumTestRadioA" fx:id="agree_small" alignment="CENTER_RIGHT" layoutX="270.0" layoutY="5.0" mnemonicParsing="false" onAction="#nextQuestion" styleClass="RadioAgree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
+                              <RadioButton id="LargestTestRadioA" fx:id="agree_large" alignment="CENTER_RIGHT" layoutX="360.0" mnemonicParsing="false" onAction="#nextQuestion" styleClass="RadioAgree" stylesheets="@../Stylesheets/BasicLook.css" toggleGroup="$AgreementValues" />
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />

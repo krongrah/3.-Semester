@@ -133,4 +133,16 @@ class Connection {
         }
         return null;
     }
+    
+    int getRanking(IJobPost jobPost, IUser user) {
+        try {
+            outputStream.writeObject(new getRankingTask(jobPost, user));
+            return (int) inputStream.readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 }
