@@ -25,11 +25,9 @@ public class ServerCommFacade implements IServerComm {
     private IServerDomain domain;
     private ServerSocket serv;
     private ExecutorService Services;
-    private CommSecurity security;
 
     public ServerCommFacade() {
         try {
-            security = new CommSecurity();
             serv = new ServerSocket(PORT);
             Services = Executors.newCachedThreadPool();
         } catch (IOException ex) {
@@ -38,14 +36,15 @@ public class ServerCommFacade implements IServerComm {
     }
 
     /**
-     * main thread of the server. Adds services to the service thread pool, along with the necessary arguments.
+     * main thread of the server. Adds services to the service thread pool,
+     * along with the necessary arguments.
      */
     @Override
     public void start() {
         System.out.println("Server is ready.");
         while (true) {
             try {
-                Services.execute(new Service(serv.accept(), domain, security));
+                Services.execute(new Service(serv.accept(), domain));
             } catch (IOException ex) {
                 Logger.getLogger(ServerCommFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -60,7 +59,7 @@ public class ServerCommFacade implements IServerComm {
 
     /**
      * executes a task sent from a service thread in a common thread pool.
-     * @param task 
+     *
+     * @param task
      */
-
 }

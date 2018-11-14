@@ -20,11 +20,9 @@ public class ClientCommFacade implements IClientComm {
      * The reference to the connection.
      */
     private Connection connection;
-    private CommSecurity security;
 
     public ClientCommFacade() {
         connectToServer();
-        security = new CommSecurity();
     }
 
     /**

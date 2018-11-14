@@ -23,7 +23,7 @@ class Connection {
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-    private CommSecurity security;
+    private Security security;
 
     /**
      * connects the client to the server and creates an object input and output
@@ -31,10 +31,11 @@ class Connection {
      */
     void Connect() throws InterruptedException {
         try {
-            security = new CommSecurity();
+            security = new Security();
             Socket socket = new Socket(IP, PORT);
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             inputStream = new ObjectInputStream(socket.getInputStream());
+            
 
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
