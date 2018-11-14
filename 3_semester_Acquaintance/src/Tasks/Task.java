@@ -16,12 +16,15 @@ import java.io.Serializable;
  * @author Sebas
  */
 public abstract class Task implements Serializable {
+
     private TaskTypes type;
-    public TaskTypes getType(){
-    return type;
+
+    public TaskTypes getType() {
+        return type;
     }
-    Task(TaskTypes type){
-    this.type=type;
+
+    Task(TaskTypes type) {
+        this.type = type;
     }
 
 }
