@@ -5,8 +5,6 @@
  */
 package Tasks;
 
-import ProjectInterfaces.IServerDomain;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
@@ -17,24 +15,13 @@ import java.io.Serializable;
  *
  * @author Sebas
  */
-public abstract class Task implements Runnable, Serializable {
-
-    private IServerDomain sDomain;
-    private ObjectOutputStream output;
-
-    public void injectDomain(IServerDomain domain) {
-        this.sDomain = domain;
+public abstract class Task implements Serializable {
+    private TaskTypes type;
+    public TaskTypes getType(){
+    return type;
+    }
+    Task(TaskTypes type){
+    this.type=type;
     }
 
-    public void injectOutputStream(ObjectOutputStream output) {
-        this.output = output;
-    }
-
-    ObjectOutputStream getOutputStream() {
-        return output;
-    }
-
-    IServerDomain getDomain() {
-        return sDomain;
-    }
 }

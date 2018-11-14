@@ -137,12 +137,6 @@ class Connection {
 
     private void sendTask(Task task) {
 
-        try {
-            TaskWrapper taskW = new TaskWrapper(security.encryptObject(task), security.getSecret());
-            outputStream.writeObject(taskW);
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     int getRanking(IJobPost jobPost, IUser user) {
