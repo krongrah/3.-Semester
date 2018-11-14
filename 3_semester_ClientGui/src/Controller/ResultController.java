@@ -60,7 +60,7 @@ public class ResultController implements Initializable, IController<ScreenContro
     
     private List<Integer> list;
     
-    private int rank = 0;
+    private int rank;
     
     private int oScore;
     private int cScore;
@@ -76,9 +76,12 @@ public class ResultController implements Initializable, IController<ScreenContro
         // TODO
         domain = GuiFacade.getDomain();
         questions = domain.getAllQuestions();
-        header.setText("Thank you for applying! You currently ranked nr. " + rank +", out of all applicants");
-        
         list = domain.getPersonalityAssessment(domain.getActiveUser());
+        // TODO Implement ranking. Problem: get jobpost.
+        //rank = domain.getRanking();
+        rank = 1;
+        
+        header.setText("Thank you for applying! You currently ranked nr. " + rank +", out of all applicants");
         
         //todo:
         oScore = list.get(0) + list.get(1);

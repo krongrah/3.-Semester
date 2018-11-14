@@ -77,16 +77,17 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
-            //double score = jobCal.calculateScore(applicant, jobpost);
-            persistence.applyForJob(jobpost.getId(), applicant.getUserId(), 0.0);
-            getRankings(0, applicant, persistence);
-            
+            double score = jobCal.calculateScore(applicant, jobpost, this);
+            persistence.applyForJob(jobpost.getId(), applicant.getUserId(), score);
+            //getRankings(jobpost.getId(), applicant, persistence);      
     }
 
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
             //todo save personality answers in persistence
-            persistence.applyForJob(job.getId(), user.getUserId(), 3.2);
+            double score = jobCal.calculateScore(user, job, this);
+            persistence.applyForJob(job.getId(), user.getUserId(), score);
+            //getRankings(job.getId(), user, persistence);
     }
 
     @Override
@@ -153,7 +154,6 @@ public class ServerDomainFacade implements IServerDomain {
                 String[] ses = rs.getString(1).split(",");
                 
                 for (int i = 0; i < ses.length; i++) {
-                    System.out.println(ses[i]);
                     list.add(Integer.parseInt(ses[i]));
                 }
             }
@@ -166,7 +166,7 @@ public class ServerDomainFacade implements IServerDomain {
     }
 
     @Override
-    public int getRankings(int jobPostId, IUser user, IServerPersistence isp) {
-        return jobCal.getRankings(jobPostId, user, isp);
+    public int getRankings(int jobPostId, IUser user) {
+        return jobCal.getRankings(jobPostId, user, persistence);
     }
 }

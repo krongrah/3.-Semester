@@ -84,4 +84,9 @@ public class ClientCommFacade implements IClientComm {
         return connection.getPersonalityAssessment(user);
     }
 
+    @Override
+    public int getRanking(IJobPost jobPost, IUser user) {
+        return connection.getRanking(jobPost, user);
+    }
+
 }

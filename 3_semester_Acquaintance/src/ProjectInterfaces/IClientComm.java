@@ -35,4 +35,6 @@ public interface IClientComm {
     public void logout();
     
     public List<Integer> getPersonalityAssessment(IUser user);
+    
+    public int getRanking(IJobPost jobPost, IUser user);
 }

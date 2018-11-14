@@ -22,27 +22,16 @@ public class JobCalculator {
 
     }
     
-    public double calculateScore(IUser user, IJobPost jobPost) {
+    public double calculateScore(IUser user, IJobPost jobPost, List<Integer> userScore, List<Integer> prefJobScore) {
         double result = 0.0;
-        
-        //get pref Score
-        IServerDomain domain = new ServerDomainFacade();
-        List<Integer> prefScore = domain.getJobPrefScore(jobPost.getId());
-        
-        //get user Score
-        // TODO: Implement calculated userScore
-        List<Integer> userScore = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            userScore.add((int) (10 + Math.random() * 40));
-        }
         
         // calculation algorithm
         for (int i = 0; i < 10; i++) {
-            double d = Math.abs(((prefScore.get(i) - userScore.get(i)) / 100));
-            result += d;
+            double d = (prefJobScore.get(i) - userScore.get(i));
+            double dd = Math.abs(d);
+            double ddd = dd / 100;
+            result += ddd;
         }
-        
-        System.out.println(result);
         
         return result;
     }

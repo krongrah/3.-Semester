@@ -84,8 +84,8 @@ public class QueryHandler implements IQueryHandler {
             //statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
             statement = con.prepareStatement("UPDATE job1_applicants SET \"pscore\" = ? WHERE job1_user_id = ?");
             
-            statement.setInt(1, applicantId);
-            statement.setDouble(2, jobScore);
+            statement.setDouble(1, jobScore);
+            statement.setInt(2, applicantId);
             statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,7 +108,7 @@ public class QueryHandler implements IQueryHandler {
     public ResultSet getJobPrefScore(int jobPostId) {
         try {
             Connection con = connect();
-            PreparedStatement statement = con.prepareStatement("SELECT prefscore1, prefscore2, prefscore3, prefscore4, prefscore4, prefscore5, prefscore6, prefscore7, prefscore8, prefscore9, prefscore10 FROM jobs WHERE id = ?");
+            PreparedStatement statement = con.prepareStatement("SELECT prefscore1, prefscore2, prefscore3, prefscore4, prefscore5, prefscore6, prefscore7, prefscore8, prefscore9, prefscore10 FROM jobs WHERE id = ?");
             statement.setInt(1, jobPostId);
             
             return statement.executeQuery();
