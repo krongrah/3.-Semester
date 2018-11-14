@@ -1,7 +1,6 @@
 package pkg3_semester_clientcomm;
 
 import ProjectInterfaces.IClientComm;
-import ProjectInterfaces.IClientSecurity;
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
 import ProjectInterfaces.IUser;
