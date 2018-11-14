@@ -1,13 +1,12 @@
-package pkg3_semester_servercomm;
+package pkg3_semester_clientcomm;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.InvalidKeyException;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
+import java.security.NoSuchProviderException;
 import java.security.PublicKey;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
@@ -27,18 +26,20 @@ import javax.crypto.SecretKey;
 public class Security {
 
     private Cipher cipher;
-    private String transformation = "DES";
+    private String pairAlgorithm = "RSA";
+    private String secretAlgorithm = "AES";
     private SecretKey secretKey;
     private PublicKey publicKey;
+    private String encodedKey;
 
     public Security() {
         try {
-            secretKey = KeyGenerator.getInstance(transformation).generateKey(); // Generates a key, based on a given Algorithm
-            cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
 
+            KeyGenerator gen = KeyGenerator.getInstance(secretAlgorithm);
+            gen.init(128);
+            secretKey = gen.generateKey(); // Generates a key, based on a given Algorithm
+             encodedKey = Base64.getEncoder().encodeToString(secretKey.getEncoded());
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchPaddingException ex) {
             Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -88,22 +89,29 @@ public class Security {
         return null;
     }
 
-    public void setPublicKey(PublicKey publicKey) {
-        this.publicKey = publicKey;
+    public void setPublicKey(Object publicKey) {
+        this.publicKey = (PublicKey) publicKey;
     }
 
-   public SealedObject sendSecretKey(){
-   try {
+    public SealedObject sendSecretKey() {
+        try {
+            cipher = Cipher.getInstance(pairAlgorithm); //Returns an instance of the Cipher with a given algorithm
             cipher.init(ENCRYPT_MODE, publicKey);//Initializes the cipher in encryption mode with the secret key
-            return new SealedObject(secretKey, cipher);
+            SealedObject seal = new SealedObject(encodedKey, cipher);
+            cipher = Cipher.getInstance(secretAlgorithm); //Returns an instance of the Cipher with a given algorithm
+            return seal;
         } catch (InvalidKeyException ex) {
             Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalBlockSizeException ex) {
             Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-   }
-    
+    }
+
 }

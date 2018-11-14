@@ -8,6 +8,7 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
@@ -15,10 +16,10 @@ import javax.crypto.Cipher;
 import static javax.crypto.Cipher.DECRYPT_MODE;
 import static javax.crypto.Cipher.ENCRYPT_MODE;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
@@ -27,15 +28,19 @@ import javax.crypto.SecretKey;
 public class Security {
 
     private Cipher cipher;
-    private String transformation = "DES";
+    private String pairAlgorithm = "RSA";
+    private String secretAlgorithm = "AES";
     private SecretKey secretKey;
     private PublicKey publicKey;
     private PrivateKey privateKey;
 
     public Security() {
         try {
-            cipher = Cipher.getInstance(transformation); //Returns an instance of the Cipher with a given algorithm
-            KeyPair keyPair = KeyPairGenerator.getInstance(transformation).generateKeyPair();
+            cipher = Cipher.getInstance(pairAlgorithm); //Returns an instance of the Cipher with a given algorithm
+
+            KeyPairGenerator gen = KeyPairGenerator.getInstance(pairAlgorithm);
+            gen.initialize(512);
+            KeyPair keyPair = gen.genKeyPair();
             publicKey = keyPair.getPublic();
             privateKey = keyPair.getPrivate();
 
@@ -95,10 +100,28 @@ public class Security {
         return publicKey;
     }
 
-    void recieveSecretKey(Object encryptedSecretKey) {
-        //todo recieve and decrypt secret key
+    void recieveSecretKey(SealedObject encryptedSecretKey) {
+        try {
+            cipher.init(DECRYPT_MODE, privateKey);//Initializes the cipher in decryption mode with the secret key
+            byte[] decodedKey = Base64.getDecoder().decode((String) encryptedSecretKey.getObject(cipher));
+            secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+            cipher = Cipher.getInstance(secretAlgorithm); //Returns an instance of the Cipher with a given algorithm
+
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    
-    
+
 }
