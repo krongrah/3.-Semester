@@ -11,5 +11,5 @@ package Tasks;
  */
 public enum TaskTypes {
     ALLJOBS, CALC, APPLYPERS, APPLY, LOGOUT, LOGIN, QUESTION, ASSESSMENT, RANKING;
-    
+
 }
