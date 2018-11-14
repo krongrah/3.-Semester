@@ -42,5 +42,7 @@ public interface IServerDomain {
     public void setPersonalityAssessment(IUser user, List<Integer> list);
     
     public List<Integer> getPersonalityAssessment(IUser user);
+    
+    public int getRankings(int jobPostId, IUser user);
 
 }

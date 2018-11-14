@@ -77,14 +77,17 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void applyForJob(IJobPost jobpost, IUser applicant) {
-            //double score = jobCal.calculateScore(applicant, jobpost);
-            persistence.applyForJob(jobpost.getId(), applicant.getUserId(), 0.0);
+            double score = jobCal.calculateScore(applicant, jobpost, this);
+            persistence.applyForJob(jobpost.getId(), applicant.getUserId(), score);
+            //getRankings(jobpost.getId(), applicant, persistence);      
     }
 
     @Override
     public void applyForJob(IJobPost job, IUser user, IQuestionSet questionSet) {
             //todo save personality answers in persistence
-            persistence.applyForJob(job.getId(), user.getUserId(), 3.2);
+            double score = jobCal.calculateScore(user, job, this);
+            persistence.applyForJob(job.getId(), user.getUserId(), score);
+            //getRankings(job.getId(), user, persistence);
     }
 
     @Override
@@ -129,13 +132,13 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void setPersonalityAssessment(IUser user, List<Integer> list) {
-        StringBuilder score = new StringBuilder("\'");
+        StringBuilder score = new StringBuilder();
         int i;
         
         for (i = 0; i < (list.size() - 1); i++) {
             score.append(list.get(i) + ",");
         }
-        score.append(list.get(i) + "\'");
+        score.append(list.get(i));
         
         persistence.setPersonalityAssessment(user, score.toString());
     }
@@ -149,6 +152,7 @@ public class ServerDomainFacade implements IServerDomain {
             ResultSet rs = persistence.getPersonalityAssessment(user);
             while (rs.next()) {
                 String[] ses = rs.getString(1).split(",");
+                
                 for (int i = 0; i < ses.length; i++) {
                     list.add(Integer.parseInt(ses[i]));
                 }
@@ -159,5 +163,10 @@ public class ServerDomainFacade implements IServerDomain {
             Logger.getLogger(ServerDomainFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public int getRankings(int jobPostId, IUser user) {
+        return jobCal.getRankings(jobPostId, user, persistence);
     }
 }
