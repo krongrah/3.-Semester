@@ -32,5 +32,13 @@ public interface IQueryHandler {
     public void setPersonalityAssessment(IUser user, String score);
     
     public ResultSet getPersonalityAssessment(IUser user);
+    
+    public void setUserExp(int uExperience, int jobPostId, int userId);
+    
+    public ResultSet getPrefExp(int jobPostId);
+    
+    public ResultSet getUserExp(int userId, int jobPostId);
+    
+    public ResultSet getExpWeight(int jobPostId);
 
 }

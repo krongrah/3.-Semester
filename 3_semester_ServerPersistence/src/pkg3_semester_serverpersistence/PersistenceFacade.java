@@ -80,4 +80,36 @@ public class PersistenceFacade implements IServerPersistence {
         return handler.getApplicants(jobPostId);
     }
 
+    @Override
+    public void setUserExp(int uExperience, int jobPostId, int userId) {
+        handler.setUserExp(uExperience, jobPostId, userId);
+    }
+
+    @Override
+    public int getPrefExp(int jobPostId) {
+        try {
+            ResultSet rs = handler.getPrefExp(jobPostId);
+            
+            while (rs.next()) {
+                return rs.getInt(1);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PersistenceFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public int getExpWeight(int jobPostId) {
+        try {
+            ResultSet rs = handler.getExpWeight(jobPostId);
+            
+            while (rs.next()) {
+                return  rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 }

@@ -79,9 +79,10 @@ public class QueryHandler implements IQueryHandler {
             PreparedStatement statement;
 
             String job = "Job" + jobPostId + "_applicants";
+            String jobUserId = "job" + jobPostId + "_user_id";
 
             //statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
-            statement = con.prepareStatement("UPDATE job1_applicants SET \"pscore\" = ? WHERE job1_user_id = ?");
+            statement = con.prepareStatement("UPDATE " + job + " SET \"pscore\" = ? WHERE " + jobUserId + " = ?");
             
             statement.setDouble(1, jobScore);
             statement.setInt(2, applicantId);
@@ -160,7 +161,79 @@ public class QueryHandler implements IQueryHandler {
             statement.setInt(1, user.getUserId());
             
             return statement.executeQuery();
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public ResultSet getPrefExp(int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("SELECT prefexperience FROM jobs WHERE id = ?;");
+            
+            statement.setInt(1, jobPostId);
+            
+            return statement.executeQuery();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public ResultSet getUserExp(int userId, int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            String job = "Job" + jobPostId + "_applicants";
+            String jobUserId = "job" + jobPostId + "_user_id";
+            
+            PreparedStatement statement = con.prepareStatement("SELECT uexperience FROM " + job + " WHERE " + jobUserId + " = ?;");
+            
+            statement.setInt(1, userId);
+            
+            return statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public void setUserExp(int experience, int jobPostId, int userId) {
+        try {
+            Connection con = connect();
+            
+            String job = "Job" + jobPostId + "_applicants";
+            String jobUserId = "job" + jobPostId + "_user_id";
+            
+            PreparedStatement statement = con.prepareStatement("UPDATE " + job + " SET \"uexperience\" = ? WHERE " + jobUserId + " = ?;");
+            
+            statement.setInt(1, experience);
+            statement.setInt(2, userId);
+            
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public ResultSet getExpWeight(int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("SELECT experienceweight FROM jobs WHERE id = ?;");
+            
+            statement.setInt(1, jobPostId);
+            
+            return statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

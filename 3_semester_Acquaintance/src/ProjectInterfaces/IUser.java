@@ -68,6 +68,8 @@ public interface IUser {
 
     public void setExperience(int exp);
     
+    public int getExperience();
+    
     public void setLastJob(IJobPost jobPost);
     
     public IJobPost getLastJob();

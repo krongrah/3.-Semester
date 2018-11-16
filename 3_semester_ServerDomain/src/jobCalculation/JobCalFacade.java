@@ -26,7 +26,7 @@ public class JobCalFacade {
     }
 
     public double calculateScore(IUser user, IJobPost jobPost, IServerDomain isd) {
-        return calculator.calculateScore(user, jobPost, isd.getPersonalityAssessment(user), isd.getJobPrefScore(jobPost.getId()));
+        return calculator.calculateScore(user, jobPost, isd.getPersonalityAssessment(user), isd.getJobPrefScore(jobPost.getId()), isd);
     }
 
     public int getRankings(int jobPostId, IUser user, IServerPersistence isp) {
