@@ -91,6 +91,16 @@
     -fx-padding: 24px;
     -fx-background-color:#b4d9c3;
 }
+#LargestTestRadioA:hover .dot {
+    -fx-padding: 24px;
+    -fx-background-color:#b4d9c3;
+}
+#LargestTestRadioA:hover  .radio {
+    -fx-border-width:6px;
+    -fx-padding:-1px;
+    -fx-border-color:#b4d9c3;
+}
+
 
 #LargestTestRadioD .radio{
     -fx-background-color: transparent;
@@ -105,6 +115,15 @@
     -fx-border-color:#dab1b2;
 }
 #LargestTestRadioD:selected .dot {
+    -fx-padding: 24px;
+    -fx-background-color:#dab1b2;
+}
+#LargestTestRadioD:hover  .radio {
+    -fx-border-width:6px;
+    -fx-padding:-1px;
+    -fx-border-color:#dab1b2;
+}
+#LargestTestRadioD:hover .dot {
     -fx-padding: 24px;
     -fx-background-color:#dab1b2;
 }
@@ -128,7 +147,16 @@
 #MediumTestRadioA:selected .dot {
     -fx-padding: 20px;
     -fx-background-color:#b4d9c3;
+}#MediumTestRadioA:hover  .radio {
+    -fx-border-width:6px;
+    -fx-padding:-1px;
+    -fx-border-color:#b4d9c3;
 }
+#MediumTestRadioA:hover .dot {
+    -fx-padding: 20px;
+    -fx-background-color:#b4d9c3;
+}
+
 
 #MediumTestRadioD .radio{
     -fx-background-color: transparent;
@@ -143,6 +171,14 @@
     -fx-border-color:#dab1b2;
 }
 #MediumTestRadioD:selected .dot {
+    -fx-padding: 20px;
+    -fx-background-color:#dab1b2;
+}#MediumTestRadioD:hover  .radio {
+    -fx-border-width:6px;
+    -fx-padding:-1px;
+    -fx-border-color:#dab1b2;
+}
+#MediumTestRadioD:hover .dot {
     -fx-padding: 20px;
     -fx-background-color:#dab1b2;
 }
@@ -163,6 +199,14 @@
     -fx-border-color:#949494;
 }
 #SmallTestRadioN:selected .dot {
+    -fx-padding: 16px;
+    -fx-background-color:#949494;
+}#SmallTestRadioN:hover  .radio {
+    -fx-border-width:6px;
+    -fx-padding:-1px;
+    -fx-border-color:#949494;
+}
+#SmallTestRadioN:hover .dot {
     -fx-padding: 16px;
     -fx-background-color:#949494;
 }

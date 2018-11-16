@@ -18,13 +18,19 @@ public class JobApplyTask extends Task{
     private IJobPost job;
 
     public JobApplyTask(IUser user, IJobPost job){
+        super(TaskTypes.APPLY);
         this.user=user;
         this.job=job;
     }
-    
-    @Override
-    public void run() {
-        super.getDomain().applyForJob(job, user);
+
+    public IUser getUser() {
+        return user;
     }
+
+    public IJobPost getJob() {
+        return job;
+    }
+    
+    
     
 }

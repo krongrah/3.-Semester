@@ -5,9 +5,6 @@
  */
 package Tasks;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -16,16 +13,8 @@ import java.util.logging.Logger;
 public class AllJobsTask extends Task{
 
     public AllJobsTask(){
-        
+        super(TaskTypes.ALLJOBS);
     }
-    
-    @Override
-    public void run() {
-        try {
-            super.getOutputStream().writeObject(super.getDomain().getAllJobs());
-        } catch (IOException ex) {
-            Logger.getLogger(AllJobsTask.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
     
 }
