@@ -7,29 +7,35 @@ package Tasks;
 
 import ProjectInterfaces.IJobPost;
 import ProjectInterfaces.IQuestionSet;
-import ProjectInterfaces.IServerDomain;
 import ProjectInterfaces.IUser;
 
 /**
  *
  * @author Sebas
  */
-public class JobApplyPersTask extends Task{
-    
+public class JobApplyPersTask extends Task {
+
     private IUser user;
     private IJobPost job;
     private IQuestionSet set;
 
     public JobApplyPersTask(IUser user, IJobPost job, IQuestionSet set) {
+        super(TaskTypes.APPLYPERS);
         this.user = user;
         this.job = job;
         this.set = set;
     }
-    
-    @Override
-    public void run() {
-    IServerDomain dom=super.getDomain();
-    dom.applyForJob(job, user, set);
+
+    public IUser getUser() {
+        return user;
     }
-    
+
+    public IJobPost getJob() {
+        return job;
+    }
+
+    public IQuestionSet getSet() {
+        return set;
+    }
+
 }

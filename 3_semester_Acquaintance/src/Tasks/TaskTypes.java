@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg3_semester_servercomm;
-
-import Tasks.Task;
+package Tasks;
 
 /**
  *
  * @author Krongrah
  */
-public interface IExecutor {
-
-    public void execute(Task task);
+public enum TaskTypes {
+    ALLJOBS, CALC, APPLYPERS, APPLY, LOGOUT, LOGIN, QUESTION, ASSESSMENT, RANKING;
 
 }

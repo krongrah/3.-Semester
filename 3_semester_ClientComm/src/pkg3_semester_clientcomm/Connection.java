@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import Tasks.*;
+import java.io.Serializable;
+import javax.crypto.SealedObject;
 
 /**
  * A connection to the server.
@@ -23,6 +25,7 @@ class Connection {
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
+    private Security security;
 
     /**
      * connects the client to the server and creates an object input and output
@@ -30,11 +33,16 @@ class Connection {
      */
     void Connect() throws InterruptedException {
         try {
+            security = new Security();
             Socket socket = new Socket(IP, PORT);
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             inputStream = new ObjectInputStream(socket.getInputStream());
+            security.setPublicKey(inputStream.readObject());
+            outputStream.writeObject(security.sendSecretKey());
 
         } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -42,76 +50,36 @@ class Connection {
     /**
      * Sends the appropriate task object to the server, along with the relevant
      * arguments, and then waits for a response containing the expected return
-     * object.
-     * This pattern is repeated for all the methods below.
+     * object. This pattern is repeated for all the methods below.
      *
      * @return
      */
     IQuestionSet getQuestionSet() {
-        try {
-            outputStream.writeObject(new QuestionSetTask());
-            return (IQuestionSet) inputStream.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        sendTask(new QuestionSetTask());
+        return (IQuestionSet) recieveResponse();
     }
 
     IUser login(String username, String hashedPwd) {
-        try {
-            outputStream.writeObject(new LoginTask(username, hashedPwd));
-            return (IUser) inputStream.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
+        sendTask(new LoginTask(username, hashedPwd));
+        return (IUser) recieveResponse();
     }
 
     List<Integer> calculateScore(IUser user, IQuestionSet set) {
-        try {
-            outputStream.writeObject(new CalculateScoreTask(user, set));
-            return (List<Integer>) inputStream.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
+        sendTask(new CalculateScoreTask(user, set));
+        return (List<Integer>) recieveResponse();
     }
 
     List<JobPost> getJobAllPosts() {
-        try {
-            outputStream.writeObject(new AllJobsTask());
-            return (List<JobPost>) inputStream.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
+        sendTask(new AllJobsTask());
+        return (List<JobPost>) recieveResponse();
     }
 
     void applyForJob(IUser user, IJobPost job) {
-        try {
-            outputStream.writeObject(new JobApplyTask(user, job));
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sendTask(new JobApplyTask(user, job));
     }
 
     void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet) {
-        try {
-            outputStream.writeObject(new JobApplyPersTask(user, job, questionSet));
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sendTask(new JobApplyPersTask(user, job, questionSet));
     }
 
     void logout() {
@@ -123,9 +91,21 @@ class Connection {
     }
 
     List<Integer> getPersonalityAssessment(IUser user) {
+        sendTask(new PersonalityAssessmentTask(user));
+        return (List<Integer>) recieveResponse();
+    }
+
+    private void sendTask(Task task) {
         try {
-            outputStream.writeObject(new getPersonalityAssessmentTask(user));
-            return (List<Integer>) inputStream.readObject();
+            outputStream.writeObject(security.encryptObject(task));
+        } catch (IOException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private Serializable recieveResponse() {
+        try {
+            return security.decryptObject((SealedObject) inputStream.readObject());
         } catch (IOException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -133,16 +113,9 @@ class Connection {
         }
         return null;
     }
-    
+
     int getRanking(IJobPost jobPost, IUser user) {
-        try {
-            outputStream.writeObject(new getRankingTask(jobPost, user));
-            return (int) inputStream.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        sendTask(new RankingTask(jobPost, user));
+        return (int) recieveResponse();
     }
 }
