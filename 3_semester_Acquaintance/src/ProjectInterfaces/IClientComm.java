@@ -18,7 +18,7 @@ public interface IClientComm {
     public IUser login(String username, String hashedPwd);
 
     /**
-     * Connects the client to the server.
+     * Connects the client to the server
      */
     public void connectToServer();
 
