@@ -32,5 +32,11 @@ public interface IServerPersistence {
     public ResultSet getPersonalityAssessment(IUser user);
 
     public ResultSet getApplicants(int jobPostId);
+        
+    public void setUserExp(int uExperience, int jobPostId);
+    
+    public int getPrefExp(int jobPostId);
+    
+    public int getExpWeight(int jobPostId);
 
 }

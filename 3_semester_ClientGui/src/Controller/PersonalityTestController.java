@@ -70,7 +70,6 @@ public class PersonalityTestController implements Initializable, IController<Scr
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         domain = GuiFacade.getDomain();
 
         questionSet = domain.getAllQuestions();
@@ -112,7 +111,6 @@ public class PersonalityTestController implements Initializable, IController<Scr
                 domain.calculateScore(domain.getActiveUser(), questionSet);
 
                 domain.applyForJob(domain.getActiveUser(), screenController.getApplyingForJobPost(), questionSet);
-                
                 screenController.openTestResults();
             }
         } else {

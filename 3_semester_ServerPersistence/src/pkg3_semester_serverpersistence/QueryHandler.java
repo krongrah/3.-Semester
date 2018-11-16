@@ -165,4 +165,72 @@ public class QueryHandler implements IQueryHandler {
         return null;
     }
 
+    @Override
+    public ResultSet getPrefExp(int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("SELECT prefexperience FROM jobs WHERE id = ?;");
+            
+            statement.setInt(1, jobPostId);
+            
+            return statement.executeQuery();
+            
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    @Override
+    public ResultSet getUserExp(int userId, int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            String job = "Job" + jobPostId + "_applicants";
+            String jobUserId = "job" + jobPostId + "_user_id";
+            
+            PreparedStatement statement = con.prepareStatement("SELECT uexperience FROM " + job + " WHERE " + jobUserId + " = ?;");
+            
+            statement.setInt(1, userId);
+            
+            return statement.executeQuery();
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    @Override
+    public void setUserExp(int experience, int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            String job = "Job" + jobPostId + "_applicants";
+            String jobUserId = "job" + jobPostId + "_user_id";
+            
+            PreparedStatement statement = con.prepareStatement("UPDATE " + job + " SET \"uexperience\" = ? WHERE " + jobUserId + " = ?;");
+            
+            statement.setInt(1, experience);
+            statement.setInt(2, jobPostId);
+            
+            statement.executeQuery();
+        } catch (SQLException e) {
+        }
+    }
+
+    @Override
+    public ResultSet getExpWeight(int jobPostId) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("SELECT experienceweight FROM jobs WHERE id = ?;");
+            
+            statement.setInt(1, jobPostId);
+            
+            return statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }

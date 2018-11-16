@@ -79,6 +79,7 @@ public class ServerDomainFacade implements IServerDomain {
     public void applyForJob(IJobPost jobpost, IUser applicant) {
             double score = jobCal.calculateScore(applicant, jobpost, this);
             persistence.applyForJob(jobpost.getId(), applicant.getUserId(), score);
+            setUserExp(applicant, jobpost.getId());
             //getRankings(jobpost.getId(), applicant, persistence);      
     }
 
@@ -87,6 +88,7 @@ public class ServerDomainFacade implements IServerDomain {
             //todo save personality answers in persistence
             double score = jobCal.calculateScore(user, job, this);
             persistence.applyForJob(job.getId(), user.getUserId(), score);
+            setUserExp(user, job.getId());
             //getRankings(job.getId(), user, persistence);
     }
 
@@ -168,5 +170,20 @@ public class ServerDomainFacade implements IServerDomain {
     @Override
     public int getRankings(int jobPostId, IUser user) {
         return jobCal.getRankings(jobPostId, user, persistence);
+    }
+
+    @Override
+    public void setUserExp(IUser user, int jobPostId) {
+        persistence.setUserExp(user.getExperience(), jobPostId);
+    }
+
+    @Override
+    public int getPrefExp(int jobPostId) {
+        return persistence.getPrefExp(jobPostId);
+    }
+
+    @Override
+    public int getExpWeight(int jobPostId) {
+        return persistence.getExpWeight(jobPostId);
     }
 }

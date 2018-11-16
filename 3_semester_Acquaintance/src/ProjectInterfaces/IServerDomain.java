@@ -44,5 +44,11 @@ public interface IServerDomain {
     public List<Integer> getPersonalityAssessment(IUser user);
     
     public int getRankings(int jobPostId, IUser user);
+    
+    public void setUserExp(IUser user, int jobPostId);
+        
+    public int getPrefExp(int jobPostId);
+    
+    public int getExpWeight(int jobPostId);
 
 }

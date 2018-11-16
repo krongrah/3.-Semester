@@ -5,9 +5,8 @@
  */
 package jobCalculation;
 
-import ProjectInterfaces.IJobPost;
-import ProjectInterfaces.IServerDomain;
-import ProjectInterfaces.IUser;
+import ProjectInterfaces.*;
+import static commondata.Constants.*;
 import java.util.ArrayList;
 import java.util.List;
 import pkg3_semester_serverdomain.ServerDomainFacade;
@@ -22,7 +21,7 @@ public class JobCalculator {
 
     }
     
-    public double calculateScore(IUser user, IJobPost jobPost, List<Integer> userScore, List<Integer> prefJobScore) {
+    public double calculateScore(IUser user, IJobPost jobPost, List<Integer> userScore, List<Integer> prefJobScore, IServerDomain domain) {
         double result = 0.0;
         
         // calculation algorithm
@@ -33,28 +32,45 @@ public class JobCalculator {
             result += ddd;
         }
         
+        result += addExperience(user, jobPost, domain.getPrefExp(jobPost.getId()), user.getExperience(), domain.getExpWeight(jobPost.getId()));
+        
         return result;
     }
     
-    public int addExperience(int i) {
-        switch (i) {
+    public double addExperience(IUser user, IJobPost jobPost, int prefExp, int userExp, int expWeight) {
+        double desiredWeight;
+        double result;
+        
+        
+        
+        switch (expWeight) {
             case 1:
-                return 2;
+                desiredWeight = DESIRED_WEIGHT_1;
+                result = Math.abs(prefExp - userExp) * desiredWeight;
+                return result;
                 
             case 2:
-                return 4;
+                desiredWeight = DESIRED_WEIGHT_2;
+                result = Math.abs(prefExp - userExp) * desiredWeight;
+                return result;
                 
             case 3:
-                return 8;
+                desiredWeight = DESIRED_WEIGHT_3;
+                result = Math.abs(prefExp - userExp) * desiredWeight;
+                return result;
                 
             case 4:
-                return 10;
+                desiredWeight = DESIRED_WEIGHT_4;
+                result = Math.abs(prefExp - userExp) * desiredWeight;
+                return result;
                 
             case 5:
-                return 20;
+                desiredWeight = DESIRED_WEIGHT_4;
+                result = Math.abs(prefExp - userExp) * desiredWeight;
+                return result;
                 
             default:
-                return 8;
+                return 404.0;
             
         }
             
