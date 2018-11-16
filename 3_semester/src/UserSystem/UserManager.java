@@ -22,7 +22,13 @@ public class UserManager implements IUserManager {
         this.comm = comm;
         this.security = security;
     }
-
+    
+    /**
+     * Logs in the user and hashes the password
+     * @param username
+     * @param password
+     * @return true if the user is active in the system if not false
+     */
     @Override
     public boolean login(String username, String password) {
         if (hasActiveUser()) {

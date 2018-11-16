@@ -26,10 +26,27 @@ public interface IClientComm {
 
     public IQuestionSet getQuestionSet();
 
+    /**
+     * Calculates the personality score 
+     * @param user
+     * @param set
+     * @return list of integer.
+     */
     public List<Integer> calculateScore(IUser user, IQuestionSet set);
-
+    
+    /**
+     * Adds a user to job post
+     * @param user
+     * @param job
+     */
     public void applyForJob(IUser user, IJobPost job);
 
+    /**
+     * 
+     * @param user
+     * @param job
+     * @param questionSet
+     */
     public void applyForJob(IUser user, IJobPost job, IQuestionSet questionSet);
 
     public void logout();

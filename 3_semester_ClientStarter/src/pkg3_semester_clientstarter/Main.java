@@ -7,6 +7,10 @@ import GUI.GuiFacade;
 import pkg3_semester.ClientDomainFacade;
 import pkg3_semester_clientcomm.ClientCommFacade;
 
+
+/**
+ * Starter for the client. Starts all processes in the client. 
+ */
 public class Main {
 
     public static void main(String[] args) {

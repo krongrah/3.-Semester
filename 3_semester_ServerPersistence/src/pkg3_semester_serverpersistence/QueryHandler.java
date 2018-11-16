@@ -19,6 +19,10 @@ import java.util.logging.Logger;
  *
  * @author mikkellarsen
  */
+/**
+ * 
+ * Handler for all database commands.
+ */
 public class QueryHandler implements IQueryHandler {
 
     private String url;
@@ -61,7 +65,10 @@ public class QueryHandler implements IQueryHandler {
         }
         return null;
     }
-
+    /**
+     * conects to the database.
+     * @return 
+     */
     @Override
     public Connection connect() {
         try {

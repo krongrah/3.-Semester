@@ -9,6 +9,9 @@ package ProjectInterfaces;
  *
  * @author Sebas
  */
+/**
+ * The interface for the Client security.
+ */
 public interface IClientSecurity {
 
     public String Hash(String value);

@@ -12,6 +12,9 @@ import javax.crypto.Cipher;
  *
  * @author Sebas
  */
+/**
+ * The interface for the Hasher.
+ */
 public interface IHasher {
 
     public String hash(String value) throws NoSuchAlgorithmException;

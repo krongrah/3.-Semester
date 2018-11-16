@@ -9,6 +9,11 @@ package commondata;
  *
  * @author Kasper
  */
+
+/**
+ * The interface for the Constants.
+ * these constans are use thorught out the system.
+ */
 public interface Constants {
     public final static int PORT=9001;
     public final static String IP= "localhost";

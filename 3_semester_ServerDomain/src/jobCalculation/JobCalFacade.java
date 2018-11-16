@@ -24,11 +24,18 @@ public class JobCalFacade {
     public JobCalFacade() {
         calculator = new JobCalculator();
     }
-
+    
     public double calculateScore(IUser user, IJobPost jobPost, IServerDomain isd) {
         return calculator.calculateScore(user, jobPost, isd.getPersonalityAssessment(user), isd.getJobPrefScore(jobPost.getId()), isd);
     }
 
+       /**
+        * Gets ranking from user which match the userid in the database
+        * @param jobPostId
+        * @param user
+        * @param isp
+        * @return int
+        */
     public int getRankings(int jobPostId, IUser user, IServerPersistence isp) {
         ResultSet rs = isp.getApplicants(jobPostId);
         int i = 1;

@@ -9,6 +9,9 @@ package ProjectInterfaces;
  *
  * @author Naik
  */
+/**
+ * The interface for the Job Post.
+ */
 public interface IJobPost {
 
     public int getId();

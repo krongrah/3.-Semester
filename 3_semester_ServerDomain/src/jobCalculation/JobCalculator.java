@@ -35,7 +35,16 @@ public class JobCalculator {
         result += addExperience(user, jobPost, domain.getPrefExp(jobPost.getId()), user.getExperience(), domain.getExpWeight(jobPost.getId()));
         return result;
     }
-    
+    /**
+     * Calculates how much the expereince weight, 
+     * when the user applies for a Job.
+     * @param user
+     * @param jobPost
+     * @param prefExp
+     * @param userExp
+     * @param expWeight
+     * @return double
+     */
     public double addExperience(IUser user, IJobPost jobPost, int prefExp, int userExp, int expWeight) {
         double desiredWeight;
         double result;

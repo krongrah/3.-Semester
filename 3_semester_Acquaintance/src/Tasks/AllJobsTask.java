@@ -11,7 +11,7 @@ package Tasks;
  * @author Sebas
  */
 public class AllJobsTask extends Task{
-
+    
     public AllJobsTask(){
         super(TaskTypes.ALLJOBS);
     }
