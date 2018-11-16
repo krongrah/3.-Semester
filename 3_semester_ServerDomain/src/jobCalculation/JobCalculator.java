@@ -33,15 +33,12 @@ public class JobCalculator {
         }
         
         result += addExperience(user, jobPost, domain.getPrefExp(jobPost.getId()), user.getExperience(), domain.getExpWeight(jobPost.getId()));
-        
         return result;
     }
     
     public double addExperience(IUser user, IJobPost jobPost, int prefExp, int userExp, int expWeight) {
         double desiredWeight;
         double result;
-        
-        
         
         switch (expWeight) {
             case 1:
@@ -65,7 +62,7 @@ public class JobCalculator {
                 return result;
                 
             case 5:
-                desiredWeight = DESIRED_WEIGHT_4;
+                desiredWeight = DESIRED_WEIGHT_5;
                 result = Math.abs(prefExp - userExp) * desiredWeight;
                 return result;
                 

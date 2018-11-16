@@ -81,8 +81,8 @@ public class PersistenceFacade implements IServerPersistence {
     }
 
     @Override
-    public void setUserExp(int uExperience, int jobPostId) {
-        handler.setUserExp(uExperience, jobPostId);
+    public void setUserExp(int uExperience, int jobPostId, int userId) {
+        handler.setUserExp(uExperience, jobPostId, userId);
     }
 
     @Override

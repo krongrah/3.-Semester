@@ -79,9 +79,10 @@ public class QueryHandler implements IQueryHandler {
             PreparedStatement statement;
 
             String job = "Job" + jobPostId + "_applicants";
+            String jobUserId = "job" + jobPostId + "_user_id";
 
             //statement = con.prepareStatement("INSERT INTO " + job + " VALUES (?, ?)");
-            statement = con.prepareStatement("UPDATE job1_applicants SET \"pscore\" = ? WHERE job1_user_id = ?");
+            statement = con.prepareStatement("UPDATE " + job + " SET \"pscore\" = ? WHERE " + jobUserId + " = ?");
             
             statement.setDouble(1, jobScore);
             statement.setInt(2, applicantId);
@@ -160,7 +161,8 @@ public class QueryHandler implements IQueryHandler {
             statement.setInt(1, user.getUserId());
             
             return statement.executeQuery();
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -176,7 +178,8 @@ public class QueryHandler implements IQueryHandler {
             
             return statement.executeQuery();
             
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -194,13 +197,14 @@ public class QueryHandler implements IQueryHandler {
             statement.setInt(1, userId);
             
             return statement.executeQuery();
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
     @Override
-    public void setUserExp(int experience, int jobPostId) {
+    public void setUserExp(int experience, int jobPostId, int userId) {
         try {
             Connection con = connect();
             
@@ -210,10 +214,11 @@ public class QueryHandler implements IQueryHandler {
             PreparedStatement statement = con.prepareStatement("UPDATE " + job + " SET \"uexperience\" = ? WHERE " + jobUserId + " = ?;");
             
             statement.setInt(1, experience);
-            statement.setInt(2, jobPostId);
+            statement.setInt(2, userId);
             
-            statement.executeQuery();
-        } catch (SQLException e) {
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

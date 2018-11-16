@@ -174,7 +174,7 @@ public class ServerDomainFacade implements IServerDomain {
 
     @Override
     public void setUserExp(IUser user, int jobPostId) {
-        persistence.setUserExp(user.getExperience(), jobPostId);
+        persistence.setUserExp(user.getExperience(), jobPostId, user.getUserId());
     }
 
     @Override

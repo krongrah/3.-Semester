@@ -33,7 +33,7 @@ public interface IServerPersistence {
 
     public ResultSet getApplicants(int jobPostId);
         
-    public void setUserExp(int uExperience, int jobPostId);
+    public void setUserExp(int uExperience, int jobPostId, int userId);
     
     public int getPrefExp(int jobPostId);
     

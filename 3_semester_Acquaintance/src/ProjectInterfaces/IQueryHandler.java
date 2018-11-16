@@ -33,7 +33,7 @@ public interface IQueryHandler {
     
     public ResultSet getPersonalityAssessment(IUser user);
     
-    public void setUserExp(int uExperience, int jobPostId);
+    public void setUserExp(int uExperience, int jobPostId, int userId);
     
     public ResultSet getPrefExp(int jobPostId);
     
