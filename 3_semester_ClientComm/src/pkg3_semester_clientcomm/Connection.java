@@ -83,11 +83,7 @@ class Connection {
     }
 
     void logout() {
-        try {
-            outputStream.writeObject(new LogOutTask());
-        } catch (IOException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            sendTask(new LogOutTask());
     }
 
     List<Integer> getPersonalityAssessment(IUser user) {
