@@ -2,6 +2,7 @@ package personalityAssessment;
 
 import ProjectInterfaces.IQuestion;
 import ProjectInterfaces.IQuestionSet;
+import commondata.Question;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,15 @@ import java.util.List;
  */
 public class ScoreCalculator {
 
+    /**
+     * Returns a List<{@link QuestionSet}>, containing the users total results.
+     * An calculator that calculates personality asessment results by running through all answers to {@link Question} in the {@link IQuestionSet}.
+     * It returns a List<{@link QuestionSet}>, that can be used as a representation of the test-results.
+     * The {@link IQuestionSet} argument must specify a concrete implementation of IQuestionSet.
+     * 
+     * @param iqs a concrete implementation of the interface {@link iQuestionSet}.
+     * @return a list af integers, representing the archived score in the  10 (5) categories of Big Five.
+     */
     public List<Integer> calculateScore(IQuestionSet iqs) {
         List<Integer> list = new ArrayList();
         int aTotal = 0, bTotal = 0, cTotal = 0, dTotal = 0, eTotal = 0, fTotal = 0, gTotal = 0, hTotal = 0, iTotal = 0, jTotal = 0;
@@ -67,6 +77,12 @@ public class ScoreCalculator {
         return list;
     }
 
+    /**
+     * Returns an int, containing the point-weight for the specified {@link IQuestion} object.
+     * Based oon the direction of the question, the answer is given a weight, which is calculated.
+     * @param iq a concrete implementation of the interface {@link iQuestion}.
+     * @return  the integer value of the answer given to the question {@link iq}.
+     */
     public int getPoint(IQuestion iq) {
         int scorePoint = 0;
         if (!iq.getQuestionDirection()) {
@@ -109,6 +125,15 @@ public class ScoreCalculator {
         return scorePoint;
     }
     
+    /**
+     * Returns an int, containing the point-weight for the specified {@link IQuestion} object.
+     * Based oon the direction of the question, the answer is given a weight, which is calculated.
+     * 
+     * @param iqs
+     * @param i
+     * @return the integer value of the answer given to the question.
+     * @deprecated replaced by {@link #getPoint(ProjectInterfaces.IQuestion)}
+     */
     public int getPoint(IQuestionSet iqs, int i) {
         int scorePoint = 0;
         if (!iqs.getQuestionSet().get(i).getQuestionDirection()) {
