@@ -112,4 +112,9 @@ public class PersistenceFacade implements IServerPersistence {
         }
         return 0;
     }
+
+    @Override
+    public void setUser(String fullName, String mail, String address, String Country, String City, String zipCode, String gender, String username, String password) {
+        handler.setUser(fullName, mail, address, Country, City, zipCode, gender, username, password);
+    }
 }

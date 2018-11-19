@@ -186,4 +186,9 @@ public class ServerDomainFacade implements IServerDomain {
     public int getExpWeight(int jobPostId) {
         return persistence.getExpWeight(jobPostId);
     }
+
+    @Override
+    public void setUser(String fullName, String mail, String address, String Country, String City, String zipCode, String gender, String username, String password) {
+        persistence.setUser(fullName, mail, address, Country, City, zipCode, gender, username, password);
+    }
 }

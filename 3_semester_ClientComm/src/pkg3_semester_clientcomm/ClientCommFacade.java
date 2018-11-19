@@ -89,4 +89,9 @@ public class ClientCommFacade implements IClientComm {
         return connection.getRanking(jobPost, user);
     }
 
+    @Override
+    public void setUser(String fullName, String mail, String address, String Country, String City, String zipCode, String gender, String username, String password) {
+        connection.setUser(fullName, mail, address, Country, City, zipCode, gender, username, password);
+    }
+
 }

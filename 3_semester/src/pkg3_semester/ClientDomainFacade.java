@@ -159,4 +159,11 @@ public class ClientDomainFacade implements IClientDomain {
         return i;
     }
 
+    @Override
+    public void setUser(String fullName, String mail, String address, String Country, String City, String zipCode, String gender, String username, String password) {
+        String hPassword = security.Hash(password);
+        comm.setUser(fullName, mail, address, Country, City, zipCode, gender, username, hPassword);
+        //userManager.login(username, password);
+    }
+
 }

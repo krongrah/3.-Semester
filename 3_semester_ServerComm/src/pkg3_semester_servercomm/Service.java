@@ -1,15 +1,7 @@
 package pkg3_semester_servercomm;
 
 import ProjectInterfaces.IServerDomain;
-import Tasks.AllJobsTask;
-import Tasks.CalculateScoreTask;
-import Tasks.JobApplyPersTask;
-import Tasks.JobApplyTask;
-import Tasks.LoginTask;
-import Tasks.PersonalityAssessmentTask;
-import Tasks.QuestionSetTask;
-import Tasks.RankingTask;
-import Tasks.Task;
+import Tasks.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -122,7 +114,10 @@ public class Service implements Runnable {
                 QuestionSetTask questionTask = (QuestionSetTask) task;
                 sendToClient(domain.getQuestionSet());
                 break;
-
+            case CREATEUSER:
+                CreateUserTask setUserTask = (CreateUserTask) task;
+                domain.setUser(setUserTask.getFullName(), setUserTask.getMail(), setUserTask.getAddress(), setUserTask.getCountry(), setUserTask.getCity(), setUserTask.getZipCode(), setUserTask.getGender(), setUserTask.getUserName(), setUserTask.getPassword());
+                break;
         }
     }
     

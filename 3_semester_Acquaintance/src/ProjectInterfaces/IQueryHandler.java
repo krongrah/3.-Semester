@@ -40,5 +40,7 @@ public interface IQueryHandler {
     public ResultSet getUserExp(int userId, int jobPostId);
     
     public ResultSet getExpWeight(int jobPostId);
+    
+    public void setUser(String fullName, String mail, String address, String Country, String City, String zipCode, String gender, String username, String password);
 
 }
