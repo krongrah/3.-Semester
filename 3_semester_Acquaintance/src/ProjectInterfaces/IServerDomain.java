@@ -50,5 +50,7 @@ public interface IServerDomain {
     public int getPrefExp(int jobPostId);
     
     public int getExpWeight(int jobPostId);
+    
+    public void setUser(String fullName, String mail, String phonenr, String address, String country, String region, String city, String zipCode, String gender, String username, String password);
 
 }

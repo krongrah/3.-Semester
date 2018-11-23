@@ -114,4 +114,8 @@ class Connection {
         sendTask(new RankingTask(jobPost, user));
         return (int) recieveResponse();
     }
+    
+    void setUser(String fullName, String mail, String phonenr, String address, String country, String region, String city, String zipCode, String gender, String username, String password) {
+        sendTask(new CreateUserTask(fullName, mail, phonenr, address, country, region, city, zipCode, gender, username, password));
+    }
 }

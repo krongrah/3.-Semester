@@ -238,4 +238,29 @@ public class QueryHandler implements IQueryHandler {
         return null;
     }
 
+    @Override
+    public void setUser(String fullName, String mail, int phonenr, String address, String country, String region, String city, String zipCode, String gender, String username, String password) {
+        try {
+            Connection con = connect();
+            
+            PreparedStatement statement = con.prepareStatement("INSERT INTO Users (Username, IsCompany, Email, Phonenr, Address, Zipcode, Country, Region, City) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?); INSERT INTO LogIn VALUES (?, ?);");
+            
+            statement.setString(1, username);
+            statement.setBoolean(2, false);
+            statement.setString(3, mail);
+            statement.setInt(4, phonenr);
+            statement.setString(5, address);
+            statement.setString(6, zipCode);
+            statement.setString(7, country);
+            statement.setString(8, region);
+            statement.setString(9, city);
+            statement.setString(10, username);
+            statement.setString(11, password);
+            
+            statement.execute();    
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
