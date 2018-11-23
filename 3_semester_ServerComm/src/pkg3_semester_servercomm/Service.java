@@ -52,6 +52,7 @@ public class Service implements Runnable {
                     execute(task);
                 } catch (IOException ex) {
                     Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
+                    logOut();
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
                 }
