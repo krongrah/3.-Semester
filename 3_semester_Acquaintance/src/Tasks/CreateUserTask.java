@@ -12,20 +12,24 @@ package Tasks;
 public class CreateUserTask extends Task {
     private String fullName;
     private String mail;
+    private String phonenr;
     private String address;
     private String country;
+    private String region;
     private String city;
     private String zipCode;
     private String gender;
     private String userName;
     private String password;
 
-    public CreateUserTask(String fullName, String mail, String address, String country, String city, String zipCode, String gender, String userName, String password) {
+    public CreateUserTask(String fullName, String mail, String phonenr, String address, String country, String region, String city, String zipCode, String gender, String userName, String password) {
         super(TaskTypes.CREATEUSER);
         this.fullName = fullName;
         this.mail = mail;
+        this.phonenr = phonenr;
         this.address = address;
         this.country = country;
+        this.region = region;
         this.city = city;
         this.zipCode = zipCode;
         this.gender = gender;
@@ -41,12 +45,20 @@ public class CreateUserTask extends Task {
         return mail;
     }
 
+    public String getPhonenr() {
+        return phonenr;
+    }
+
     public String getAddress() {
         return address;
     }
 
     public String getCountry() {
         return country;
+    }
+    
+    public String getRegion() {
+        return region;
     }
 
     public String getCity() {

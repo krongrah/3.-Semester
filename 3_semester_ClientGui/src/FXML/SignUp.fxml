@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="SignUpScreen" maxHeight="585.0" maxWidth="650.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
+<AnchorPane fx:id="SignUpScreen" maxHeight="585.0" maxWidth="650.0" prefHeight="1800.0" prefWidth="1800.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +32,7 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </TextField>
-                              <TextField id="UsernameField" fx:id="mail" layoutX="10.0" layoutY="85.0" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" promptText="Email" styleClass="LoginField" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                              <TextField id="UsernameField" fx:id="mail" layoutX="10.0" layoutY="85.0" maxWidth="250.0" minWidth="246.0" prefHeight="32.0" prefWidth="246.0" promptText="Email" styleClass="LoginField" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="336.0">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
@@ -42,15 +42,20 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </TextField>
-                              <MenuButton fx:id="country" layoutY="220.0" mnemonicParsing="false" style="-fx-background-color: #fff;" text="Country" textFill="#212121" AnchorPane.leftAnchor="50.0">
+                              <MenuButton fx:id="country" layoutY="220.0" mnemonicParsing="false" onAction="#countryMenuButton" style="-fx-background-color: #fff;" text="Country" textFill="#212121" AnchorPane.leftAnchor="50.0">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
                                  <items>
-                                    <MenuItem mnemonicParsing="false" text="Country 1" />
-                                    <MenuItem mnemonicParsing="false" text="Country 2" />
+                                    <MenuItem fx:id="denmark" mnemonicParsing="false" onAction="#countryDenmarkAction" text="Denmark" />
+                                    <MenuItem fx:id="sweden" mnemonicParsing="false" onAction="#countrySwedenAction" text="Sweden" />
                                  </items>
                               </MenuButton>
+                              <TextField id="UsernameField" fx:id="region" layoutX="335.0" layoutY="220.0" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" promptText="Region" styleClass="LoginField">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TextField>
                               <TextField id="UsernameField" fx:id="city" layoutX="20.0" layoutY="280.0" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" promptText="City" styleClass="LoginField" AnchorPane.leftAnchor="50.0">
                                  <font>
                                     <Font name="Arial" size="16.0" />
@@ -61,13 +66,13 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </TextField>
-                              <MenuButton fx:id="gender" layoutX="10.0" layoutY="350.0" mnemonicParsing="false" style="-fx-background-color: #fff;" text="Gender" textFill="#212121" AnchorPane.leftAnchor="50.0">
+                              <MenuButton fx:id="gender" layoutX="10.0" layoutY="350.0" mnemonicParsing="false" onAction="#genderMenuButton" style="-fx-background-color: #fff;" text="Gender" textFill="#212121" AnchorPane.leftAnchor="50.0">
                                  <font>
                                     <Font name="Arial" size="16.0" />
                                  </font>
                                  <items>
-                                    <MenuItem mnemonicParsing="false" text="Male" />
-                                    <MenuItem mnemonicParsing="false" text="Female" />
+                                    <MenuItem fx:id="male" mnemonicParsing="false" onAction="#genderMaleAction" text="Male" />
+                                    <MenuItem fx:id="female" mnemonicParsing="false" onAction="#genderFemaleAction" text="Female" />
                                  </items>
                               </MenuButton>
                               <TextField id="UsernameField" fx:id="userName" layoutX="40.0" layoutY="410.0" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" promptText="Username" styleClass="LoginField" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
@@ -80,6 +85,11 @@
                                     <Font name="Arial" size="16.0" />
                                  </font>
                               </PasswordField>
+                              <TextField id="UsernameField" fx:id="phonenr" layoutX="337.0" layoutY="85.0" maxWidth="250.0" minWidth="246.0" prefHeight="32.0" prefWidth="246.0" promptText="Phonenumber" styleClass="LoginField">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                              </TextField>
                            </children>
                            <opaqueInsets>
                               <Insets />

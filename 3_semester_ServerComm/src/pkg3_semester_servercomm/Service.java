@@ -116,7 +116,7 @@ public class Service implements Runnable {
                 break;
             case CREATEUSER:
                 CreateUserTask setUserTask = (CreateUserTask) task;
-                domain.setUser(setUserTask.getFullName(), setUserTask.getMail(), setUserTask.getAddress(), setUserTask.getCountry(), setUserTask.getCity(), setUserTask.getZipCode(), setUserTask.getGender(), setUserTask.getUserName(), setUserTask.getPassword());
+                domain.setUser(setUserTask.getFullName(), setUserTask.getMail(), setUserTask.getPhonenr(), setUserTask.getAddress(), setUserTask.getCountry(), setUserTask.getRegion(), setUserTask.getCity(), setUserTask.getZipCode(), setUserTask.getGender(), setUserTask.getUserName(), setUserTask.getPassword());
                 break;
         }
     }

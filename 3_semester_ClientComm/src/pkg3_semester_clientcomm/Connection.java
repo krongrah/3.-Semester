@@ -115,7 +115,7 @@ class Connection {
         return (int) recieveResponse();
     }
     
-    void setUser(String fullName, String mail, String address, String Country, String City, String zipCode, String gender, String username, String password) {
-        sendTask(new CreateUserTask(fullName, mail, address, Country, City, zipCode, gender, username, password));
+    void setUser(String fullName, String mail, String phonenr, String address, String country, String region, String city, String zipCode, String gender, String username, String password) {
+        sendTask(new CreateUserTask(fullName, mail, phonenr, address, country, region, city, zipCode, gender, username, password));
     }
 }
