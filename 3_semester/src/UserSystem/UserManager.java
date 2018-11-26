@@ -25,11 +25,11 @@ public class UserManager implements IUserManager {
 
     @Override
     public boolean login(String username, String password) {
-        if (hasActiveUser()) {
+        if (!hasActiveUser()) {
             String hashedPwd = security.Hash(password);
             System.out.println(hashedPwd);
             setActiveUser(comm.login(username, hashedPwd));
-            if (getActiveUser() == null) {
+            if (getActiveUser() != null) {
                 return true;
             } else {
                 return false;
