@@ -63,7 +63,7 @@ public class UserManager implements IUserManager {
 
     @Override
     public boolean hasActiveUser() {
-        return this.activeUser == null;
+        return this.activeUser != null;
     }
 
 }
