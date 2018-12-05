@@ -29,11 +29,7 @@ public class UserManager implements IUserManager {
             String hashedPwd = security.Hash(password);
             System.out.println(hashedPwd);
             setActiveUser(comm.login(username, hashedPwd));
-            if (getActiveUser() != null) {
-                return true;
-            } else {
-                return false;
-            }
+            return hasActiveUser();
         } else {
             return false;
         }
@@ -63,7 +59,7 @@ public class UserManager implements IUserManager {
 
     @Override
     public boolean hasActiveUser() {
-        return this.activeUser == null;
+        return this.activeUser != null;
     }
 
 }
